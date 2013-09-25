@@ -1,0 +1,33 @@
+WORD FINDER FIRST MEETING
+=========================
+
+PREDEFINED REQUIREMENTS
+-----------------------
+1) The user plays a game and as he finds words he can see in real time his score increasing and the timer decreasing
+2) The user can choose the language in which he wants to find words
+3) The user can import a set of predefined words in the game
+4) The user sees his ranking on a board in the last day, month, year
+5) The user adds a friend to his network
+6) The user rotates the matrix of letters
+
+SPECIFICATIONS
+--------------
+Matrix Size 7x7
+Minimal Word Count: 10-20
+Minimal Word Length: 3
+Show Found and Max Amount of words in the board (?)
+Word = Chain of Letters, Neighbours (e.g. at least 1 common corner), do not have to be in one single direction
+Each field can only be used once per word, but may be used in multiple words.
+Letter Points According to Scrabble System
+Boards are generated randomly
+Matrix rotation graphical feature, no influence on game. Only one rotation distance required.
+Board specific Highscore displayed while playing a board.
+Show own top 5 and last 20.
+Show top 5 and most recent 20 boards played by friends and play these.
+Time influences score (specifications next time)
+save state and resume in case of interrupts or manual pause
+
+QUESTIONS FOR THE NEXT MEETING
+------------------------------
+When playing with your custom dictionary, does that mean playing with this words only?
+Game modes: Speed / Free?
