@@ -2,3 +2,77 @@ USECASES VERSION 1
 ==================
 
 
+0. Play Game
+
+    0.1 Actors
+
+        Player (Bob)
+
+    0.2 Description
+
+        Bob wants to play a local game
+
+    0.3 Trigger
+
+        Presses the 'Start Game' button in the main screen
+
+    0.4 Pre-Conditions
+
+        None
+
+    0.5 Post-Conditions
+
+        1) New entry in personal recordings (Score, Board, ...)
+        2) Push personal recordings to server, if possible
+
+    0.6 Main scenario
+
+	1) Bob starts the 'word finder' app
+	2) Bob presses on 'start game' in the main screen
+	3) The Language selection screen is displayed
+	4) Bob selects the language / dictionary in / with which he wants to play
+	5) The chosen language / dictionary is loaded
+	6) The System generates a new game
+	7) Bob plays and finished the game
+	8) Score is displayed and saved in the personal recordings
+	9) The system tries to syncronize the personal recordings with the server, if possible
+       10) returning to the main screen
+
+    0.7 Alternative scenarios
+
+        I) Game is interrupted (e.g. incoming call) or paused manually
+
+	    1) Pause the game
+	    2) Hide the board, show 'resume' button
+	    3) Wait until 'resume' is pressed
+            4) resume the game and contiue normal execution
+
+
+       II) Game is quit manually
+
+            1) End game and return to main screen
+
+    0.8 Special Requirements
+
+        1) For syncronization with the server, a standing internet connection is required.
+
+    0.9 Notes
+
+        1) The game can only be used to it's full extend when an internet connection is present, but local games can be played without an internet connection.
+
+
+1. Tutorial
+
+2. View Stats
+
+3. Replay Board
+
+4. Add Friend
+
+5. Remove Friend
+
+6. View Dictionary
+
+7. Add / Edit / Remove Dictionary
+
+8. Play Friend's board
