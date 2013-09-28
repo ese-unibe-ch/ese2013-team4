@@ -67,12 +67,277 @@ USECASES VERSION 1
 
 3. Replay Board
 
-4. Add Friend
+4. Set up social function
 
-5. Remove Friend
+    4.1 Actors
 
-6. View Dictionary
+        Player (Bob)
 
-7. Add / Edit / Remove Dictionary
+    4.2 Description
 
-8. Play Friend's board
+        Bob wants to share his boards with his friends and play friends boards
+
+    4.3 Trigger
+
+        Bob starts App
+
+    4.4 Pre-Conditions
+
+        Bob hasn't set up the sharing functionality yet.
+
+    4.5 Post-Conditions
+
+        1) Bob boards are visible to others, and he can add friends to play their boards
+
+    4.6 Main scenario
+    
+	1) Bob starts the 'word finder' app
+	2) Bob presses 'friends' in the main screen
+	3) Bob is asked to enter his email address and a password for creating an account.
+	4) Bob now has the social feature set up.
+
+    4.7 Alternative scenarios
+
+         I) The Device is not connected to the internet
+
+	    1) When clicking on friends, Bob gets a message which states that Bob has to be connected to the internet to interact with his friends
+
+    4.8 Special Requirements
+
+        1) Phone has to be connected to the internet
+
+    4.9 Notes
+
+        1) When the social function is set up, anybody with Bobs email address can follow his plays
+
+5. Add Friend
+
+    5.1 Actors
+
+        Player (Bob), Friend (Susie)
+
+    5.2 Description
+
+        Bob wants to add a Susie to his friendlist.
+
+    5.3 Trigger
+
+        Bob starts App
+
+    5.4 Pre-Conditions
+
+        Bob has the sharing function set up.
+
+    5.5 Post-Conditions
+
+        1) New friend added to the friends list
+
+    5.6 Main scenario
+
+	1) Bob starts the 'word finder' app
+	2) Bob presses on 'friends' in the main screen
+	3) Bob presses follow a friend
+	4) Bob now enters Susies email address.
+	5) Bob is now following Susies game history
+
+    5.7 Alternative scenarios
+
+        I) The Device is not connected to the internet
+
+	    1) When clicking on friends, Bob gets a message which states that Bob has to be connected to the internet to interact with his friends
+	    
+	II) Susie does not play Wordgame
+
+	    1) After entering the email adress, a "friend not found" message is shown
+	    2) Bob can enter a new email address and try again
+
+
+    5.8 Special Requirements
+
+        1) Phone has to be connected to the internet
+
+    5.9 Notes
+    
+    	-
+        
+6. Remove Friend
+
+    6.1 Actors
+
+        Player (Bob), Friend (Susie)
+
+    6.2 Description
+
+        Bob wants to remove Susie from his friendlist.
+
+    6.3 Trigger
+
+        Bob starts App
+
+    6.4 Pre-Conditions
+
+        Bob has the sharing function set up.
+
+    6.5 Post-Conditions
+
+        1) New friend added to the friends list
+
+    6.6 Main scenario
+
+	1) Bob starts the 'word finder' app
+	2) Bob presses 'friends' in the main screen
+	3) Bob presses 'show' friends
+	4) Bob now sees a list of his friends and sees an edit button in the to right corner.
+	4) Bob presses the edit button
+	5) Bob can now select a friend he wants to delete.
+	6) Bob confirms the deletion
+	7) Bob no longer follows Susies games.
+
+    6.7 Alternative scenarios
+
+         I) The Device is not connected to the internet
+
+	    1) When clicking on friends, Bob gets a message which states that Bob has to be connected to the internet to interact with his friends
+
+    6.8 Special Requirements
+
+        1) Phone has to be connected to the internet
+
+    6.9 Notes
+    	
+    	-
+
+7. View Dictionary
+
+    7.1 Actors
+
+        Player (Bob)
+
+    7.2 Description
+
+        Bob wants to view the german dictionary
+
+    7.3 Trigger
+
+        Bob starts App
+
+    7.4 Pre-Conditions
+
+	-
+
+    7.5 Post-Conditions
+
+        -
+
+    7.6 Main scenario
+    
+	1) Bob starts the 'word finder' app
+	2) Bob presses languages
+	3) Bob chooses an existing language
+	4) Bob can now scroll through all the words in this language or enter a search term to filter all the entries for it.
+
+    7.7 Alternative scenarios
+
+	-
+
+    7.8 Special Requirements
+    
+	-
+
+    7.9 Notes
+
+	-
+	
+8. Add and Edit Dictionary
+
+    8.1 Actors
+
+        Player (Bob)
+
+    8.2 Description
+
+        Bob wants to add a new dictionary and add words to it.
+
+    8.3 Trigger
+
+        Bob starts App
+
+    8.4 Pre-Conditions
+
+	-
+
+    8.5 Post-Conditions
+
+        A new dictionary with some words is created and can be used for a game.
+
+    8.6 Main scenario
+    
+	1) Bob starts the 'word finder' app
+	2) Bob presses languages
+	3) Bob presses 'new language' and enters a name.
+	5) Bob presses this new language's name
+	6) Bob presses add word and enters the new word. A new word is created.
+	7) Bob presses 'import' to import words from another language
+	8) Bob chooses the language.
+	9) Bob can choose multible words from this language to import.
+	10) Bob confirms and gets back to the dictionary overview
+	11) Bob presses done. Now he can use his new dictionary to play a new game.
+	
+    8.7 Alternative scenarios
+
+	I) Bob doesn't define any words for his dictionary
+	
+		1) The dictionary can't be used to play games until Bob adds words to it.
+
+    8.8 Special Requirements
+
+	-
+
+    8.9 Notes
+
+	-
+	
+9. Remove Dictionary
+
+    9.1 Actors
+
+        Player (Bob)
+
+    9.2 Description
+
+        Bob wants to remove a dictionary
+
+    9.3 Trigger
+
+        Bob starts App
+
+    9.4 Pre-Conditions
+
+	-
+
+    9.5 Post-Conditions
+
+        A dictionary has been removed
+
+    9.6 Main scenario
+    
+	1) Bob starts the 'word finder' app
+	2) Bob presses languages
+	3) Bob presses the 'edit' button
+	4) Bob selects the dictionary to delete and confirms
+	5) The dictionary is deleted and bob gets back to the languages menu
+	
+    9.7 Alternative scenarios
+
+	-
+
+    9.8 Special Requirements
+
+	-
+
+    9.9 Notes
+    
+	-
+	
+
+10. Play Friend's board
