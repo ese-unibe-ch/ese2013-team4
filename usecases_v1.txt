@@ -180,7 +180,7 @@ USECASES VERSION 1
 
     6.5 Post-Conditions
 
-        1) New friend added to the friends list
+        1) Friend removed from the friends list
 
     6.6 Main scenario
 
