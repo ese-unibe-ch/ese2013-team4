@@ -87,7 +87,7 @@ USECASES VERSION 1
 
     4.5 Post-Conditions
 
-        1) Bob boards are visible to others, and he can add friends to play their boards
+        1) Bobs boards are visible to others, and he can add friends to play their boards
 
     4.6 Main scenario
     
@@ -118,7 +118,7 @@ USECASES VERSION 1
 
     5.2 Description
 
-        Bob wants to add a Susie to his friendlist.
+        Bob wants to add Susie to his friendlist.
 
     5.3 Trigger
 
@@ -177,10 +177,11 @@ USECASES VERSION 1
     6.4 Pre-Conditions
 
         Bob has the sharing function set up.
+        Bob has Susie in his friendslist.
 
     6.5 Post-Conditions
 
-        1) Friend removed from the friends list
+        1) Susie is removed from the friends list
 
     6.6 Main scenario
 
@@ -189,7 +190,7 @@ USECASES VERSION 1
 	3) Bob presses 'show' friends
 	4) Bob now sees a list of his friends and sees an edit button in the to right corner.
 	4) Bob presses the edit button
-	5) Bob can now select a friend he wants to delete.
+	5) Bob can now select a friend he wants to delete (Susie in our case).
 	6) Bob confirms the deletion
 	7) Bob no longer follows Susies games.
 
@@ -233,7 +234,7 @@ USECASES VERSION 1
     
 	1) Bob starts the 'word finder' app
 	2) Bob presses languages
-	3) Bob chooses an existing language
+	3) Bob chooses an existing language (German in our case)
 	4) Bob can now scroll through all the words in this language or enter a search term to filter all the entries for it.
 
     7.7 Alternative scenarios
