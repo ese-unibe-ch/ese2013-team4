@@ -90,7 +90,7 @@ USECASES VERSION 1
 	3) A preprogrammed board is loaded
 	4) Bob works through the instructions of the Tutorial. He can't perform any other action than the one, the tutorial currently asks from him.
 	5) Bob finishes the Tutorial
-	9) The system returns to the start screen
+	6) The system returns to the start screen
 
     1.7 Alternative scenarios
 
@@ -191,10 +191,10 @@ USECASES VERSION 1
 	2) The board is loaded
 	3) The board's dictionary is loaded
 	4) The game is generated. The loaded board is used instead of a newly generated one
-	7) Bob plays and finished the game
-	8) Score is displayed and saved in the personal recordings
-	9) The system tries to synchronize the personal recordings with the server, if possible
-       10) returning to the main screen
+	5) Bob plays and finished the game
+	6) Score is displayed and saved in the personal recordings
+	7) The system tries to synchronize the personal recordings with the server, if possible
+        8) returning to the main screen
 
     3.7 Alternative scenarios
 
@@ -341,10 +341,10 @@ USECASES VERSION 1
 	2) Bob presses 'friends' in the main screen
 	3) Bob presses 'show' friends
 	4) Bob now sees a list of his friends and sees an edit button in the to right corner.
-	4) Bob presses the edit button
-	5) Bob can now select a friend he wants to delete (Susie in our case).
-	6) Bob confirms the deletion
-	7) Bob no longer follows Susie's games.
+	5) Bob presses the edit button
+	6) Bob can now select a friend he wants to delete (Susie in our case).
+	7) Bob confirms the deletion
+	8) Bob no longer follows Susie's games.
 
     6.7 Alternative scenarios
 
@@ -428,13 +428,13 @@ USECASES VERSION 1
 	1) Bob starts the 'word finder' app
 	2) Bob presses languages
 	3) Bob presses 'new language' and enters a name.
-	5) Bob presses this new language's name
-	6) Bob presses add word and enters the new word. A new word is created.
-	7) Bob presses 'import' to import words from another language
-	8) Bob chooses the language.
-	9) Bob can choose multiple words from this language to import.
-	10) Bob confirms and gets back to the dictionary overview
-	11) Bob presses done. Now he can use his new dictionary to play a new game.
+	4) Bob presses this new language's name
+	5) Bob presses add word and enters the new word. A new word is created.
+	6) Bob presses 'import' to import words from another language
+        7) Bob chooses the language.
+	8) Bob can choose multiple words from this language to import.
+        9) Bob confirms and gets back to the dictionary overview
+       10) Bob presses done. Now he can use his new dictionary to play a new game.
 	
     8.7 Alternative scenarios
 
@@ -494,3 +494,52 @@ USECASES VERSION 1
 	
 
 10. Play Friend's board
+
+   10.1 Actors
+
+        Player (Bob)
+
+   10.2 Description
+
+        Bob wants to play a game a friend has played before, and that is visible the friend's scores.
+
+   10.3 Trigger
+
+        Bob selects 'Play' on one of his friend's boards.
+
+   10.4 Pre-Conditions
+
+        Bob is viewing his friend's scores
+
+   10.5 Post-Conditions
+
+        1) New entry in personal recordings (Score, Board, ...)
+        2) Push personal recordings to server, if possible
+
+   10.6 Main scenario
+
+	1) Bob selects 'Play'
+	2) The board is loaded
+	3) The board's dictionary is loaded if stored locally
+		i) if the dictionary is not stored, Bob is asked to download it, which then is done for him.
+	4) The dictionary is displayed to Bob
+	5) The game is generated. The loaded board is used instead of a newly generated one
+	6) Bob plays and finished the game
+	7) Score is displayed and saved in the personal recordings
+	8) The system tries to synchronize the personal recordings with the server, if possible
+        9) returning to the main screen
+
+   10.7 Alternative scenarios
+
+        I) Game is interrupted (e.g. incoming call) or paused manually
+
+	    1) Pause the game
+	    2) Hide the board, show 'resume' button
+	    3) Wait until 'resume' is pressed
+            4) resume the game and continue normal execution
+
+
+       II) Game is quit manually
+
+            1) End game and return to main screen
+
