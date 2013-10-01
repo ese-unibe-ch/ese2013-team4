@@ -108,6 +108,60 @@ USECASES VERSION 1
 
 2. View Stats
 
+    2.1 Actors
+
+        Player (Bob)
+
+    2.2 Description
+
+	Bob want's to view his or a friend's score.
+
+    2.3 Trigger
+
+        Bob selects 'Scores' in the main screen
+
+    2.4 Pre-Conditions
+
+        Bob has started the app
+
+    3.5 Post-Conditions
+
+        None
+
+    2.6 Main scenario
+
+	1) Bob opens the app
+	2) Bob selects 'Scores'
+	3) The app tries to synchronize with the server, if possible
+	2) Bob is presented with an option to view his ('personal') or the friend's ('friends') scores
+	3 a) Bob selects an option:
+	    a) 'personal'
+		    i) The personal scores are shown for the top 5 and the last 20 boards. (?)
+		   ii) For boards that a / some friend(s) has / have played, the friend's score(s) is / are displayed too.
+	 	  iii a) Bob selects a board and is asked if he wants to replay it ---> continue in 3
+		  iii b) Bob returns to the window presented in 2.6.2 ---> continue in 2.6.2
+	    b) 'friends'
+		    i) The friends scores are displayed in one single - segmented - list. (?)
+		   ii) For each board, the other player's and the personal scores are displayed to, provided that the person in question has played the same board before.
+		  iii a) Bob selects a board and is asked if he wants to play the board ---> continue in 10
+		  iii b) Bob returns to the window presented in 2.6.2 ---> continue in 2.6.2
+	3 b) Bob returns to the main screen
+
+    2.7 Alternative scenarios
+
+        I) App is interrupted
+
+	    No actions taken other than storing the current state.
+
+    2.8 Special Requirements
+
+        1) For synchronization with the server, a standing internet connection is required.
+
+    2.9 Notes
+
+        1) The scores represent the ones known at the last synchronization
+	2) The details of the points marked with (?) are depending on the final implementation. The provided version is meant as a visualization and not as a precise description of the final product.
+
 3. Replay Board
 
     3.1 Actors
