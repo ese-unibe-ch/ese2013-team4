@@ -35,7 +35,7 @@ USECASES VERSION 1
 	6) The System generates a new game
 	7) Bob plays and finished the game
 	8) Score is displayed and saved in the personal recordings
-	9) The system tries to syncronize the personal recordings with the server, if possible
+	9) The system tries to synchronize the personal recordings with the server, if possible
        10) returning to the main screen
 
     0.7 Alternative scenarios
@@ -45,7 +45,7 @@ USECASES VERSION 1
 	    1) Pause the game
 	    2) Hide the board, show 'resume' button
 	    3) Wait until 'resume' is pressed
-            4) resume the game and contiue normal execution
+            4) resume the game and continue normal execution
 
 
        II) Game is quit manually
@@ -54,7 +54,7 @@ USECASES VERSION 1
 
     0.8 Special Requirements
 
-        1) For syncronization with the server, a standing internet connection is required.
+        1) For syncronisation with the server, a standing internet connection is required.
 
     0.9 Notes
 
@@ -139,7 +139,7 @@ USECASES VERSION 1
 	4) The game is generated. The loaded board is used instead of a newly generated one
 	7) Bob plays and finished the game
 	8) Score is displayed and saved in the personal recordings
-	9) The system tries to syncronize the personal recordings with the server, if possible
+	9) The system tries to synchronize the personal recordings with the server, if possible
        10) returning to the main screen
 
     3.7 Alternative scenarios
@@ -235,8 +235,8 @@ USECASES VERSION 1
 	1) Bob starts the 'word finder' app
 	2) Bob presses on 'friends' in the main screen
 	3) Bob presses follow a friend
-	4) Bob now enters Susies email address.
-	5) Bob is now following Susies game history
+	4) Bob now enters Susie's email address.
+	5) Bob is now following Susie's game history
 
     5.7 Alternative scenarios
 
@@ -246,7 +246,7 @@ USECASES VERSION 1
 	    
 	II) Susie does not play Wordgame
 
-	    1) After entering the email adress, a "friend not found" message is shown
+	    1) After entering the email address, a "friend not found" message is shown
 	    2) Bob can enter a new email address and try again
 
 
@@ -266,7 +266,7 @@ USECASES VERSION 1
 
     6.2 Description
 
-        Bob wants to remove Susie from his friendlist.
+        Bob wants to remove Susie from his friend-list.
 
     6.3 Trigger
 
@@ -275,7 +275,7 @@ USECASES VERSION 1
     6.4 Pre-Conditions
 
         Bob has the sharing function set up.
-        Bob has Susie in his friendslist.
+        Bob has Susie in his friend-list.
 
     6.5 Post-Conditions
 
@@ -290,7 +290,7 @@ USECASES VERSION 1
 	4) Bob presses the edit button
 	5) Bob can now select a friend he wants to delete (Susie in our case).
 	6) Bob confirms the deletion
-	7) Bob no longer follows Susies games.
+	7) Bob no longer follows Susie's games.
 
     6.7 Alternative scenarios
 
@@ -378,7 +378,7 @@ USECASES VERSION 1
 	6) Bob presses add word and enters the new word. A new word is created.
 	7) Bob presses 'import' to import words from another language
 	8) Bob chooses the language.
-	9) Bob can choose multible words from this language to import.
+	9) Bob can choose multiple words from this language to import.
 	10) Bob confirms and gets back to the dictionary overview
 	11) Bob presses done. Now he can use his new dictionary to play a new game.
 	
