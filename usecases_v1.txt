@@ -63,6 +63,49 @@ USECASES VERSION 1
 
 1. Tutorial
 
+    0.1 Actors
+
+        Player (Bob)
+
+    0.2 Description
+
+        Bob wants to make the tutorial
+
+    0.3 Trigger
+
+        Presses the 'Tutorial' button in the main screen
+
+    0.4 Pre-Conditions
+
+        None
+
+    0.5 Post-Conditions
+
+        None
+
+    0.6 Main scenario
+
+	1) Bob starts the 'word finder' app
+	2) Bob presses on 'Tutorial' in the main screen
+	3) A preprogrammed board is loaded
+	4) Bob works through the instructions of the Tutorial. He can't perform any other action than the one, the tutorial currently asks from him.
+	5) Bob finishes the Tutorial
+	9) The system returns to the start screen
+
+    0.7 Alternative scenarios
+
+        I) App is interrupted (e.g. incoming call)
+
+	    No special action is taken, other than those to guaranty that the tutorial will be continued after the interrupt.
+
+    0.8 Special Requirements
+
+        None
+
+    0.9 Notes
+
+	None
+
 2. View Stats
 
 3. Replay Board
