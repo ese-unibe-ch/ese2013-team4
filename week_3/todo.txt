@@ -7,3 +7,6 @@ TODOS FOR WEEK 3
 
  2. Remove ese2013_startup [Tim]
 	This directory is rather irritating and not project related, please remove it
+
+ 3. Remove Tutorial Node from Diagram [Tim]
+	No Tutorial anymore (see meeting W2)
