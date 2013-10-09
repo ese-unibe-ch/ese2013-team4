@@ -1,0 +1,9 @@
+QUESTIONS FOR MEETING 3
+======================= 
+- What exactly happens when Susie does not play 'Word Finder' and Bob tries to add her to the friends list.
+	--> Server searching through all e-mail addresses could be used as an exploit to find out stranger's e-mail addresses.
+
+- Should the board setup really be shown in the scores.
+	--> could be used for cheating
+
+- 

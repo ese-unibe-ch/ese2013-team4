@@ -1,0 +1,8 @@
+TODOS FOR WEEK 3
+================
+
+ 1. SRS Document overhaul [Andreas]
+	Correct typos and improve formulation
+	Resolve Formatting issues (general template)
+
+ 2. 
