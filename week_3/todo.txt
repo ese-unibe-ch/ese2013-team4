@@ -5,4 +5,5 @@ TODOS FOR WEEK 3
 	Correct typos and improve formulation
 	Resolve Formatting issues (general template)
 
- 2. 
+ 2. Remove ese2013_startup [Tim]
+	This directory is rather irritating and not project related, please remove it
