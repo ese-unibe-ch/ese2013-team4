@@ -2,9 +2,9 @@ package core;
 
 import java.util.ArrayList;
 
-public interface BoardInterface {
+public interface IBoard {
 
-	public LetterFieldInterface[][] getMatrix();
+	public ILetterField[][] getMatrix();
 	
 	public int getSize();
 	
@@ -12,9 +12,9 @@ public interface BoardInterface {
 	 * @param x horizontal coordinate of the letter (0: left)
 	 * @param y vertical coordinate of the letter (0: top)
 	 */
-	public LetterFieldInterface getSquare(int x, int y);
+	public ILetterField getSquare(int x, int y);
 
-	public ArrayList<DictionaryInterface> getDictionaries();
+	public ArrayList<IDictionary> getDictionaries();
 	
 	/**
 	 * Select the Letter at the given coordinate (x|y).
@@ -35,7 +35,7 @@ public interface BoardInterface {
 	 * 
 	 * returns an empty word if there's no selection
 	 */
-	public WordInterface getSelectedSequence();
+	public IWord getSelectedSequence();
 	
 	/**
 	 * clears the current selection

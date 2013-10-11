@@ -2,7 +2,7 @@ package core;
 
 import java.util.ArrayList;
 
-public abstract class ADictionary implements DictionaryInterface {
+public abstract class ADictionary implements IDictionary {
 
 	private ArrayList<String> words;
 	private String title;

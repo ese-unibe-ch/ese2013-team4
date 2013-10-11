@@ -1,6 +1,6 @@
 package core;
 
-public interface DictionaryInterface {
+public interface IDictionary {
 	
 	public String getName();
 	

@@ -2,13 +2,13 @@ package core;
 
 import java.util.ArrayList;
 
-public class WordChecker implements WordCheckerInterface {
+public class WordChecker implements IWordChecker {
 
 	@Override
-	public boolean isValidWord(WordInterface word,
-			ArrayList<DictionaryInterface> dictionaries) {
+	public boolean isValidWord(IWord word,
+			ArrayList<IDictionary> dictionaries) {
 		String wordString = word.toString();
-		for(DictionaryInterface dic : dictionaries) {
+		for(IDictionary dic : dictionaries) {
 			if (dic.containsWord(wordString))
 				return true;
 		}

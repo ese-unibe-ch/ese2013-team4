@@ -2,7 +2,7 @@ package core;
 
 import java.util.ArrayList;
 
-public interface WordInterface {
+public interface IWord {
 
 	public void setLetterSequence(ArrayList<Letter> letters);
 	

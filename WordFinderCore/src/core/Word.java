@@ -2,7 +2,7 @@ package core;
 
 import java.util.ArrayList;
 
-public class Word implements WordInterface {
+public class Word implements IWord {
 
 	ArrayList<Letter> letters;
 	

@@ -1,6 +1,6 @@
 package core;
 
-public interface LetterFieldInterface {
+public interface ILetterField {
 
 	public Letter getLetter();
 	
