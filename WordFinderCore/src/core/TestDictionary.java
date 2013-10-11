@@ -1,0 +1,58 @@
+package core;
+
+import java.util.ArrayList;
+
+/**
+ * A basic dictionary used for testing.
+ * 
+ * Contains a list of a few English words.
+ * 
+ * @author Andreas Waelchli <andreas.waelchli@me.com>
+ */
+public class TestDictionary extends ADictionary {
+
+	public TestDictionary() {
+		super("Test"); //Dictionary Name is "Test"
+	}
+	
+	@Override
+	ArrayList<String> generateWordList(String title) {
+		ArrayList<String> words = new ArrayList<String>();
+		// -- INSERT WORDS HERE --
+		words.add("Test");
+		words.add("English");
+		words.add("Bridge");
+		words.add("Telephone");
+		words.add("Joystick");
+		words.add("Smartphone");
+		words.add("Rocket");
+		words.add("Airplane");
+		words.add("Bottle");
+		words.add("Water");
+		words.add("Speaker");
+		words.add("Glass");
+		words.add("Spaceship");
+		words.add("Astronaut");
+		words.add("Building");
+		words.add("Tower");
+		words.add("swimming");
+		words.add("documenting");
+		words.add("coding");
+		words.add("writing");
+		words.add("Ink");
+		words.add("Pen");
+		words.add("Sharpener");
+		words.add("Shaver");
+		words.add("pick");
+		words.add("Bird");
+		words.add("Circle");
+		words.add("Square");
+		words.add("Box");
+		words.add("Bowl");
+		words.add("Cable");
+		words.add("Paper");
+		// -- END OF WORD LIST --
+		return words;
+	}
+
+}
