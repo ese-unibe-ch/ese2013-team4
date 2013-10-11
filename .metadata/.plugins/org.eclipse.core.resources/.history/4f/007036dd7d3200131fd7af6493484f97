@@ -1,8 +1,0 @@
-package core;
-
-public interface WordCheckerInterface {
-
-	public boolean isValidWord(Word word, ArrayList<DictionaryInterface> dictiaries);
-	
-	
-}
