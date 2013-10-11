@@ -1,0 +1,6 @@
+package core;
+
+public enum Letters {
+	int value;
+	char character;
+}

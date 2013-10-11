@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Rename compilation unit &apos;core.Letters.java&apos; to &apos;Letter.java&apos;&#x0A;- Original project: &apos;WordFinderCore&apos;&#x0A;- Original element: &apos;core.Letters.java&apos;&#x0A;- Renamed element: &apos;core.Letter.java&apos;" description="Rename compilation unit &apos;Letters.java&apos;" flags="2" id="org.eclipse.jdt.ui.rename.compilationunit" input="/src&lt;core{Letters.java" name="Letter.java" references="false" stamp="1381498214076" version="1.0"/>
+</session>
