@@ -6,4 +6,6 @@ public interface DictionaryInterface {
 	
 	public boolean containsWord(String word);
 	
+	public int getID();
+	
 }
