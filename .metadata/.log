@@ -537,3 +537,27 @@ org.eclipse.core.runtime.AssertionFailedException: null argument:
 
 !ENTRY org.eclipse.jdt.core 4 969 2013-10-11 16:06:48.588
 !MESSAGE getM [in BoardInterface [in [Working copy] BoardInterface.java [in core [in src [in WordFinderCore]]]]] does not exist
+
+!ENTRY org.eclipse.jdt.core 4 969 2013-10-11 16:50:45.530
+!MESSAGE getDictionaries [in BoardInterface [in [Working copy] BoardInterface.java [in core [in src [in WordFinderCore]]]]] does not exist
+
+!ENTRY org.eclipse.jdt.core 4 969 2013-10-11 16:50:45.533
+!MESSAGE getD [in BoardInterface [in [Working copy] BoardInterface.java [in core [in src [in WordFinderCore]]]]] does not exist
+
+!ENTRY org.eclipse.jdt.core 4 969 2013-10-11 16:51:23.142
+!MESSAGE tapp [in BoardInterface [in [Working copy] BoardInterface.java [in core [in src [in WordFinderCore]]]]] does not exist
+
+!ENTRY org.eclipse.jdt.core 4 969 2013-10-11 16:51:30.160
+!MESSAGE t [in BoardInterface [in [Working copy] BoardInterface.java [in core [in src [in WordFinderCore]]]]] does not exist
+
+!ENTRY org.eclipse.jdt.core 4 969 2013-10-11 16:51:30.161
+!MESSAGE select [in BoardInterface [in [Working copy] BoardInterface.java [in core [in src [in WordFinderCore]]]]] does not exist
+
+!ENTRY org.eclipse.jdt.core 4 969 2013-10-11 16:51:30.163
+!MESSAGE select [in BoardInterface [in [Working copy] BoardInterface.java [in core [in src [in WordFinderCore]]]]] does not exist
+
+!ENTRY org.eclipse.jdt.core 4 969 2013-10-11 16:54:07.987
+!MESSAGE getSelectedSe [in BoardInterface [in [Working copy] BoardInterface.java [in core [in src [in WordFinderCore]]]]] does not exist
+
+!ENTRY org.eclipse.jdt.core 4 969 2013-10-11 16:54:07.987
+!MESSAGE get [in BoardInterface [in [Working copy] BoardInterface.java [in core [in src [in WordFinderCore]]]]] does not exist
