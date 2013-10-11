@@ -1,0 +1,10 @@
+package core;
+
+public interface LetterFieldInterface {
+
+	public Letter getLetter();
+	
+	public int getXPos();
+	public int getYPos();
+	
+}

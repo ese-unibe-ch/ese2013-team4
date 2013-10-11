@@ -1,0 +1,13 @@
+package core;
+
+import java.util.ArrayList;
+
+public interface BoardInterface {
+
+	public Letter[][] getMatrix();
+	
+	public int getSize();
+	
+	public getLetter();
+	
+}
