@@ -531,3 +531,6 @@ org.eclipse.core.runtime.AssertionFailedException: null argument:
 
 !ENTRY org.eclipse.jdt.core 4 969 2013-10-11 15:47:38.408
 !MESSAGE get [in WordInterface [in [Working copy] WordInterface.java [in core [in src [in WordFinderCore]]]]] does not exist
+
+!ENTRY org.eclipse.jdt.core 4 969 2013-10-11 16:02:43.080
+!MESSAGE isW [in WordCheckerInterface [in [Working copy] WordCheckerInterface.java [in core [in src [in WordFinderCore]]]]] does not exist

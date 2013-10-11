@@ -1,0 +1,9 @@
+package core;
+
+import java.util.ArrayList();
+
+public interface WordCheckerInterface {
+
+	public boolean isValidWord(Word word, ArrayList<DictionaryInterface> dictiaries);
+	
+}
