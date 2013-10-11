@@ -1,3 +1,3 @@
 LINKS:
 http://code.google.com/p/sadpandapuzzles/
-
+http://www.codeproject.com/Articles/571299/Structuring-a-Word-Search-Generator
