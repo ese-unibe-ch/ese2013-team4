@@ -1,0 +1,11 @@
+package core;
+
+import java.util.ArrayList;
+
+public interface WordInterface {
+
+	public void setLetterSequence(ArrayList<Letter> letters);
+	
+	
+	
+}

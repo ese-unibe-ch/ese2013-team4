@@ -519,3 +519,15 @@ org.eclipse.core.runtime.AssertionFailedException: null argument:
 	at org.eclipse.jdt.internal.ui.infoviews.AbstractInfoView.findSelectedJavaElement(AbstractInfoView.java:462)
 	at org.eclipse.jdt.internal.ui.infoviews.JavadocView.findSelectedJavaElement(JavadocView.java:1243)
 	at org.eclipse.jdt.internal.ui.infoviews.AbstractInfoView$2.run(AbstractInfoView.java:616)
+
+!ENTRY org.eclipse.jdt.core 4 969 2013-10-11 15:42:13.098
+!MESSAGE ad [in WordInterface [in [Working copy] WordInterface.java [in core [in src [in WordFinderCore]]]]] does not exist
+
+!ENTRY org.eclipse.jdt.core 4 969 2013-10-11 15:44:50.483
+!MESSAGE j [in WordInterface [in [Working copy] WordInterface.java [in core [in src [in WordFinderCore]]]]] does not exist
+
+!ENTRY org.eclipse.jdt.core 4 969 2013-10-11 15:44:50.483
+!MESSAGE getL [in WordInterface [in [Working copy] WordInterface.java [in core [in src [in WordFinderCore]]]]] does not exist
+
+!ENTRY org.eclipse.jdt.core 4 969 2013-10-11 15:47:38.408
+!MESSAGE get [in WordInterface [in [Working copy] WordInterface.java [in core [in src [in WordFinderCore]]]]] does not exist
