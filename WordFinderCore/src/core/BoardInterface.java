@@ -41,4 +41,5 @@ public interface BoardInterface {
 	 * clears the current selection
 	 */
 	public void unselectAll();
+	
 }
