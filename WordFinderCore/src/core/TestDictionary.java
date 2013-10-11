@@ -12,7 +12,7 @@ import java.util.ArrayList;
 public class TestDictionary extends ADictionary {
 
 	public TestDictionary() {
-		super("Test"); //Dictionary Name is "Test"
+		super("Test", 0); //Dictionary Name is "Test"
 	}
 	
 	@Override

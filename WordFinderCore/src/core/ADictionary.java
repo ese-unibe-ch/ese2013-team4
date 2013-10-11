@@ -8,9 +8,10 @@ public abstract class ADictionary implements IDictionary {
 	private String title;
 	private int id;
 	
-	public ADictionary (String title) {
+	public ADictionary (String title, int id) {
 		this.title = title;
 		this.words = this.generateWordList(this.title);
+		this.id = id;
 	}
 	
 	@Override
