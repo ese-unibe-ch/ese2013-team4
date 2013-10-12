@@ -10,6 +10,7 @@ public abstract class ADictionary implements IDictionary {
 	
 	public ADictionary (String title, int id) {
 		this.title = title;
+		//TODO make all words upper-case to ensure matching...
 		this.words = this.generateWordList(this.title);
 		this.id = id;
 	}
