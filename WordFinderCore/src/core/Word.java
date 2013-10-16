@@ -28,5 +28,22 @@ public class Word implements IWord {
 		}
 		return sum;
 	}
+	
+	@Override
+	public String toString() {
+		if (this.letters.isEmpty())
+			return "";
+		String sequence = "";
+		for (Letter letter : letters) {
+			sequence += letter.getChar();
+		}
+		return sequence;
+	}
+	
+	@Override
+	public boolean equals(Object arg0) {
+		// TODO Auto-generated method stub
+		return false;
+	}
 
 }

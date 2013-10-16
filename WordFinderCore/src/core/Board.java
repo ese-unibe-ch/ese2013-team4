@@ -73,8 +73,13 @@ public class Board implements IBoard {
 
 	@Override
 	public IWord getSelectedSequence() {
-		// TODO Auto-generated method stub
-		return null;
+		IWord word = new Word();
+		ArrayList<Letter> letters = new ArrayList<Letter>();
+		for (ILetterField field : this.sequence) {
+			letters.add(field.getLetter());
+		}
+		word.setLetterSequence(letters);
+		return word;
 	}
 
 	@Override
