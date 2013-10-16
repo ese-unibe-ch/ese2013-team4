@@ -28,7 +28,7 @@ public interface IBoard {
 	 * @param x horizontal coordinate of the letter (0: left)
 	 * @param y vertical coordinate of the letter (0: top)
 	 */
-	public void select(int x, int y);
+	public void toggle(int x, int y);
 	
 	/**
 	 * returns a word object constructed out of the currently selected sequence.

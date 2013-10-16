@@ -10,9 +10,20 @@ public abstract class ADictionary implements IDictionary {
 	
 	public ADictionary (String title, int id) {
 		this.title = title;
-		//TODO make all words upper-case to ensure matching...
 		this.words = this.generateWordList(this.title);
+		this.makeUpperCase();
 		this.id = id;
+	}
+	
+	/**
+	 * Converts all Strings in the dictionary to Upper-Case.
+	 * 
+	 * Should be run whenever a word was added.
+	 */
+	private final void makeUpperCase() {
+		for (int i = 0; i < this.words.size(); i++) {
+			this.words.set(i, this.words.get(i).toUpperCase());
+		}
 	}
 	
 	@Override
