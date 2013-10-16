@@ -14,5 +14,12 @@ public class BoardFactory {
 		//TODO: IMPLEMENT BOARD RECREATION
 		return null;
 	}
+	/**
+	 * Demo board 6x6
+	 */
+	public static IBoard createDemoBoard () {
+		//TODO: DEMO BOARD GENERATION
+		return null;
+	}
 	
 }
