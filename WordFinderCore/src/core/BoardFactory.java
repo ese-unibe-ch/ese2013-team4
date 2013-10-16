@@ -7,4 +7,12 @@ public class BoardFactory {
 		return null;
 	}
 	
+	/**
+	 * @return A recreation of a stored board with a given seed
+	 */
+	public static IBoard recreateBoard (IDictionary primary, IDictionary secondary, int boardSize, String seed) {
+		//TODO: IMPLEMENT BOARD RECREATION
+		return null;
+	}
+	
 }

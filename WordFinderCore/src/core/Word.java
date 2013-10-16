@@ -41,9 +41,10 @@ public class Word implements IWord {
 	}
 	
 	@Override
-	public boolean equals(Object arg0) {
-		// TODO Auto-generated method stub
-		return false;
+	public boolean equals(Object other) {
+		if (! (other instanceof IWord))
+			return false;
+		return this.toString().equals(other.toString());
 	}
 
 }
