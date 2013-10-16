@@ -36,7 +36,6 @@ public class LetterField implements ILetterField {
 
 	@Override
 	public boolean isAdjacent(ILetterField other) {
-		//true if one of the 8 adjacent ones, but not in the same spot
 		return !(this.getX() == other.getX() && this.getY() == other.getY())
 				&& this.getX() >= other.getX() - 1
 				&& this.getX() <= other.getX() + 1
