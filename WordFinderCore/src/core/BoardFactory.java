@@ -1,6 +1,7 @@
 package core;
 
 import core.gen.*;
+import java.util.ArrayList;
 
 public class BoardFactory {
 	
@@ -15,9 +16,13 @@ public class BoardFactory {
 	 * @return a recreation of a stored board with a given seed
 	 */
 	public static IBoard createBoardFromSeed (IDictionary primary, IDictionary secondary, int boardSize, String seed) {
-		//TODO: IMPLEMENT BOARD RECREATION
-		return null;
-	}
+		ArrayList<IDictionary> dics = new ArrayList<IDictionary>();
+		ILetterField[][] matrix = new ILetterField[boardSize][boardSize];
+		for (int i = 0; i < boardSize * boardSize; i++) {
+				matrix[i % boardSize][i / boardSize] = new LetterField(Letter.getLetter(seed.charAt(i)), i % boardSize, i / boardSize);
+		}
+		return new Board(matrix, boardSize, dics);
+	} 
 	
 	public static String createSeedFromBoard (IBoard board) {
 		return seedGenerator.generateSeedFromBoard(board);
