@@ -33,7 +33,7 @@ public interface IBoard {
 	/**
 	 * returns a word object constructed out of the currently selected sequence.
 	 * 
-	 * returns an empty word if there's no selection
+	 * @returns an empty word if there's no selection
 	 */
 	public IWord getSelectedSequence();
 	

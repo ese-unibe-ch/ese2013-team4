@@ -58,14 +58,13 @@ public class Board implements IBoard {
 				// remove all letters after the unselected one and unselect them
 				this.sequence.remove(i).unselect();
 			}
+			//checking if not selected and adjacent to last selected
 		} else if (!square.isSelected() && square.isAdjacent(this.sequence.get(this.sequence.size() - 1))) {
 			//ADD TO SEQUENCE AND SELECT
 			square.select();
 			this.sequence.add(square);
 		} else {
-			for (int i = this.sequence.size() - 1; i >= 0; i--) {
-				this.sequence.remove(i).unselect();
-			}
+			this.unselectAll();
 			square.select();
 			this.sequence.add(square);
 		}

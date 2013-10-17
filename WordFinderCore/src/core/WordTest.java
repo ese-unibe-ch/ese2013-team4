@@ -1,8 +1,6 @@
 package core;
 
 import static org.junit.Assert.*;
-import static org.junit.Assert.assertTrue;
-
 import java.util.ArrayList;
 
 import org.junit.Before;
