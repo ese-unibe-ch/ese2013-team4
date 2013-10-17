@@ -27,8 +27,8 @@ public abstract class ADictionary implements IDictionary {
 	}
 	
 	@Override
-	public boolean containsWord(String word) {
-		return words.contains(word);
+	public ArrayList<String> getWords() {
+		return this.words;
 	}
 	
 	@Override

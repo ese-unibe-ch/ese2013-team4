@@ -8,7 +8,7 @@ public class WordChecker implements IWordChecker {
 	public boolean isValidWord(IWord word, ArrayList<IDictionary> dictionaries) {
 		String wordString = word.toString();
 		for (IDictionary dic : dictionaries) {
-			if (dic.containsWord(wordString))
+			if (dic.getWords().contains(wordString))
 				return true;
 		}
 		return false;
