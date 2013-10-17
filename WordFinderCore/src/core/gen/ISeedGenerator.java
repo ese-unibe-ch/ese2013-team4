@@ -1,4 +1,4 @@
-package gen;
+package core.gen;
 
 import core.IBoard;
 import core.IDictionary;

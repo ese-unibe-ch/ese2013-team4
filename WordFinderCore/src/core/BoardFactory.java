@@ -1,8 +1,9 @@
 package core;
 
-import gen.*;
 
 import java.util.ArrayList;
+
+import core.gen.*;
 
 public class BoardFactory {
 	

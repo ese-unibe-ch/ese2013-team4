@@ -43,4 +43,18 @@ public enum Letter {
 	public char getChar() {
 		return this.character;
 	}
+	
+	public static Letter[] getLetterList() {
+		return new Letter[]{A, B, C, D, E, F, G, H, I, J, K, L, M, N, O, P, Q, R, S, T, U, V, W, X, Y, Z};
+	}
+	
+	public static Letter getLetter(char character) {
+		character = Character.toUpperCase(character);
+		Letter[] list = getLetterList();
+		for (Letter letter : list) {
+			if (letter.getChar() == character)
+				return letter;
+		}
+		return null;
+	}
 }
