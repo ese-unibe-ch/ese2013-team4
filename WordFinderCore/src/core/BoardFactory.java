@@ -12,9 +12,6 @@ public class BoardFactory {
 		return createBoardFromSeed (primary, secondary, boardSize, seed);
 	}
 	
-	/**
-	 * @return a recreation of a stored board with a given seed
-	 */
 	public static IBoard createBoardFromSeed (IDictionary primary, IDictionary secondary, int boardSize, String seed) {
 		ArrayList<IDictionary> dics = new ArrayList<IDictionary>();
 		ILetterField[][] matrix = new ILetterField[boardSize][boardSize];
