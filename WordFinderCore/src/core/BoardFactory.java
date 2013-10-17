@@ -1,21 +1,30 @@
 package core;
 
+import gen.*;
+
 import java.util.ArrayList;
 
 public class BoardFactory {
+	
+	private static ISeedGenerator seedGenerator = new BasicSeedGenerator();
 
-	public static IBoard createBoard (IDictionary primary, IDictionary secondary, int boardSize) {
-		//TODO: IMPLEMENT BOARD CREATION
-		return null;
+	public static IBoard createRandomBoard (IDictionary primary, IDictionary secondary, int boardSize) {
+		String seed = seedGenerator.generateRandomSeed(primary, secondary, boardSize);
+		return createBoardFromSeed (primary, secondary, boardSize, seed);
 	}
 	
 	/**
-	 * @return A recreation of a stored board with a given seed
+	 * @return a recreation of a stored board with a given seed
 	 */
-	public static IBoard recreateBoard (IDictionary primary, IDictionary secondary, int boardSize, String seed) {
+	public static IBoard createBoardFromSeed (IDictionary primary, IDictionary secondary, int boardSize, String seed) {
 		//TODO: IMPLEMENT BOARD RECREATION
 		return null;
 	}
+	
+	public static String createSeedFromBoard (IBoard board) {
+		return seedGenerator.generateSeedFromBoard(board);
+	}
+	
 	/**
 	 * Demo board 6x6
 	 */
