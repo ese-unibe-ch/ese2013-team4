@@ -14,6 +14,8 @@ public class BoardFactory {
 	
 	public static IBoard createBoardFromSeed (IDictionary primary, IDictionary secondary, int boardSize, String seed) {
 		ArrayList<IDictionary> dics = new ArrayList<IDictionary>();
+		dics.add(primary);
+		dics.add(secondary);
 		ILetterField[][] matrix = new ILetterField[boardSize][boardSize];
 		for (int i = 0; i < boardSize * boardSize; i++) {
 				matrix[i % boardSize][i / boardSize] = new LetterField(Letter.getLetter(seed.charAt(i)), i % boardSize, i / boardSize);
