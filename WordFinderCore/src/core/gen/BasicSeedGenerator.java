@@ -34,7 +34,7 @@ public class BasicSeedGenerator implements ISeedGenerator {
 			char[] word = dic.get(this.rand.nextInt(dic.size())).toCharArray();
 			//STEP 2: iterate through the word
 			for (int i = 0; i < word.length; i++) {
-				//STEP 2.1: get list of all good fields (empty or matching letter adjacent to last / anywhere for first)
+				//STEP 2.1: get list of all good fields (empty or matching letter adjacent to last and not yet used in word / anywhere for first)
 				
 				//STEP 2.2.1: set letter on random field if there are any possibilities
 				
