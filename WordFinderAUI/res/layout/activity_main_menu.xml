@@ -25,7 +25,8 @@
         android:layout_below="@+id/textView1"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="42dp"
-        android:text="Play Game" />
+        android:text="Play Game" 
+    	android:onCLick="openPlayActivity"/>
 
     <Button
         android:id="@+id/button3"

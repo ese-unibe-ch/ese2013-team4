@@ -1,29 +1,23 @@
 package com.team4.wordfinder;
 
 import android.os.Bundle;
+import android.annotation.SuppressLint;
 import android.app.Activity;
-import android.content.Intent;
 import android.view.Menu;
-import android.view.View;
 
-public class MainMenu extends Activity {
-
+public class PlayGameActivity extends Activity {
+	@SuppressLint("NewApi")
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-		setContentView(R.layout.activity_main_menu);
+		setContentView(R.layout.activity_play_game);
 	}
-	
+
 	@Override
 	public boolean onCreateOptionsMenu(Menu menu) {
 		// Inflate the menu; this adds items to the action bar if it is present.
-		getMenuInflater().inflate(R.menu.main_menu, menu);
+		getMenuInflater().inflate(R.menu.play_game, menu);
 		return true;
 	}
 	
-	public void openPlayActivity(View view){
-		Intent intent = new Intent(this, PlayGameActivity.class);
-		startActivity(intent);
-	}
-
 }
