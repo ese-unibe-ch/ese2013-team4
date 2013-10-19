@@ -16,6 +16,7 @@ public class PlayGameActivity extends Activity {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_play_game);
 		
+		//countdown atm 2min displayed in sec
 		new CountDownTimer(120000, 1000){
 			
 			//displays a new time every tick
