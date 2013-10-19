@@ -1,9 +1,12 @@
 package com.team4.wordfinder;
 
 import android.os.Bundle;
+import android.os.CountDownTimer;
 import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.view.Menu;
+import android.widget.EditText;
+import android.widget.TextView;
 
 public class PlayGameActivity extends Activity {
 	@SuppressLint("NewApi")
@@ -11,6 +14,20 @@ public class PlayGameActivity extends Activity {
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_play_game);
+		
+		new CountDownTimer(120000, 1000){
+			
+			//displays a new time every tick
+			public void onTick(long millisUntilFinished){
+				TextView text = (TextView) findViewById(R.id.textView2);
+				text.setText("" + (millisUntilFinished/1000));
+			}
+			
+			public void onFinish(){
+				TextView text = (TextView) findViewById(R.id.textView2);
+				text.setText("Time's up!");
+			}
+		}.start();
 	}
 
 	@Override
