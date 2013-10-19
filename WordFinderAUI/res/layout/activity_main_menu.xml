@@ -34,7 +34,7 @@
         android:layout_height="wrap_content"
         android:layout_below="@+id/button1"
         android:layout_centerHorizontal="true"
-        android:text="Button" />
+        android:text="My Scores" />
 
     <Button
         android:id="@+id/button2"
@@ -42,6 +42,14 @@
         android:layout_height="wrap_content"
         android:layout_below="@+id/button3"
         android:layout_centerHorizontal="true"
-        android:text="Button" />
+        android:text="Friends" />
+
+    <Button
+        android:id="@+id/button4"
+        android:layout_width="150dp"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/button2"
+        android:layout_below="@+id/button2"
+        android:text="Dictionarys" />
 
 </RelativeLayout>
