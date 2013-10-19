@@ -7,6 +7,7 @@ import android.app.Activity;
 import android.view.Menu;
 import android.widget.EditText;
 import android.widget.TextView;
+import android.content.Intent;
 
 public class PlayGameActivity extends Activity {
 	@SuppressLint("NewApi")
@@ -20,7 +21,7 @@ public class PlayGameActivity extends Activity {
 			//displays a new time every tick
 			public void onTick(long millisUntilFinished){
 				TextView text = (TextView) findViewById(R.id.textView2);
-				text.setText("" + (millisUntilFinished/1000));
+				text.setText("You have " + (millisUntilFinished/1000)+ " sec remaining!");
 			}
 			
 			public void onFinish(){
