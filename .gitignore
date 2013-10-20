@@ -1,3 +1,5 @@
 .metadata/
 WordFinderCore/bin/
-
+WordFinderAUI/.idea/
+WordFinderAUI/WordFinderAUI.iml
+WordFinderAUI/bin/classes/
