@@ -14,20 +14,14 @@
         android:layout_height="wrap_content"
         android:text="Actual Game" />
 
-    <GridView
-        android:id="@+id/gridView1"
-        android:layout_width="fill_parent"
-        android:layout_height="300dp"
-        android:layout_centerInParent="true"
-        android:numColumns="6" >
-    </GridView>
-
     <TextView
         android:id="@+id/textView2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_alignBaseline="@+id/textView1"
         android:layout_alignBottom="@+id/textView1"
-        android:layout_alignRight="@+id/gridView1"
+        android:layout_alignParentRight="true"
+        android:layout_marginRight="16dp"
         android:text="TextView" />
 
 </RelativeLayout>
