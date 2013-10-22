@@ -23,7 +23,7 @@
             </intent-filter>
         </activity>
         <activity
-            android:name="com.team4.wordfinder.PlayGameActivity"
+            android:name="com.team4.wordfinder.PlayGame"
             android:label="@string/title_activity_play_game" >
         </activity>
     </application>

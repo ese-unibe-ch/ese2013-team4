@@ -8,8 +8,9 @@ import android.view.Menu;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.content.Intent;
+import android.app.ActionBar;
 
-public class PlayGameActivity extends Activity {
+public class PlayGame extends Activity {
 	@SuppressLint("NewApi")
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
