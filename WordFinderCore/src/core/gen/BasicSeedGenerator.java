@@ -29,26 +29,19 @@ public class BasicSeedGenerator implements ISeedGenerator {
 		
 		char[][] matrix = new char[boardSize][boardSize];
 		
-		char[][] oldMatrix = this.copyMatrix(matrix);
-		
 		for (int attempts = 0; attempts < MAX_ATTEMPTS; attempts++) {
 			//STEP 1: select random word from dic
-			char[] word = dic.get(this.rand.nextInt(dic.size())).toCharArray();
+			String word = dic.get(this.rand.nextInt(dic.size()));
 			//STEP 2: iterate through the word
 			
-			int[][] fields = new int[word.length][2];
-			
-			for (int i = 0; i < word.length; i++) {
-				//STEP 2.1: get list of all good fields (empty or matching letter adjacent to last and not yet used in word / anywhere for first)
-				
-				//STEP 2.2.1: set letter on random field if there are any possibilities
-				
-				//STEP 2.2.2: revert to backup matrix if no possibilities
-				
+			if (this.placeWord(matrix, word.toCharArray())) {
+				words.add(word);
 			}
+			
 		}
 		
 		//LAST STEP: fill empty fields with random chars
+		
 		
 		//convert char matrix to seed string
 		
@@ -77,14 +70,15 @@ public class BasicSeedGenerator implements ISeedGenerator {
 			char letter = word[i];
 			ArrayList<Point> legals = this.getLegal(matrix, letter, usedPoints);
 			if (legals.isEmpty()) {
-				return backup;
+				matrix = backup;
+				return false;
 			}
 			Point position = legals.get(rand.nextInt(legals.size()));
 			usedPoints.add(position);
 			matrix[position.getX()][position.getY()] = letter;
 		}
 		//this point is only reached when word was completely placed
-		return matrix;
+		return true;
 	}
 	
 	//returns a list with all legal positions of the next character
@@ -95,6 +89,7 @@ public class BasicSeedGenerator implements ISeedGenerator {
 		int x = usedPoints.get(usedPoints.size() - 1).getX();
 		int y = usedPoints.get(usedPoints.size() - 1).getY();
 		
+		//Add checks for equal or no char
 		if (x > 0   && y > 0   && !usedPoints.contains(new Point(x - 1, y - 1)) && matrix[x - 1][y - 1] == letter) { legals.add(new Point(x - 1, y - 1)); }
 		if (x > 0   &&            !usedPoints.contains(new Point(x - 1, y    )) && matrix[x - 1][y    ] == letter) { legals.add(new Point(x - 1, y    )); }
 		if (x > 0   && y < max && !usedPoints.contains(new Point(x - 1, y + 1)) && matrix[x - 1][y + 1] == letter) { legals.add(new Point(x - 1, y + 1)); }
