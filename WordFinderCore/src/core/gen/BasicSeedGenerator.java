@@ -23,7 +23,9 @@ public class BasicSeedGenerator implements ISeedGenerator {
 		
 		assert secondary != null; //at least a secondary dictionary is required
 		
-		ArrayList<String> dic = (primary != null ? primary : secondary).getWords();
+		ArrayList<String> dic = (primary != null ? primary : secondary).getWords(); //select primary dic if aviable, secondary otherwise
+		
+		ArrayList<String> words = new ArrayList<String>(); //list with all words placed in the matrix
 		
 		char[][] matrix = new char[boardSize][boardSize];
 		
@@ -33,6 +35,9 @@ public class BasicSeedGenerator implements ISeedGenerator {
 			//STEP 1: select random word from dic
 			char[] word = dic.get(this.rand.nextInt(dic.size())).toCharArray();
 			//STEP 2: iterate through the word
+			
+			int[][] fields = new int[word.length][2];
+			
 			for (int i = 0; i < word.length; i++) {
 				//STEP 2.1: get list of all good fields (empty or matching letter adjacent to last and not yet used in word / anywhere for first)
 				
@@ -56,6 +61,50 @@ public class BasicSeedGenerator implements ISeedGenerator {
 		}
 		
 		return seed;
+	}
+	
+	/**
+	 * Tries to place a word on the matrix
+	 * 
+	 * @param matrix the matrix to modify with the word
+	 * @param word the word to be placed
+	 * @return true when word was placed, false otherwise
+	 */
+	private boolean placeWord(char[][] matrix, char[] word) {
+		char[][] backup = this.copyMatrix(matrix);
+		ArrayList<Point> usedPoints = new ArrayList<Point>();
+		for (int i = 0; i < word.length; i++) {
+			char letter = word[i];
+			ArrayList<Point> legals = this.getLegal(matrix, letter, usedPoints);
+			if (legals.isEmpty()) {
+				return backup;
+			}
+			Point position = legals.get(rand.nextInt(legals.size()));
+			usedPoints.add(position);
+			matrix[position.getX()][position.getY()] = letter;
+		}
+		//this point is only reached when word was completely placed
+		return matrix;
+	}
+	
+	//returns a list with all legal positions of the next character
+	private ArrayList<Point> getLegal(char[][] matrix, char letter, ArrayList<Point> usedPoints) {
+		int max = matrix.length - 1;
+		ArrayList<Point> legals = new ArrayList<Point>();
+		//check all surrounding fields
+		int x = usedPoints.get(usedPoints.size() - 1).getX();
+		int y = usedPoints.get(usedPoints.size() - 1).getY();
+		
+		if (x > 0   && y > 0   && !usedPoints.contains(new Point(x - 1, y - 1)) && matrix[x - 1][y - 1] == letter) { legals.add(new Point(x - 1, y - 1)); }
+		if (x > 0   &&            !usedPoints.contains(new Point(x - 1, y    )) && matrix[x - 1][y    ] == letter) { legals.add(new Point(x - 1, y    )); }
+		if (x > 0   && y < max && !usedPoints.contains(new Point(x - 1, y + 1)) && matrix[x - 1][y + 1] == letter) { legals.add(new Point(x - 1, y + 1)); }
+		if (           y > 0   && !usedPoints.contains(new Point(x    , y - 1)) && matrix[x    ][y - 1] == letter) { legals.add(new Point(x    , y - 1)); }
+		if (           y < max && !usedPoints.contains(new Point(x   ,  y + 1)) && matrix[x    ][y + 1] == letter) { legals.add(new Point(x    , y + 1)); }
+		if (x < max && y > 0   && !usedPoints.contains(new Point(x + 1, y - 1)) && matrix[x + 1][y - 1] == letter) { legals.add(new Point(x + 1, y - 1)); }
+		if (x < max &&            !usedPoints.contains(new Point(x + 1, y    )) && matrix[x + 1][y    ] == letter) { legals.add(new Point(x + 1, y    )); }
+		if (x < max && y < max && !usedPoints.contains(new Point(x + 1, y + 1)) && matrix[x + 1][y + 1] == letter) { legals.add(new Point(x + 1, y + 1)); }
+		
+		return legals;
 	}
 
 	@Override
@@ -83,6 +132,25 @@ public class BasicSeedGenerator implements ISeedGenerator {
 			}
 		}
 		return copy;
+	}
+	
+	private class Point {
+		private int x;
+		private int y;
+		
+		public Point (int x, int y) {
+			this.x = x;
+			this.y = y;
+		}
+		
+		public int getX() {
+			return x;
+		}
+		
+		public int getY() {
+			return y;
+		}
+		
 	}
 
 }
