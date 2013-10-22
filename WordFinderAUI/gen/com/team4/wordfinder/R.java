@@ -29,6 +29,7 @@ public final class R {
         public static final int button2=0x7f080003;
         public static final int button3=0x7f080002;
         public static final int button4=0x7f080004;
+        public static final int status_text=0x7f080007;
         public static final int textView1=0x7f080000;
         public static final int textView2=0x7f080005;
     }
@@ -37,9 +38,8 @@ public final class R {
         public static final int activity_play_game=0x7f030001;
     }
     public static final class menu {
-        public static final int actionbar_inflate_template=0x7f070000;
-        public static final int main_menu=0x7f070001;
-        public static final int play_game=0x7f070002;
+        public static final int main_menu=0x7f070000;
+        public static final int play_game=0x7f070001;
     }
     public static final class string {
         public static final int action_settings=0x7f050001;
