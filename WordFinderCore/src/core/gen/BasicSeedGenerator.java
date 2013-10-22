@@ -41,7 +41,13 @@ public class BasicSeedGenerator implements ISeedGenerator {
 		}
 		
 		//LAST STEP: fill empty fields with random chars
-		
+		for (int y = 0; y < boardSize; y++) {
+			for (int x = 0; x < boardSize; x++) {
+				if (matrix[x][y] == '\0') {
+					matrix[x][y] = (char) (65 + rand.nextInt(26)); //random letter between 'A' (65) and 'Z' (90)
+				}
+			}
+		}
 		
 		//convert char matrix to seed string
 		
