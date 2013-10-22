@@ -89,15 +89,15 @@ public class BasicSeedGenerator implements ISeedGenerator {
 		int x = usedPoints.get(usedPoints.size() - 1).getX();
 		int y = usedPoints.get(usedPoints.size() - 1).getY();
 		
-		//Add checks for equal or no char
-		if (x > 0   && y > 0   && !usedPoints.contains(new Point(x - 1, y - 1)) && matrix[x - 1][y - 1] == letter) { legals.add(new Point(x - 1, y - 1)); }
-		if (x > 0   &&            !usedPoints.contains(new Point(x - 1, y    )) && matrix[x - 1][y    ] == letter) { legals.add(new Point(x - 1, y    )); }
-		if (x > 0   && y < max && !usedPoints.contains(new Point(x - 1, y + 1)) && matrix[x - 1][y + 1] == letter) { legals.add(new Point(x - 1, y + 1)); }
-		if (           y > 0   && !usedPoints.contains(new Point(x    , y - 1)) && matrix[x    ][y - 1] == letter) { legals.add(new Point(x    , y - 1)); }
-		if (           y < max && !usedPoints.contains(new Point(x   ,  y + 1)) && matrix[x    ][y + 1] == letter) { legals.add(new Point(x    , y + 1)); }
-		if (x < max && y > 0   && !usedPoints.contains(new Point(x + 1, y - 1)) && matrix[x + 1][y - 1] == letter) { legals.add(new Point(x + 1, y - 1)); }
-		if (x < max &&            !usedPoints.contains(new Point(x + 1, y    )) && matrix[x + 1][y    ] == letter) { legals.add(new Point(x + 1, y    )); }
-		if (x < max && y < max && !usedPoints.contains(new Point(x + 1, y + 1)) && matrix[x + 1][y + 1] == letter) { legals.add(new Point(x + 1, y + 1)); }
+		// '\0' is the null character '\0' <==> 0; initial value of chars (and therefore for all unused fields)
+		if (x > 0   && y > 0   && !usedPoints.contains(new Point(x - 1, y - 1)) && (matrix[x - 1][y - 1] == letter || matrix[x - 1][y - 1] == '\0')) { legals.add(new Point(x - 1, y - 1)); }
+		if (x > 0   &&            !usedPoints.contains(new Point(x - 1, y    )) && (matrix[x - 1][y    ] == letter || matrix[x - 1][y    ] == '\0')) { legals.add(new Point(x - 1, y    )); }
+		if (x > 0   && y < max && !usedPoints.contains(new Point(x - 1, y + 1)) && (matrix[x - 1][y + 1] == letter || matrix[x - 1][y + 1] == '\0')) { legals.add(new Point(x - 1, y + 1)); }
+		if (           y > 0   && !usedPoints.contains(new Point(x    , y - 1)) && (matrix[x    ][y - 1] == letter || matrix[x    ][y - 1] == '\0')) { legals.add(new Point(x    , y - 1)); }
+		if (           y < max && !usedPoints.contains(new Point(x   ,  y + 1)) && (matrix[x    ][y + 1] == letter || matrix[x    ][y + 1] == '\0')) { legals.add(new Point(x    , y + 1)); }
+		if (x < max && y > 0   && !usedPoints.contains(new Point(x + 1, y - 1)) && (matrix[x + 1][y - 1] == letter || matrix[x + 1][y - 1] == '\0')) { legals.add(new Point(x + 1, y - 1)); }
+		if (x < max &&            !usedPoints.contains(new Point(x + 1, y    )) && (matrix[x + 1][y    ] == letter || matrix[x + 1][y    ] == '\0')) { legals.add(new Point(x + 1, y    )); }
+		if (x < max && y < max && !usedPoints.contains(new Point(x + 1, y + 1)) && (matrix[x + 1][y + 1] == letter || matrix[x + 1][y + 1] == '\0')) { legals.add(new Point(x + 1, y + 1)); }
 		
 		return legals;
 	}
