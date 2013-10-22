@@ -32,8 +32,16 @@ public class BasicSeedGenerator implements ISeedGenerator {
 		for (int attempts = 0; attempts < MAX_ATTEMPTS; attempts++) {
 			//STEP 1: select random word from dic
 			String word = dic.get(this.rand.nextInt(dic.size()));
-			//STEP 2: iterate through the word
+			
+
 			System.out.print("Trying to place word '" + word + "'");
+			
+			if (words.contains(word)) {
+				System.out.println("... already set");
+				continue;
+			}
+			
+			//STEP 2: iterate through the word
 			if (this.placeWord(matrix, word.toCharArray())) {
 				words.add(word);
 				System.out.println("... done");
@@ -42,7 +50,10 @@ public class BasicSeedGenerator implements ISeedGenerator {
 			}
 			
 		}
-		System.out.println("Placed " + words.size() + " words");
+		System.out.println("Placed " + words.size() + " words:");
+		for (String w : words) {
+			System.out.println(w);
+		}
 		
 		//LAST STEP: fill empty fields with random chars
 		for (int y = 0; y < boardSize; y++) {

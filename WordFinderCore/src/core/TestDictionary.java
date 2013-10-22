@@ -51,6 +51,14 @@ public class TestDictionary extends ADictionary {
 		words.add("Bowl");
 		words.add("Cable");
 		words.add("Paper");
+		words.add("Die");
+		words.add("Monster");
+		words.add("Women");
+		words.add("Fly");
+		words.add("Incubation");
+		words.add("Infection");
+		words.add("Hypnosis");
+		words.add("Man");
 		// -- END OF WORD LIST --
 		return words;
 	}
