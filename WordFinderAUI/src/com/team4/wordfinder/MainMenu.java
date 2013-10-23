@@ -4,6 +4,7 @@ import android.os.Bundle;
 import android.app.Activity;
 import android.content.Intent;
 import android.view.Menu;
+import android.view.MenuInflater;
 import android.view.View;
 
 public class MainMenu extends Activity {
@@ -22,8 +23,24 @@ public class MainMenu extends Activity {
 	}
 	
 	public void openPlayActivity(View view){
-		Intent intent = new Intent(this, PlayGameActivity.class);
+		Intent intent = new Intent(this, PlayGame.class);
 		startActivity(intent);
 	}
-
+	
+	public void openScoresActivity(View view){
+		Intent intent = new Intent(this, PlayGame.class);
+		startActivity(intent);
+	}
+	
+	public void openFriendsActivity(View view){
+		Intent intent = new Intent(this, PlayGame.class);
+		startActivity(intent);
+	}
+	
+	public void openDictionariesActivity(View view){
+		Intent intent = new Intent(this, PlayGame.class);
+		startActivity(intent);
+	}
+	
+	
 }
