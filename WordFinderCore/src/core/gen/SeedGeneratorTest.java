@@ -7,11 +7,11 @@ import org.junit.Test;
 import core.BoardFactory;
 import core.IBoard;
 
-public class BasicSeedGeneratorTest {
+public class SeedGeneratorTest {
 
 	@Test
 	public void testSeedFromBoard() {
-		ISeedGenerator seeder = new BasicSeedGenerator();
+		SeedGenerator seeder = SeedGenerator.getInstance();
 		String seed = "ABCDEFGHIJKLMNOPQRSTUVWXYZABCDEFGHIJ";
 		IBoard board = BoardFactory.createBoardFromSeed(null, null, 6, seed);
 		assertEquals(seed, seeder.generateSeedFromBoard(board));

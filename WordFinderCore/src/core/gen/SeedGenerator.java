@@ -7,17 +7,24 @@ import core.IBoard;
 import core.IDictionary;
 import core.ILetterField;
 
-public class BasicSeedGenerator implements ISeedGenerator {
+public class SeedGenerator {
 
+	private static SeedGenerator singleton;
+	
+	public final static SeedGenerator getInstance() {
+		if (singleton == null)
+			singleton = new SeedGenerator();
+		return singleton;
+	}
+	
 	public final static int MAX_ATTEMPTS = 1000;
 	
 	private Random rand;
 	
-	public BasicSeedGenerator () {
+	private SeedGenerator () {
 		this.rand = new Random();
 	}
 	
-	@Override
 	public String generateRandomSeed(IDictionary primary,
 			IDictionary secondary, int boardSize) {
 		
@@ -132,7 +139,6 @@ public class BasicSeedGenerator implements ISeedGenerator {
 		return legals;
 	}
 
-	@Override
 	public String generateSeedFromBoard(IBoard board) {
 		assert board != null;
 		

@@ -1,8 +1,7 @@
 package core.test;
 
 import core.TestDictionary;
-import core.gen.BasicSeedGenerator;
-import core.gen.ISeedGenerator;
+import core.gen.SeedGenerator;
 
 public class BoardGenerationTester {
 
@@ -11,7 +10,7 @@ public class BoardGenerationTester {
 	 */
 	public static void main(String[] args) {
 		
-		ISeedGenerator gen = new BasicSeedGenerator();
+		SeedGenerator gen = SeedGenerator.getInstance();
 		
 		String seed = gen.generateRandomSeed(null, new TestDictionary(), 6);
 		

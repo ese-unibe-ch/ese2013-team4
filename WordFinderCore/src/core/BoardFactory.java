@@ -4,11 +4,9 @@ import core.gen.*;
 import java.util.ArrayList;
 
 public class BoardFactory {
-	
-	private static ISeedGenerator seedGenerator = new BasicSeedGenerator();
 
 	public static IBoard createRandomBoard (IDictionary primary, IDictionary secondary, int boardSize) {
-		String seed = seedGenerator.generateRandomSeed(primary, secondary, boardSize);
+		String seed = SeedGenerator.getInstance().generateRandomSeed(primary, secondary, boardSize);
 		return createBoardFromSeed (primary, secondary, boardSize, seed);
 	}
 	
@@ -21,10 +19,6 @@ public class BoardFactory {
 				matrix[i % boardSize][i / boardSize] = new LetterField(Letter.getLetter(seed.charAt(i)), i % boardSize, i / boardSize);
 		}
 		return new Board(matrix, boardSize, dics);
-	} 
-	
-	public static String createSeedFromBoard (IBoard board) {
-		return seedGenerator.generateSeedFromBoard(board);
 	}
 	
 	/**
