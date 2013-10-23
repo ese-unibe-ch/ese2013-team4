@@ -37,7 +37,7 @@
         android:layout_below="@+id/PlayGame"
         android:layout_marginTop="17dp"
         android:text="@string/score_buttonText"
-        android:onClick="openScore"/>
+        android:onClick="openScores"/>
     
     <Button 
         android:id="@+id/Friend"
