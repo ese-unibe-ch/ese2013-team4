@@ -59,6 +59,9 @@ public class TestDictionary extends ADictionary {
 		words.add("Infection");
 		words.add("Hypnosis");
 		words.add("Man");
+		words.add("Chest");
+		words.add("Axe");
+		words.add("Wire");
 		// -- END OF WORD LIST --
 		return words;
 	}
