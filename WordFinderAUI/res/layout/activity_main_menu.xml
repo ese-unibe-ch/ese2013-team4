@@ -19,12 +19,14 @@
             android:layout_height="match_parent"
             android:gravity="center_horizontal"
             android:layout_weight="4"
+     
             />
     
     <Button 
-        android:id="@+id/ReturnButton"   
+        android:id="@+id/ReturnButton" 
         android:layout_weight="1" 
         android:layout_height="wrap_content"
+        android:layout_width="match_parent"
        	/>
     
     </LinearLayout>
