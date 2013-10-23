@@ -1,6 +1,5 @@
 package core;
 
-import core.gen.*;
 import java.util.ArrayList;
 
 public class BoardFactory {

@@ -1,7 +1,7 @@
 package core.test;
 
+import core.SeedGenerator;
 import core.TestDictionary;
-import core.gen.SeedGenerator;
 
 public class BoardGenerationTester {
 

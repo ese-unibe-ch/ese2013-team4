@@ -1,11 +1,9 @@
-package core.gen;
+package core;
 
 import static org.junit.Assert.*;
 
 import org.junit.Test;
 
-import core.BoardFactory;
-import core.IBoard;
 
 public class SeedGeneratorTest {
 

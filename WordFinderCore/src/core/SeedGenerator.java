@@ -1,11 +1,8 @@
-package core.gen;
+package core;
 
 import java.util.ArrayList;
 import java.util.Random;
 
-import core.IBoard;
-import core.IDictionary;
-import core.ILetterField;
 
 public class SeedGenerator {
 
