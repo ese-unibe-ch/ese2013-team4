@@ -1,15 +1,16 @@
 package core;
 
 import java.util.ArrayList;
+import core.board.Board;
 
 public class BoardFactory {
 
-	public static IBoard createRandomBoard (IDictionary primary, IDictionary secondary, int boardSize) {
+	public static Board createRandomBoard (IDictionary primary, IDictionary secondary, int boardSize) {
 		String seed = SeedGenerator.getInstance().generateRandomSeed(primary, secondary, boardSize);
 		return createBoardFromSeed (primary, secondary, boardSize, seed);
 	}
 	
-	public static IBoard createBoardFromSeed (IDictionary primary, IDictionary secondary, int boardSize, String seed) {
+	public static Board createBoardFromSeed (IDictionary primary, IDictionary secondary, int boardSize, String seed) {
 		ArrayList<IDictionary> dics = new ArrayList<IDictionary>();
 		dics.add(primary);
 		dics.add(secondary);
@@ -23,7 +24,7 @@ public class BoardFactory {
 	/**
 	 * Demo board 6x6
 	 */
-	public static IBoard createDemoBoard () {
+	public static Board createDemoBoard () {
 		
 		String seed = "OBNEPAXHOTWPPEROERTLCSLBEKTGSARAEPSC";
 		

@@ -1,4 +1,6 @@
-package core;
+package core.board;
+
+import core.ILetterField;
 
 /**
  * Interface with all the methods needed to draw the board.
