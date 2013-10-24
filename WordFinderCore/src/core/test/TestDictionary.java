@@ -1,6 +1,8 @@
-package core;
+package core.test;
 
 import java.util.ArrayList;
+
+import core.ADictionary;
 
 /**
  * A basic dictionary used for testing.
@@ -16,7 +18,7 @@ public class TestDictionary extends ADictionary {
 	}
 	
 	@Override
-	ArrayList<String> generateWordList(String title) {
+	public ArrayList<String> generateWordList(String title) {
 		ArrayList<String> words = new ArrayList<String>();
 		// -- INSERT WORDS HERE --
 		words.add("Test");

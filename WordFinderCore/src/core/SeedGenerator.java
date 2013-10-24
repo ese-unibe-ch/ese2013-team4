@@ -3,6 +3,8 @@ package core;
 import java.util.ArrayList;
 import java.util.Random;
 
+import core.board.Board;
+
 
 public class SeedGenerator {
 
@@ -136,15 +138,15 @@ public class SeedGenerator {
 		return legals;
 	}
 
-	public String generateSeedFromBoard(IBoard board) {
+	public String generateSeedFromBoard(Board board) {
 		assert board != null;
 		
 		ILetterField[][] matrix = board.getMatrix();
 		
 		String seed = "";
 		
-		for (int y = 0; y < board.getSize(); y++) {
-			for (int x = 0; x < board.getSize(); x++) {
+		for (int y = 0; y < board.getBoardSize(); y++) {
+			for (int x = 0; x < board.getBoardSize(); x++) {
 				seed += matrix[x][y].getLetter().getChar();
 			}
 		}

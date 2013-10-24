@@ -35,4 +35,6 @@ public interface BoardDrawingInterface {
 	 * @return
 	 */
 	public int getValueAt(int x, int y);
+	
+	public int getBoardSize();
 }

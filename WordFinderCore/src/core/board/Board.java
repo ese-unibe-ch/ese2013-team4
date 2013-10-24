@@ -1,6 +1,5 @@
 package core.board;
 
-import java.util.ArrayList;
 import core.IDictionary;
 import core.ILetterField;
 import core.Letter;
@@ -25,6 +24,10 @@ public class Board implements BoardDictionarySupportInterface, BoardDrawingInter
 		this.primary = primary;
 		this.secondary = secondary;
 		
+	}
+	
+	public ILetterField[][] getMatrix() {
+		return this.matrix;
 	}
 	
 	/* IMPLEMENTATION OF BoardDictionarySupportInterface */
@@ -62,5 +65,12 @@ public class Board implements BoardDictionarySupportInterface, BoardDrawingInter
 	public int getValueAt(int x, int y) {
 		return this.getLetterAt(x, y).getValue();
 	}
+	
+	@Override
+	public int getBoardSize() {
+		return this.boardSize;
+	}
+	
+	/* IMPLEMENTATION OF BoardInputInterface */
 	
 }

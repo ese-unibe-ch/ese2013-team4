@@ -1,6 +1,7 @@
 package core;
 
 import core.board.Board;
+import core.test.TestDictionary;
 
 public class BoardFactory {
 

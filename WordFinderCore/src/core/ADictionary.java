@@ -48,6 +48,6 @@ public abstract class ADictionary implements IDictionary {
 	 * 
 	 * @return
 	 */
-	abstract ArrayList<String> generateWordList (String title);
+	public abstract ArrayList<String> generateWordList (String title);
 
 }

@@ -4,6 +4,8 @@ import static org.junit.Assert.*;
 
 import org.junit.Test;
 
+import core.board.Board;
+
 
 public class SeedGeneratorTest {
 
@@ -11,7 +13,7 @@ public class SeedGeneratorTest {
 	public void testSeedFromBoard() {
 		SeedGenerator seeder = SeedGenerator.getInstance();
 		String seed = "ABCDEFGHIJKLMNOPQRSTUVWXYZABCDEFGHIJ";
-		IBoard board = BoardFactory.createBoardFromSeed(null, null, 6, seed);
+		Board board = BoardFactory.createBoardFromSeed(null, null, 6, seed);
 		assertEquals(seed, seeder.generateSeedFromBoard(board));
 	}
 
