@@ -4,9 +4,12 @@ import java.util.ArrayList;
 
 import core.IDictionary;
 import core.ILetterField;
+import core.IWord;
 import core.Letter;
 import core.Point;
 import core.SelectionStatus;
+import core.Word;
+import core.WordChecker;
 
 public class Board implements BoardDictionarySupportInterface, BoardDrawingInterface, BoardInputInterface {
 
@@ -15,7 +18,9 @@ public class Board implements BoardDictionarySupportInterface, BoardDrawingInter
 	private IDictionary primary;
 	private IDictionary secondary;
 	
-	private ArrayList<ArrayList<Point>> foundWords = new ArrayList<ArrayList<Point>>();
+	private WordChecker checker;
+	
+	private ArrayList<ArrayList<Point>> foundWords;
 
 	public Board(ILetterField[][] matrix, int boardSize, IDictionary primary, IDictionary secondary) {
 		assert matrix.length == boardSize;
@@ -30,6 +35,9 @@ public class Board implements BoardDictionarySupportInterface, BoardDrawingInter
 		this.primary = primary;
 		this.secondary = secondary;
 		
+		this.checker = WordChecker.getInstance();
+		
+		this.foundWords = new ArrayList<ArrayList<Point>>();
 	}
 	
 	public ILetterField[][] getMatrix() {
@@ -92,10 +100,19 @@ public class Board implements BoardDictionarySupportInterface, BoardDrawingInter
 		//STEP 2: check if sequence is in Found list.
 		if (!this.foundWords.isEmpty() && this.foundWords.contains(sequence)) //if it is in list, it is old, and of course a word, since only words are in list
 			return SelectionStatus.SelectionOld;
-		//STEP 3: check if word
-		
-		//TODO: auto-generated method stub
-		return null;
+		//STEP 3: convert to word
+		ArrayList<Letter> wordSeq = new ArrayList<Letter>();
+		for (Point point : sequence) {
+			wordSeq.add(this.getLetterAt(point.getX(), point.getY()));
+		}
+		IWord word = new Word();
+		word.setLetterSequence(wordSeq);
+		//STEP 4: check if word
+		if (this.checker.isValidWord(word, this)) {
+			this.foundWords.add(sequence);
+			return SelectionStatus.SelectionGood;
+		}
+		return SelectionStatus.SelectionBad;
 	}
 	
 }

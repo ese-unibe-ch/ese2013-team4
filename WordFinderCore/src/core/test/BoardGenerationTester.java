@@ -1,5 +1,7 @@
 package core.test;
 
+import java.util.ArrayList;
+
 import core.SeedGenerator;
 import core.test.TestDictionary;
 
@@ -21,7 +23,6 @@ public class BoardGenerationTester {
 		for (int i = 0; i < 6; i++) {
 			System.out.println(seed.substring(i * 6, i * 6 + 6));
 		}
-
 	}
 
 }
