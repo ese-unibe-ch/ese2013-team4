@@ -19,7 +19,13 @@ public class WordChecker {
 		
 		String wordString = word.toString();
 		
-		//TODO: WORD CHECK OVER core.board.BoardDictionarySupportInterface
+		if (board.hasPrimaryDictionary()) {
+			if (board.getPrimaryDictionary().getWords().contains(wordString))
+				return true;
+		}
+		
+		if (board.getSecondaryDictionary().getWords().contains(wordString))
+				return true;
 		
 		return false;
 	}
