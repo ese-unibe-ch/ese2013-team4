@@ -1,15 +1,21 @@
 package core.board;
 
+import java.util.ArrayList;
+
 import core.IDictionary;
 import core.ILetterField;
 import core.Letter;
+import core.Point;
+import core.SelectionStatus;
 
-public class Board implements BoardDictionarySupportInterface, BoardDrawingInterface {
+public class Board implements BoardDictionarySupportInterface, BoardDrawingInterface, BoardInputInterface {
 
 	private ILetterField[][] matrix;
 	private final int boardSize;
 	private IDictionary primary;
 	private IDictionary secondary;
+	
+	private ArrayList<ArrayList<Point>> foundWords = new ArrayList<ArrayList<Point>>();
 
 	public Board(ILetterField[][] matrix, int boardSize, IDictionary primary, IDictionary secondary) {
 		assert matrix.length == boardSize;
@@ -72,5 +78,24 @@ public class Board implements BoardDictionarySupportInterface, BoardDrawingInter
 	}
 	
 	/* IMPLEMENTATION OF BoardInputInterface */
+	
+	@Override
+	public SelectionStatus submit(ArrayList<Point> sequence) {
+		//STEP 1: check if sequence is legal (n adjacent to n-1 and no identicals).
+		for (int i = 0; i < sequence.size(); i++) {
+			if (sequence.lastIndexOf(sequence.get(i)) != i) //first != last => multiples
+				return SelectionStatus.SelectionInvalid;
+			if (i > 0)
+				if ( ! sequence.get(i - 1).isAdjacent(sequence.get(i)))
+					return SelectionStatus.SelectionInvalid;
+		}
+		//STEP 2: check if sequence is in Found list.
+		if (!this.foundWords.isEmpty() && this.foundWords.contains(sequence)) //if it is in list, it is old, and of course a word, since only words are in list
+			return SelectionStatus.SelectionOld;
+		//STEP 3: check if word
+		
+		//TODO: auto-generated method stub
+		return null;
+	}
 	
 }

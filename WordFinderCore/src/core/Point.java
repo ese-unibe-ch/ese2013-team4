@@ -26,4 +26,28 @@ public class Point {
 		return this.y;
 	}
 	
+	@Override
+	public String toString() {
+		return "POINT (" + this.x + "|" + this.y + ")";
+	}
+	
+	@Override
+	public boolean equals(Object other) {
+		if (!(other instanceof Point)) {
+			return false;
+		}
+		Point pt = (Point) other;
+		
+		return this.x == pt.x && this.y == pt.y;
+	}
+	
+	@Override
+	public int hashCode() {
+		return this.x + this.y;
+	}
+	
+	public boolean isAdjacent (Point other) {
+		return Math.abs(this.x - other.x) <= 1 && Math.abs(this.y - other.y) <= 1 && ! this.equals(other);
+	}
+	
 }
