@@ -2,6 +2,7 @@ package core;
 
 import java.util.ArrayList;
 
+/** @deprecated */
 public interface IBoard {
 
 	public ILetterField[][] getMatrix();
