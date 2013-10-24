@@ -1,9 +1,9 @@
 package core;
 
-import java.util.ArrayList;
+import core.board.Board;
 
 public interface IWordChecker {
 
-	public boolean isValidWord(IWord word, ArrayList<IDictionary> dictionaries);
+	public boolean isValidWord(IWord word, Board board);
 	
 }

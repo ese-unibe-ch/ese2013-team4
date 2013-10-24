@@ -1,16 +1,16 @@
 package core;
 
-import java.util.ArrayList;
+import core.board.Board;
 
 public class WordChecker implements IWordChecker {
 
 	@Override
-	public boolean isValidWord(IWord word, ArrayList<IDictionary> dictionaries) {
+	public boolean isValidWord(IWord word, Board board) {
+		
 		String wordString = word.toString();
-		for (IDictionary dic : dictionaries) {
-			if (dic.getWords().contains(wordString))
-				return true;
-		}
+		
+		//TODO: WORD CHECK OVER core.board.BoardDictionarySupportInterface
+		
 		return false;
 	}
 
