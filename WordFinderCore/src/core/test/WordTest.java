@@ -1,7 +1,8 @@
-package core;
+package core.test;
 
 import static org.junit.Assert.*;
 import java.util.ArrayList;
+import core.*;
 
 import org.junit.Before;
 import org.junit.Test;
