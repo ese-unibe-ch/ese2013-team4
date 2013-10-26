@@ -47,6 +47,8 @@ public class Point {
 	}
 	
 	public boolean isAdjacent (Point other) {
+		if (other == null)
+			return true;
 		return Math.abs(this.x - other.x) <= 1 && Math.abs(this.y - other.y) <= 1 && ! this.equals(other);
 	}
 	

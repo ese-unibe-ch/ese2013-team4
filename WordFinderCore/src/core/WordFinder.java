@@ -28,12 +28,11 @@ public class WordFinder {
 				matrix[x][y] = board.getCharAt(x, y);
 			}
 		}
-		//retreiving words
+		//retrieving words
 		ArrayList<String> completeList = new ArrayList<String>();
 		if (board.hasPrimaryDictionary())
 			completeList.addAll(this.getWordsOfDictionary(matrix, board.getPrimaryDictionary()));
 		completeList.addAll(this.getWordsOfDictionary(matrix, board.getSecondaryDictionary()));
-		////////////
 		return completeList;
 	}
 	
@@ -43,29 +42,49 @@ public class WordFinder {
 		ArrayList<String> dictionary = dic.getWords();
 		for(int i = 0; i < dictionary.size(); i++) {
 			String word = dictionary.get(i);
-			//ommit checking duplicates
+			//omit checking duplicates
 			if (wordsInBoard.contains(word))
 				continue;
-			//ommit words that are extensions of words that are already confirmed not to be in the board
+			//omit words that are extensions of words that are already confirmed not to be in the board
 			for (String w : wordsNotInBoard) {
 				if (word.contains(w)) {
 					wordsNotInBoard.add(word);
 					continue;
 				}
 			}
-			//check rest via bord
+			//check rest via board
 			if (checkWord(matrix, word))
 				wordsInBoard.add(word);
 			else
 				wordsNotInBoard.add(word);
 		}
-		////////////
 		return wordsInBoard;
 	}
 	
 	private boolean checkWord(char[][] matrix, String word) {
+		
 		//TODO: Auto-generated method stub
 		return false;
 	}
+	
+
+	private ArrayList<Point> getGoodPoints(char c, Board b) {
+		return this.getGoodPoints(c, null);
+	}
+	
+	private ArrayList<Point> getGoodPoints(char c, Board b, Point last) {
+		ArrayList<Point> goodPoints = new ArrayList<Point>();
+		for (int x = 0; x < b.getBoardSize(); x++) {
+			for (int y = 0; y < b.getBoardSize(); y++) {
+				if (b.getCharAt(x, y) != c)
+					continue;
+				Point p = new Point(x, y);
+				if (p.isAdjacent(last))
+					goodPoints.add(p);
+			}
+		}
+		return goodPoints;
+	}
+	
 	
 }
