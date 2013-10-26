@@ -38,10 +38,34 @@ public class WordFinder {
 	}
 	
 	private ArrayList<String> getWordsOfDictionary(char[][] matrix, IDictionary dic) {
-		//TODO: implement word finding
-		
+		ArrayList<String> wordsInBoard = new ArrayList<String>();
+		ArrayList<String> wordsNotInBoard = new ArrayList<String>();
+		ArrayList<String> dictionary = dic.getWords();
+		for(int i = 0; i < dictionary.size(); i++) {
+			String word = dictionary.get(i);
+			//ommit checking duplicates
+			if (wordsInBoard.contains(word))
+				continue;
+			//ommit words that are extensions of words that are already confirmed not to be in the board
+			for (String w : wordsNotInBoard) {
+				if (word.contains(w)) {
+					wordsNotInBoard.add(word);
+					continue;
+				}
+			}
+			//check rest via bord
+			if (checkWord(matrix, word))
+				wordsInBoard.add(word);
+			else
+				wordsNotInBoard.add(word);
+		}
 		////////////
 		return null;
+	}
+	
+	private boolean checkWord(char[][] matrix, String word) {
+		//TODO: Auto-generated method stub
+		return false;
 	}
 	
 }
