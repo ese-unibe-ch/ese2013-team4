@@ -8,6 +8,8 @@ import core.board.Board;
 
 public class SeedGenerator {
 
+	// SINGLETON MANAGEMENT
+	
 	private static SeedGenerator singleton;
 	
 	public final static SeedGenerator getInstance() {
@@ -16,9 +18,13 @@ public class SeedGenerator {
 		return singleton;
 	}
 	
+	// CLASS CONTENT
+	
 	public final static int MAX_ATTEMPTS = 1000;
 	
 	private Random rand;
+	
+	private BoardPointRetreiver bpr = BoardPointRetreiver.getInstance();
 	
 	private SeedGenerator () {
 		this.rand = new Random();
@@ -95,7 +101,7 @@ public class SeedGenerator {
 		ArrayList<Point> usedPoints = new ArrayList<Point>();
 		for (int i = 0; i < word.length; i++) {
 			char letter = word[i];
-			ArrayList<Point> legals = this.getLegal(matrix, letter, usedPoints);
+			ArrayList<Point> legals = bpr.getGoodPoints(letter, matrix, usedPoints);
 			if (legals.isEmpty()) {
 				matrix = backup;
 				return false;
@@ -106,36 +112,6 @@ public class SeedGenerator {
 		}
 		//this point is only reached when word was completely placed
 		return true;
-	}
-	
-	//returns a list with all legal positions of the next character
-	private ArrayList<Point> getLegal(char[][] matrix, char letter, ArrayList<Point> usedPoints) {
-		int max = matrix.length - 1;
-		ArrayList<Point> legals = new ArrayList<Point>();
-		if (usedPoints.size() >= 1) {
-			//check all surrounding fields
-			int x = usedPoints.get(usedPoints.size() - 1).getX();
-			int y = usedPoints.get(usedPoints.size() - 1).getY();
-			// '\0' is the null character '\0' <==> 0; initial value of chars (and therefore for all unused fields)
-			if (x > 0   && y > 0   && !usedPoints.contains(new Point(x - 1, y - 1)) && (matrix[x - 1][y - 1] == letter || matrix[x - 1][y - 1] == '\0')) { legals.add(new Point(x - 1, y - 1)); }
-			if (x > 0   &&            !usedPoints.contains(new Point(x - 1, y    )) && (matrix[x - 1][y    ] == letter || matrix[x - 1][y    ] == '\0')) { legals.add(new Point(x - 1, y    )); }
-			if (x > 0   && y < max && !usedPoints.contains(new Point(x - 1, y + 1)) && (matrix[x - 1][y + 1] == letter || matrix[x - 1][y + 1] == '\0')) { legals.add(new Point(x - 1, y + 1)); }
-			if (           y > 0   && !usedPoints.contains(new Point(x    , y - 1)) && (matrix[x    ][y - 1] == letter || matrix[x    ][y - 1] == '\0')) { legals.add(new Point(x    , y - 1)); }
-			if (           y < max && !usedPoints.contains(new Point(x   ,  y + 1)) && (matrix[x    ][y + 1] == letter || matrix[x    ][y + 1] == '\0')) { legals.add(new Point(x    , y + 1)); }
-			if (x < max && y > 0   && !usedPoints.contains(new Point(x + 1, y - 1)) && (matrix[x + 1][y - 1] == letter || matrix[x + 1][y - 1] == '\0')) { legals.add(new Point(x + 1, y - 1)); }
-			if (x < max &&            !usedPoints.contains(new Point(x + 1, y    )) && (matrix[x + 1][y    ] == letter || matrix[x + 1][y    ] == '\0')) { legals.add(new Point(x + 1, y    )); }
-			if (x < max && y < max && !usedPoints.contains(new Point(x + 1, y + 1)) && (matrix[x + 1][y + 1] == letter || matrix[x + 1][y + 1] == '\0')) { legals.add(new Point(x + 1, y + 1)); }
-		} else {
-			//get all empty and all equal fields
-			for (int y = 0; y <= max; y++) {
-				for (int x = 0; x <= max; x++) {
-					if (matrix[x][y] == '\0' || matrix[x][y] == letter) {
-						legals.add(new Point(x, y));
-					}
-				}
-			}
-		}
-		return legals;
 	}
 
 	public String generateSeedFromBoard(Board board) {

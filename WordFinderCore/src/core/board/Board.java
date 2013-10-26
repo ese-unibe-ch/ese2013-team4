@@ -11,7 +11,7 @@ import core.SelectionStatus;
 import core.Word;
 import core.WordChecker;
 
-public class Board implements BoardDictionarySupportInterface, BoardDrawingInterface, BoardInputInterface {
+public class Board implements BoardDictionarySupportInterface, BoardDrawingInterface, BoardInputInterface, BoardOperationInterface {
 
 	private ILetterField[][] matrix;
 	private final int boardSize;
@@ -113,6 +113,19 @@ public class Board implements BoardDictionarySupportInterface, BoardDrawingInter
 			return SelectionStatus.SelectionGood;
 		}
 		return SelectionStatus.SelectionBad;
+	}
+	
+	/* IMPLEMENTATION OF BoardOperationInterface */
+	
+	@Override
+	public char[][] getCharMatrix() {
+		char[][] matrix = new char[this.boardSize][this.boardSize];
+		for (int x = 0; x < this.boardSize; x++) {
+			for (int y = 0; y < this.boardSize; y++) {
+				matrix[x][y] = this.matrix[x][y].getLetter().getChar();
+			}
+		}
+		return matrix;
 	}
 	
 }

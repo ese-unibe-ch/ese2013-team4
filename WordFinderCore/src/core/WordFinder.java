@@ -62,29 +62,8 @@ public class WordFinder {
 	}
 	
 	private boolean checkWord(char[][] matrix, String word) {
-		
 		//TODO: Auto-generated method stub
 		return false;
 	}
-	
-
-	private ArrayList<Point> getGoodPoints(char c, Board b) {
-		return this.getGoodPoints(c, null);
-	}
-	
-	private ArrayList<Point> getGoodPoints(char c, Board b, Point last) {
-		ArrayList<Point> goodPoints = new ArrayList<Point>();
-		for (int x = 0; x < b.getBoardSize(); x++) {
-			for (int y = 0; y < b.getBoardSize(); y++) {
-				if (b.getCharAt(x, y) != c)
-					continue;
-				Point p = new Point(x, y);
-				if (p.isAdjacent(last))
-					goodPoints.add(p);
-			}
-		}
-		return goodPoints;
-	}
-	
 	
 }
