@@ -60,7 +60,7 @@ public class WordFinder {
 				wordsNotInBoard.add(word);
 		}
 		////////////
-		return null;
+		return wordsInBoard;
 	}
 	
 	private boolean checkWord(char[][] matrix, String word) {
