@@ -1,0 +1,23 @@
+WORD FINDING ALGORITHM NOTES
+=====================================================================
+
+note: this file is used for brainstorming about the algorithm.
+The idea to do less comment cluttering in the project itself
+
+---------------------------------------------------------------------
+
+1. iterate through all words of dictionary:
+   - check if there's a word that completely contains the current word.
+	Y: add to whitelist, continue
+   - check if there's a word in the whitelist, that is completely contained in the current word.
+	Y: add to blacklist, continue
+   - check if word is good by calling 2 with the char list and an empty point list
+	Y: add to whitelist, continue
+   - add to blacklist
+
+2. - take first char of char list
+   - check if character is legal with the point list given
+   	N: return false
+	Y: check if last char
+		Y: return true
+		N: iterate through all possibilites by calling 2 with the char list without the current and adding the right point to the point list. return true, when true is returned by any of the iterations (first occurance of true return value is enough, i.e. not all have to be tested)
