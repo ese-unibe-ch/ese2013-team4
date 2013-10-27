@@ -66,4 +66,8 @@ public class WordFinder {
 		return false;
 	}
 	
+	private boolean recursiveWordCheck(ArrayList<Point> lasts, char[][]Êmatrix, char c) {
+		
+	}
+	
 }
