@@ -11,6 +11,16 @@ import core.SelectionStatus;
 import core.Word;
 import core.WordChecker;
 
+/**
+ * The core's representation of a game Board. <br/>
+ * 
+ * A game board is considered to be the combination of a 6x6 matrix with
+ * numerical (scoring) values, a collection of dictionaries, a collection
+ * of all words from these dictionaries that are contained in the matrix,
+ * and a collection of all found words.
+ * 
+ * @author ESE2013 - Team 4
+ */
 public class Board implements BoardDictionarySupportInterface, BoardDrawingInterface, BoardInputInterface, BoardOperationInterface {
 
 	private ILetterField[][] matrix;
@@ -22,21 +32,37 @@ public class Board implements BoardDictionarySupportInterface, BoardDrawingInter
 	
 	private ArrayList<ArrayList<Point>> foundWords;
 
+	/**
+	 * Old constructor, should be replaced with newer one.<br/>
+	 * This constructor requires the board size to be defined in a seperate field,
+	 * which resulted in doubled - and therefore possibly unequal - information.
+	 * @deprecated replaced by a simpler constructor. This constructor is kept for
+	 *             compatibility. Will be removed in a future version.
+	 */
 	public Board(ILetterField[][] matrix, int boardSize, IDictionary primary, IDictionary secondary) {
-		assert matrix.length == boardSize;
-		for (int i = 0; i < matrix.length; i++) {
-			assert matrix[i].length == boardSize;
-		}
-		assert secondary != null;
-
+		this(matrix, primary, secondary);
+	}
+	
+	/**
+	 * This constructor is meant for use by the BoardFactory, but can be used in any circumstance
+	 * 
+	 * @param matrix the letter matrix for the board. This 2D array has to be exactly
+	 *        square, i.e. <tt>matrix.length == matrix[i].length, i=0..matrix.length-1</tt>
+	 * @param primary the primary dictionary of the board. this is the dictionary that
+	 *        is selected by the user to play with. When the default dictionary is used,
+	 *        this parameter should be <tt>null</tt>, although this property is not
+	 *        required for operation, and won't raise any exceptions if not respected.<br/>
+	 *        All words of this dictionary are considered as valid words.
+	 * @param secondary the secondary dictionary for the board. this is the default
+	 *        dictionary for the board (i.e. English system dictionary).<br/>
+	 *        All words of this dictionary are also considered as valid words.
+	 */
+	public Board(ILetterField[][] matrix, IDictionary primary, IDictionary secondary) {
 		this.matrix = matrix;
-		this.boardSize = boardSize;
-
+		this.boardSize = matrix.length;
 		this.primary = primary;
 		this.secondary = secondary;
-		
 		this.checker = WordChecker.getInstance();
-		
 		this.foundWords = new ArrayList<ArrayList<Point>>();
 	}
 	
@@ -87,6 +113,9 @@ public class Board implements BoardDictionarySupportInterface, BoardDrawingInter
 	
 	/* IMPLEMENTATION OF BoardInputInterface */
 	
+	/**
+	 * @param sequence
+	 */
 	@Override
 	public SelectionStatus submit(ArrayList<Point> sequence) {
 		//STEP 1: check if sequence is legal (n adjacent to n-1 and no identicals).
