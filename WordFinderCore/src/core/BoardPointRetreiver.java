@@ -6,7 +6,7 @@ import core.board.Board;
 
 public final class BoardPointRetreiver {
 
-	//SINGLETON MANAGEMENT
+	// SINGLETON MANAGEMENT
 	
 	private static BoardPointRetreiver instance;
 	
@@ -16,7 +16,7 @@ public final class BoardPointRetreiver {
 		return instance;
 	}
 	
-	//CLASS CONTENT
+	// CLASS CONTENT
 	
 	//empty private constructor - for singleton encapsulation
 	private BoardPointRetreiver() {
