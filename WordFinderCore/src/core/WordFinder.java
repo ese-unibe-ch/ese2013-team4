@@ -40,34 +40,35 @@ public class WordFinder {
 		ArrayList<String> wordsInBoard = new ArrayList<String>();
 		ArrayList<String> wordsNotInBoard = new ArrayList<String>();
 		ArrayList<String> dictionary = dic.getWords();
-		for(int i = 0; i < dictionary.size(); i++) {
-			String word = dictionary.get(i);
-			//omit checking duplicates
-			if (wordsInBoard.contains(word))
-				continue;
-			//omit words that are extensions of words that are already confirmed not to be in the board
-			for (String w : wordsNotInBoard) {
-				if (word.contains(w)) {
-					wordsNotInBoard.add(word);
-					continue;
+		for (String word : dictionary) {
+			boolean isGood = false;
+			//check if is contained in a word from the board
+			for (String goodWord : wordsInBoard) {
+				if (goodWord.contains(word)) {
+					wordsInBoard.add(word);
+					isGood = true;
+					break;
 				}
 			}
-			//check rest via board
-			if (checkWord(matrix, word))
-				wordsInBoard.add(word);
-			else
-				wordsNotInBoard.add(word);
+			if (isGood)
+				continue;
+			for (String badWord : wordsNotInBoard) {
+				if(word.contains(badWord)) {
+					wordsNotInBoard.add(word);
+					isGood = true;
+					break;
+				}
+			}
+			if (isGood)
+				continue;
 		}
 		return wordsInBoard;
 	}
 	
-	private boolean checkWord(char[][] matrix, String word) {
-		//TODO: Auto-generated method stub
-		return false;
-	}
-	
-	private boolean recursiveWordCheck(ArrayList<Point> lasts, char[][]Êmatrix, char c) {
+	private boolean recursiveWordCheck(ArrayList<Point> lasts, char[][] matrix, char c) {
 		
+		
+		return false;
 	}
 	
 }
