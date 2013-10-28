@@ -37,12 +37,12 @@ public class MainMenu extends Activity {
 	}
 	
 	public void openFriend(View view){
-		Intent intent = new Intent(this, Dictionary.class);
+		Intent intent = new Intent(this, Friend.class);
 		startActivity(intent);	
 	}
 	
 	public void openDictionary(View view){
-		Intent intent = new Intent(this, Friend.class);
+		Intent intent = new Intent(this, Dictionary.class);
 		startActivity(intent);	
 	}
 	
