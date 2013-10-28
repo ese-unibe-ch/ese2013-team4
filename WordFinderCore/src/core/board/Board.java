@@ -4,11 +4,9 @@ import java.util.ArrayList;
 
 import core.IDictionary;
 import core.ILetterField;
-import core.IWord;
 import core.Letter;
 import core.Point;
 import core.SelectionStatus;
-import core.Word;
 
 /**
  * The core's representation of a game Board. <br/>
@@ -23,11 +21,10 @@ import core.Word;
 public class Board implements BoardDictionarySupportInterface, BoardDrawingInterface, BoardInputInterface, BoardOperationInterface {
 
 	private ILetterField[][] matrix;
-	private final int boardSize;
 	private IDictionary primary;
 	private IDictionary secondary;
 	
-	private ArrayList<String> wordsInBoard = new ArrayList<String>();
+	private ArrayList<String> wordsInBoard;
 	private ArrayList<ArrayList<Point>> foundWords;
 	
 	/**
@@ -46,10 +43,10 @@ public class Board implements BoardDictionarySupportInterface, BoardDrawingInter
 	 */
 	public Board(ILetterField[][] matrix, IDictionary primary, IDictionary secondary) {
 		this.matrix = matrix;
-		this.boardSize = matrix.length;
 		this.primary = primary;
 		this.secondary = secondary;
 		this.foundWords = new ArrayList<ArrayList<Point>>();
+		this.wordsInBoard = new ArrayList<String>();
 	}
 	
 	public ILetterField[][] getMatrix() {
@@ -86,7 +83,7 @@ public class Board implements BoardDictionarySupportInterface, BoardDrawingInter
 	
 	@Override
 	public Letter getLetterAt(int x, int y) {
-		assert x >= 0 && x < this.boardSize && y >= 0 && y < this.boardSize;
+		assert x >= 0 && x < this.matrix.length && y >= 0 && y < this.matrix.length;
 		
 		return this.matrix[x][y].getLetter();
 	}
@@ -103,7 +100,7 @@ public class Board implements BoardDictionarySupportInterface, BoardDrawingInter
 	
 	@Override
 	public int getBoardSize() {
-		return this.boardSize;
+		return this.matrix.length;
 	}
 	
 	/* IMPLEMENTATION OF BoardInputInterface */
@@ -113,7 +110,7 @@ public class Board implements BoardDictionarySupportInterface, BoardDrawingInter
 	 */
 	@Override
 	public SelectionStatus submit(ArrayList<Point> sequence) {
-		//STEP 1: check if sequence is legal (n adjacent to n-1 and no identicals).
+		//STEP 1: check if sequence is legal (n adjacent to n-1 and no identical ones).
 		for (int i = 0; i < sequence.size(); i++) {
 			if (sequence.lastIndexOf(sequence.get(i)) != i) //first != last => multiples
 				return SelectionStatus.SelectionInvalid;
@@ -124,15 +121,13 @@ public class Board implements BoardDictionarySupportInterface, BoardDrawingInter
 		//STEP 2: check if sequence is in Found list.
 		if (!this.foundWords.isEmpty() && this.foundWords.contains(sequence)) //if it is in list, it is old, and of course a word, since only words are in list
 			return SelectionStatus.SelectionOld;
-		//STEP 3: convert to word
-		ArrayList<Letter> wordSeq = new ArrayList<Letter>();
+		//STEP 3: convert to string
+		String word = "";
 		for (Point point : sequence) {
-			wordSeq.add(this.getLetterAt(point.getX(), point.getY()));
+			word += this.getLetterAt(point.getX(), point.getY()).getChar();
 		}
-		IWord word = new Word();
-		word.setLetterSequence(wordSeq);
-		//STEP 4: check if word
-		if (this.wordsInBoard.contains(word.toString())) {
+		//STEP 4: check string
+		if (this.wordsInBoard.contains(word)) {
 			this.foundWords.add(sequence);
 			return SelectionStatus.SelectionGood;
 		}
@@ -143,9 +138,9 @@ public class Board implements BoardDictionarySupportInterface, BoardDrawingInter
 	
 	@Override
 	public char[][] getCharMatrix() {
-		char[][] matrix = new char[this.boardSize][this.boardSize];
-		for (int x = 0; x < this.boardSize; x++) {
-			for (int y = 0; y < this.boardSize; y++) {
+		char[][] matrix = new char[this.matrix.length][this.matrix.length];
+		for (int x = 0; x < this.matrix.length; x++) {
+			for (int y = 0; y < this.matrix.length; y++) {
 				matrix[x][y] = this.matrix[x][y].getLetter().getChar();
 			}
 		}
