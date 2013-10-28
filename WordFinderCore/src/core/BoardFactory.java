@@ -15,7 +15,8 @@ public class BoardFactory {
 		for (int i = 0; i < boardSize * boardSize; i++) {
 				matrix[i % boardSize][i / boardSize] = new LetterField(Letter.getLetter(seed.charAt(i)), i % boardSize, i / boardSize);
 		}
-		return new Board(matrix, boardSize, primary, secondary);
+		//TODO: add whitelist
+		return new Board(matrix, primary, secondary, null);
 	}
 	
 	/**

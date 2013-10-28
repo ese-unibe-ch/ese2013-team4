@@ -30,18 +30,8 @@ public class Board implements BoardDictionarySupportInterface, BoardDrawingInter
 	
 	private WordChecker checker;
 	
+	private ArrayList<String> wordsInBoard;
 	private ArrayList<ArrayList<Point>> foundWords;
-
-	/**
-	 * Old constructor, should be replaced with newer one.<br/>
-	 * This constructor requires the board size to be defined in a seperate field,
-	 * which resulted in doubled - and therefore possibly unequal - information.
-	 * @deprecated replaced by a simpler constructor. This constructor is kept for
-	 *             compatibility. Will be removed in a future version.
-	 */
-	public Board(ILetterField[][] matrix, int boardSize, IDictionary primary, IDictionary secondary) {
-		this(matrix, primary, secondary);
-	}
 	
 	/**
 	 * This constructor is meant for use by the BoardFactory, but can be used in any circumstance
@@ -57,7 +47,7 @@ public class Board implements BoardDictionarySupportInterface, BoardDrawingInter
 	 *        dictionary for the board (i.e. English system dictionary).<br/>
 	 *        All words of this dictionary are also considered as valid words.
 	 */
-	public Board(ILetterField[][] matrix, IDictionary primary, IDictionary secondary) {
+	public Board(ILetterField[][] matrix, IDictionary primary, IDictionary secondary, ArrayList<String> wordsInBoard) {
 		this.matrix = matrix;
 		this.boardSize = matrix.length;
 		this.primary = primary;
