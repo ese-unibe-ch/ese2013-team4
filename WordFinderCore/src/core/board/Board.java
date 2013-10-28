@@ -9,7 +9,6 @@ import core.Letter;
 import core.Point;
 import core.SelectionStatus;
 import core.Word;
-import core.WordChecker;
 
 /**
  * The core's representation of a game Board. <br/>
