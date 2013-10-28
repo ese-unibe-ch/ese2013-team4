@@ -28,8 +28,6 @@ public class Board implements BoardDictionarySupportInterface, BoardDrawingInter
 	private IDictionary primary;
 	private IDictionary secondary;
 	
-	private WordChecker checker;
-	
 	private ArrayList<String> wordsInBoard = new ArrayList<String>();
 	private ArrayList<ArrayList<Point>> foundWords;
 	
@@ -52,7 +50,6 @@ public class Board implements BoardDictionarySupportInterface, BoardDrawingInter
 		this.boardSize = matrix.length;
 		this.primary = primary;
 		this.secondary = secondary;
-		this.checker = WordChecker.getInstance();
 		this.foundWords = new ArrayList<ArrayList<Point>>();
 	}
 	
@@ -136,7 +133,7 @@ public class Board implements BoardDictionarySupportInterface, BoardDrawingInter
 		IWord word = new Word();
 		word.setLetterSequence(wordSeq);
 		//STEP 4: check if word
-		if (this.checker.isValidWord(word, this)) {
+		if (this.wordsInBoard.contains(word.toString())) {
 			this.foundWords.add(sequence);
 			return SelectionStatus.SelectionGood;
 		}
