@@ -4,6 +4,8 @@ import core.board.Board;
 import core.test.TestDictionary;
 
 public class BoardFactory {
+	
+	public static WordFinder wrdf = WordFinder.getInstance();
 
 	public static Board createRandomBoard (IDictionary primary, IDictionary secondary, int boardSize) {
 		String seed = SeedGenerator.getInstance().generateRandomSeed(primary, secondary, boardSize);
@@ -15,8 +17,9 @@ public class BoardFactory {
 		for (int i = 0; i < boardSize * boardSize; i++) {
 				matrix[i % boardSize][i / boardSize] = new LetterField(Letter.getLetter(seed.charAt(i)), i % boardSize, i / boardSize);
 		}
-		//TODO: add whitelist
-		return new Board(matrix, primary, secondary, null);
+		Board brd = new Board(matrix, primary, secondary);
+		brd.setWordsInBoard(wrdf.getWords(brd));
+		return brd;
 	}
 	
 	/**

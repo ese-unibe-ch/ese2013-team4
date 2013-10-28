@@ -1,5 +1,7 @@
 package core.board;
 
+import java.util.ArrayList;
+
 import core.IDictionary;
 
 /**
@@ -18,5 +20,7 @@ public interface BoardDictionarySupportInterface {
 	public IDictionary getSecondaryDictionary();
 	
 	public boolean hasPrimaryDictionary();
+	
+	public ArrayList<String> getWordsInBoard();
 
 }

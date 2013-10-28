@@ -19,15 +19,7 @@ public class WordChecker {
 		
 		String wordString = word.toString();
 		
-		if (board.hasPrimaryDictionary()) {
-			if (board.getPrimaryDictionary().getWords().contains(wordString))
-				return true;
-		}
-		
-		if (board.getSecondaryDictionary().getWords().contains(wordString))
-				return true;
-		
-		return false;
+		return board.getWordsInBoard().contains(wordString);
 	}
 
 }

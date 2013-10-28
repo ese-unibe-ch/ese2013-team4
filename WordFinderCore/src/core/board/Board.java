@@ -30,7 +30,7 @@ public class Board implements BoardDictionarySupportInterface, BoardDrawingInter
 	
 	private WordChecker checker;
 	
-	private ArrayList<String> wordsInBoard;
+	private ArrayList<String> wordsInBoard = new ArrayList<String>();
 	private ArrayList<ArrayList<Point>> foundWords;
 	
 	/**
@@ -47,7 +47,7 @@ public class Board implements BoardDictionarySupportInterface, BoardDrawingInter
 	 *        dictionary for the board (i.e. English system dictionary).<br/>
 	 *        All words of this dictionary are also considered as valid words.
 	 */
-	public Board(ILetterField[][] matrix, IDictionary primary, IDictionary secondary, ArrayList<String> wordsInBoard) {
+	public Board(ILetterField[][] matrix, IDictionary primary, IDictionary secondary) {
 		this.matrix = matrix;
 		this.boardSize = matrix.length;
 		this.primary = primary;
@@ -58,6 +58,10 @@ public class Board implements BoardDictionarySupportInterface, BoardDrawingInter
 	
 	public ILetterField[][] getMatrix() {
 		return this.matrix;
+	}
+	
+	public void setWordsInBoard(ArrayList<String> wordsInBoard) {
+		this.wordsInBoard = wordsInBoard;
 	}
 	
 	/* IMPLEMENTATION OF BoardDictionarySupportInterface */
@@ -75,6 +79,11 @@ public class Board implements BoardDictionarySupportInterface, BoardDrawingInter
 	@Override
 	public boolean hasPrimaryDictionary() {
 		return this.primary != null;
+	}
+	
+	@Override
+	public ArrayList<String> getWordsInBoard() {
+		return this.wordsInBoard;
 	}
 	
 	/* IMPLEMENTATION OF BoardDrawingInterface */
