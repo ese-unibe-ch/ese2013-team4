@@ -29,10 +29,11 @@ public final class R {
         public static final int Friend=0x7f08000b;
         public static final int PlayGame=0x7f080009;
         public static final int Score=0x7f08000a;
-        public static final int action_settings=0x7f08000e;
+        public static final int action_settings=0x7f08000f;
         public static final int button1=0x7f080001;
+        public static final int currentscore=0x7f08000d;
         public static final int deleteFriend=0x7f080002;
-        public static final int friendListRawLayout=0x7f08000d;
+        public static final int friendListRawLayout=0x7f08000e;
         public static final int friendsListView=0x7f080003;
         public static final int linearLayout1=0x7f080004;
         public static final int pausetimer=0x7f080007;

@@ -1,9 +1,11 @@
 package com.example.wordfindertwo;
 
 import com.example.wordfindertwo.R;
+
 import android.os.Bundle;
 import android.os.CountDownTimer;
 import android.app.Activity;
+import android.content.Intent;
 import android.view.Menu;
 import android.view.MotionEvent;
 import android.view.View;
@@ -16,6 +18,7 @@ public class Game extends Activity implements OnTouchListener {
 	private long millisInFuture;
 	private TextView text;
 	private CountDownTimer timer;
+	private Activity a = this;
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -55,7 +58,8 @@ public class Game extends Activity implements OnTouchListener {
 				millisInFuture = Long.parseLong(text.getText().toString());
 				timer.cancel();
 				text.setText("PAUSED");
-				startActivity(new Intent("com.example.wordfindertwo.PAUSESCREEN"));
+				Intent intent = new Intent(a, PauseScreen.class);
+				startActivity(intent);
 			}
 		});
 		
