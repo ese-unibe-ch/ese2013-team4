@@ -48,7 +48,7 @@ public final class R {
     }
     public static final class menu {
         public static final int dictionary=0x7f070000;
-        public static final int friend=0x7f070001;
+        public static final int friendstable=0x7f070001;
         public static final int game=0x7f070002;
         public static final int main=0x7f070003;
         public static final int main_menu=0x7f070004;
