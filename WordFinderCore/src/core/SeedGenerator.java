@@ -45,26 +45,12 @@ public class SeedGenerator {
 			//STEP 1: select random word from dic
 			String word = dic.get(this.rand.nextInt(dic.size()));
 			
-
-			System.out.print("Trying to place word '" + word + "'");
-			
-			if (words.contains(word)) {
-				System.out.println("... already set");
+			if (words.contains(word))
 				continue;
-			}
 			
-			//STEP 2: iterate through the word
-			if (this.placeWord(matrix, word.toCharArray())) {
+			if (this.placeWord(matrix, word.toCharArray()))
 				words.add(word);
-				System.out.println("... done");
-			} else {
-				System.out.println("... failed");
-			}
 			
-		}
-		System.out.println("Placed " + words.size() + " words:");
-		for (String w : words) {
-			System.out.println(w);
 		}
 		
 		//LAST STEP: fill empty fields with random chars
@@ -77,7 +63,6 @@ public class SeedGenerator {
 		}
 		
 		//convert char matrix to seed string
-		
 		String seed = "";
 		
 		for (int y = 0; y < matrix.length; y++) {

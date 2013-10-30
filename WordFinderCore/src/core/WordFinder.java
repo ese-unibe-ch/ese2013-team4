@@ -28,13 +28,7 @@ public class WordFinder {
 	}
 	
 	public ArrayList<String> getWords(Board board) {
-		//converting board into char matrix
-		char[][] matrix = new char[board.getBoardSize()][board.getBoardSize()];
-		for (int x = 0; x < board.getBoardSize(); x++) {
-			for (int y = 0; y < board.getBoardSize(); y++) {
-				matrix[x][y] = board.getCharAt(x, y);
-			}
-		}
+		char[][] matrix = board.getCharMatrix();
 		//retrieving words
 		ArrayList<String> completeList = new ArrayList<String>();
 		if (board.hasPrimaryDictionary())
@@ -82,7 +76,6 @@ public class WordFinder {
 	}
 	
 	private boolean recursiveWordCheck(ArrayList<Point> lasts, char[][] matrix, String word) {
-		
 		ArrayList<Point> legals = this.bpr.getGoodPoints(word.charAt(0), matrix, lasts);
 		
 		if (word.length() == 1 && legals.size() > 0)
@@ -93,10 +86,9 @@ public class WordFinder {
 		for (int i = 0; i < legals.size(); i++) {
 			ArrayList<Point> pointList = new ArrayList<Point>(lasts);
 			pointList.add(legals.get(i));
-			if (this.recursiveWordCheck(lasts, matrix, newWord))
+			if (this.recursiveWordCheck(pointList, matrix, newWord))
 				return true;
 		}
-		
 		return false;
 	}
 	
