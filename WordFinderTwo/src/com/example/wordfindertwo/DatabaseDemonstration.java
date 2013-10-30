@@ -20,7 +20,7 @@ public class DatabaseDemonstration extends Activity {
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-		setContentView(R.layout.activity_friend);
+		setContentView(R.layout.activity_friendtable);
 		
 db = new DatabaseHelper(getApplicationContext());
 		

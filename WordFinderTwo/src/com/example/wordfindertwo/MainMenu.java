@@ -1,7 +1,7 @@
 package com.example.wordfindertwo;
 
 import com.example.wordfindertwo.Dictionary;
-import com.example.wordfindertwo.Friend;
+import com.example.wordfindertwo.FriendsTable;
 import com.example.wordfindertwo.Game;
 import com.example.wordfindertwo.R;
 import com.example.wordfindertwo.Score;
@@ -37,7 +37,7 @@ public class MainMenu extends Activity {
 	}
 	
 	public void openFriend(View view){
-		Intent intent = new Intent(this, Friend.class);
+		Intent intent = new Intent(this, FriendsTable.class);
 		startActivity(intent);	
 	}
 	

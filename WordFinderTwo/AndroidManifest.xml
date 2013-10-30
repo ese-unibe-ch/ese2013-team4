@@ -31,7 +31,7 @@
             android:label="@string/title_activity_score" >
         </activity>
         <activity
-            android:name="com.example.wordfindertwo.Friend"
+            android:name="com.example.wordfindertwo.FriendsTable"
             android:label="@string/title_activity_friend" >
         </activity>
         <activity

@@ -6,7 +6,7 @@
     <string name="hello_world">Hello world!</string>
     <string name="title_activity_main">MainActivity</string>
     <string name="title_activity_score">Score</string>
-    <string name="title_activity_friend">Friend</string>
+    <string name="title_activity_friend">Friends</string>
     <string name="title_activity_game">Game</string>
     <string name="title_activity_dictionary">Dictionary</string>
     <string name="main_menu_title">MENU</string>
@@ -14,5 +14,9 @@
     <string name="score_buttonText">Scores</string>
     <string name="friend_buttonText">Friends</string>
     <string name="dictionary_buttonText">Dictionarys</string>
-
+    <string name="activity_friends_title">Friends</string>
+    <string name="add_friend">Add Friend</string>
+    <string name="delete_frined">Delete On</string> 
+    
+    
 </resources>
