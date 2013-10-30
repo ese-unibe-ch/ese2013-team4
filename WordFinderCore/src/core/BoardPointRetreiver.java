@@ -32,10 +32,10 @@ public final class BoardPointRetreiver {
 		
 		for (int x = 0; x < matrix.length; x++) {
 			for (int y = 0; y < matrix.length; y++) {
-				if (matrix[x][y] != c)
+				if (matrix[x][y] != c && matrix[x][y] != '\0')
 					continue;
 				Point p = new Point(x, y);
-				if (oldPoints.size() == 0 || (p.isAdjacent(oldPoints.get(oldPoints.size() - 1)) && ! oldPoints.contains(p)))
+				if (oldPoints == null || oldPoints.size() == 0 || (p.isAdjacent(oldPoints.get(oldPoints.size() - 1)) && ! oldPoints.contains(p)))
 					goodPoints.add(p);
 			}
 		}
