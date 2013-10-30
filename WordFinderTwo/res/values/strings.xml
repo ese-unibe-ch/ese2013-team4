@@ -16,7 +16,7 @@
     <string name="dictionary_buttonText">Dictionarys</string>
     <string name="activity_friends_title">Friends</string>
     <string name="add_friend">Add Friend</string>
-    <string name="delete_frined">Delete On</string> 
-    
-    
+    <string name="delete_frined">Delete On</string>
+    <string name="title_activity_pause_screen">PauseScreen</string>
+
 </resources>
