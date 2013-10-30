@@ -18,7 +18,7 @@ import core.SelectionStatus;
  * 
  * @author ESE2013 - Team 4
  */
-public class Board implements BoardDictionarySupportInterface, BoardDrawingInterface, BoardInputInterface, BoardOperationInterface {
+public class Board implements BoardDictionarySupportInterface, BoardDrawingInterface, BoardInputInterface, BoardOperationInterface, BoardScoreInterface {
 
 	private ILetterField[][] matrix;
 	private IDictionary primary;
@@ -146,5 +146,35 @@ public class Board implements BoardDictionarySupportInterface, BoardDrawingInter
 		}
 		return matrix;
 	}
+	
+	/* IMPLEMENTATION OF BoardScoreInterface */
+	
+	@Override
+	public int getBoardScore() {
+		int sum = 0;
+		for (ArrayList<Point> sequence : this.foundWords) {
+			for (Point point : sequence) {
+				sum += this.getLetterAt(point.getX(), point.getY()).getValue();
+			}
+		}
+		return sum;
+	}
+	
+	@Override
+	public int getFoundWordCount() {
+		return this.foundWords.size();
+	}
+	
+	@Override
+	public int getTotalWordCount() {
+		return this.getWordsInBoard().size();
+	}
+	
+	@Override
+	public boolean isCompleted() {
+		return this.getTotalWordCount() == getFoundWordCount();
+	}
+	
+	/* END OF INTERFACE IMPLEMENTATIONS */
 	
 }
