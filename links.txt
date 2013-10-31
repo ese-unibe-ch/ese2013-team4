@@ -1,4 +1,0 @@
-LINKS:
-http://code.google.com/p/sadpandapuzzles/
-http://www.codeproject.com/Articles/571299/Structuring-a-Word-Search-Generator
-http://www.kirupa.com/forum/showthread.php?242750-Java-Word-Search-Puzzle

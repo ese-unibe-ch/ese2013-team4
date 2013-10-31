@@ -1,5 +1,7 @@
 package core;
 
+import core.exceptions.InvalidLetterException;
+
 public enum Letter {
 	A (1, 'A'),
 	B (3, 'B'),
@@ -48,13 +50,13 @@ public enum Letter {
 		return new Letter[]{A, B, C, D, E, F, G, H, I, J, K, L, M, N, O, P, Q, R, S, T, U, V, W, X, Y, Z};
 	}
 	
-	public static Letter getLetter(char character) {
+	public static Letter getLetter(char character) throws InvalidLetterException {
 		character = Character.toUpperCase(character);
 		Letter[] list = getLetterList();
 		for (Letter letter : list) {
 			if (letter.getChar() == character)
 				return letter;
 		}
-		return null;
+		throw new InvalidLetterException();
 	}
 }
