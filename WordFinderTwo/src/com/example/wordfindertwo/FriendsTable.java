@@ -10,7 +10,9 @@ import android.view.Menu;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
 import android.widget.ListView;
+import android.widget.RadioButton;
 
 
 public class FriendsTable extends ListActivity {
@@ -18,6 +20,8 @@ public class FriendsTable extends ListActivity {
 	private ListView friendsListView;  
 	private ArrayAdapter<String> listAdapter;
 
+	RadioButton deleteOn;
+	Button addFriend;
 	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -25,25 +29,6 @@ public class FriendsTable extends ListActivity {
 		setContentView(R.layout.activity_friendtable);
 		
 		
-		
-		
-	    
-	    String[] friendsArray = new String[0];
-	    ArrayList<String> friendsList = new ArrayList<String>();  
-	    friendsList.addAll( Arrays.asList(friendsArray) );
-	    
-	    // Create ArrayAdapter using the friends list.  
-	    listAdapter = new ArrayAdapter<String>(this, R.layout.friend_list_row_layout, friendsList);  
-	    
-	    listAdapter.add("DomenicoTest");
-	    
-	    // Find the ListView resource.   
-	    friendsListView = (ListView) findViewById( R.id.friendsListView ); 
-	    // Set the ArrayAdapter as the ListView's adapter.  
-	    friendsListView.setAdapter( listAdapter );  
-
-
-	
 	}
 	
 	@Override
@@ -51,6 +36,17 @@ public class FriendsTable extends ListActivity {
 		// Inflate the menu; this adds items to the action bar if it is present.
 		getMenuInflater().inflate(R.menu.friendstable, menu);
 		return true;
+		
+		
 	}
 
+	public void addFriend(View view){
+		Intent intent = new Intent(this, AddFriend.class);
+		startActivity(intent);
+	}
+
+	public ArrayList<String> getFriendList(){
+		return null;
+		
+	}
 }

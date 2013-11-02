@@ -9,45 +9,45 @@
     tools:context=".FriendsTable" >
 
     <TextView
-        android:id="@+id/textView1"
+        android:id="@+id/friendsTitleTextView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentLeft="true"
         android:layout_alignParentTop="true"
         android:layout_marginLeft="20dp"
-        android:text="@string/activity_friends_title"
+        android:text="@string/title_activity_friend"
         android:textAppearance="?android:attr/textAppearanceLarge" />
-
-    <Button
-        android:id="@+id/button1"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignLeft="@+id/textView1"
-        android:layout_alignParentBottom="true"
-        android:layout_marginBottom="29dp"
-        android:text="@string/add_friend" 
-		android:onClick="addFriend"/>
-    
-
-    <RadioButton
-        android:id="@+id/deleteFriend"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignBaseline="@+id/button1"
-        android:layout_alignBottom="@+id/button1"
-        android:layout_marginLeft="26dp"
-        android:layout_toRightOf="@+id/button1"
-        android:text="@string/delete_frined" 
-        android:onClick="deleteFriend"/>
     
 
     <ListView
         android:id="@+id/friendsListView"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_above="@+id/button1"
-        android:layout_below="@+id/textView1" >
+        android:layout_above="@+id/addFriendButton"
+        android:layout_below="@+id/friendsTitleTextView" >
 
+       
     </ListView>
+
+    <RadioButton
+        android:id="@+id/deleteFriend"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_marginBottom="23dp"
+        android:layout_marginLeft="27dp"
+        android:layout_toRightOf="@+id/addFriendButton"
+        android:onClick="deleteFriend"
+        android:text="@string/delete_frinedRadioButton" />
+
+    <Button
+        android:id="@+id/addFriendButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@+id/deleteFriend"
+        android:layout_alignBottom="@+id/deleteFriend"
+        android:layout_alignLeft="@+id/friendsTitleTextView"
+        android:onClick="addFriend"
+        android:text="@string/add_friendButton" />
     
 </RelativeLayout>

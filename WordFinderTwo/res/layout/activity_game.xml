@@ -227,8 +227,8 @@
         android:id="@+id/pausetimer"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignBaseline="@+id/button1"
-        android:layout_alignBottom="@+id/button1"
+        android:layout_alignBaseline="@+id/searchFriendButton"
+        android:layout_alignBottom="@+id/searchFriendButton"
         android:layout_alignRight="@+id/linearLayout1"
         android:text="Pause"
         />

@@ -32,7 +32,7 @@ public class Game extends Activity implements OnTouchListener {
 			
 			@Override
 			public void onClick(View v) {
-				// TODO Auto-generated method stub
+
 				timer = new CountDownTimer(START_TIME, 1000){
 					// displays a new time every tick
 					public void onTick(long millisUntilFinished) {
@@ -77,7 +77,6 @@ public class Game extends Activity implements OnTouchListener {
 
 	@Override
 	public boolean onTouch(View arg0, MotionEvent me) {
-		// TODO Auto-generated method stub
 		try {
 			Thread.sleep(50);
 		} catch (InterruptedException e) {

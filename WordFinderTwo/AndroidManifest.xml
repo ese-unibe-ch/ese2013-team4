@@ -34,7 +34,7 @@
             android:name="com.example.wordfindertwo.FriendsTable"
             android:label="@string/title_activity_friend" >
             <intent-filter>
-                <action android:name="android.intente.action.MAINMENU" />
+                <action android:name="android.intente.action.FRIENDSTABLE" />
 
                 <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
@@ -51,6 +51,8 @@
             android:name="com.example.wordfindertwo.PauseScreen"
             android:label="@string/title_activity_pause_screen" >
         </activity>
+        
+        
     </application>
 
 </manifest>
