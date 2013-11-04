@@ -25,27 +25,34 @@ public final class R {
         public static final int ic_launcher=0x7f020000;
     }
     public static final class id {
-        public static final int Dictionary=0x7f080012;
-        public static final int Friend=0x7f080011;
-        public static final int PlayGame=0x7f08000f;
-        public static final int Score=0x7f080010;
-        public static final int action_settings=0x7f080015;
+        public static final int Dictionary=0x7f080019;
+        public static final int Friend=0x7f080018;
+        public static final int PlayGame=0x7f080016;
+        public static final int Score=0x7f080017;
+        public static final int action_settings=0x7f08001c;
         public static final int addFriendButton=0x7f080007;
-        public static final int currentscore=0x7f080013;
+        public static final int currentscore=0x7f08001a;
         public static final int deleteFriend=0x7f080008;
-        public static final int friendListRawLayout=0x7f080014;
+        public static final int friendListRawLayout=0x7f08001b;
         public static final int friendsListView=0x7f080006;
         public static final int friendsTitleTextView=0x7f080005;
-        public static final int linearLayout1=0x7f080009;
+        public static final int gamespace=0x7f08000d;
         public static final int pausetimer=0x7f08000c;
-        public static final int searchFriendButton=0x7f08000d;
+        public static final int row1=0x7f08000e;
+        public static final int row2=0x7f080010;
+        public static final int row3=0x7f080011;
+        public static final int row4=0x7f080012;
+        public static final int row5=0x7f080013;
+        public static final int row6=0x7f080014;
         public static final int searchFriendByMailButton=0x7f080004;
         public static final int searchFriendByMailEditText=0x7f080003;
         public static final int searchFriendResultTextView=0x7f080002;
         public static final int searchFriendbyMailButton=0x7f080000;
-        public static final int starttimer=0x7f08000b;
-        public static final int textView2=0x7f08000e;
-        public static final int timer=0x7f08000a;
+        public static final int startTimerPause=0x7f080009;
+        public static final int starttimer=0x7f08000a;
+        public static final int testButton=0x7f08000f;
+        public static final int textView2=0x7f080015;
+        public static final int timer=0x7f08000b;
         public static final int titleTextSearchFriendTextView=0x7f080001;
     }
     public static final class layout {

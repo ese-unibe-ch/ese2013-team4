@@ -1,71 +1,89 @@
 package com.example.wordfindertwo;
 
 import com.example.wordfindertwo.R;
+import com.example.wordfindertwo.customs.CustomOnTouchListener;
 
 import android.os.Bundle;
 import android.os.CountDownTimer;
 import android.app.Activity;
+import android.content.Context;
 import android.content.Intent;
+import android.graphics.Canvas;
 import android.view.Menu;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.View.OnTouchListener;
+import android.view.Window;
+import android.webkit.WebView.FindListener;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Button;
+import java.util.*;
 
-public class Game extends Activity implements OnTouchListener {
+public class Game extends Activity {
+	
+	// -------------timer Variables------------------
 	private final long START_TIME = 120000;
 	private long millisInFuture;
-	private TextView text;
+	private TextView timerText;
 	private CountDownTimer timer;
 	private Activity a = this;
+	// -----------------------------------------------
+
+	LinearLayout gameLayout;
+	static ArrayList<Character> word;
+	
+	
+	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_game);
 
-		Button startB = (Button) findViewById(R.id.starttimer);
-		Button pauseB = (Button) findViewById(R.id.pausetimer);
-		//START Button
-		//------------------------------------------------------------------
-		startB.setOnClickListener(new View.OnClickListener() {
-			
+		Button bStart = (Button) findViewById(R.id.starttimer);
+		Button bPause = (Button) findViewById(R.id.pausetimer);
+
+		timer = new CountDownTimer(START_TIME, 1000) {
+			// displays a new time every tick
+			public void onTick(long millisUntilFinished) {
+				timerText = (TextView) findViewById(R.id.timer);
+				timerText.setText("" + (millisUntilFinished / 1000));
+			}
+
+			public void onFinish() {
+				TextView text = (TextView) findViewById(R.id.timer);
+				text.setText("Time's up!");
+			}
+		};
+
+		// START Button
+		bStart.setOnClickListener(new View.OnClickListener() {
+
 			@Override
 			public void onClick(View v) {
+				// TODO Auto-generated method stub
 
-				timer = new CountDownTimer(START_TIME, 1000){
-					// displays a new time every tick
-					public void onTick(long millisUntilFinished) {
-						text = (TextView) findViewById(R.id.timer);
-						text.setText(""+(millisUntilFinished / 1000));
-					}
-
-					public void onFinish() {
-						TextView text = (TextView) findViewById(R.id.timer);
-						text.setText("Time's up!");
-					}
-				};
-				
 				timer.start();
 			}
 		});
-		//--------------------------------------------------------------------
-		
-		pauseB.setOnClickListener(new View.OnClickListener() {
-			
+
+
+		// Button Pause
+		bPause.setOnClickListener(new View.OnClickListener() {
+
 			@Override
 			public void onClick(View v) {
-				millisInFuture = Long.parseLong(text.getText().toString());
+				millisInFuture = Long.parseLong(timerText.getText().toString());
 				timer.cancel();
-				text.setText("PAUSED");
+				timerText.setText("PAUSED");
 				Intent intent = new Intent(a, PauseScreen.class);
 				startActivity(intent);
 			}
 		});
+
 		
-		
-		
-		
+		gameLayout = (LinearLayout) findViewById(R.id.gamespace);
+		gameLayout.setOnTouchListener(new CustomOnTouchListener());
 	}
 
 	@Override
@@ -75,31 +93,9 @@ public class Game extends Activity implements OnTouchListener {
 		return true;
 	}
 
-	@Override
-	public boolean onTouch(View arg0, MotionEvent me) {
-		try {
-			Thread.sleep(50);
-		} catch (InterruptedException e) {
-			e.printStackTrace();
-		}
-
-		switch (me.getAction()) {
-		case MotionEvent.ACTION_DOWN:
-
-			break;
-		case MotionEvent.ACTION_UP:
-
-			break;
-		case MotionEvent.ACTION_MOVE:
-
-			break;
-		}
-		return true;
-	}
-
 	public void startTimer() {
 		// countdown atm 2min displayed in sec
-		CountDownTimer timer = new CountDownTimer(120000, 1000){
+		CountDownTimer timer = new CountDownTimer(120000, 1000) {
 			// displays a new time every tick
 			public void onTick(long millisUntilFinished) {
 				TextView text = (TextView) findViewById(R.id.timer);
@@ -112,8 +108,12 @@ public class Game extends Activity implements OnTouchListener {
 				text.setText("Time's up!");
 			}
 		};
-		
+
 		timer.start();
 	}
-
+	
+	//adds char to arraylist "word" 
+	public void addLetter(int index, char c){
+		word.add(index, c);
+	}
 }
