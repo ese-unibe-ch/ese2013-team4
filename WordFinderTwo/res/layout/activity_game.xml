@@ -20,7 +20,7 @@
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="Start" />
+            android:text="@string/start" />
 
         <TextView
             android:id="@+id/timer"
@@ -34,7 +34,7 @@
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="Pause" />
+            android:text="@string/pause" />
     </LinearLayout>
 
     <LinearLayout
@@ -53,28 +53,33 @@
             android:layout_height="wrap_content"
             android:orientation="horizontal" >
 
-            <Button
-                android:id="@+id/testButton"
+            <com.example.wordfindertwo.customs.CustomButton
+                android:id="@+id/custombutton0"
                 android:layout_width="45dp"
                 android:layout_height="45dp" />
 
-            <Button
+            <com.example.wordfindertwo.customs.CustomButton
+                android:id="@+id/custombutton1"
                 android:layout_width="45dp"
                 android:layout_height="45dp" />
 
-            <Button
+            <com.example.wordfindertwo.customs.CustomButton
+                android:id="@+id/custombutton2"
                 android:layout_width="45dp"
                 android:layout_height="45dp" />
 
-            <Button
+            <com.example.wordfindertwo.customs.CustomButton
+                android:id="@+id/custombutton3"
                 android:layout_width="45dp"
                 android:layout_height="45dp" />
 
-            <Button
+            <com.example.wordfindertwo.customs.CustomButton
+                android:id="@+id/custombutton4"
                 android:layout_width="45dp"
                 android:layout_height="45dp" />
 
-            <Button
+            <com.example.wordfindertwo.customs.CustomButton
+                android:id="@+id/custombutton5"
                 android:layout_width="45dp"
                 android:layout_height="45dp" />
         </LinearLayout>
@@ -85,27 +90,33 @@
             android:layout_height="wrap_content"
             android:orientation="horizontal" >
 
-            <Button
+            <com.example.wordfindertwo.customs.CustomButton
+                android:id="@+id/custombutton6"
                 android:layout_width="45dp"
                 android:layout_height="45dp" />
 
-            <Button
+            <com.example.wordfindertwo.customs.CustomButton
+                android:id="@+id/custombutton7"
                 android:layout_width="45dp"
                 android:layout_height="45dp" />
 
-            <Button
+            <com.example.wordfindertwo.customs.CustomButton
+                android:id="@+id/custombutton8"
                 android:layout_width="45dp"
                 android:layout_height="45dp" />
 
-            <Button
+            <com.example.wordfindertwo.customs.CustomButton
+                android:id="@+id/custombutton9"
                 android:layout_width="45dp"
                 android:layout_height="45dp" />
 
-            <Button
+            <com.example.wordfindertwo.customs.CustomButton
+                android:id="@+id/custombutton10"
                 android:layout_width="45dp"
                 android:layout_height="45dp" />
 
-            <Button
+            <com.example.wordfindertwo.customs.CustomButton
+                android:id="@+id/custombutton11"
                 android:layout_width="45dp"
                 android:layout_height="45dp" />
         </LinearLayout>
@@ -116,29 +127,33 @@
             android:layout_height="wrap_content"
             android:orientation="horizontal" >
 
-            <Button
+            <com.example.wordfindertwo.customs.CustomButton
+                android:id="@+id/custombutton12"
                 android:layout_width="45dp"
                 android:layout_height="45dp" />
 
-            <Button
+            <com.example.wordfindertwo.customs.CustomButton
+                android:id="@+id/custombutton13"
                 android:layout_width="45dp"
                 android:layout_height="45dp" />
 
-            <Button
+            <com.example.wordfindertwo.customs.CustomButton
+                android:id="@+id/custombutton14"
                 android:layout_width="45dp"
-                android:layout_height="45dp"
-                android:layout_marginLeft="0dp"
-                android:layout_marginRight="0dp" />
+                android:layout_height="45dp"/>
 
-            <Button
-                android:layout_width="45dp"
-                android:layout_height="45dp" />
-
-            <Button
+            <com.example.wordfindertwo.customs.CustomButton
+                android:id="@+id/custombutton15"
                 android:layout_width="45dp"
                 android:layout_height="45dp" />
 
-            <Button
+            <com.example.wordfindertwo.customs.CustomButton
+                android:id="@+id/custombutton16"
+                android:layout_width="45dp"
+                android:layout_height="45dp" />
+
+            <com.example.wordfindertwo.customs.CustomButton
+                android:id="@+id/custombutton17"
                 android:layout_width="45dp"
                 android:layout_height="45dp" />
         </LinearLayout>
@@ -149,29 +164,33 @@
             android:layout_height="wrap_content"
             android:orientation="horizontal" >
 
-            <Button
+            <com.example.wordfindertwo.customs.CustomButton
+                android:id="@+id/custombutton18"
                 android:layout_width="45dp"
                 android:layout_height="45dp" />
 
-            <Button
+            <com.example.wordfindertwo.customs.CustomButton
+                android:id="@+id/custombutton19"
                 android:layout_width="45dp"
                 android:layout_height="45dp" />
 
-            <Button
+            <com.example.wordfindertwo.customs.CustomButton
+                android:id="@+id/custombutton20"
                 android:layout_width="45dp"
-                android:layout_height="45dp"
-                android:layout_marginLeft="0dp"
-                android:layout_marginRight="0dp" />
+                android:layout_height="45dp"/>
 
-            <Button
-                android:layout_width="45dp"
-                android:layout_height="45dp" />
-
-            <Button
+            <com.example.wordfindertwo.customs.CustomButton
+                android:id="@+id/custombutton21"
                 android:layout_width="45dp"
                 android:layout_height="45dp" />
 
-            <Button
+            <com.example.wordfindertwo.customs.CustomButton
+                android:id="@+id/custombutton22"
+                android:layout_width="45dp"
+                android:layout_height="45dp" />
+
+            <com.example.wordfindertwo.customs.CustomButton
+                android:id="@+id/custombutton23"
                 android:layout_width="45dp"
                 android:layout_height="45dp" />
         </LinearLayout>
@@ -182,29 +201,33 @@
             android:layout_height="wrap_content"
             android:orientation="horizontal" >
 
-            <Button
+            <com.example.wordfindertwo.customs.CustomButton
+                android:id="@+id/custombutton24"
                 android:layout_width="45dp"
                 android:layout_height="45dp" />
 
-            <Button
+            <com.example.wordfindertwo.customs.CustomButton
+                android:id="@+id/custombutton25"
                 android:layout_width="45dp"
                 android:layout_height="45dp" />
 
-            <Button
-                android:layout_width="45dp"
-                android:layout_height="45dp"
-                android:layout_marginLeft="0dp"
-                android:layout_marginRight="0dp" />
-
-            <Button
+            <com.example.wordfindertwo.customs.CustomButton
+                android:id="@+id/custombutton26"
                 android:layout_width="45dp"
                 android:layout_height="45dp" />
 
-            <Button
+            <com.example.wordfindertwo.customs.CustomButton
+                android:id="@+id/custombutton27"
                 android:layout_width="45dp"
                 android:layout_height="45dp" />
 
-            <Button
+            <com.example.wordfindertwo.customs.CustomButton
+                android:id="@+id/custombutton28"
+                android:layout_width="45dp"
+                android:layout_height="45dp" />
+
+            <com.example.wordfindertwo.customs.CustomButton
+                android:id="@+id/custombutton29"
                 android:layout_width="45dp"
                 android:layout_height="45dp" />
         </LinearLayout>
@@ -215,29 +238,34 @@
             android:layout_height="wrap_content"
             android:orientation="horizontal" >
 
-            <Button
+            <com.example.wordfindertwo.customs.CustomButton
+                android:id="@+id/custombutton30"
                 android:layout_width="45dp"
                 android:layout_height="45dp" />
 
-            <Button
+            <com.example.wordfindertwo.customs.CustomButton
+                android:id="@+id/custombutton31"
                 android:layout_width="45dp"
                 android:layout_height="45dp" />
 
-            <Button
+            <com.example.wordfindertwo.customs.CustomButton
+                android:id="@+id/custombutton32"
                 android:layout_width="45dp"
                 android:layout_height="45dp"
-                android:layout_marginLeft="0dp"
-                android:layout_marginRight="0dp" />
+/>
 
-            <Button
+            <com.example.wordfindertwo.customs.CustomButton
+                android:id="@+id/custombutton33"
                 android:layout_width="45dp"
                 android:layout_height="45dp" />
 
-            <Button
+            <com.example.wordfindertwo.customs.CustomButton
+                android:id="@+id/custombutton34"
                 android:layout_width="45dp"
                 android:layout_height="45dp" />
 
-            <Button
+            <com.example.wordfindertwo.customs.CustomButton
+                android:id="@+id/custombutton35"
                 android:layout_width="45dp"
                 android:layout_height="45dp" />
         </LinearLayout>

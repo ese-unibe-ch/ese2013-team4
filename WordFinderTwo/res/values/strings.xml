@@ -23,6 +23,8 @@
 	<string name="addFoundFriendByMailButton">Add Friend</string>	
 	<string name="searchFriendByMailText">Type in a Friends E-Mail:</string>
 	<string name="foundReasultText">Friend found in Database</string>
+	<string name="start">START</string>
+	<string name="pause">PAUSE</string>
 
 	
 	

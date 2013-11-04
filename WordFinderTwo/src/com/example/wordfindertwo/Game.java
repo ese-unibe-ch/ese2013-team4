@@ -2,7 +2,6 @@ package com.example.wordfindertwo;
 
 import com.example.wordfindertwo.R;
 import com.example.wordfindertwo.customs.CustomOnTouchListener;
-
 import android.os.Bundle;
 import android.os.CountDownTimer;
 import android.app.Activity;
@@ -61,14 +60,12 @@ public class Game extends Activity {
 
 			@Override
 			public void onClick(View v) {
-				// TODO Auto-generated method stub
-
 				timer.start();
 			}
 		});
 
 
-		// Button Pause
+		// PAUSE Button
 		bPause.setOnClickListener(new View.OnClickListener() {
 
 			@Override
@@ -84,6 +81,12 @@ public class Game extends Activity {
 		
 		gameLayout = (LinearLayout) findViewById(R.id.gamespace);
 		gameLayout.setOnTouchListener(new CustomOnTouchListener());
+		
+		//init points of the CustomButtons
+		for (int i = 0; i<36; i++){
+			String a = "R.id.custombutton"+i;
+			findViewById(contextOf(a));
+		}
 	}
 
 	@Override
