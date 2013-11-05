@@ -11,7 +11,7 @@ import com.example.wordfindertwo.R;
 import com.example.wordfindertwo.R.layout;
 import com.example.wordfindertwo.R.menu;
 import com.example.wordfindertwo.data.DatabaseHelper;
-import com.example.wordfindertwo.data.IDictionary;
+import com.example.wordfindertwo.core.IDictionary;
 import com.example.wordfindertwo.data.WordGameDictionary;
 
 public class DatabaseDemonstration extends Activity {

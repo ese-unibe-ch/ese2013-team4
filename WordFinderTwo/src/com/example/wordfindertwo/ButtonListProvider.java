@@ -68,4 +68,13 @@ public class ButtonListProvider {
 	public CustomButton getButtonAtIndex(int index) {
 		return this.buttonList.get(index);
 	}
+	
+	public CustomButton getButtonUnder(float x, float y) {
+		for (CustomButton button : this.buttonList) {
+			if (button.isTouched(x, y))
+				return button;
+		}
+		return null;
+	}
+	
 }

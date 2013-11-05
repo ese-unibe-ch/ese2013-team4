@@ -134,7 +134,7 @@ public class Board implements BoardDictionarySupportInterface, BoardDrawingInter
 		}
 		//STEP 4: check string
 		if (this.wordsInBoard.contains(word)) {
-			this.foundWords.add(sequence);
+			this.foundWords.add(new ArrayList<Point>(sequence));
 			return SelectionStatus.SelectionGood;
 		}
 		return SelectionStatus.SelectionBad;

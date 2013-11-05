@@ -2,8 +2,10 @@ package com.example.wordfindertwo.customs;
 
 import java.util.ArrayList;
 
+import com.example.wordfindertwo.ButtonListProvider;
 import com.example.wordfindertwo.R;
 import com.example.wordfindertwo.core.Point;
+import com.example.wordfindertwo.core.SelectionStatus;
 import com.example.wordfindertwo.core.board.Board;
 
 import android.app.Activity;
@@ -30,33 +32,33 @@ public class CustomOnTouchListener implements OnTouchListener {
 		LinearLayout v = (LinearLayout) view;
 		CustomButton child;
 
-		switch (me.getAction()) {
-		case MotionEvent.ACTION_DOWN:
+		int event = me.getAction();
+
+		if (event == MotionEvent.ACTION_DOWN || event == MotionEvent.ACTION_MOVE || event == MotionEvent.ACTION_UP) {
+
+			CustomButton button = ButtonListProvider.getInstance().getButtonUnder(me.getRawX(), me.getRawY());
 			
-			if (tempList.get(tempList.size()-1) != child.getPoint()) {
-				
+			if (!tempList.get(tempList.size() - 1).equals(button)) {
+				tempList.add(button.getPoint());
 			}
-			System.out.println("down");
-			break;
 			
-		case MotionEvent.ACTION_MOVE:
-			child = (CustomButton) v.getChildAt(0);
-			if (tempList.get(tempList.lastIndexOf(Point.class)) != child
-					.getPoint()) {
-				tempList.add(child.getPoint());
-			}
-			System.out.println("move");
-			break;
-		// Finger lifts from screen	
-		case MotionEvent.ACTION_UP:
-			child = (CustomButton) v.getChildAt(0);
-			if (tempList.get(tempList.lastIndexOf(Point.class)) != child
-					.getPoint()) {
-				tempList.add(child.getPoint());
-			}
+			System.out.println("down / move / up");
+
+		}
+		
+		if (event == MotionEvent.ACTION_UP) {
+		
 			System.out.println("up");
-			list = tempList;
-			switch(board.submit(list)){
+			
+			list.clear();
+			list.addAll(tempList);
+
+			tempList.clear();
+			
+			SelectionStatus result = board.submit(list);
+			
+			//EVALUATE RESULT
+			switch (result) {
 			case SelectionGood:
 				break;
 			case SelectionOld:
@@ -66,13 +68,12 @@ public class CustomOnTouchListener implements OnTouchListener {
 			case SelectionInvalid:
 				break;
 			}
-			tempList.clear();
 			
-			score = (TextView) game.findViewById(R.id.Score); 
-			score.setText(""+board.getBoardScore());
-			break;
-		}
 
+			score = (TextView) game.findViewById(R.id.Score);
+			score.setText("" + board.getBoardScore());
+		}
+		// END
 		return true;
 	}
 

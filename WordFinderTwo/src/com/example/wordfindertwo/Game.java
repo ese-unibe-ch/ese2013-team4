@@ -58,13 +58,19 @@ public class Game extends Activity {
 		board = BoardFactory.createRandomBoard(null, new TestDictionary(), 6);
 		}catch(Exception e){
 			Log.e("game", e.getMessage());
+			System.exit(0);
 		}
 		
 		Button bStart = (Button) findViewById(R.id.starttimer);
 		Button bPause = (Button) findViewById(R.id.pausetimer);
 		
 		// fill custombuttons with chars
-		//TODO board.getCharAt(x,y);
+		// TODO board.getCharAt(x,y);
+		
+		for (int i = 0; i < 36; i++) {
+			ButtonListProvider.getInstance().getButtonAtIndex(i).setText("" + board.getCharAt(i / 6, i % 6));
+		}
+		
 		//------------------------------
 		
 		timer = new CountDownTimer(START_TIME, 1000) {
