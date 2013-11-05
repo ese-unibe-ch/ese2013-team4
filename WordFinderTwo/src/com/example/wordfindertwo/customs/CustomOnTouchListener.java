@@ -25,6 +25,7 @@ public class CustomOnTouchListener implements OnTouchListener {
 	public CustomOnTouchListener(Board board, Activity a) {
 		this.board = board;
 		game = a;
+		this.tempList = new ArrayList<Point>();
 	}
 
 	@Override
