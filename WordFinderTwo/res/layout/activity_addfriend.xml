@@ -55,5 +55,16 @@
         android:layout_alignLeft="@+id/titleTextSearchFriendTextView"
         android:layout_marginBottom="23dp"
         android:text="@string/searchFriendByMailButton" />
+
+    <EditText
+        android:id="@+id/foundFriendEmailEditText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/searchFriendbyMailButton"
+        android:layout_below="@+id/searchFriendResultTextView"
+        android:layout_marginTop="35dp"
+        android:ems="10"
+        android:inputType="textEmailAddress"
+        android:text="@string/notJetSearchedForFriendText" />
     
 </RelativeLayout>

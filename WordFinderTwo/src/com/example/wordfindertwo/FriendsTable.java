@@ -17,17 +17,22 @@ import android.widget.RadioButton;
 
 public class FriendsTable extends ListActivity {
 
-	private ListView friendsListView;  
-	private ArrayAdapter<String> listAdapter;
 
 	RadioButton deleteOn;
 	Button addFriend;
+	
+	ListView friendsList;
 	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_friendtable);
 		
+		deleteOn = (RadioButton) findViewById(R.id.deleteFriend);
+		addFriend = (Button) findViewById(R.id.addFriendButton);
+		
+		
+		friendsList = (ListView) findViewById(R.id.friendsListListView);
 		
 	}
 	
