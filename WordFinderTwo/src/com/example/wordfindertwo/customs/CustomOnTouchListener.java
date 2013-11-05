@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.View.OnTouchListener;
+import android.widget.LinearLayout;
 
 public class CustomOnTouchListener implements OnTouchListener{
 	
@@ -12,17 +13,17 @@ public class CustomOnTouchListener implements OnTouchListener{
 
 	@Override
 	public boolean onTouch(View view, MotionEvent me) {
-		CustomButton v = (CustomButton) view;
+		LinearLayout v = (LinearLayout) view;
 		
 		switch(me.getAction()){
 		case MotionEvent.ACTION_DOWN:
-			v.getText();
+			v.getChildAt(0);
 			break;
 		case MotionEvent.ACTION_MOVE:
-			v.getText();
+			v.getChildAt(0);
 			break;
 		case MotionEvent.ACTION_UP:
-			v.getText();
+			v.getChildAt(0);
 			break;
 		}
 		

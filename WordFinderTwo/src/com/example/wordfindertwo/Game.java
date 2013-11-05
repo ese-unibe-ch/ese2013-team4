@@ -2,6 +2,7 @@ package com.example.wordfindertwo;
 
 import com.example.wordfindertwo.R;
 import com.example.wordfindertwo.customs.CustomOnTouchListener;
+
 import android.os.Bundle;
 import android.os.CountDownTimer;
 import android.app.Activity;
@@ -29,7 +30,13 @@ public class Game extends Activity {
 	private Activity a = this;
 	// -----------------------------------------------
 
-	LinearLayout gameLayout;
+	LinearLayout row1;
+	LinearLayout row2;
+	LinearLayout row3;
+	LinearLayout row4;
+	LinearLayout row5;
+	LinearLayout row6;
+	
 	static ArrayList<Character> word;
 	
 	
@@ -42,6 +49,7 @@ public class Game extends Activity {
 		Button bStart = (Button) findViewById(R.id.starttimer);
 		Button bPause = (Button) findViewById(R.id.pausetimer);
 
+		
 		timer = new CountDownTimer(START_TIME, 1000) {
 			// displays a new time every tick
 			public void onTick(long millisUntilFinished) {
@@ -60,12 +68,14 @@ public class Game extends Activity {
 
 			@Override
 			public void onClick(View v) {
+				// TODO Auto-generated method stub
+
 				timer.start();
 			}
 		});
 
 
-		// PAUSE Button
+		// Button Pause
 		bPause.setOnClickListener(new View.OnClickListener() {
 
 			@Override
@@ -79,14 +89,18 @@ public class Game extends Activity {
 		});
 
 		
-		gameLayout = (LinearLayout) findViewById(R.id.gamespace);
-		gameLayout.setOnTouchListener(new CustomOnTouchListener());
-		
-		//init points of the CustomButtons
-		for (int i = 0; i<36; i++){
-			String a = "R.id.custombutton"+i;
-			findViewById(contextOf(a));
-		}
+		row1 = (LinearLayout) findViewById(R.id.row1);
+		row1.setOnTouchListener(new CustomOnTouchListener());
+		row2 = (LinearLayout) findViewById(R.id.row2);
+		row2.setOnTouchListener(new CustomOnTouchListener());
+		row3 = (LinearLayout) findViewById(R.id.row3);
+		row3.setOnTouchListener(new CustomOnTouchListener());
+		row4 = (LinearLayout) findViewById(R.id.row4);
+		row4.setOnTouchListener(new CustomOnTouchListener());
+		row5 = (LinearLayout) findViewById(R.id.row5);
+		row5.setOnTouchListener(new CustomOnTouchListener());
+		row6 = (LinearLayout) findViewById(R.id.row6);
+		row6.setOnTouchListener(new CustomOnTouchListener());
 	}
 
 	@Override
