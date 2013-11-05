@@ -1,22 +1,22 @@
 package com.example.wordfindertwo;
 
-import java.util.ArrayList;
-
-import android.app.Activity;
-import android.content.Intent;
-import android.os.Bundle;
-import android.os.CountDownTimer;
-import android.util.Log;
-import android.view.Menu;
-import android.view.View;
-import android.widget.Button;
-import android.widget.LinearLayout;
-import android.widget.TextView;
-
-import com.example.wordfindertwo.core.BoardFactory;
+import com.example.wordfindertwo.R;
 import com.example.wordfindertwo.core.board.Board;
 import com.example.wordfindertwo.core.test.TestDictionary;
+import com.example.wordfindertwo.core.BoardFactory;
 import com.example.wordfindertwo.customs.CustomOnTouchListener;
+import android.util.Log;
+import android.os.Bundle;
+import android.os.CountDownTimer;
+import android.app.Activity;
+import android.content.Intent;
+import android.view.Menu;
+import android.view.View;
+import android.widget.LinearLayout;
+import android.widget.TextView;
+import android.widget.Button;
+
+import java.util.*;
 
 public class Game extends Activity {
 	
@@ -29,16 +29,7 @@ public class Game extends Activity {
 	// -----------------------------------------------
 
 	private Board board;
-	
-	LinearLayout row1;
-	LinearLayout row2;
-	LinearLayout row3;
-	LinearLayout row4;
-	LinearLayout row5;
-	LinearLayout row6;
-	
 	LinearLayout layout; 
-	
 	static ArrayList<Character> word;
 	
 	
@@ -46,9 +37,6 @@ public class Game extends Activity {
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-		
-		
-		
 		setContentView(R.layout.activity_game);
 		try{
 		board = BoardFactory.createRandomBoard(null, new TestDictionary(), 6);
