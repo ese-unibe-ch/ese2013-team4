@@ -4,6 +4,7 @@ import com.example.wordfindertwo.R;
 import com.example.wordfindertwo.core.board.Board;
 import com.example.wordfindertwo.core.test.TestDictionary;
 import com.example.wordfindertwo.core.BoardFactory;
+import com.example.wordfindertwo.customs.CustomButton;
 import com.example.wordfindertwo.customs.CustomOnTouchListener;
 import android.util.Log;
 import android.os.Bundle;
@@ -55,7 +56,11 @@ public class Game extends Activity {
 		// TODO board.getCharAt(x,y);
 		
 		for (int i = 0; i < 36; i++) {
-			ButtonListProvider.getInstance().getButtonAtIndex(i).setText("" + board.getCharAt(i / 6, i % 6));
+			CustomButton btn = ButtonListProvider.getInstance().getButtonAtIndex(i);
+			if (btn == null) {
+				int x = 1 / 0;
+			}
+			btn.setText("" + board.getCharAt(i / 6, i % 6));
 		}
 		
 		//------------------------------
