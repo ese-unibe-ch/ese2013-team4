@@ -55,11 +55,12 @@ public class Game extends Activity {
 		// fill custombuttons with chars
 		// TODO board.getCharAt(x,y);
 		
+		if (ButtonListProvider.getInstance().getButtonAtIndex(0) == null) {
+			int y = 1 / 0;
+		}
+		
 		for (int i = 0; i < 36; i++) {
 			CustomButton btn = ButtonListProvider.getInstance().getButtonAtIndex(i);
-			if (btn == null) {
-				int x = 1 / 0;
-			}
 			btn.setText("" + board.getCharAt(i / 6, i % 6));
 		}
 		
