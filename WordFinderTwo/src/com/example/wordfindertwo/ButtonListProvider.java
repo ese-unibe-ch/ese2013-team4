@@ -60,4 +60,12 @@ public class ButtonListProvider {
 	public ArrayList<CustomButton> getList(){
 		return buttonList;
 	}
+	
+	public CustomButton getButtonAt(int x, int y) {
+		return this.getButtonAtIndex(x + 6 * y);
+	}
+	
+	public CustomButton getButtonAtIndex(int index) {
+		return this.buttonList.get(index);
+	}
 }
