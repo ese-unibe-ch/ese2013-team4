@@ -2,6 +2,8 @@ package com.example.wordfindertwo.data;
 
 import java.util.ArrayList;
 
+import com.example.wordfindertwo.core.IDictionary;
+
 public class WordGameDictionary implements IDictionary {
 
 	String name;
@@ -15,7 +17,7 @@ public class WordGameDictionary implements IDictionary {
 	}
 
 	@Override
-	public void setId(int int1) {
+	public void setID(int int1) {
 		this.id = int1;
 
 	}
@@ -37,7 +39,7 @@ public class WordGameDictionary implements IDictionary {
 	}
 
 	@Override
-	public int getId() {
+	public int getID() {
 		return this.id;
 	}
 

@@ -9,6 +9,30 @@ package com.example.wordfindertwo;
 
 public final class R {
     public static final class attr {
+        /** <p>Must be a string value, using '\\;' to escape characters such as '\\n' or '\\uxxxx' for a unicode character.
+<p>This may also be a reference to a resource (in the form
+"<code>@[<i>package</i>:]<i>type</i>:<i>name</i></code>") or
+theme attribute (in the form
+"<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
+containing a value of this type.
+         */
+        public static final int letter=0x7f010000;
+        /** <p>Must be an integer value, such as "<code>100</code>".
+<p>This may also be a reference to a resource (in the form
+"<code>@[<i>package</i>:]<i>type</i>:<i>name</i></code>") or
+theme attribute (in the form
+"<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
+containing a value of this type.
+         */
+        public static final int xCoord=0x7f010001;
+        /** <p>Must be an integer value, such as "<code>100</code>".
+<p>This may also be a reference to a resource (in the form
+"<code>@[<i>package</i>:]<i>type</i>:<i>name</i></code>") or
+theme attribute (in the form
+"<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
+containing a value of this type.
+         */
+        public static final int yCoord=0x7f010002;
     }
     public static final class dimen {
         /**  Default screen margins, per the Android Design guidelines. 
@@ -25,6 +49,37 @@ public final class R {
         public static final int ic_launcher=0x7f020000;
     }
     public static final class id {
+        public static final int Dictionary=0x7f080024;
+        public static final int Friend=0x7f080023;
+        public static final int PlayGame=0x7f080021;
+        public static final int Score=0x7f080022;
+        public static final int action_settings=0x7f080027;
+        public static final int addFriendButton=0x7f080007;
+        public static final int button00=0x7f08000f;
+        public static final int button01=0x7f080016;
+        public static final int button10=0x7f080010;
+        public static final int button11=0x7f080017;
+        public static final int button20=0x7f080011;
+        public static final int button21=0x7f080018;
+        public static final int button30=0x7f080012;
+        public static final int button31=0x7f080019;
+        public static final int button40=0x7f080013;
+        public static final int button41=0x7f08001a;
+        public static final int button50=0x7f080014;
+        public static final int button51=0x7f08001b;
+        public static final int currentscore=0x7f080025;
+        public static final int deleteFriend=0x7f080008;
+        public static final int friendListRawLayout=0x7f080026;
+        public static final int friendsListView=0x7f080006;
+        public static final int friendsTitleTextView=0x7f080005;
+        public static final int gamespace=0x7f08000d;
+        public static final int pausetimer=0x7f08000c;
+        public static final int row1=0x7f08000e;
+        public static final int row2=0x7f080015;
+        public static final int row3=0x7f08001c;
+        public static final int row4=0x7f08001d;
+        public static final int row5=0x7f08001e;
+        public static final int row6=0x7f08001f;
         public static final int Dictionary=0x7f080013;
         public static final int Friend=0x7f080012;
         public static final int PlayGame=0x7f080010;
@@ -43,8 +98,9 @@ public final class R {
         public static final int searchFriendByMailEditText=0x7f080003;
         public static final int searchFriendResultTextView=0x7f080002;
         public static final int searchFriendbyMailButton=0x7f080000;
-        public static final int starttimer=0x7f08000c;
-        public static final int textView2=0x7f08000f;
+        public static final int startTimerPause=0x7f080009;
+        public static final int starttimer=0x7f08000a;
+        public static final int textView2=0x7f080020;
         public static final int timer=0x7f08000b;
         public static final int titleTextSearchFriendTextView=0x7f080001;
     }
@@ -56,6 +112,7 @@ public final class R {
         public static final int activity_main_menu=0x7f030004;
         public static final int activity_pause_screen=0x7f030005;
         public static final int activity_score=0x7f030006;
+        public static final int friend_list_row_layout=0x7f030007;
     }
     public static final class menu {
         public static final int dictionary=0x7f070000;
@@ -117,4 +174,65 @@ public final class R {
          */
         public static final int AppTheme=0x7f060001;
     }
+    public static final class styleable {
+        /** Attributes that can be used with a CustomButton.
+           <p>Includes the following attributes:</p>
+           <table>
+           <colgroup align="left" />
+           <colgroup align="left" />
+           <tr><th>Attribute</th><th>Description</th></tr>
+           <tr><td><code>{@link #CustomButton_letter com.example.wordfindertwo:letter}</code></td><td></td></tr>
+           <tr><td><code>{@link #CustomButton_xCoord com.example.wordfindertwo:xCoord}</code></td><td></td></tr>
+           <tr><td><code>{@link #CustomButton_yCoord com.example.wordfindertwo:yCoord}</code></td><td></td></tr>
+           </table>
+           @see #CustomButton_letter
+           @see #CustomButton_xCoord
+           @see #CustomButton_yCoord
+         */
+        public static final int[] CustomButton = {
+            0x7f010000, 0x7f010001, 0x7f010002
+        };
+        /**
+          <p>This symbol is the offset where the {@link com.example.wordfindertwo.R.attr#letter}
+          attribute's value can be found in the {@link #CustomButton} array.
+
+
+          <p>Must be a string value, using '\\;' to escape characters such as '\\n' or '\\uxxxx' for a unicode character.
+<p>This may also be a reference to a resource (in the form
+"<code>@[<i>package</i>:]<i>type</i>:<i>name</i></code>") or
+theme attribute (in the form
+"<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
+containing a value of this type.
+          @attr name com.example.wordfindertwo:letter
+        */
+        public static final int CustomButton_letter = 0;
+        /**
+          <p>This symbol is the offset where the {@link com.example.wordfindertwo.R.attr#xCoord}
+          attribute's value can be found in the {@link #CustomButton} array.
+
+
+          <p>Must be an integer value, such as "<code>100</code>".
+<p>This may also be a reference to a resource (in the form
+"<code>@[<i>package</i>:]<i>type</i>:<i>name</i></code>") or
+theme attribute (in the form
+"<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
+containing a value of this type.
+          @attr name com.example.wordfindertwo:xCoord
+        */
+        public static final int CustomButton_xCoord = 1;
+        /**
+          <p>This symbol is the offset where the {@link com.example.wordfindertwo.R.attr#yCoord}
+          attribute's value can be found in the {@link #CustomButton} array.
+
+
+          <p>Must be an integer value, such as "<code>100</code>".
+<p>This may also be a reference to a resource (in the form
+"<code>@[<i>package</i>:]<i>type</i>:<i>name</i></code>") or
+theme attribute (in the form
+"<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
+containing a value of this type.
+          @attr name com.example.wordfindertwo:yCoord
+        */
+        public static final int CustomButton_yCoord = 2;
+    };
 }

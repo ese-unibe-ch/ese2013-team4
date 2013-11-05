@@ -11,6 +11,10 @@ import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 import android.util.Log;
 
+import com.example.wordfindertwo.core.IDictionary;
+
+// Tip: use com.example.wordfindertwo.core.board.BoardDatabaseInterface for ID / Name / Seed operations. - andreas
+
 public class DatabaseHelper extends SQLiteOpenHelper {
 	// Fixed Board Size
 	private static final int BOARD_SIZE = 6;
@@ -128,7 +132,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 	    if (c.moveToFirst()) {
 	        do {
 	            IDictionary dict = new WordGameDictionary();
-	            dict.setId(c.getInt((c.getColumnIndex(KEY_ID))));
+	            dict.setID(c.getInt((c.getColumnIndex(KEY_ID))));
 	            dict.setName((c.getString(c.getColumnIndex(KEY_DICTIONARY_NAME))));
 	            dict.setWords(convertStringToArrayList(c.getString(c.getColumnIndex(KEY_DICTIONARY_WORDS))));
 	            // adding to list
@@ -148,19 +152,20 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 	 
 	    // updating row
 	    return db.update(TABLE_DICTIONARY, values, KEY_ID + " = ?",
-	            new String[] { String.valueOf(dictionary.getId()) });
+	            new String[] { String.valueOf(dictionary.getID()) });
 	}
 
 	public void deleteDictionaryEntry(IDictionary dictionary) {
 	    SQLiteDatabase db = this.getWritableDatabase();
 	    db.delete(TABLE_DICTIONARY, KEY_ID + " = ?",
-	            new String[] { String.valueOf(dictionary.getId()) });
+	            new String[] { String.valueOf(dictionary.getID()) });
 	}
 	
 	public long createBoardEntry(IBoard board) {
 		SQLiteDatabase db = this.getWritableDatabase();
 		 
 	    ContentValues values = new ContentValues();
+	    
 	    values.put(KEY_LETTERS, board.getLetters());
 	    
 	    long boardId = db.insert(TABLE_DICTIONARY, null, values);
@@ -191,6 +196,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 	    return boards;
 	}*/
 	
+	//shouldn't that be a board rather than a dictionary??? - andreas
 	public long updateBoardEntry(IDictionary board) {
 		SQLiteDatabase db = this.getWritableDatabase();
 		
@@ -199,7 +205,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 	 
 	    // updating row
 	    return db.update(TABLE_BOARD, values, KEY_ID + " = ?",
-	            new String[] { String.valueOf(board.getId()) });
+	            new String[] { String.valueOf(board.getID()) });
 	}
 
 	public void deleteBoardEntry(IBoard board) {
