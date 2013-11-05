@@ -13,6 +13,8 @@ import android.util.Log;
 
 import com.example.wordfindertwo.core.IDictionary;
 
+// Tip: use com.example.wordfindertwo.core.board.BoardDatabaseInterface for ID / Name / Seed operations. - andreas
+
 public class DatabaseHelper extends SQLiteOpenHelper {
 	// Fixed Board Size
 	private static final int BOARD_SIZE = 6;
@@ -163,6 +165,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 		SQLiteDatabase db = this.getWritableDatabase();
 		 
 	    ContentValues values = new ContentValues();
+	    
 	    values.put(KEY_LETTERS, board.getLetters());
 	    
 	    long boardId = db.insert(TABLE_DICTIONARY, null, values);
@@ -193,6 +196,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 	    return boards;
 	}*/
 	
+	//shouldn't that be a board rather than a dictionary??? - andreas
 	public long updateBoardEntry(IDictionary board) {
 		SQLiteDatabase db = this.getWritableDatabase();
 		

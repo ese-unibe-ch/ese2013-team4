@@ -6,7 +6,9 @@ import com.example.wordfindertwo.core.IDictionary;
 import com.example.wordfindertwo.core.ILetterField;
 import com.example.wordfindertwo.core.Letter;
 import com.example.wordfindertwo.core.Point;
+import com.example.wordfindertwo.core.SeedGenerator;
 import com.example.wordfindertwo.core.SelectionStatus;
+import com.example.wordfindertwo.core.exceptions.BoardIdAlreadySetException;
 
 /**
  * The core's representation of a game Board. <br/>
@@ -18,7 +20,7 @@ import com.example.wordfindertwo.core.SelectionStatus;
  * 
  * @author ESE2013 - Team 4
  */
-public class Board implements BoardDictionarySupportInterface, BoardDrawingInterface, BoardInputInterface, BoardOperationInterface, BoardScoreInterface {
+public class Board implements BoardDictionarySupportInterface, BoardDrawingInterface, BoardInputInterface, BoardOperationInterface, BoardScoreInterface, BoardDatabaseInterface {
 
 	private ILetterField[][] matrix;
 	private IDictionary primary;
@@ -26,6 +28,8 @@ public class Board implements BoardDictionarySupportInterface, BoardDrawingInter
 	
 	private ArrayList<String> wordsInBoard;
 	private ArrayList<ArrayList<Point>> foundWords;
+	
+	private long id;
 	
 	/**
 	 * This constructor is meant for use by the BoardFactory, but can be used in any circumstance
@@ -47,6 +51,7 @@ public class Board implements BoardDictionarySupportInterface, BoardDrawingInter
 		this.secondary = secondary;
 		this.foundWords = new ArrayList<ArrayList<Point>>();
 		this.wordsInBoard = new ArrayList<String>();
+		this.id = -1;
 	}
 	
 	public ILetterField[][] getMatrix() {
@@ -173,6 +178,30 @@ public class Board implements BoardDictionarySupportInterface, BoardDrawingInter
 	@Override
 	public boolean isCompleted() {
 		return this.getTotalWordCount() == getFoundWordCount();
+	}
+	
+	/* IMPLEMENTATION OF BoardDatabaseInterface */
+	
+	@Override
+	public long getID() {
+		return this.id;
+	}
+	
+	@Override
+	public boolean hasLegalID() {
+		return this.id >= 0;
+	}
+	
+	@Override
+	public void setID(long id) throws BoardIdAlreadySetException {
+		if (this.hasLegalID() && this.id == id)
+			throw new BoardIdAlreadySetException("Stored Board ID is " + this.id + "new ID would be " + id);
+		this.id = id;
+	}
+	
+	@Override
+	public String getSeed() {
+		return SeedGenerator.getInstance().generateSeedFromBoard(this);
 	}
 	
 	/* END OF INTERFACE IMPLEMENTATIONS */
