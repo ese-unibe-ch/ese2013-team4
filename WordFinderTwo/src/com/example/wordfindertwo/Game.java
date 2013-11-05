@@ -1,29 +1,22 @@
 package com.example.wordfindertwo;
 
-import com.example.wordfindertwo.R;
-import com.example.wordfindertwo.core.board.Board;
-import com.example.wordfindertwo.core.test.TestDictionary;
-import com.example.wordfindertwo.core.BoardFactory;
-import com.example.wordfindertwo.customs.CustomOnTouchListener;
+import java.util.ArrayList;
 
-import android.util.Log;
+import android.app.Activity;
+import android.content.Intent;
 import android.os.Bundle;
 import android.os.CountDownTimer;
-import android.app.Activity;
-import android.content.Context;
-import android.content.Intent;
-import android.graphics.Canvas;
+import android.util.Log;
 import android.view.Menu;
-import android.view.MotionEvent;
 import android.view.View;
-import android.view.View.OnTouchListener;
-import android.view.Window;
-import android.webkit.WebView.FindListener;
+import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.TextView;
-import android.widget.Button;
 
-import java.util.*;
+import com.example.wordfindertwo.core.BoardFactory;
+import com.example.wordfindertwo.core.board.Board;
+import com.example.wordfindertwo.core.test.TestDictionary;
+import com.example.wordfindertwo.customs.CustomOnTouchListener;
 
 public class Game extends Activity {
 	
@@ -53,6 +46,9 @@ public class Game extends Activity {
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
+		
+		
+		
 		setContentView(R.layout.activity_game);
 		try{
 		board = BoardFactory.createRandomBoard(null, new TestDictionary(), 6);
