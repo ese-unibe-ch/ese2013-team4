@@ -34,7 +34,7 @@ public class CustomOnTouchListener implements OnTouchListener {
 		case MotionEvent.ACTION_DOWN:
 			
 			if (tempList.get(tempList.size()-1) != child.getPoint()) {
-				tempList.add(child.getPoint());
+				
 			}
 			System.out.println("down");
 			break;
