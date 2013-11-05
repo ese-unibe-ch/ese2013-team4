@@ -1,23 +1,22 @@
 package com.example.wordfindertwo;
 
 import com.example.wordfindertwo.R;
+import com.example.wordfindertwo.core.board.Board;
+import com.example.wordfindertwo.core.test.TestDictionary;
+import com.example.wordfindertwo.core.BoardFactory;
+import com.example.wordfindertwo.customs.CustomButton;
 import com.example.wordfindertwo.customs.CustomOnTouchListener;
-
+import android.util.Log;
 import android.os.Bundle;
 import android.os.CountDownTimer;
 import android.app.Activity;
-import android.content.Context;
 import android.content.Intent;
-import android.graphics.Canvas;
 import android.view.Menu;
-import android.view.MotionEvent;
 import android.view.View;
-import android.view.View.OnTouchListener;
-import android.view.Window;
-import android.webkit.WebView.FindListener;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Button;
+
 import java.util.*;
 
 public class Game extends Activity {
@@ -30,13 +29,8 @@ public class Game extends Activity {
 	private Activity a = this;
 	// -----------------------------------------------
 
-	LinearLayout row1;
-	LinearLayout row2;
-	LinearLayout row3;
-	LinearLayout row4;
-	LinearLayout row5;
-	LinearLayout row6;
-	
+	private Board board;
+	LinearLayout layout; 
 	static ArrayList<Character> word;
 	
 	
@@ -44,12 +38,33 @@ public class Game extends Activity {
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
+		
+		new ButtonListProvider(this);
+		
 		setContentView(R.layout.activity_game);
-
+		try{
+		board = BoardFactory.createRandomBoard(null, new TestDictionary(), 6);
+		}catch(Exception e){
+			Log.e("game", e.getMessage());
+			System.exit(0);
+		}
+		
 		Button bStart = (Button) findViewById(R.id.starttimer);
 		Button bPause = (Button) findViewById(R.id.pausetimer);
-
 		
+		// fill custombuttons with chars
+		// TODO board.getCharAt(x,y);
+		
+		if (ButtonListProvider.getInstance().getButtonAtIndex(0) == null) {
+			int y = 1 / 0;
+		}
+		
+		for (int i = 0; i < 36; i++) {
+			CustomButton btn = ButtonListProvider.getInstance().getButtonAtIndex(i);
+			btn.setText("" + board.getCharAt(i / 6, i % 6));
+		}
+		
+		//------------------------------
 		timer = new CountDownTimer(START_TIME, 1000) {
 			// displays a new time every tick
 			public void onTick(long millisUntilFinished) {
@@ -88,19 +103,8 @@ public class Game extends Activity {
 			}
 		});
 
-		
-		row1 = (LinearLayout) findViewById(R.id.row1);
-		row1.setOnTouchListener(new CustomOnTouchListener());
-		row2 = (LinearLayout) findViewById(R.id.row2);
-		row2.setOnTouchListener(new CustomOnTouchListener());
-		row3 = (LinearLayout) findViewById(R.id.row3);
-		row3.setOnTouchListener(new CustomOnTouchListener());
-		row4 = (LinearLayout) findViewById(R.id.row4);
-		row4.setOnTouchListener(new CustomOnTouchListener());
-		row5 = (LinearLayout) findViewById(R.id.row5);
-		row5.setOnTouchListener(new CustomOnTouchListener());
-		row6 = (LinearLayout) findViewById(R.id.row6);
-		row6.setOnTouchListener(new CustomOnTouchListener());
+		layout = (LinearLayout) findViewById(R.id.gamespace);
+		layout.setOnTouchListener(new CustomOnTouchListener(board,this));
 	}
 
 	@Override
