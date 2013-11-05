@@ -37,6 +37,9 @@ public class Game extends Activity {
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
+		
+		new ButtonListProvider(this);
+		
 		setContentView(R.layout.activity_game);
 		try{
 		board = BoardFactory.createRandomBoard(null, new TestDictionary(), 6);
@@ -56,7 +59,6 @@ public class Game extends Activity {
 		}
 		
 		//------------------------------
-		
 		timer = new CountDownTimer(START_TIME, 1000) {
 			// displays a new time every tick
 			public void onTick(long millisUntilFinished) {
