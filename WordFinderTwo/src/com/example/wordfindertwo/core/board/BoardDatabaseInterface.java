@@ -1,12 +1,17 @@
 package com.example.wordfindertwo.core.board;
 
 import com.example.wordfindertwo.core.exceptions.BoardIdAlreadySetException;
+import com.example.wordfindertwo.core.exceptions.BoardIdNotSetException;
 
 public interface BoardDatabaseInterface {
 
 	public void setID(long ID) throws BoardIdAlreadySetException;
 
-	public long getID();
+	/**
+	 * 
+	 * @return the boards ID code. throws BoardIdNotSetException when hasLegalID evaluates as false
+	 */
+	public long getID() throws BoardIdNotSetException;
 	
 	/**
 	 * 

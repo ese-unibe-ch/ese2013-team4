@@ -9,6 +9,7 @@ import com.example.wordfindertwo.core.Point;
 import com.example.wordfindertwo.core.SeedGenerator;
 import com.example.wordfindertwo.core.SelectionStatus;
 import com.example.wordfindertwo.core.exceptions.BoardIdAlreadySetException;
+import com.example.wordfindertwo.core.exceptions.BoardIdNotSetException;
 
 /**
  * The core's representation of a game Board. <br/>
@@ -183,8 +184,10 @@ public class Board implements BoardDictionarySupportInterface, BoardDrawingInter
 	/* IMPLEMENTATION OF BoardDatabaseInterface */
 	
 	@Override
-	public long getID() {
-		return this.id;
+	public long getID() throws BoardIdNotSetException {
+		if (this.hasLegalID())
+			return this.id;
+		throw new BoardIdNotSetException("Board ID not yet set.");
 	}
 	
 	@Override
