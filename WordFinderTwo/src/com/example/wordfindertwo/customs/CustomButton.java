@@ -52,4 +52,14 @@ public class CustomButton extends Button {
 	public Point getPoint(){
 		return p;
 	}
+	
+	public boolean isTouched(float x, float y) {
+		int location[] = new int[2];
+	    this.getLocationOnScreen(location);
+	    int viewX = location[0];
+	    int viewY = location[1];
+
+	    //point is inside view bounds
+	    return x > viewX && x < (viewX + this.getWidth()) && y > viewY && y < (viewY + this.getHeight());
+	}
 }
