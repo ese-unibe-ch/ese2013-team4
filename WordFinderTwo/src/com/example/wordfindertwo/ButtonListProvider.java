@@ -16,6 +16,7 @@ public class ButtonListProvider {
 	ArrayList<CustomButton> buttonList;
 
 	public ButtonListProvider(Game game){
+		this.buttonList = new ArrayList<CustomButton>();
 		buttonList.add((CustomButton)game.findViewById(R.id.button00));
 		buttonList.add((CustomButton)game.findViewById(R.id.button10));
 		buttonList.add((CustomButton)game.findViewById(R.id.button20));
