@@ -1,4 +1,4 @@
-package com.example.wordfindertwo.connect;
+package com.example.wordfindertwo.core;
 
 public class Point {
 	private int x;
