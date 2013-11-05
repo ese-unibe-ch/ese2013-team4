@@ -29,9 +29,6 @@ public class CustomOnTouchListener implements OnTouchListener {
 
 	@Override
 	public boolean onTouch(View view, MotionEvent me) {
-		LinearLayout v = (LinearLayout) view;
-		CustomButton child;
-
 		int event = me.getAction();
 
 		if (event == MotionEvent.ACTION_DOWN || event == MotionEvent.ACTION_MOVE || event == MotionEvent.ACTION_UP) {

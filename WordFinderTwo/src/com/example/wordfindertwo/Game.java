@@ -5,20 +5,13 @@ import com.example.wordfindertwo.core.board.Board;
 import com.example.wordfindertwo.core.test.TestDictionary;
 import com.example.wordfindertwo.core.BoardFactory;
 import com.example.wordfindertwo.customs.CustomOnTouchListener;
-
 import android.util.Log;
 import android.os.Bundle;
 import android.os.CountDownTimer;
 import android.app.Activity;
-import android.content.Context;
 import android.content.Intent;
-import android.graphics.Canvas;
 import android.view.Menu;
-import android.view.MotionEvent;
 import android.view.View;
-import android.view.View.OnTouchListener;
-import android.view.Window;
-import android.webkit.WebView.FindListener;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Button;
@@ -36,16 +29,7 @@ public class Game extends Activity {
 	// -----------------------------------------------
 
 	private Board board;
-	
-	LinearLayout row1;
-	LinearLayout row2;
-	LinearLayout row3;
-	LinearLayout row4;
-	LinearLayout row5;
-	LinearLayout row6;
-	
 	LinearLayout layout; 
-	
 	static ArrayList<Character> word;
 	
 	
