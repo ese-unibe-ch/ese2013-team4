@@ -1,6 +1,7 @@
 package com.example.wordfindertwo.core.test;
 
 import java.util.ArrayList;
+import java.util.Locale;
 
 import com.example.wordfindertwo.core.IDictionary;
 
@@ -71,7 +72,7 @@ public class TestDictionary implements IDictionary {
 		words.add("Wire");
 		// -- END OF WORD LIST --
 		for (int i = 0; i < words.size(); i++) {
-			words.set(i, words.get(i).toUpperCase());
+			words.set(i, words.get(i).toUpperCase(Locale.ENGLISH));
 		}
 		// END
 		return words;

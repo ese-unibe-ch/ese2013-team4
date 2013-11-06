@@ -121,27 +121,30 @@ public class Board implements BoardDictionarySupportInterface, BoardDrawingInter
 	public SelectionStatus submit(ArrayList<Point> sequence) {
 		//STEP 1: check if sequence is legal (n adjacent to n-1 and no identical ones).
 		for (int i = 0; i < sequence.size(); i++) {
-			if (sequence.lastIndexOf(sequence.get(i)) != i) //first != last => multiples
-				return SelectionStatus.SelectionInvalid;
-			if (i > 0)
-				if ( ! sequence.get(i - 1).isAdjacent(sequence.get(i)))
+			if (sequence.lastIndexOf(sequence.get(i)) != i || (i > 0 && ! sequence.get(i - 1).isAdjacent(sequence.get(i)))) {
+					Log.d("Board.submit", "Input sequence is invalid");
 					return SelectionStatus.SelectionInvalid;
+			}
 		}
-		//STEP 2: check if sequence is in Found list.
-		if (!this.foundWords.isEmpty() && this.foundWords.contains(sequence)) //if it is in list, it is old, and of course a word, since only words are in list
-			return SelectionStatus.SelectionOld;
-		//STEP 3: convert to string
+		//STEP 2: convert to string
 		String word = "";
 		for (Point point : sequence) {
 			word += this.getLetterAt(point.getX(), point.getY()).getChar();
 		}
-		Log.d("Board.submit", "word is " + word);
+		
+		//STEP 3: check if sequence is in Found list.
+		if (!this.foundWords.isEmpty() && this.foundWords.contains(sequence)) { //if it is in list, it is old, and of course a word, since only words are in list
+			Log.d("Board.submit", "Word " + word + " is already found");
+			return SelectionStatus.SelectionOld;
+		}
 		//STEP 4: check string
-		if (this.wordsInBoard.contains(word) || this.secondary.getWords().contains(word)) {
+		if (this.wordsInBoard.contains(word)) {
 			this.foundWords.add(new ArrayList<Point>(sequence));
-			Log.d("Board.submit", "word is ok");
+			Log.d("Board.submit", "Word " + word + " is valid");
 			return SelectionStatus.SelectionGood;
 		}
+		//STEP 5: wrong word
+		Log.d("Board.submit", "Word " + word + " is no valid word");
 		return SelectionStatus.SelectionBad;
 	}
 	
