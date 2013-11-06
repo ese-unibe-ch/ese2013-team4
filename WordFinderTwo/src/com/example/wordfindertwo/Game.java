@@ -107,7 +107,6 @@ public class Game extends Activity {
 
 			@Override
 			public void onClick(View v) {
-				millisInFuture = Long.parseLong(timerText.getText().toString());
 				timer.cancel();
 				timerText.setText("PAUSED");
 				Intent intent = new Intent(a, PauseScreen.class);
@@ -131,7 +130,7 @@ public class Game extends Activity {
 
 	public void startTimer() {
 		// countdown atm 2min displayed in sec
-		CountDownTimer timer = new CountDownTimer(120000, 1000) {
+		CountDownTimer timer = new CountDownTimer(START_TIME, 1000) {
 
 			// displays a new time every tick
 			public void onTick(long millisUntilFinished) {
@@ -146,6 +145,9 @@ public class Game extends Activity {
 				text.setText("Time's up!");
 				game.finish();
 			}
+			
+			
+			
 		};
 
 		timer.start();
