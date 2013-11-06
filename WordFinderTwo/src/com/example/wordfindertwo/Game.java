@@ -107,10 +107,10 @@ public class Game extends Activity {
 
 			@Override
 			public void onClick(View v) {
-				timer.cancel();
+				/*timer.cancel();
 				timerText.setText("PAUSED");
 				Intent intent = new Intent(a, PauseScreen.class);
-				startActivity(intent);
+				startActivity(intent);*/
 			}
 		});
 
