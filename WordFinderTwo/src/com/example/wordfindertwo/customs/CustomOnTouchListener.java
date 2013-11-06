@@ -9,6 +9,7 @@ import com.example.wordfindertwo.core.SelectionStatus;
 import com.example.wordfindertwo.core.board.Board;
 
 import android.app.Activity;
+import android.util.Log;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.View.OnTouchListener;
@@ -35,17 +36,16 @@ public class CustomOnTouchListener implements OnTouchListener {
 
 			CustomButton button = ButtonListProvider.getInstance().getButtonUnder(me.getRawX(), me.getRawY());
 			
-			if (!tempList.get(tempList.size() - 1).equals(button)) {
+			if (tempList.size() == 0 || !tempList.get(tempList.size() - 1).equals(button)) {
 				tempList.add(button.getPoint());
+				Log.d("CustomOnTouchListener", "moved to " + button.getPoint().toString());
 			}
-			
-			System.out.println("down / move / up");
 
 		}
 		
 		if (event == MotionEvent.ACTION_UP) {
-		
-			System.out.println("up");
+			
+			Log.i("CustomOnTouchListener", "finishing sequence");
 			
 			list.clear();
 			list.addAll(tempList);
