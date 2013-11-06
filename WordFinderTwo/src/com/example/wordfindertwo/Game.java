@@ -22,8 +22,8 @@ import java.util.*;
 public class Game extends Activity {
 	
 	// -------------timer Variables------------------
-	private final long START_TIME = 12000;
-	public long millisInFuture;
+	private final long START_TIME = 60000;
+	public long millisInFuture = START_TIME;
 	private TextView timerText;
 	private CountDownTimer timer;
 	private Activity a = this;
@@ -117,6 +117,9 @@ public class Game extends Activity {
 
 		layout = (LinearLayout) findViewById(R.id.gamespace);
 		layout.setOnTouchListener(new CustomOnTouchListener(board,this));
+		
+		TextView score = (TextView) game.findViewById(R.id.score);
+		score.setText("" + board.getBoardScore());
 	}
 
 	@Override
@@ -184,6 +187,12 @@ public class Game extends Activity {
 		startActivity(intent);
 		
 		super.finish();
+	}
+	
+	public void update() {
+		if (board.isCompleted()) {
+			this.finish();
+		}
 	}
 	
 }

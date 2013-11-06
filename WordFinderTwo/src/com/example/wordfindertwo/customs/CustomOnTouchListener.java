@@ -3,6 +3,7 @@ package com.example.wordfindertwo.customs;
 import java.util.ArrayList;
 
 import com.example.wordfindertwo.ButtonListProvider;
+import com.example.wordfindertwo.Game;
 import com.example.wordfindertwo.R;
 import com.example.wordfindertwo.core.Point;
 import com.example.wordfindertwo.core.SelectionStatus;
@@ -20,12 +21,12 @@ public class CustomOnTouchListener implements OnTouchListener {
 	ArrayList<Point> list;
 	ArrayList<Point> tempList;
 	Board board;
-	Activity game;
+	Game game;
 	TextView score;
 
-	public CustomOnTouchListener(Board board, Activity a) {
+	public CustomOnTouchListener(Board board, Game g) {
 		this.board = board;
-		game = a;
+		game = g;
 		this.tempList = new ArrayList<Point>();
 		this.list = new ArrayList<Point>();
 	}
@@ -59,6 +60,7 @@ public class CustomOnTouchListener implements OnTouchListener {
 			//EVALUATE RESULT
 			switch (result) {
 			case SelectionGood:
+				game.update();
 				break;
 			case SelectionOld:
 				break;

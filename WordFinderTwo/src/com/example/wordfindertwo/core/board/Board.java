@@ -220,4 +220,5 @@ public class Board implements BoardDictionarySupportInterface, BoardDrawingInter
 		return this.getSeed() + "%" + getBoardScore();
 	}
 	
+	
 }
