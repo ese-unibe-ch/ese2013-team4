@@ -70,6 +70,10 @@ public class TestDictionary implements IDictionary {
 		words.add("Axe");
 		words.add("Wire");
 		// -- END OF WORD LIST --
+		for (int i = 0; i < words.size(); i++) {
+			words.set(i, words.get(i).toUpperCase());
+		}
+		// END
 		return words;
 	}
 

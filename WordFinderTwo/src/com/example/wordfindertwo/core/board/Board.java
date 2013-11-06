@@ -4,6 +4,7 @@ import java.util.ArrayList;
 
 import android.util.Log;
 
+import com.example.wordfindertwo.Score;
 import com.example.wordfindertwo.core.IDictionary;
 import com.example.wordfindertwo.core.ILetterField;
 import com.example.wordfindertwo.core.Letter;
@@ -138,6 +139,7 @@ public class Board implements BoardDictionarySupportInterface, BoardDrawingInter
 		//STEP 4: check string
 		if (this.wordsInBoard.contains(word) || this.secondary.getWords().contains(word)) {
 			this.foundWords.add(new ArrayList<Point>(sequence));
+			Log.d("Board.submit", "word is ok");
 			return SelectionStatus.SelectionGood;
 		}
 		return SelectionStatus.SelectionBad;
@@ -211,5 +213,9 @@ public class Board implements BoardDictionarySupportInterface, BoardDrawingInter
 	}
 	
 	/* END OF INTERFACE IMPLEMENTATIONS */
+	
+	public String getEndData() {
+		return this.getSeed() + "%" + getBoardScore();
+	}
 	
 }

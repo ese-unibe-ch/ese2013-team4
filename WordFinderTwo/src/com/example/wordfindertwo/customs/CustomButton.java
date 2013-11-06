@@ -14,6 +14,7 @@ public class CustomButton extends Button {
 	int yCoord;
 	Point p;
 	
+	public final static double BUTTON_PADDING_FACTOR = 0.2;
 
 	public CustomButton(Context context) {
 		super(context);
@@ -56,10 +57,13 @@ public class CustomButton extends Button {
 	public boolean isTouched(float x, float y) {
 		int location[] = new int[2];
 	    this.getLocationOnScreen(location);
+	    
 	    int viewX = location[0];
 	    int viewY = location[1];
-
-	    //point is inside view bounds
-	    return x > viewX && x < (viewX + this.getWidth()) && y > viewY && y < (viewY + this.getHeight());
+	    
+	    return x >= viewX + BUTTON_PADDING_FACTOR * this.getWidth()
+	    		&& x <= viewX + (1 - BUTTON_PADDING_FACTOR) * this.getWidth()
+	    		&& y >= viewY + BUTTON_PADDING_FACTOR * this.getHeight()
+	    		&& y <= viewY + (1 - BUTTON_PADDING_FACTOR) * this.getHeight();
 	}
 }

@@ -51,8 +51,10 @@
             android:name="com.example.wordfindertwo.PauseScreen"
             android:label="@string/title_activity_pause_screen" >
         </activity>
-        
-        
+        <activity
+            android:name="com.example.wordfindertwo.AfterGame"
+            android:label="@string/title_activity_after_game" >
+        </activity>
     </application>
 
 </manifest>

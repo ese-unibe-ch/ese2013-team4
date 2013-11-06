@@ -22,8 +22,8 @@ import java.util.*;
 public class Game extends Activity {
 	
 	// -------------timer Variables------------------
-	private final long START_TIME = 120000;
-	private long millisInFuture;
+	private final long START_TIME = 12000;
+	public long millisInFuture;
 	private TextView timerText;
 	private CountDownTimer timer;
 	private Activity a = this;
@@ -32,6 +32,8 @@ public class Game extends Activity {
 	private Board board;
 	LinearLayout layout; 
 	static ArrayList<Character> word;
+	
+	public static Game game;
 	
 	
 	
@@ -72,16 +74,19 @@ public class Game extends Activity {
 		}
 		Log.i("Game", "setup timer");
 		//------------------------------
+		game = this;
 		timer = new CountDownTimer(START_TIME, 1000) {
 			// displays a new time every tick
 			public void onTick(long millisUntilFinished) {
 				timerText = (TextView) findViewById(R.id.timer);
 				timerText.setText("" + (millisUntilFinished / 1000));
+				game.setMillisInFuture(millisUntilFinished);
 			}
 
 			public void onFinish() {
 				TextView text = (TextView) findViewById(R.id.timer);
 				text.setText("Time's up!");
+				game.finish();
 			}
 		};
 
@@ -124,16 +129,19 @@ public class Game extends Activity {
 	public void startTimer() {
 		// countdown atm 2min displayed in sec
 		CountDownTimer timer = new CountDownTimer(120000, 1000) {
+
 			// displays a new time every tick
 			public void onTick(long millisUntilFinished) {
 				TextView text = (TextView) findViewById(R.id.timer);
 				text.setText("You have " + (millisUntilFinished / 1000)
 						+ " sec remaining!");
+				
 			}
 
 			public void onFinish() {
 				TextView text = (TextView) findViewById(R.id.timer);
 				text.setText("Time's up!");
+				game.finish();
 			}
 		};
 
@@ -144,4 +152,38 @@ public class Game extends Activity {
 	public void addLetter(int index, char c){
 		word.add(index, c);
 	}
+
+	@Override
+	protected void onDestroy() {
+		// TODO Auto-generated method stub
+		super.onDestroy();
+		
+	
+	}
+	
+	public long getMillisInFuture() {
+		return millisInFuture;
+	}
+	
+	
+	public void setMillisInFuture (long value) {
+		this.millisInFuture = value;
+	}
+	
+	private Intent intent;
+	
+	@Override
+	public void finish() {
+		
+		this.intent = new Intent(this, AfterGame.class);
+		
+		this.intent.putExtra("seed", board.getSeed());
+		this.intent.putExtra("score", board.getBoardScore());
+		this.intent.putExtra("time", this.millisInFuture);
+		
+		startActivity(intent);
+		
+		super.finish();
+	}
+	
 }

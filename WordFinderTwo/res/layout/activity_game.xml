@@ -283,7 +283,7 @@
                 android:layout_width="45dp"
                 android:layout_height="45dp"
                 custom:xCoord="4"
-                custom:yCoord="1" />
+                custom:yCoord="4" />
 
             <com.example.wordfindertwo.customs.CustomButton
                 android:id="@+id/button54"

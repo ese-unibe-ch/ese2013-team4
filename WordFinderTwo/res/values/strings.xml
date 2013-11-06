@@ -10,24 +10,19 @@
     <string name="title_activity_game">Game</string>
     <string name="title_activity_dictionary">Dictionary</string>
     <string name="title_activity_pause_screen">PauseScreen</string>
-    
     <string name="playGame_buttonText">Play Game</string>
     <string name="score_buttonText">Scores</string>
-    
     <string name="friend_buttonText">Friends</string>
     <string name="add_friendButton">Add Friend</string>
     <string name="delete_frinedRadioButton">Delete On</string>
-    
     <string name="dictionary_buttonText">Dictionarys</string>
-  	<string name="searchFriendByMailButton">Search</string>
-	<string name="addFoundFriendByMailButton">Add Friend</string>	
-	<string name="searchFriendByMailText">Type in a Friends E-Mail:</string>
-	<string name="foundReasultText">Friend found in Database</string>
-	<string name="noneEmailFoundText">No matching Email/Friend Found</string>
-	<string name="notJetSearchedForFriendText">Not jet searched</string>
-	
-	
-	
-	
+    <string name="searchFriendByMailButton">Search</string>
+    <string name="addFoundFriendByMailButton">Add Friend</string>
+    <string name="searchFriendByMailText">Type in a Friends E-Mail:</string>
+    <string name="foundReasultText">Friend found in Database</string>
+    <string name="noneEmailFoundText">No matching Email/Friend Found</string>
+    <string name="notJetSearchedForFriendText">Not jet searched</string>
+    <string name="title_activity_after_game">AfterGame</string>
+    <string name="hello_world">Hello world!</string>
 
 </resources>
