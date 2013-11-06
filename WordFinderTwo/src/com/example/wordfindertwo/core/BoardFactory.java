@@ -19,9 +19,9 @@ public class BoardFactory {
 	public static Board createBoardFromSeed (IDictionary primary, IDictionary secondary, int boardSize, String seed) throws BoardGenerationException {
 		ILetterField[][] matrix = new ILetterField[boardSize][boardSize];
 		try {
-		for (int i = 0; i < boardSize * boardSize; i++) {
+			for (int i = 0; i < boardSize * boardSize; i++) {
 				matrix[i % boardSize][i / boardSize] = new LetterField(Letter.getLetter(seed.charAt(i)), i % boardSize, i / boardSize);
-		}
+			}
 		} catch (InvalidLetterException e) {
 			throw new BoardGenerationException("Invalid Char - unable to parse Board");
 		}
@@ -34,6 +34,7 @@ public class BoardFactory {
 		}
 		Board brd = new Board(matrix, primary, secondary);
 		brd.setWordsInBoard(wrdf.getWords(brd));
+		brd.setWordCount(wrdf.getWordCount());
 		return brd;
 	}
 	

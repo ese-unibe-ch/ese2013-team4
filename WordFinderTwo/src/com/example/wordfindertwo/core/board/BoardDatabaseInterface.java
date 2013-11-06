@@ -1,7 +1,6 @@
 package com.example.wordfindertwo.core.board;
 
-import com.example.wordfindertwo.core.exceptions.BoardIdAlreadySetException;
-import com.example.wordfindertwo.core.exceptions.BoardIdNotSetException;
+import com.example.wordfindertwo.core.exceptions.*;
 
 public interface BoardDatabaseInterface {
 

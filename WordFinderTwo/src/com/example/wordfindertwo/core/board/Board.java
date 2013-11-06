@@ -4,15 +4,8 @@ import java.util.ArrayList;
 
 import android.util.Log;
 
-import com.example.wordfindertwo.Score;
-import com.example.wordfindertwo.core.IDictionary;
-import com.example.wordfindertwo.core.ILetterField;
-import com.example.wordfindertwo.core.Letter;
-import com.example.wordfindertwo.core.Point;
-import com.example.wordfindertwo.core.SeedGenerator;
-import com.example.wordfindertwo.core.SelectionStatus;
-import com.example.wordfindertwo.core.exceptions.BoardIdAlreadySetException;
-import com.example.wordfindertwo.core.exceptions.BoardIdNotSetException;
+import com.example.wordfindertwo.core.*;
+import com.example.wordfindertwo.core.exceptions.*;
 
 /**
  * The core's representation of a game Board. <br/>
@@ -29,6 +22,8 @@ public class Board implements BoardDictionarySupportInterface, BoardDrawingInter
 	private ILetterField[][] matrix;
 	private IDictionary primary;
 	private IDictionary secondary;
+	
+	private int wordCount;
 	
 	private ArrayList<String> wordsInBoard;
 	private ArrayList<ArrayList<Point>> foundWords;
@@ -64,6 +59,10 @@ public class Board implements BoardDictionarySupportInterface, BoardDrawingInter
 	
 	public void setWordsInBoard(ArrayList<String> wordsInBoard) {
 		this.wordsInBoard = wordsInBoard;
+	}
+	
+	public void setWordCount(int count) {
+		this.wordCount = count;
 	}
 	
 	/* IMPLEMENTATION OF BoardDictionarySupportInterface */
@@ -181,7 +180,7 @@ public class Board implements BoardDictionarySupportInterface, BoardDrawingInter
 	
 	@Override
 	public int getTotalWordCount() {
-		return this.getWordsInBoard().size();
+		return this.wordCount;
 	}
 	
 	@Override
