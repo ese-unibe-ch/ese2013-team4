@@ -12,7 +12,6 @@ import android.app.Activity;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.View.OnTouchListener;
-import android.widget.LinearLayout;
 import android.widget.TextView;
 
 public class CustomOnTouchListener implements OnTouchListener {
@@ -67,7 +66,7 @@ public class CustomOnTouchListener implements OnTouchListener {
 				break;
 			}
 			
-
+			//PRINT SCORE
 			score = (TextView) game.findViewById(R.id.Score);
 			score.setText("" + board.getBoardScore());
 		}

@@ -39,31 +39,37 @@ public class Game extends Activity {
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		
-		new ButtonListProvider(this);
+		Log.i("Game", "onCreate");
 		
 		setContentView(R.layout.activity_game);
+		
+		
+		ButtonListProvider blp = new ButtonListProvider(this);
+		
+		if (blp.getButtonAt(0, 0) == null) {
+			Log.i("Game", "ButtonListProvider is null");
+		}
+		
+		Log.i("Game", "generate Board");
 		try{
 		board = BoardFactory.createRandomBoard(null, new TestDictionary(), 6);
 		}catch(Exception e){
-			Log.e("game", e.getMessage());
+			Log.e("Game", "Board Factory Crashed", e);
 			System.exit(0);
 		}
-		
+		Log.i("Game", "create timer buttons");
 		Button bStart = (Button) findViewById(R.id.starttimer);
 		Button bPause = (Button) findViewById(R.id.pausetimer);
 		
 		// fill custombuttons with chars
 		// TODO board.getCharAt(x,y);
 		
-		if (ButtonListProvider.getInstance().getButtonAtIndex(0) == null) {
-			int y = 1 / 0;
-		}
-		
+		Log.i("Game", "fill buttons");
 		for (int i = 0; i < 36; i++) {
 			CustomButton btn = ButtonListProvider.getInstance().getButtonAtIndex(i);
 			btn.setText("" + board.getCharAt(i / 6, i % 6));
 		}
-		
+		Log.i("Game", "setup timer");
 		//------------------------------
 		timer = new CountDownTimer(START_TIME, 1000) {
 			// displays a new time every tick

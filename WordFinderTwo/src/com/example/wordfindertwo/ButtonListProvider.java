@@ -2,6 +2,8 @@ package com.example.wordfindertwo;
 
 import java.util.ArrayList;
 
+import android.util.Log;
+
 import com.example.wordfindertwo.customs.CustomButton;
 
 public class ButtonListProvider {
@@ -16,7 +18,8 @@ public class ButtonListProvider {
 	ArrayList<CustomButton> buttonList;
 
 	public ButtonListProvider(Game game){
-		this.buttonList = new ArrayList<CustomButton>();
+		Log.i("ButtonListProvider", "building list");
+		buttonList = new ArrayList<CustomButton>();
 		buttonList.add((CustomButton)game.findViewById(R.id.button00));
 		buttonList.add((CustomButton)game.findViewById(R.id.button10));
 		buttonList.add((CustomButton)game.findViewById(R.id.button20));
@@ -55,6 +58,7 @@ public class ButtonListProvider {
 		buttonList.add((CustomButton)game.findViewById(R.id.button55));
 		
 		// END
+		Log.i("ButtonListProvider", "storing instance");
 		instance = this;
 	}
 	
