@@ -7,7 +7,7 @@ import android.test.AndroidTestCase;
 import android.test.RenamingDelegatingContext;
 
 import com.example.wordfindertwo.data.DatabaseHelper;
-import com.example.wordfindertwo.data.IDictionary;
+import com.example.wordfindertwo.core.IDictionary;
 import com.example.wordfindertwo.data.WordGameDictionary;
 
 public class DatabaseHelperTest extends AndroidTestCase {
