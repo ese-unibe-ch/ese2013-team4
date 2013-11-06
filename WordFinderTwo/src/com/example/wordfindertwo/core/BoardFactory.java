@@ -1,5 +1,7 @@
 package com.example.wordfindertwo.core;
 
+import android.util.Log;
+
 import com.example.wordfindertwo.core.board.Board;
 import com.example.wordfindertwo.core.exceptions.BoardGenerationException;
 import com.example.wordfindertwo.core.exceptions.InvalidLetterException;
@@ -22,6 +24,13 @@ public class BoardFactory {
 		}
 		} catch (InvalidLetterException e) {
 			throw new BoardGenerationException("Invalid Char - unable to parse Board");
+		}
+		for (int y = 0; y < 6; y++) {
+			String line = "";
+			for (int x = 0; x < 6; x++) {
+				line += matrix[x][y].getLetter().getChar();
+			}
+			Log.d("BoardFactory.create", line);
 		}
 		Board brd = new Board(matrix, primary, secondary);
 		brd.setWordsInBoard(wrdf.getWords(brd));

@@ -2,6 +2,8 @@ package com.example.wordfindertwo.core.board;
 
 import java.util.ArrayList;
 
+import android.util.Log;
+
 import com.example.wordfindertwo.core.IDictionary;
 import com.example.wordfindertwo.core.ILetterField;
 import com.example.wordfindertwo.core.Letter;
@@ -132,8 +134,9 @@ public class Board implements BoardDictionarySupportInterface, BoardDrawingInter
 		for (Point point : sequence) {
 			word += this.getLetterAt(point.getX(), point.getY()).getChar();
 		}
+		Log.d("Board.submit", "word is " + word);
 		//STEP 4: check string
-		if (this.wordsInBoard.contains(word)) {
+		if (this.wordsInBoard.contains(word) || this.secondary.getWords().contains(word)) {
 			this.foundWords.add(new ArrayList<Point>(sequence));
 			return SelectionStatus.SelectionGood;
 		}

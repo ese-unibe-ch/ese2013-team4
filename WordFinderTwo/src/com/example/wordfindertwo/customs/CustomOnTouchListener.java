@@ -17,7 +17,8 @@ import android.widget.TextView;
 
 public class CustomOnTouchListener implements OnTouchListener {
 
-	ArrayList<Point> list, tempList;
+	ArrayList<Point> list;
+	ArrayList<Point> tempList;
 	Board board;
 	Activity game;
 	TextView score;
@@ -26,6 +27,7 @@ public class CustomOnTouchListener implements OnTouchListener {
 		this.board = board;
 		game = a;
 		this.tempList = new ArrayList<Point>();
+		this.list = new ArrayList<Point>();
 	}
 
 	@Override
@@ -36,9 +38,9 @@ public class CustomOnTouchListener implements OnTouchListener {
 
 			CustomButton button = ButtonListProvider.getInstance().getButtonUnder(me.getRawX(), me.getRawY());
 			
-			if (tempList.size() == 0 || !tempList.get(tempList.size() - 1).equals(button)) {
+			if (button != null && (tempList.size() == 0 || !tempList.get(tempList.size() - 1).equals(button.getPoint()))) {
 				tempList.add(button.getPoint());
-				Log.d("CustomOnTouchListener", "moved to " + button.getPoint().toString());
+				Log.d("CustomOnTouchListener", "moved to " + button.getPoint().toString() + " - List Size is now " + this.tempList.size());
 			}
 
 		}
@@ -67,7 +69,7 @@ public class CustomOnTouchListener implements OnTouchListener {
 			}
 			
 			//PRINT SCORE
-			score = (TextView) game.findViewById(R.id.Score);
+			score = (TextView) game.findViewById(R.id.score);
 			score.setText("" + board.getBoardScore());
 		}
 		// END

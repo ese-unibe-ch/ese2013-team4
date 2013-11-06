@@ -51,9 +51,10 @@ public class Game extends Activity {
 		}
 		
 		Log.i("Game", "generate Board");
-		try{
-		board = BoardFactory.createRandomBoard(null, new TestDictionary(), 6);
-		}catch(Exception e){
+		try {
+			board = BoardFactory.createRandomBoard(null, new TestDictionary(), 6);
+			Log.d("Game.Board", "Word count = " + board.getWordsInBoard().size());
+		} catch(Exception e) {
 			Log.e("Game", "Board Factory Crashed", e);
 			System.exit(0);
 		}
@@ -67,7 +68,7 @@ public class Game extends Activity {
 		Log.i("Game", "fill buttons");
 		for (int i = 0; i < 36; i++) {
 			CustomButton btn = ButtonListProvider.getInstance().getButtonAtIndex(i);
-			btn.setText("" + board.getCharAt(i / 6, i % 6));
+			btn.setText("" + board.getCharAt(i % 6, i / 6));
 		}
 		Log.i("Game", "setup timer");
 		//------------------------------
