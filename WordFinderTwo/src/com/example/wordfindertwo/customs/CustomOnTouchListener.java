@@ -18,8 +18,7 @@ import android.widget.TextView;
 
 public class CustomOnTouchListener implements OnTouchListener {
 
-	ArrayList<Point> list;
-	ArrayList<Point> tempList;
+	ArrayList<CustomButton> buttonList;
 	Board board;
 	Game game;
 	TextView score;
@@ -27,8 +26,7 @@ public class CustomOnTouchListener implements OnTouchListener {
 	public CustomOnTouchListener(Board board, Game g) {
 		this.board = board;
 		game = g;
-		this.tempList = new ArrayList<Point>();
-		this.list = new ArrayList<Point>();
+		this.buttonList = new ArrayList<CustomButton>();
 	}
 
 	@Override
@@ -39,9 +37,11 @@ public class CustomOnTouchListener implements OnTouchListener {
 
 			CustomButton button = ButtonListProvider.getInstance().getButtonUnder(me.getRawX(), me.getRawY());
 			
-			if (button != null && (tempList.size() == 0 || !tempList.get(tempList.size() - 1).equals(button.getPoint()))) {
-				tempList.add(button.getPoint());
-				Log.d("CustomOnTouchListener", "moved to " + button.getPoint().toString() + " - List Size is now " + this.tempList.size());
+			if (button != null && (buttonList.size() == 0 || !buttonList.get(buttonList.size() - 1).getPoint().equals(button.getPoint()))) {
+				buttonList.add(button);
+				// TODO: color new button
+				
+				Log.d("CustomOnTouchListener", "moved to " + button.getPoint().toString() + " - List Size is now " + this.buttonList.size());
 			}
 
 		}
@@ -50,29 +50,41 @@ public class CustomOnTouchListener implements OnTouchListener {
 			
 			Log.i("CustomOnTouchListener", "finishing sequence");
 			
-			list.clear();
-			list.addAll(tempList);
-
-			tempList.clear();
+			ArrayList<Point> pointList = new ArrayList<Point>();
 			
-			SelectionStatus result = board.submit(list);
+			for (CustomButton btn : buttonList) {
+				pointList.add(btn.getPoint());
+			}
+
+			// TODO: add
+			
+			
+			SelectionStatus result = board.submit(pointList);
 			
 			//EVALUATE RESULT
 			switch (result) {
 			case SelectionGood:
+				// TODO: color green
 				game.update();
 				break;
 			case SelectionOld:
+				// TODO: color amber
 				break;
 			case SelectionBad:
+				// TODO: color red
 				break;
 			case SelectionInvalid:
 				break;
 			}
 			
+			
 			//PRINT SCORE
 			score = (TextView) game.findViewById(R.id.score);
 			score.setText("" + board.getBoardScore());
+			// TODO: delay (short)
+			// TODO: paint neutral
+			//cleanup
+			buttonList.clear();
 		}
 		// END
 		return true;
