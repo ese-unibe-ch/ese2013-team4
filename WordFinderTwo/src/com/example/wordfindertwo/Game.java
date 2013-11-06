@@ -191,6 +191,7 @@ public class Game extends Activity {
 	
 	public void update() {
 		if (board.isCompleted()) {
+			Log.i("Game", "board completed");
 			this.finish();
 		}
 	}
