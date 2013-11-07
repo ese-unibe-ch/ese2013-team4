@@ -24,10 +24,10 @@ public class BoardPointRetreiverTest extends AndroidTestCase {
 	}
 	
 	public void testEmptyBoard() {
-		assertEquals(36, this.bpr.getGoodPoints('A', this.matrix, null));
-		assertEquals(36, this.bpr.getGoodPoints('a', this.matrix, null));
-		assertEquals(36, this.bpr.getGoodPoints('A', this.matrix, new ArrayList<Point>()));
-		assertEquals(36, this.bpr.getGoodPoints('a', this.matrix, new ArrayList<Point>()));
+		assertEquals(36, this.bpr.getGoodPoints('A', this.matrix, null).size());
+		assertEquals(36, this.bpr.getGoodPoints('a', this.matrix, null).size());
+		assertEquals(36, this.bpr.getGoodPoints('A', this.matrix, new ArrayList<Point>()).size());
+		assertEquals(36, this.bpr.getGoodPoints('a', this.matrix, new ArrayList<Point>()).size());
 	}
 	
 	public void testBoardWithBadExistings() {
