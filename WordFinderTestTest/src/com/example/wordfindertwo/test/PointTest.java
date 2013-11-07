@@ -46,4 +46,11 @@ public class PointTest extends AndroidTestCase {
 		assertTrue(p.isAdjacent(null));
 	}
 	
+	public void testHash() {
+		Point p = new Point (1, 2);
+		assertEquals(3, p.hashCode());
+		p = new Point(100, 23);
+		assertEquals(123, p.hashCode());
+	}
+	
 }
