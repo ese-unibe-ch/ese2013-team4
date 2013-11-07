@@ -21,7 +21,7 @@ public class PointTest extends AndroidTestCase {
 		Point p2 = new Point(3, 4);
 		assertFalse(p1.equals(p2));
 		p2.setX(p1.getX());
-		p2.setY(p2.getY());
+		p2.setY(p1.getY());
 		assertTrue(p1.equals(p2));
 	}
 	
