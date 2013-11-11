@@ -47,15 +47,6 @@
         <requestFocus />
     </EditText>
 
-    <Button
-        android:id="@+id/searchFriendByMailButton"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_above="@+id/searchFriendResultTextView"
-        android:layout_alignLeft="@+id/titleTextSearchFriendTextView"
-        android:layout_marginBottom="23dp"
-        android:text="@string/searchFriendByMailButton" />
-
     <EditText
         android:id="@+id/foundFriendEmailEditText"
         android:layout_width="wrap_content"
@@ -66,5 +57,14 @@
         android:ems="10"
         android:inputType="textEmailAddress"
         android:text="@string/notJetSearchedForFriendText" />
+
+    <Button
+        android:id="@+id/searchFriendByMailButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/searchFriendResultTextView"
+        android:layout_alignLeft="@+id/searchFriendByMailEditText"
+        android:layout_marginBottom="22dp"
+        android:text="@string/searchFriendByMailButton" />
     
 </RelativeLayout>
