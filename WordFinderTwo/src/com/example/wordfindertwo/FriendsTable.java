@@ -5,7 +5,7 @@ import android.os.Bundle;
 import android.app.Activity;
 import android.content.Context;
 import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
+import android.view.View.OnClickListener;
 import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.Menu;
@@ -36,30 +36,43 @@ public class FriendsTable extends Activity{
 		setContentView(R.layout.activity_friendtable);
 		
 		friendsTable_scrollView_TableLayout =(TableLayout) findViewById(R.id.friendsTable_scrollView_TableLayout);
-		deleteOnRadioButton = (RadioButton) findViewById(R.id.deleteFriend);
-		deleteOnRadioButton.setOnClickListener(new View.OnClickListener()
-		addFriendButton = (Button) findViewById(R.id.addFriendButton);
 		
-		deleteOnRadioButton.setOnClickListener( new deleteOnRadioButtonListener);
+		deleteOnRadioButton = (RadioButton) findViewById(R.id.deleteFriend);
+		deleteOnRadioButton.setOnClickListener(deleteOnRadioButtonListener);
+		
+		addFriendButton = (Button) findViewById(R.id.addFriendButton);
+		addFriendButton.setOnClickListener(addFriendButtonListener);
 				
 	}
 	
 	
-	private OnClickListener deleteOnRadioButtonListener =new OnClickListener() {
+	public OnClickListener deleteOnRadioButtonListener = new OnClickListener(){
 		
-		@Override
-		public void onClick(DialogInterface dialog, int which) {
+		public void onClick(View v) {
 			View button = findViewById(R.id.friends_tableRow_deleteButton);
 			button.setVisibility(View.VISIBLE);
 			
 		}
 	};
+
+	public OnClickListener addFriendButtonListener = new OnClickListener() {
+		
+		@Override
+		public void onClick(View v) {
+			Intent i = new Intent(getApplicationContext(),AddFriend.class);
+            startActivity(i);
 	
+		}
+	
+	};
+
 	private void insertFriendInScrollView(String friendNameMail, int Arrayindex){
 		
 		
 		LayoutInflater friendsInflater = (LayoutInflater) getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+		
 		View newFriendRow = friendsInflater.inflate(R.layout.activity_friend_tablerow, null);
+		
 		TextView friends_tablRow_TextsView = (TextView) newFriendRow.findViewById(R.id.friends_tablRow_TextsView);
 		friends_tablRow_TextsView.setText(friendNameMail);
 		
@@ -71,14 +84,11 @@ public class FriendsTable extends Activity{
 	
 	
 	
-	private OnClickListener friends_tableRow_deleteButtonListener= new OnClickListener() {
-		
-		
+	public OnClickListener friends_tableRow_deleteButtonListener= new OnClickListener() {
+
 		@Override
-		public void onClick(DialogInterface dialog, int which) {
-			friendsTable_scrollView_TableLayout.removeViewAt(which);
-			
-			
+		public void onClick(View v) {
+			friendsTable_scrollView_TableLayout.removeViewAt(R.id.friendsTable_FirstTableRow);;			
 		}
 	};
 	
