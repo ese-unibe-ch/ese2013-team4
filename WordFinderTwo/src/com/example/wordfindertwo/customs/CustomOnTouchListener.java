@@ -10,18 +10,21 @@ import com.example.wordfindertwo.core.SelectionStatus;
 import com.example.wordfindertwo.core.board.Board;
 
 import android.app.Activity;
+import android.graphics.Color;
 import android.util.Log;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.View.OnTouchListener;
 import android.widget.TextView;
 
-public class CustomOnTouchListener implements OnTouchListener {
+public class CustomOnTouchListener implements OnTouchListener, Runnable {
 
 	ArrayList<CustomButton> buttonList;
 	Board board;
 	Game game;
 	TextView score;
+	Thread colorThread;
+	SelectionStatus result;
 
 	public CustomOnTouchListener(Board board, Game g) {
 		this.board = board;
@@ -40,6 +43,7 @@ public class CustomOnTouchListener implements OnTouchListener {
 			if (button != null && (buttonList.size() == 0 || !buttonList.get(buttonList.size() - 1).getPoint().equals(button.getPoint()))) {
 				buttonList.add(button);
 				// TODO: color new button
+				button.setBackgroundColor(Color.CYAN);
 				
 				Log.d("CustomOnTouchListener", "moved to " + button.getPoint().toString() + " - List Size is now " + this.buttonList.size());
 			}
@@ -55,27 +59,15 @@ public class CustomOnTouchListener implements OnTouchListener {
 			for (CustomButton btn : buttonList) {
 				pointList.add(btn.getPoint());
 			}
+			
 
 			// TODO: add
 			
-			
-			SelectionStatus result = board.submit(pointList);
+			result = board.submit(pointList);
 			
 			//EVALUATE RESULT
-			switch (result) {
-			case SelectionGood:
-				// TODO: color green
-				game.update();
-				break;
-			case SelectionOld:
-				// TODO: color amber
-				break;
-			case SelectionBad:
-				// TODO: color red
-				break;
-			case SelectionInvalid:
-				break;
-			}
+			colorThread = new Thread(this);
+			colorThread.run();
 			
 			
 			//PRINT SCORE
@@ -92,5 +84,66 @@ public class CustomOnTouchListener implements OnTouchListener {
 
 	public void motionEventDown(CustomButton v) {
 
+	}
+
+	@Override
+	public void run() {
+		// TODO Auto-generated method stub
+		switch (result) {
+		case SelectionGood:
+			// TODO: color green
+			for (CustomButton btn : buttonList){
+				btn.setBackgroundColor(Color.GREEN);
+			}
+			// one sec pause
+			try {
+				colorThread.sleep(1000);
+			} catch (InterruptedException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+			for (CustomButton btn : buttonList){
+				btn.setBackgroundResource(android.R.drawable.btn_default);
+			}
+			colorThread.interrupt();
+			game.update();
+			break;
+			
+		case SelectionOld:
+			// TODO: color yellow
+			for (CustomButton btn : buttonList){
+				btn.setBackgroundColor(Color.YELLOW);
+			}
+			// one sec pause
+			try {
+				colorThread.sleep(1000);
+			} catch (InterruptedException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+			for (CustomButton btn : buttonList){
+				btn.setBackgroundResource(android.R.drawable.btn_default);			}
+			colorThread.interrupt();
+			break;
+			
+		case SelectionBad:
+			// TODO: color red
+			for (CustomButton btn : buttonList){
+				btn.setBackgroundColor(Color.RED);
+			}
+			// one sec pause
+			try {
+				colorThread.sleep(1000);
+			} catch (InterruptedException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+			for (CustomButton btn : buttonList){
+				btn.setBackgroundResource(android.R.drawable.btn_default);			}
+			colorThread.interrupt();
+			break;
+		case SelectionInvalid:
+			break;
+		}
 	}
 }

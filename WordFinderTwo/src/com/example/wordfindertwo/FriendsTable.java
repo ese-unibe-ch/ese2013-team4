@@ -37,10 +37,10 @@ public class FriendsTable extends Activity{
 		
 		friendsTable_scrollView_TableLayout =(TableLayout) findViewById(R.id.friendsTable_scrollView_TableLayout);
 		deleteOnRadioButton = (RadioButton) findViewById(R.id.deleteFriend);
-		deleteOnRadioButton.setOnClickListener(new View.OnClickListener()
+//		deleteOnRadioButton.setOnClickListener(new View.OnClickListener()
 		addFriendButton = (Button) findViewById(R.id.addFriendButton);
 		
-		deleteOnRadioButton.setOnClickListener( new deleteOnRadioButtonListener);
+//		deleteOnRadioButton.setOnClickListener( new deleteOnRadioButtonListener);
 				
 	}
 	
@@ -64,7 +64,7 @@ public class FriendsTable extends Activity{
 		friends_tablRow_TextsView.setText(friendNameMail);
 		
 		Button friends_tableRow_deleteButton = (Button) newFriendRow.findViewById(R.id.friends_tableRow_deleteButton);
-		friends_tableRow_deleteButton.setOnClickListener(friends_tableRow_deleteButtonListener);
+//		friends_tableRow_deleteButton.setOnClickListener(friends_tableRow_deleteButtonListener);
 
 		friendsTable_scrollView_TableLayout.addView(friends_tablRow_TextsView, Arrayindex);
 	}
