@@ -33,11 +33,6 @@
         <activity
             android:name="com.example.wordfindertwo.FriendsTable"
             android:label="@string/title_activity_friend" >
-            <intent-filter>
-                <action android:name="android.intente.action.FRIENDSTABLE" />
-
-                <category android:name="android.intent.category.DEFAULT" />
-            </intent-filter>
         </activity>
         <activity
             android:name="com.example.wordfindertwo.Game"

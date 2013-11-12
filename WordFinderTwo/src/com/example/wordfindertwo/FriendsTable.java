@@ -1,10 +1,8 @@
 package com.example.wordfindertwo;
 
-import java.util.ArrayList;
 
 import android.os.Bundle;
 import android.app.Activity;
-import android.app.ListActivity;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.DialogInterface.OnClickListener;
@@ -14,16 +12,22 @@ import android.view.Menu;
 import android.view.View;
 import android.widget.Button;
 import android.widget.RadioButton;
+import android.widget.ScrollView;
 import android.widget.TableLayout;
+import android.widget.TableRow;
 import android.widget.TextView;
 
 
 public class FriendsTable extends Activity{
 
-
+	TextView friendsTable_TitleTextView;
 	RadioButton deleteOnRadioButton;
 	Button addFriendButton;
-	
+	TableRow friendsTable_FirstTableRow;
+	TableRow friendsTabel_TableRow_holdsScrollViewAndTableRow;
+	TableRow addAndDeleteFriendTableRow;
+	ScrollView friendsTable_ScrollView_inTableRow;
+	TableLayout friendsTable_outerTableLayout;
 	private TableLayout friendsTable_scrollView_TableLayout;
 	
 	@Override
@@ -33,11 +37,13 @@ public class FriendsTable extends Activity{
 		
 		friendsTable_scrollView_TableLayout =(TableLayout) findViewById(R.id.friendsTable_scrollView_TableLayout);
 		deleteOnRadioButton = (RadioButton) findViewById(R.id.deleteFriend);
+		deleteOnRadioButton.setOnClickListener(new View.OnClickListener()
 		addFriendButton = (Button) findViewById(R.id.addFriendButton);
 		
-		deleteOnRadioButton.setOnClickListener((android.view.View.OnClickListener) deleteOnRadioButtonListener);
+		deleteOnRadioButton.setOnClickListener( new deleteOnRadioButtonListener);
 				
 	}
+	
 	
 	private OnClickListener deleteOnRadioButtonListener =new OnClickListener() {
 		
@@ -58,7 +64,7 @@ public class FriendsTable extends Activity{
 		friends_tablRow_TextsView.setText(friendNameMail);
 		
 		Button friends_tableRow_deleteButton = (Button) newFriendRow.findViewById(R.id.friends_tableRow_deleteButton);
-		friends_tableRow_deleteButton.setOnClickListener((android.view.View.OnClickListener) friends_tableRow_deleteButtonListener);
+		friends_tableRow_deleteButton.setOnClickListener(friends_tableRow_deleteButtonListener);
 
 		friendsTable_scrollView_TableLayout.addView(friends_tablRow_TextsView, Arrayindex);
 	}

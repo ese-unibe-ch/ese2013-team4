@@ -51,6 +51,7 @@ containing a value of this type.
     public static final class id {
         public static final int Dictionary=0x7f080049;
         public static final int Friend=0x7f080048;
+        public static final int MainMenuTitleTextView=0x7f080045;
         public static final int PlayGame=0x7f080046;
         public static final int Score=0x7f080047;
         public static final int action_settings=0x7f08004b;
@@ -122,7 +123,6 @@ containing a value of this type.
         public static final int searchFriendbyMailButton=0x7f080000;
         public static final int startTimerPause=0x7f080015;
         public static final int starttimer=0x7f080016;
-        public static final int textView2=0x7f080045;
         public static final int timer=0x7f080017;
         public static final int titleTextSearchFriendTextView=0x7f080001;
     }
