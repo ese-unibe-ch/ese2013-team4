@@ -48,6 +48,11 @@ public class Game extends Activity {
 		
 		ButtonListProvider blp = new ButtonListProvider(this);
 		
+		//setting btn_default background
+		for (CustomButton btn : blp.getList()){
+			btn.setBackgroundResource(android.R.drawable.btn_default);
+		}
+		
 		if (blp.getButtonAt(0, 0) == null) {
 			Log.i("Game", "ButtonListProvider is null");
 		}

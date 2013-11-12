@@ -42,7 +42,7 @@ public class FriendsTable extends Activity{
 		
 		addFriendButton = (Button) findViewById(R.id.addFriendButton);
 		addFriendButton.setOnClickListener(addFriendButtonListener);
-				
+
 	}
 	
 	
@@ -77,7 +77,7 @@ public class FriendsTable extends Activity{
 		friends_tablRow_TextsView.setText(friendNameMail);
 		
 		Button friends_tableRow_deleteButton = (Button) newFriendRow.findViewById(R.id.friends_tableRow_deleteButton);
-		friends_tableRow_deleteButton.setOnClickListener(friends_tableRow_deleteButtonListener);
+//		friends_tableRow_deleteButton.setOnClickListener(friends_tableRow_deleteButtonListener);
 
 		friendsTable_scrollView_TableLayout.addView(friends_tablRow_TextsView, Arrayindex);
 	}
