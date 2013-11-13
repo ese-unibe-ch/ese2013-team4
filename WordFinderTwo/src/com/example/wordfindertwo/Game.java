@@ -6,9 +6,11 @@ import com.example.wordfindertwo.core.test.TestDictionary;
 import com.example.wordfindertwo.core.BoardFactory;
 import com.example.wordfindertwo.customs.CustomButton;
 import com.example.wordfindertwo.customs.CustomOnTouchListener;
+
 import android.util.Log;
 import android.os.Bundle;
 import android.os.CountDownTimer;
+import android.os.Handler;
 import android.app.Activity;
 import android.content.Intent;
 import android.view.Menu;
@@ -74,12 +76,7 @@ public class Game extends Activity {
 		// fill custombuttons with chars
 		// TODO board.getCharAt(x,y);
 		
-		Log.i("Game", "fill buttons");
-		for (int i = 0; i < 36; i++) {
-			CustomButton btn = ButtonListProvider.getInstance().getButtonAtIndex(i);
-			btn.setText("" + board.getCharAt(i % 6, i / 6));
-		}
-		Log.i("Game", "setup timer");
+
 		//------------------------------
 		
 		
@@ -91,6 +88,9 @@ public class Game extends Activity {
 			public void onClick(View v) {
 				startTimer();
 				bPause.setClickable(true);
+				setListener();
+				bStart.setClickable(false);
+				fillBoard();
 			}
 		});
 
@@ -108,10 +108,13 @@ public class Game extends Activity {
 		bPause.setClickable(false);
 		
 		layout = (LinearLayout) findViewById(R.id.gamespace);
-		layout.setOnTouchListener(new CustomOnTouchListener(board,this));
 		
 		TextView score = (TextView) game.findViewById(R.id.score);
 		score.setText("Score: " + board.getBoardScore());
+	}
+	
+	public void setListener(){
+		layout.setOnTouchListener(new CustomOnTouchListener(board,this));
 	}
 
 	@Override
@@ -204,5 +207,13 @@ public class Game extends Activity {
 		super.onPause();
 		paused = true;
 		bStart.setClickable(false);
+	}	
+	public void fillBoard(){
+	Log.i("Game", "fill buttons");
+	for (int i = 0; i < 36; i++) {
+		CustomButton btn = ButtonListProvider.getInstance().getButtonAtIndex(i);
+		btn.setText("" + board.getCharAt(i % 6, i / 6));
+	}
+	Log.i("Game", "setup timer");
 	}
 }
