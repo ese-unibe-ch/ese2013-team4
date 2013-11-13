@@ -342,13 +342,13 @@
                 custom:yCoord="5" />
         </LinearLayout>
     </LinearLayout>
-	
+
     <TextView
         android:id="@+id/score"
-        android:textSize="24dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:layout_marginLeft="15dp"
         android:layout_marginTop="370dp"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content" />
+        android:textSize="24dp" />
 
 </RelativeLayout>

@@ -56,11 +56,12 @@ containing a value of this type.
         public static final int Score=0x7f080068;
         public static final int TableLayout1=0x7f080015;
         public static final int TableLayout2=0x7f08000f;
-        public static final int action_settings=0x7f08006c;
+        public static final int action_settings=0x7f08006f;
         public static final int activity_detailled_dictionaryview_MainTableLayout=0x7f08000a;
         public static final int addAndDeleteFriendTableRow=0x7f080033;
         public static final int addFriendButton=0x7f080034;
         public static final int aftergamelayout=0x7f080006;
+        public static final int backtothegame=0x7f08006c;
         public static final int button00=0x7f08003c;
         public static final int button01=0x7f080043;
         public static final int button02=0x7f08004a;
@@ -97,7 +98,7 @@ containing a value of this type.
         public static final int button53=0x7f080056;
         public static final int button54=0x7f08005d;
         public static final int button55=0x7f080064;
-        public static final int currentscore=0x7f08006b;
+        public static final int currentscore=0x7f08006e;
         public static final int deleteFriend=0x7f080035;
         public static final int detDictView_AddWord_Button=0x7f080013;
         public static final int detDictView_DictionaryTitleName_TableRow=0x7f08000b;
@@ -139,7 +140,9 @@ containing a value of this type.
         public static final int friends_tablRow_TextsView=0x7f08002b;
         public static final int friends_tableRow_deleteButton=0x7f08002c;
         public static final int gamespace=0x7f08003a;
+        public static final int pauselayout=0x7f08006b;
         public static final int pausetimer=0x7f080039;
+        public static final int resume=0x7f08006d;
         public static final int returntomainmenu=0x7f080009;
         public static final int row1=0x7f08003b;
         public static final int row2=0x7f080042;
@@ -169,8 +172,9 @@ containing a value of this type.
         public static final int activity_friendtable=0x7f030006;
         public static final int activity_game=0x7f030007;
         public static final int activity_main_menu=0x7f030008;
-        public static final int activity_pause_screen=0x7f030009;
-        public static final int activity_score=0x7f03000a;
+        public static final int activity_pause=0x7f030009;
+        public static final int activity_pause_screen=0x7f03000a;
+        public static final int activity_score=0x7f03000b;
     }
     public static final class menu {
         public static final int after_game=0x7f070000;
@@ -179,8 +183,9 @@ containing a value of this type.
         public static final int game=0x7f070003;
         public static final int main=0x7f070004;
         public static final int main_menu=0x7f070005;
-        public static final int pause_screen=0x7f070006;
-        public static final int score=0x7f070007;
+        public static final int pause=0x7f070006;
+        public static final int pause_screen=0x7f070007;
+        public static final int score=0x7f070008;
     }
     public static final class string {
         public static final int action_settings=0x7f050002;
@@ -209,6 +214,7 @@ containing a value of this type.
         public static final int friendField_tableRowTextView=0x7f050016;
         public static final int friend_buttonText=0x7f05000b;
         public static final int friends_tableRow_deleteButton=0x7f050017;
+        public static final int hello_world=0x7f050029;
         public static final int main_menu_title=0x7f050001;
         public static final int noneEmailFoundText=0x7f050013;
         public static final int notJetSearchedForFriendText=0x7f050014;
@@ -221,6 +227,7 @@ containing a value of this type.
         public static final int title_activity_friend=0x7f050005;
         public static final int title_activity_game=0x7f050006;
         public static final int title_activity_main=0x7f050003;
+        public static final int title_activity_pause=0x7f050028;
         public static final int title_activity_pause_screen=0x7f050008;
         public static final int title_activity_score=0x7f050004;
     }

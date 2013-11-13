@@ -50,6 +50,10 @@
             android:name="com.example.wordfindertwo.AfterGame"
             android:label="@string/title_activity_after_game" >
         </activity>
+        <activity
+            android:name="com.example.wordfindertwo.Pause"
+            android:label="@string/title_activity_pause" >
+        </activity>
     </application>
 
 </manifest>

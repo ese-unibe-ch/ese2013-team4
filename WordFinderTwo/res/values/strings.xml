@@ -23,23 +23,25 @@
     <string name="noneEmailFoundText">No matching Email/Friend Found</string>
     <string name="notJetSearchedForFriendText">Not jet searched</string>
     <string name="title_activity_after_game">AfterGame</string>
-    <string name="friendField_tableRowTextView"> </string>
+    <string name="friendField_tableRowTextView"></string>
     <string name="friends_tableRow_deleteButton">Delete</string>
-	<string name="dictionaries_Activity_Title">Dictionaries</string>
+    <string name="dictionaries_Activity_Title">Dictionaries</string>
     <string name="dictionaries_type_Custom_Title">Custom Dictionaries</string>
     <string name="dictionaries_type_Regular_Title">Regular Dictionaries</string>
     <string name="dictionaries_Button_AddRegDict">Add regular Dictionary</string>
     <string name="dictionaries_Button_AddCustDict">Add custom Dictionary</string>
     <string name="dictionaries_Button_deleteRegDict">Del regular Dictionary</string>
     <string name="dictionaries_Button_deleteCustDict">Del custom Dictionary</string>
-    <string name="dictionaries_TableRow_Checkout_Button">Checkout</string>    
-    <string name="dictionaries_TableRow_DictName_TextView">DictName</string>    
+    <string name="dictionaries_TableRow_Checkout_Button">Checkout</string>
+    <string name="dictionaries_TableRow_DictName_TextView">DictName</string>
     <string name="dictionary_insideView_Button_DelDict">Delete Dictionary</string>
-	<string name="dictionary_insideView_Button_DelWord">Delete Word</string>
-	<string name="dictionary_insideView_Button_AddWord">Add Word</string>    
-	<string name="detDictView_DictionaryNameTitle_textViwe">A Dictionary</string>   
-	<string name="detDictView_WordEditButtons_textViwe">Wordlist Editbuttons:</string>    
-	<string name="detDictView_WordEditButtons_AddWord_Button">Add</string>    
-	<string name="detDictView_WordEditButtons_DeleteWord_Button">Delete</string>    
-			
+    <string name="dictionary_insideView_Button_DelWord">Delete Word</string>
+    <string name="dictionary_insideView_Button_AddWord">Add Word</string>
+    <string name="detDictView_DictionaryNameTitle_textViwe">A Dictionary</string>
+    <string name="detDictView_WordEditButtons_textViwe">Wordlist Editbuttons:</string>
+    <string name="detDictView_WordEditButtons_AddWord_Button">Add</string>
+    <string name="detDictView_WordEditButtons_DeleteWord_Button">Delete</string>
+    <string name="title_activity_pause">Pause</string>
+    <string name="hello_world">Hello world!</string>
+
 </resources>
