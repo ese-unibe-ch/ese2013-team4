@@ -15,7 +15,7 @@
     <string name="friend_buttonText">Friends</string>
     <string name="add_friendButton">Add Friend</string>
     <string name="delete_frinedRadioButton">Delete On</string>
-    <string name="dictionary_buttonText">Dictionarys</string>
+    <string name="dictionary_buttonText">Dictionaries</string>
     <string name="searchFriendByMailButton">Search</string>
     <string name="addFoundFriendByMailButton">Add Friend</string>
     <string name="searchFriendByMailText">Type in a Friends E-Mail:</string>
