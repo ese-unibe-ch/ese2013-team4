@@ -49,7 +49,6 @@ containing a value of this type.
         public static final int ic_launcher=0x7f020000;
     }
     public static final class id {
-        public static final int @+id/detDictView_EditButton_TableRow=0x7f080012;
         public static final int Dictionary=0x7f08006a;
         public static final int Friend=0x7f080069;
         public static final int MainMenuTitleTextView=0x7f080066;
@@ -103,6 +102,7 @@ containing a value of this type.
         public static final int detDictView_AddWord_Button=0x7f080013;
         public static final int detDictView_DictionaryTitleName_TableRow=0x7f08000b;
         public static final int detDictView_DictionaryTitleName_TextView=0x7f08000c;
+        public static final int detDictView_EditButton_TableRow=0x7f080012;
         public static final int detDictView_ScrollView=0x7f08000e;
         public static final int detDictView_ScrollView_TableRow=0x7f08000d;
         public static final int detDictView_TitleEditButton_TableRow=0x7f080010;
