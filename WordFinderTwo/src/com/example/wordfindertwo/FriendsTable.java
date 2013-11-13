@@ -4,7 +4,6 @@ package com.example.wordfindertwo;
 import android.os.Bundle;
 import android.app.Activity;
 import android.content.Context;
-import android.content.DialogInterface;
 import android.view.View.OnClickListener;
 import android.content.Intent;
 import android.view.LayoutInflater;
@@ -77,7 +76,7 @@ public class FriendsTable extends Activity{
 		friends_tablRow_TextsView.setText(friendNameMail);
 		
 		Button friends_tableRow_deleteButton = (Button) newFriendRow.findViewById(R.id.friends_tableRow_deleteButton);
-//		friends_tableRow_deleteButton.setOnClickListener(friends_tableRow_deleteButtonListener);
+		friends_tableRow_deleteButton.setOnClickListener(friends_tableRow_deleteButtonListener);
 
 		friendsTable_scrollView_TableLayout.addView(friends_tablRow_TextsView, Arrayindex);
 	}
