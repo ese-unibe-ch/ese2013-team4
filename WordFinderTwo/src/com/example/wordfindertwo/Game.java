@@ -123,7 +123,7 @@ public class Game extends Activity {
 		layout.setOnTouchListener(new CustomOnTouchListener(board,this));
 		
 		TextView score = (TextView) game.findViewById(R.id.score);
-		score.setText("" + board.getBoardScore());
+		score.setText("Score: " + board.getBoardScore());
 	}
 
 	@Override

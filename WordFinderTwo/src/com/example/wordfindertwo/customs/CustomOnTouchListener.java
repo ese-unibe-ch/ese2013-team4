@@ -95,7 +95,7 @@ public class CustomOnTouchListener implements OnTouchListener, Runnable {
 
 			// PRINT SCORE
 			score = (TextView) game.findViewById(R.id.score);
-			score.setText("" + board.getBoardScore());
+			score.setText("Score: " + board.getBoardScore());
 
 			// delay (short)
 			colorThread.run();
