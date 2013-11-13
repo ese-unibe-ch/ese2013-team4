@@ -6,3 +6,8 @@ WordFinderTwo/bin/
 WordFinderTwo/local.properties
 WordFinderTestTest/local.properties
 WordFinderTestTest/junit-report.xml
+
+# OS specifc files
+Thumbs.db
+Desktrop.ini
+.DS_Store
