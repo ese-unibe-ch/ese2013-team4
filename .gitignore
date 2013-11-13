@@ -1,8 +1,10 @@
 .DS_Store
 .metadata/
 WordFinderCore/bin/
+WordFinderCore/gen/
 WordFinderCore/doc/
 WordFinderTwo/bin/
+WordFinderTwo/gen/
 WordFinderTwo/local.properties
 WordFinderTestTest/local.properties
 WordFinderTestTest/junit-report.xml
