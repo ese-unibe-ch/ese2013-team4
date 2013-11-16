@@ -4,7 +4,7 @@ import com.example.wordfindertwo.Dictionary;
 import com.example.wordfindertwo.FriendsTable;
 import com.example.wordfindertwo.Game;
 import com.example.wordfindertwo.R;
-import com.example.wordfindertwo.Scores;
+import com.example.wordfindertwo.Score;
 
 import android.os.Bundle;
 import android.app.Activity;
@@ -32,7 +32,7 @@ public class MainMenu extends Activity {
 	}
 	
 	public void openScores(View view){
-		Intent intent = new Intent(this, Scores.class);
+		Intent intent = new Intent(this, Score.class);
 		startActivity(intent);	
 	}
 	

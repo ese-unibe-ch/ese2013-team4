@@ -15,7 +15,7 @@
     <string name="friend_buttonText">Friends</string>
     <string name="add_friendButton">Add Friend</string>
     <string name="delete_frinedRadioButton">Delete On</string>
-    <string name="dictionary_buttonText">Dictionarys</string>
+    <string name="dictionary_buttonText">Dictionaries</string>
     <string name="searchFriendByMailButton">Search</string>
     <string name="addFoundFriendByMailButton">Add Friend</string>
     <string name="searchFriendByMailText">Type in a Friends E-Mail:</string>
@@ -23,17 +23,17 @@
     <string name="noneEmailFoundText">No matching Email/Friend Found</string>
     <string name="notJetSearchedForFriendText">Not jet searched</string>
     <string name="title_activity_after_game">AfterGame</string>
-    <string name="friendField_tableRowTextView"> </string>
+    <string name="friendField_tableRowTextView"></string>
     <string name="friends_tableRow_deleteButton">Delete</string>
-	<string name="dictionaries_Activity_Title">Dictionaries</string>
+     <string name="dictionaries_Activity_Title">Dictionaries</string>
     <string name="dictionaries_type_Custom_Title">Custom Dictionaries</string>
     <string name="dictionaries_type_Regular_Title">Regular Dictionaries</string>
     <string name="dictionaries_Button_AddRegDict">Add regular Dictionary</string>
     <string name="dictionaries_Button_AddCustDict">Add custom Dictionary</string>
     <string name="dictionaries_Button_deleteRegDict">Del regular Dictionary</string>
     <string name="dictionaries_Button_deleteCustDict">Del custom Dictionary</string>
-    <string name="dictionaries_TableRow_Checkout_Button">Checkout</string>    
-    <string name="dictionaries_TableRow_DictName_TextView">DictName</string>    
+    <string name="dictionaries_TableRow_Checkout_Button">Checkout</string>
+    <string name="dictionaries_TableRow_DictName_TextView">DictName</string>
     <string name="dictionary_insideView_Button_DelDict">Delete Dictionary</string>
 	<string name="dictionary_insideView_Button_DelWord">Delete Word</string>
 	<string name="dictionary_insideView_Button_AddWord">Add Word</string>    
@@ -49,6 +49,7 @@
 	<string name="scoresView_LastTwenty_Own_TextView">Last Twenty Own Scores</string>
 	<string name="scoresView_LastTwenty_Frenids_TextView">Last Twenty friends Scores</string> 		 		
 	<string name="scoresView_Delete_Score_Button">Delete Score</string>
-	    
-			
+	<string name="title_activity_pause">Pause</string>	
+    <string name="hello_world">Hello world!</string>
+
 </resources>

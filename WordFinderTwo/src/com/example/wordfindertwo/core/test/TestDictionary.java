@@ -3,6 +3,7 @@ package com.example.wordfindertwo.core.test;
 import java.util.ArrayList;
 import java.util.Locale;
 
+import com.example.wordfindertwo.StandartDictionary;
 import com.example.wordfindertwo.core.IDictionary;
 
 /**
@@ -27,49 +28,7 @@ public class TestDictionary implements IDictionary {
 	private final ArrayList<String> generateWordList() {
 		ArrayList<String> words = new ArrayList<String>();
 		// -- INSERT WORDS HERE --
-		words.add("Test");
-		words.add("English");
-		words.add("Bridge");
-		words.add("Telephone");
-		words.add("Joystick");
-		words.add("Smartphone");
-		words.add("Rocket");
-		words.add("Airplane");
-		words.add("Bottle");
-		words.add("Water");
-		words.add("Speaker");
-		words.add("Glass");
-		words.add("Spaceship");
-		words.add("Astronaut");
-		words.add("Building");
-		words.add("Tower");
-		words.add("swimming");
-		words.add("documenting");
-		words.add("coding");
-		words.add("writing");
-		words.add("Ink");
-		words.add("Pen");
-		words.add("Sharpener");
-		words.add("Shaver");
-		words.add("pick");
-		words.add("Bird");
-		words.add("Circle");
-		words.add("Square");
-		words.add("Box");
-		words.add("Bowl");
-		words.add("Cable");
-		words.add("Paper");
-		words.add("Die");
-		words.add("Monster");
-		words.add("Women");
-		words.add("Fly");
-		words.add("Incubation");
-		words.add("Infection");
-		words.add("Hypnosis");
-		words.add("Man");
-		words.add("Chest");
-		words.add("Axe");
-		words.add("Wire");
+		words = StandartDictionary.getEnglishList();
 		// -- END OF WORD LIST --
 		for (int i = 0; i < words.size(); i++) {
 			words.set(i, words.get(i).toUpperCase(Locale.ENGLISH));

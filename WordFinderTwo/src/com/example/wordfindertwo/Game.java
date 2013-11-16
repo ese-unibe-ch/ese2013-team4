@@ -6,9 +6,11 @@ import com.example.wordfindertwo.core.test.TestDictionary;
 import com.example.wordfindertwo.core.BoardFactory;
 import com.example.wordfindertwo.customs.CustomButton;
 import com.example.wordfindertwo.customs.CustomOnTouchListener;
+
 import android.util.Log;
 import android.os.Bundle;
 import android.os.CountDownTimer;
+import android.os.Handler;
 import android.app.Activity;
 import android.content.Intent;
 import android.view.Menu;
@@ -22,16 +24,18 @@ import java.util.*;
 public class Game extends Activity {
 	
 	// -------------timer Variables------------------
-	private final long START_TIME = 60000;
-	public long millisInFuture = START_TIME;
-	private TextView timerText;
-	private CountDownTimer timer;
+	public long millisInFuture = 60000;
+	private TextView timerView;
+	CountDownTimer timer;
 	private Activity a = this;
 	// -----------------------------------------------
 
+	static boolean paused = false;
 	private Board board;
 	LinearLayout layout; 
 	static ArrayList<Character> word;
+	Button bStart;
+	Button bPause;
 	
 	public static Game game;
 	
@@ -44,7 +48,7 @@ public class Game extends Activity {
 		Log.i("Game", "onCreate");
 		
 		setContentView(R.layout.activity_game);
-		
+		timerView = (TextView) findViewById(R.id.timer);
 		
 		ButtonListProvider blp = new ButtonListProvider(this);
 		
@@ -66,64 +70,51 @@ public class Game extends Activity {
 			System.exit(0);
 		}
 		Log.i("Game", "create timer buttons");
-		Button bStart = (Button) findViewById(R.id.starttimer);
-		Button bPause = (Button) findViewById(R.id.pausetimer);
+		bStart = (Button) findViewById(R.id.starttimer);
+		bPause = (Button) findViewById(R.id.pausetimer);
 		
 		// fill custombuttons with chars
 		// TODO board.getCharAt(x,y);
 		
-		Log.i("Game", "fill buttons");
-		for (int i = 0; i < 36; i++) {
-			CustomButton btn = ButtonListProvider.getInstance().getButtonAtIndex(i);
-			btn.setText("" + board.getCharAt(i % 6, i / 6));
-		}
-		Log.i("Game", "setup timer");
+
 		//------------------------------
+		
+		
 		game = this;
-		timer = new CountDownTimer(START_TIME, 1000) {
-			// displays a new time every tick
-			public void onTick(long millisUntilFinished) {
-				timerText = (TextView) findViewById(R.id.timer);
-				timerText.setText("" + (millisUntilFinished / 1000));
-				game.setMillisInFuture(millisUntilFinished);
-			}
-
-			public void onFinish() {
-				TextView text = (TextView) findViewById(R.id.timer);
-				text.setText("Time's up!");
-				game.finish();
-			}
-		};
-
+		
 		// START Button
 		bStart.setOnClickListener(new View.OnClickListener() {
-
 			@Override
 			public void onClick(View v) {
-				// TODO Auto-generated method stub
-
-				timer.start();
+				startTimer();
+				bPause.setClickable(true);
+				setListener();
+				bStart.setClickable(false);
+				fillBoard();
 			}
 		});
 
 
 		// Button Pause
 		bPause.setOnClickListener(new View.OnClickListener() {
-
 			@Override
 			public void onClick(View v) {
-				/*timer.cancel();
-				timerText.setText("PAUSED");
-				Intent intent = new Intent(a, PauseScreen.class);
-				startActivity(intent);*/
+				timer.cancel();
+				timerView.setText("PAUSED");
+				Intent intent = new Intent(a, Pause.class);
+				startActivity(intent);
 			}
 		});
-
+		bPause.setClickable(false);
+		
 		layout = (LinearLayout) findViewById(R.id.gamespace);
-		layout.setOnTouchListener(new CustomOnTouchListener(board,this));
 		
 		TextView score = (TextView) game.findViewById(R.id.score);
 		score.setText("Score: " + board.getBoardScore());
+	}
+	
+	public void setListener(){
+		layout.setOnTouchListener(new CustomOnTouchListener(board,this));
 	}
 
 	@Override
@@ -135,14 +126,13 @@ public class Game extends Activity {
 
 	public void startTimer() {
 		// countdown atm 2min displayed in sec
-		CountDownTimer timer = new CountDownTimer(START_TIME, 1000) {
+		timer = new CountDownTimer(getMillisInFuture(), 1000) {
 
 			// displays a new time every tick
 			public void onTick(long millisUntilFinished) {
 				TextView text = (TextView) findViewById(R.id.timer);
-				text.setText("You have " + (millisUntilFinished / 1000)
-						+ " sec remaining!");
-				
+				text.setText("You have " + (millisUntilFinished / 1000) + " sec remaining!");
+				game.setMillisInFuture(millisUntilFinished);
 			}
 
 			public void onFinish() {
@@ -150,9 +140,6 @@ public class Game extends Activity {
 				text.setText("Time's up!");
 				game.finish();
 			}
-			
-			
-			
 		};
 
 		timer.start();
@@ -203,4 +190,30 @@ public class Game extends Activity {
 		}
 	}
 	
+	@Override
+	protected void onResume() {
+		// TODO Auto-generated method stub
+		super.onResume();
+		if (paused == true){
+			bStart.setText("");
+			startTimer();
+//			afterTimer.start();
+		}
+	}
+
+	@Override
+	protected void onPause() {
+		// TODO Auto-generated method stub
+		super.onPause();
+		paused = true;
+		bStart.setClickable(false);
+	}	
+	public void fillBoard(){
+	Log.i("Game", "fill buttons");
+	for (int i = 0; i < 36; i++) {
+		CustomButton btn = ButtonListProvider.getInstance().getButtonAtIndex(i);
+		btn.setText("" + board.getCharAt(i % 6, i / 6));
+	}
+	Log.i("Game", "setup timer");
+	}
 }
