@@ -56,7 +56,7 @@ containing a value of this type.
         public static final int Score=0x7f080068;
         public static final int TableLayout1=0x7f080015;
         public static final int TableLayout2=0x7f08000f;
-        public static final int action_settings=0x7f08006c;
+        public static final int action_settings=0x7f08007b;
         public static final int activity_detailled_dictionaryview_MainTableLayout=0x7f08000a;
         public static final int addAndDeleteFriendTableRow=0x7f080033;
         public static final int addFriendButton=0x7f080034;
@@ -150,6 +150,21 @@ containing a value of this type.
         public static final int score=0x7f080065;
         public static final int scorecustomdisplay=0x7f080008;
         public static final int scoredisplay=0x7f080007;
+        public static final int scoresView_TitleText_TextView=0x7f08006e;
+        public static final int scores_DeleteButton=0x7f08007a;
+        public static final int scores_DeleteButton_TableRow=0x7f080079;
+        public static final int scores_OwnLastTwenty_ScrollView=0x7f080077;
+        public static final int scores_OwnLastTwenty_ScrollView_InnerTableRow=0x7f080078;
+        public static final int scores_OwnLastTwenty_ScrollViwe_TableRow=0x7f080076;
+        public static final int scores_OwnLastTwenty_TitleText_TableRow=0x7f080074;
+        public static final int scores_OwnLastTwenty_TitleText_TextView=0x7f080075;
+        public static final int scores_OwnTopFive_ScrollView=0x7f080072;
+        public static final int scores_OwnTopFive_ScrollView_InnerTableRow=0x7f080073;
+        public static final int scores_OwnTopFive_ScrollView_TableRow=0x7f080071;
+        public static final int scores_OwnTopFive_Text_TableRow=0x7f08006f;
+        public static final int scores_OwnTopFive_textView=0x7f080070;
+        public static final int scores_Title_Text_TableRow1=0x7f08006d;
+        public static final int scores_activity_TableLayout=0x7f08006c;
         public static final int searchFriendByMailButton=0x7f080005;
         public static final int searchFriendByMailEditText=0x7f080003;
         public static final int searchFriendResultTextView=0x7f080002;
@@ -162,7 +177,7 @@ containing a value of this type.
     public static final class layout {
         public static final int activity_addfriend=0x7f030000;
         public static final int activity_after_game=0x7f030001;
-        public static final int activity_detailled_dcitionaryview=0x7f030002;
+        public static final int activity_detailled_dicitionaryview=0x7f030002;
         public static final int activity_dictionary=0x7f030003;
         public static final int activity_dictionary_tablerow=0x7f030004;
         public static final int activity_friend_tablerow=0x7f030005;
@@ -170,7 +185,7 @@ containing a value of this type.
         public static final int activity_game=0x7f030007;
         public static final int activity_main_menu=0x7f030008;
         public static final int activity_pause_screen=0x7f030009;
-        public static final int activity_score=0x7f03000a;
+        public static final int activity_scores=0x7f03000a;
     }
     public static final class menu {
         public static final int after_game=0x7f070000;
@@ -180,7 +195,7 @@ containing a value of this type.
         public static final int main=0x7f070004;
         public static final int main_menu=0x7f070005;
         public static final int pause_screen=0x7f070006;
-        public static final int score=0x7f070007;
+        public static final int scores=0x7f070007;
     }
     public static final class string {
         public static final int action_settings=0x7f050002;
@@ -214,6 +229,14 @@ containing a value of this type.
         public static final int notJetSearchedForFriendText=0x7f050014;
         public static final int playGame_buttonText=0x7f050009;
         public static final int score_buttonText=0x7f05000a;
+        public static final int scoresView_Delete_Score_Button=0x7f05002f;
+        public static final int scoresView_FriendsScores_TextView=0x7f050029;
+        public static final int scoresView_LastTwenty_Frenids_TextView=0x7f05002e;
+        public static final int scoresView_LastTwenty_Own_TextView=0x7f05002d;
+        public static final int scoresView_MyScores_TextView=0x7f05002a;
+        public static final int scoresView_TitleText_TextView=0x7f050028;
+        public static final int scoresView_TobFive_Friends_TextView=0x7f05002c;
+        public static final int scoresView_TobFive_Own_TextView=0x7f05002b;
         public static final int searchFriendByMailButton=0x7f05000f;
         public static final int searchFriendByMailText=0x7f050011;
         public static final int title_activity_after_game=0x7f050015;

@@ -40,6 +40,15 @@
 	<string name="detDictView_DictionaryNameTitle_textViwe">A Dictionary</string>   
 	<string name="detDictView_WordEditButtons_textViwe">Wordlist Editbuttons:</string>    
 	<string name="detDictView_WordEditButtons_AddWord_Button">Add</string>    
-	<string name="detDictView_WordEditButtons_DeleteWord_Button">Delete</string>    
+	<string name="detDictView_WordEditButtons_DeleteWord_Button">Delete</string>
+	<string name="scoresView_TitleText_TextView">Scores Tables</string>    
+	<string name="scoresView_FriendsScores_TextView">Friends Scores</string>
+	<string name="scoresView_MyScores_TextView">My Own Scores</string>    
+	<string name="scoresView_TobFive_Own_TextView">Top Five Own Scores</string>
+	<string name="scoresView_TobFive_Friends_TextView">Top Five Friend Scores</string>
+	<string name="scoresView_LastTwenty_Own_TextView">Last Twenty Own Scores</string>
+	<string name="scoresView_LastTwenty_Frenids_TextView">Last Twenty friends Scores</string> 		 		
+	<string name="scoresView_Delete_Score_Button">Delete Score</string>
+	    
 			
 </resources>
