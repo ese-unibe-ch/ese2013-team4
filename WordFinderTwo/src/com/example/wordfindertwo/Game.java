@@ -30,7 +30,7 @@ public class Game extends Activity {
 	private Activity a = this;
 	// -----------------------------------------------
 
-	static boolean paused = false;
+	boolean paused = false;
 	private Board board;
 	LinearLayout layout; 
 	static ArrayList<Character> word;
