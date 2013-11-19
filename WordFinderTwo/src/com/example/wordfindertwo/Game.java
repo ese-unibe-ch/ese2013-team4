@@ -38,7 +38,7 @@ public class Game extends Activity {
 	Button bPause;
 	
 	public static Game game;
-	
+
 	
 	
 	@Override
