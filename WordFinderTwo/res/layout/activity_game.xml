@@ -11,7 +11,7 @@
 
     <LinearLayout
         android:id="@+id/startTimerPause"
-        android:layout_width="fill_parent"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
         android:weightSum="3" >
@@ -342,13 +342,41 @@
                 custom:yCoord="5" />
         </LinearLayout>
     </LinearLayout>
+            <LinearLayout
+            android:id="@+id/scorelayout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginTop="350dp"
+            android:weightSum="100">
 
-    <TextView
-        android:id="@+id/score"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="15dp"
-        android:layout_marginTop="370dp"
-        android:textSize="24dp" />
+            <TextView
+                android:id="@+id/scoredesctiption"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="40"
+                android:text="Score: " />
+
+            <TextView
+                android:id="@+id/score"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="40"
+                android:textSize="24dp" />
+
+            <ScrollView
+                android:id="@+id/gameScrollView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" 
+                android:layout_weight="40">
+
+                <TextView 
+                    android:id="@+id/exampleWord1"
+                    android:text="Exampleword1\nkdjkdjf\nkdjkdjf\nkdjkdjf\nkdjkdjf\nkdjkdjf\nkdjkdjf"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"/>
+
+            </ScrollView>
+        </LinearLayout>
 
 </RelativeLayout>
