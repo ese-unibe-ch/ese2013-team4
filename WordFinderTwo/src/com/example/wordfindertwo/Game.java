@@ -28,7 +28,7 @@ public class Game extends Activity {
 	public long millisInFuture = 60000;
 	private TextView timerView;
 	CountDownTimer timer;
-	private Activity a = this;
+	private Activity gameActivity = this;
 	// -----------------------------------------------
 
 	boolean paused = false;
@@ -37,6 +37,7 @@ public class Game extends Activity {
 	static ArrayList<Character> word;
 	Button bStart;
 	Button bPause;
+	private Intent intent;
 	
 	public static Game game;
 
@@ -46,18 +47,18 @@ public class Game extends Activity {
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-		
 		Log.i("Game", "onCreate");
-	
 		setContentView(R.layout.activity_game);
+		game = this;
 	
 		//setting scrollView with words in board
 		scrollWords = (TextView) findViewById(R.id.wordsInBoard);
 		scrollWords.setText(board.toTextViewString());
 		
+		//setting timerView
+		timerView = (TextView) findViewById(R.id.timer);	
 		
-		timerView = (TextView) findViewById(R.id.timer);
-		
+		//instanciating buttonlistprovider
 		ButtonListProvider blp = new ButtonListProvider(this);
 		
 		//setting btn_default background
@@ -69,6 +70,7 @@ public class Game extends Activity {
 			Log.i("Game", "ButtonListProvider is null");
 		}
 		
+		//generating board
 		Log.i("Game", "generate Board");
 		try {
 			board = BoardFactory.createRandomBoard(null, new TestDictionary(), 6);
@@ -81,42 +83,39 @@ public class Game extends Activity {
 		bStart = (Button) findViewById(R.id.starttimer);
 		bPause = (Button) findViewById(R.id.pausetimer);
 		
-		// fill custombuttons with chars
 		// TODO board.getCharAt(x,y);
 		
-
-		//------------------------------
-		
-		
-		game = this;
-		
-		// START Button
+		//BUTTONS-----------------------------------------------------------------
+		// creating START Button
 		bStart.setOnClickListener(new View.OnClickListener() {
 			@Override
 			public void onClick(View v) {
+				if (bStart.getText().equals("QUIT")){
+					Intent intent = new Intent(gameActivity, MainMenu.class);
+					game.startActivity(intent);
+					game.finish();
+				}
 				startTimer();
 				bPause.setClickable(true);
 				setListener();
-				bStart.setClickable(false);
 				fillBoard();
+				bStart.setText("QUIT");
 			}
 		});
-
-
 		// Button Pause
 		bPause.setOnClickListener(new View.OnClickListener() {
 			@Override
 			public void onClick(View v) {
 				timer.cancel();
 				timerView.setText("PAUSED");
-				Intent intent = new Intent(a, Pause.class);
+				Intent intent = new Intent(gameActivity, Pause.class);
 				startActivity(intent);
 			}
 		});
 		bPause.setClickable(false);
+		//--------------------------------------------------------------------------
 		
 		layout = (LinearLayout) findViewById(R.id.gamespace);
-		
 		TextView score = (TextView) game.findViewById(R.id.score);
 		score.setText("Score: " + board.getBoardScore());
 	}
@@ -175,19 +174,15 @@ public class Game extends Activity {
 		this.millisInFuture = value;
 	}
 	
-	private Intent intent;
+
 	
 	@Override
 	public void finish() {
-		
 		this.intent = new Intent(this, AfterGame.class);
-		
 		this.intent.putExtra("seed", board.getSeed());
 		this.intent.putExtra("score", board.getBoardScore());
 		this.intent.putExtra("time", this.millisInFuture);
-		
 		startActivity(intent);
-		
 		super.finish();
 	}
 	
@@ -216,6 +211,7 @@ public class Game extends Activity {
 		paused = true;
 		bStart.setClickable(false);
 	}	
+	
 	public void fillBoard(){
 	Log.i("Game", "fill buttons");
 	for (int i = 0; i < 36; i++) {
