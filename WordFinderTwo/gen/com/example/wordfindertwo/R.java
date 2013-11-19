@@ -130,7 +130,6 @@ containing a value of this type.
         public static final int dictionaries_Title_TableRow=0x7f090016;
         public static final int dictionaries_Title_TextView=0x7f090017;
         public static final int dictionaries_deleteCustDict_Button=0x7f090027;
-        public static final int exampleWord1=0x7f09006b;
         public static final int foundFriendEmailEditText=0x7f090004;
         public static final int friendsTabel_TableRow_holdsScrollViewAndTableRow=0x7f090030;
         public static final int friendsTable_FirstTableRow=0x7f09002e;
@@ -182,6 +181,7 @@ containing a value of this type.
         public static final int starttimer=0x7f090037;
         public static final int timer=0x7f090038;
         public static final int titleTextSearchFriendTextView=0x7f090001;
+        public static final int wordsInBoard=0x7f09006b;
     }
     public static final class layout {
         public static final int activity_addfriend=0x7f030000;

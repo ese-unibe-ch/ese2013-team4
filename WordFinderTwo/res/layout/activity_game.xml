@@ -383,7 +383,7 @@
                 android:layout_height="wrap_content" >
 
                 <TextView
-                    android:id="@+id/exampleWord1"
+                    android:id="@+id/wordsInBoard"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Exampleword1\nkdjkdjf\nkdjkdjf\nkdjkdjf\nkdjkdjf\nkdjkdjf\nkdjkdjf" />

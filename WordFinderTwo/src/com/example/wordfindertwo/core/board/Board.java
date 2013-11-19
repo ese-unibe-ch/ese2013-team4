@@ -220,5 +220,14 @@ public class Board implements BoardDictionarySupportInterface, BoardDrawingInter
 		return this.getSeed() + "%" + getBoardScore();
 	}
 	
+	//method to generate a string for the TextView
+	public String toTextViewString(){
+		String tempString = new String();
+		for (String str : wordsInBoard){
+			tempString = tempString+str+"\n";
+		}
+		return tempString;
+	}
+	
 	
 }

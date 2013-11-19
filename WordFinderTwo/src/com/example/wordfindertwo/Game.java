@@ -11,6 +11,7 @@ import android.util.Log;
 import android.os.Bundle;
 import android.os.CountDownTimer;
 import android.os.Handler;
+import android.provider.UserDictionary.Words;
 import android.app.Activity;
 import android.content.Intent;
 import android.view.Menu;
@@ -39,6 +40,7 @@ public class Game extends Activity {
 	
 	public static Game game;
 
+	private TextView scrollWords;
 	
 	
 	@Override
@@ -46,8 +48,14 @@ public class Game extends Activity {
 		super.onCreate(savedInstanceState);
 		
 		Log.i("Game", "onCreate");
-		
+	
 		setContentView(R.layout.activity_game);
+	
+		//setting scrollView with words in board
+		scrollWords = (TextView) findViewById(R.id.wordsInBoard);
+		scrollWords.setText(board.toTextViewString());
+		
+		
 		timerView = (TextView) findViewById(R.id.timer);
 		
 		ButtonListProvider blp = new ButtonListProvider(this);
