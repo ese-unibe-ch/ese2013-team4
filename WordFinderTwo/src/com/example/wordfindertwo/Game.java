@@ -41,7 +41,7 @@ public class Game extends Activity {
 	
 	public static Game game;
 
-	private TextView scrollWords;
+	private TextView numberOfWordsOnBoard;
 	
 	
 	@Override
@@ -51,9 +51,9 @@ public class Game extends Activity {
 		setContentView(R.layout.activity_game);
 		game = this;
 	
-		//setting scrollView with words in board
-		scrollWords = (TextView) findViewById(R.id.wordsInBoard);
-		scrollWords.setText(board.toTextViewString());
+		//setting # - words display
+		numberOfWordsOnBoard = (TextView) findViewById(R.id.wordsInBoard);
+		numberOfWordsOnBoard.setText(board.getWordsInBoard().size());
 		
 		//setting timerView
 		timerView = (TextView) findViewById(R.id.timer);	

@@ -139,8 +139,8 @@ containing a value of this type.
         public static final int friendsTable_scrollView_TableLayout=0x7f090032;
         public static final int friends_tablRow_TextsView=0x7f09002b;
         public static final int friends_tableRow_deleteButton=0x7f09002c;
-        public static final int gameScrollView=0x7f09006a;
         public static final int gamespace=0x7f09003a;
+        public static final int numberOfWordsLayout=0x7f090069;
         public static final int pauselayout=0x7f090071;
         public static final int pausetimer=0x7f090039;
         public static final int resume=0x7f090073;
@@ -151,9 +151,9 @@ containing a value of this type.
         public static final int row4=0x7f090050;
         public static final int row5=0x7f090057;
         public static final int row6=0x7f09005e;
-        public static final int score=0x7f090067;
+        public static final int score=0x7f090068;
         public static final int scorecustomdisplay=0x7f090008;
-        public static final int scoredesctiption=0x7f090066;
+        public static final int scoredesctiption=0x7f090067;
         public static final int scoredisplay=0x7f090007;
         public static final int scorelayout=0x7f090065;
         public static final int scoresView_TitleText_TextView=0x7f090077;
@@ -171,8 +171,8 @@ containing a value of this type.
         public static final int scores_OwnTopFive_textView=0x7f090079;
         public static final int scores_Title_Text_TableRow1=0x7f090076;
         public static final int scores_activity_TableLayout=0x7f090075;
-        public static final int scrollViewLayout=0x7f090068;
-        public static final int scrollViewTitle=0x7f090069;
+        public static final int scrollViewLayout=0x7f090066;
+        public static final int scrollViewTitle=0x7f09006a;
         public static final int searchFriendByMailButton=0x7f090005;
         public static final int searchFriendByMailEditText=0x7f090003;
         public static final int searchFriendResultTextView=0x7f090002;

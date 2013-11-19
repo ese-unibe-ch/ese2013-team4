@@ -349,45 +349,51 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="350dp"
         android:orientation="horizontal"
-        android:weightSum="100" >
-
-        <TextView
-            android:id="@+id/scoredesctiption"
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_weight="40"
-            android:text="Score: " />
-
-        <TextView
-            android:id="@+id/score"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="40"
-            android:textSize="24dp" />
+        android:weightSum="2" >
 
         <LinearLayout
             android:id="@+id/scrollViewLayout"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_weight="40"
+            android:layout_weight="1"
             android:orientation="vertical" >
-            <TextView 
-                android:id="@+id/scrollViewTitle"
-                android:text="Words in the Board:"
+
+            <TextView
+                android:id="@+id/scoredesctiption"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"/>
+                android:layout_height="match_parent"
+                android:layout_weight="40"
+                android:text="Score: " />
 
-            <ScrollView
-                android:id="@+id/gameScrollView"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content" >
+            <TextView
+                android:id="@+id/score"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="40"
+                android:textSize="24dp" />
+        </LinearLayout>
 
-                <TextView
-                    android:id="@+id/wordsInBoard"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Exampleword1\nkdjkdjf\nkdjkdjf\nkdjkdjf\nkdjkdjf\nkdjkdjf\nkdjkdjf" />
-            </ScrollView>
+        <LinearLayout
+            android:id="@+id/numberOfWordsLayout"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:weightSum="2"
+            android:orientation="vertical" >
+
+            <TextView
+                android:id="@+id/scrollViewTitle"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="Number of Words in the Board:" />
+
+            <TextView
+                android:id="@+id/wordsInBoard"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                 android:textSize="24dp"
+                android:layout_weight="1" />
         </LinearLayout>
     </LinearLayout>
 
