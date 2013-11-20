@@ -12,6 +12,7 @@ import com.example.wordfindertwo.core.board.Board;
 import android.app.Activity;
 import android.graphics.Color;
 import android.graphics.drawable.AnimationDrawable;
+import android.os.CountDownTimer;
 import android.util.Log;
 import android.view.MotionEvent;
 import android.view.View;
@@ -19,13 +20,12 @@ import android.view.View.OnTouchListener;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-public class CustomOnTouchListener implements OnTouchListener, Runnable {
+public class CustomOnTouchListener implements OnTouchListener {
 
 	ArrayList<CustomButton> buttonList;
 	Board board;
 	Game game;
 	TextView score;
-	Thread colorThread;
 	SelectionStatus result;
 
 	public CustomOnTouchListener(Board board, Game g) {
@@ -37,11 +37,6 @@ public class CustomOnTouchListener implements OnTouchListener, Runnable {
 	@Override
 	public boolean onTouch(View view, MotionEvent me) {
 		int event = me.getAction();
-
-		for (CustomButton btn : ButtonListProvider.getInstance().getList()) {
-			btn.setBackgroundResource(android.R.drawable.btn_default);
-		
-		}
 		
 		if (event == MotionEvent.ACTION_DOWN
 				|| event == MotionEvent.ACTION_MOVE
@@ -110,8 +105,17 @@ public class CustomOnTouchListener implements OnTouchListener, Runnable {
 			//>>
 
 			// delay (short)
-//			colorThread.run();
-
+			
+			new DelayedOperation(1000) {
+				
+				@Override
+				public void operation() {
+					for (CustomButton btn : ButtonListProvider.getInstance().getList()) {
+						btn.setBackgroundResource(android.R.drawable.btn_default);
+					}
+				}
+			};
+			
 			// paint neutral
 
 			// cleanup
@@ -120,17 +124,5 @@ public class CustomOnTouchListener implements OnTouchListener, Runnable {
 
 		// END
 		return true;
-	}
-
-	@Override
-	public void run() {
-		try {
-			colorThread.join();
-			colorThread.sleep(1000);
-			colorThread.interrupt();
-		} catch (InterruptedException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
 	}
 }
