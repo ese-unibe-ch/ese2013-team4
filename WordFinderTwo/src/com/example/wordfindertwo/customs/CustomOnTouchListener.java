@@ -22,11 +22,10 @@ import android.widget.TextView;
 
 public class CustomOnTouchListener implements OnTouchListener {
 
-	ArrayList<CustomButton> buttonList;
-	Board board;
-	Game game;
-	TextView score;
-	SelectionStatus result;
+	private ArrayList<CustomButton> buttonList;
+	private Board board;
+	private Game game;
+	private TextView score;
 
 	public CustomOnTouchListener(Board board, Game g) {
 		this.board = board;
@@ -37,7 +36,7 @@ public class CustomOnTouchListener implements OnTouchListener {
 	@Override
 	public boolean onTouch(View view, MotionEvent me) {
 		int event = me.getAction();
-		
+
 		if (event == MotionEvent.ACTION_DOWN
 				|| event == MotionEvent.ACTION_MOVE
 				|| event == MotionEvent.ACTION_UP) {
@@ -55,7 +54,6 @@ public class CustomOnTouchListener implements OnTouchListener {
 						+ this.buttonList.size());
 			}
 		}
-		
 
 		if (event == MotionEvent.ACTION_UP) {
 			Log.i("CustomOnTouchListener", "finishing sequence");
@@ -66,12 +64,11 @@ public class CustomOnTouchListener implements OnTouchListener {
 
 			// TODO: add
 
-			result = board.submit(pointList);
+			SelectionStatus result = board.submit(pointList);
 
-			//EVALUATE RESULT
+			// EVALUATE RESULT
 			switch (result) {
 			case SelectionGood:
-				// TODO: color green
 				for (CustomButton btn : buttonList) {
 					btn.setBackgroundColor(Color.GREEN);
 				}
@@ -79,44 +76,33 @@ public class CustomOnTouchListener implements OnTouchListener {
 				break;
 
 			case SelectionOld:
-				// TODO: color yellow
 				for (CustomButton btn : buttonList) {
 					btn.setBackgroundColor(Color.YELLOW);
 				}
 				break;
 
 			case SelectionBad:
-				// TODO: color red
 				for (CustomButton btn : buttonList) {
 					btn.setBackgroundColor(Color.RED);
 				}
 				break;
-				
+
 			case SelectionInvalid:
+				this.resetButtonColors();
 				break;
 			}
-			
 
 			// PRINT SCORE
 			score = (TextView) game.findViewById(R.id.score);
 			score.setText("	" + board.getBoardScore());
-
-			//TODO: tell the UI Thread to Update
-			//>>
-
-			// delay (short)
-			
+			// paint buttons neutral after 1 second delay
 			new DelayedOperation(1000) {
-				
+
 				@Override
 				public void operation() {
-					for (CustomButton btn : ButtonListProvider.getInstance().getList()) {
-						btn.setBackgroundResource(android.R.drawable.btn_default);
-					}
+					resetButtonColors();
 				}
 			};
-			
-			// paint neutral
 
 			// cleanup
 			buttonList.clear();
@@ -125,4 +111,11 @@ public class CustomOnTouchListener implements OnTouchListener {
 		// END
 		return true;
 	}
+
+	private void resetButtonColors() {
+		for (CustomButton btn : ButtonListProvider.getInstance().getList()) {
+			btn.setBackgroundResource(android.R.drawable.btn_default);
+		}
+	}
+
 }
