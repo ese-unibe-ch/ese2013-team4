@@ -18,30 +18,13 @@ public enum SeedGenerator {
 		this.rand = new Random();
 	}
 	
-	public String generateRandomSeed(IDictionary primary,
-			IDictionary secondary, int boardSize) {
-		
-		assert secondary != null; //at least a secondary dictionary is required
-		
-		ArrayList<String> dic = (primary != null ? primary : secondary).getWords(); //select primary dic if aviable, secondary otherwise
-		
+	public String generateRandomSeed(IDictionary primary, IDictionary secondary, int boardSize) {
 		ArrayList<String> words = new ArrayList<String>(); //list with all words placed in the matrix
-		
 		char[][] matrix = new char[boardSize][boardSize];
 		
-		for (int attempts = 0; attempts < MAX_ATTEMPTS; attempts++) {
-			//STEP 1: select random word from dic
-			String word = dic.get(this.rand.nextInt(dic.size()));
-			
-			if (words.contains(word))
-				continue;
-			
-			if (this.placeWord(matrix, word.toCharArray()))
-				words.add(word);
-			
-		}
-		
-		//LAST STEP: fill empty fields with random chars
+		workThrough(primary, matrix, words);
+		workThrough(secondary, matrix, words);
+		//fill empty fields randomly
 		for (int y = 0; y < boardSize; y++) {
 			for (int x = 0; x < boardSize; x++) {
 				if (matrix[x][y] == '\0') {
@@ -49,17 +32,21 @@ public enum SeedGenerator {
 				}
 			}
 		}
-		
-		//convert char matrix to seed string
-		String seed = "";
-		
-		for (int y = 0; y < matrix.length; y++) {
-			for (int x = 0; x < matrix.length; x++) {
-				seed += matrix[x][y];
-			}
+		//parse seed
+		return this.parseIntoSeed(matrix, words);
+	}
+	
+	private void workThrough(IDictionary dictionary, char[][] matrix, ArrayList<String> words) {
+		if (dictionary == null)
+			return;
+		ArrayList<String> dic = dictionary.getWords();
+		for (int attempts = 0; attempts < MAX_ATTEMPTS; attempts++) {
+			String word = dic.get(this.rand.nextInt(dic.size()));
+			if (words.contains(word))
+				continue;
+			if (this.placeWord(matrix, word.toCharArray()))
+				words.add(word);
 		}
-		
-		return seed;
 	}
 	
 	/**
@@ -90,17 +77,7 @@ public enum SeedGenerator {
 	public String generateSeedFromBoard(Board board) {
 		assert board != null;
 		
-		ILetterField[][] matrix = board.getMatrix();
-		
-		String seed = "";
-		
-		for (int y = 0; y < board.getBoardSize(); y++) {
-			for (int x = 0; x < board.getBoardSize(); x++) {
-				seed += matrix[x][y].getLetter().getChar();
-			}
-		}
-		
-		return seed;
+		return this.parseIntoSeed(board.getCharMatrix(), board.getWordsInBoard());
 	}
 	
 	private char[][] copyMatrix (char[][] matrix) {
@@ -113,4 +90,18 @@ public enum SeedGenerator {
 		return copy;
 	}
 
+	private String parseIntoSeed(char[][] matrix, ArrayList<String> words) {
+		String seed = "";
+		//convert 2D char matrix into string (row by row)
+		for (int y = 0; y < matrix.length; y++) {
+			for (int x = 0; x < matrix.length; x++) {
+				seed += matrix[x][y];
+			}
+		}
+		//add all words to the seed
+		for (String word : words) {
+			seed += "%" + word;
+		}
+		return seed;
+	}
 }
