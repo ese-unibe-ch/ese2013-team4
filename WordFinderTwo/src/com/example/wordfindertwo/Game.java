@@ -1,11 +1,9 @@
 package com.example.wordfindertwo;
 
-import com.example.wordfindertwo.R;
 import com.example.wordfindertwo.core.board.Board;
 import com.example.wordfindertwo.core.test.TestDictionary;
 import com.example.wordfindertwo.core.BoardFactory;
-import com.example.wordfindertwo.customs.CustomButton;
-import com.example.wordfindertwo.customs.CustomOnTouchListener;
+import com.example.wordfindertwo.customs.*;
 
 import android.util.Log;
 import android.os.Bundle;
@@ -72,8 +70,7 @@ public class Game extends Activity {
 		bStart.setOnClickListener(new View.OnClickListener() {
 			@Override
 			public void onClick(View v) {
-				CharSequence text = bStart.getText();
-				if (text.equals(QUIT_BUTTON_TEXT)) {
+				if (bStart.getText().equals(QUIT_BUTTON_TEXT)) {
 					Intent intent = new Intent(gameActivity, MainMenu.class);
 					game.startActivity(intent);
 					game.finish();
@@ -186,21 +183,21 @@ public class Game extends Activity {
 	private void fillBoard() {
 		Log.i("Game", "fill buttons");
 		for (int i = 0; i < 36; i++) {
-			CustomButton btn = ButtonListProvider.getInstance()
-					.getButtonAtIndex(i);
+			int x = i % 6, y = i / 6;
+			CustomButton btn = ButtonListProvider.getInstance().getButtonAtIndex(i);
 			btn.setTextSize(12f);
-			btn.setText("" + board.getCharAt(i % 6, i / 6) + " "
-					+ board.getValueAt(i % 6, i / 6));
-			Log.i("fillBoard",
-					"" + (i % 6) + "|" + (i / 6) + ": " + btn.getText());
+			btn.setText("" + board.getCharAt(x, y) + " " + board.getValueAt(x, y));
 		}
 		Log.i("Game", "setup timer");
 	}
 
+	/**
+	 * finish this activity when the pause return value is 1.
+	 * ignore any other input.
+	 */
 	@Override
 	protected void onActivityResult(int requestCode, int resultCode, Intent data) {
-		if (resultCode == 1) {
+		if (resultCode == 1)
 			finish();
-		}
 	}
 }
