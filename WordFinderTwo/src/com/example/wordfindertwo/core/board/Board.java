@@ -44,25 +44,17 @@ public class Board implements BoardDictionarySupportInterface, BoardDrawingInter
 	 *        dictionary for the board (i.e. English system dictionary).<br/>
 	 *        All words of this dictionary are also considered as valid words.
 	 */
-	public Board(ILetterField[][] matrix, IDictionary primary, IDictionary secondary) {
+	public Board(ILetterField[][] matrix, IDictionary primary, IDictionary secondary, ArrayList<String> wordsInBoard) {
 		this.matrix = matrix;
 		this.primary = primary;
 		this.secondary = secondary;
 		this.foundWords = new ArrayList<ArrayList<Point>>();
-		this.wordsInBoard = new ArrayList<String>();
+		this.wordsInBoard = wordsInBoard;
 		this.id = -1;
 	}
 	
 	public ILetterField[][] getMatrix() {
 		return this.matrix;
-	}
-	
-	public void setWordsInBoard(ArrayList<String> wordsInBoard) {
-		this.wordsInBoard = wordsInBoard;
-	}
-	
-	public void setWordCount(int count) {
-		this.wordCount = count;
 	}
 	
 	/* IMPLEMENTATION OF BoardDictionarySupportInterface */

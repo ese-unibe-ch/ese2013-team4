@@ -54,8 +54,7 @@ public class Game extends Activity {
 		// generate board
 		Log.i("Game", "generate Board");
 		try {
-			board = BoardFactory.createRandomBoard(null, new TestDictionary(),
-					6);
+			board = BoardFactory.Instance.createRandomBoard(null, new TestDictionary(), 6);
 			Log.d("Game.Board", "Word count = " + board.getTotalWordCount());
 		} catch (Exception e) {
 			Log.e("Game", "Board Factory Crashed", e);

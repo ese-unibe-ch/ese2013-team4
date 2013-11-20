@@ -12,6 +12,8 @@ public enum SeedGenerator {
 	
 	public final static int MAX_ATTEMPTS = 1000;
 	
+	public final static char SEED_SECTION_DELIMITER = '%';
+	
 	private Random rand;
 	
 	private SeedGenerator () {
@@ -100,7 +102,7 @@ public enum SeedGenerator {
 		}
 		//add all words to the seed
 		for (String word : words) {
-			seed += "%" + word;
+			seed += SEED_SECTION_DELIMITER + word;
 		}
 		return seed;
 	}
