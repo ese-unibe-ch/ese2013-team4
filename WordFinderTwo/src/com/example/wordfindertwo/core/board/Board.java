@@ -137,7 +137,8 @@ public class Board implements BoardDictionarySupportInterface, BoardDrawingInter
 			return SelectionStatus.SelectionOld;
 		}
 		//STEP 4: check string
-		if (this.wordsInBoard.contains(word)) {
+		//if (this.wordsInBoard.contains(word)) {
+		if (this.secondary.getWords().contains(word) || (this.primary != null && this.primary.getWords().contains(word))) {
 			this.foundWords.add(new ArrayList<Point>(sequence));
 			Log.d("Board.submit", "Word " + word + " is valid");
 			return SelectionStatus.SelectionGood;

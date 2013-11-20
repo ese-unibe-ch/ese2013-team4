@@ -33,8 +33,8 @@ public class BoardFactory {
 			Log.d("BoardFactory.create", line);
 		}
 		Board brd = new Board(matrix, primary, secondary);
-		brd.setWordsInBoard(wrdf.getWords(brd));
-		brd.setWordCount(wrdf.getWordCount());
+		//brd.setWordsInBoard(wrdf.getWords(brd));
+		//brd.setWordCount(wrdf.getWordCount());
 		return brd;
 	}
 	
