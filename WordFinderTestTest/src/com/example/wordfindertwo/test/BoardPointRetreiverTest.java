@@ -14,7 +14,7 @@ public class BoardPointRetreiverTest extends AndroidTestCase {
 	
 	@Override
 	protected void setUp() throws Exception {
-		this.bpr = BoardPointRetreiver.getInstance();
+		this.bpr = BoardPointRetreiver.Instance;
 		this.matrix = new char[6][6];
 	}
 	
