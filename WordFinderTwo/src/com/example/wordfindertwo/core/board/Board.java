@@ -22,9 +22,6 @@ public class Board implements BoardDictionarySupportInterface, BoardDrawingInter
 	private ILetterField[][] matrix;
 	private IDictionary primary;
 	private IDictionary secondary;
-	
-	private int wordCount;
-	
 	private ArrayList<String> wordsInBoard;
 	private ArrayList<ArrayList<Point>> foundWords;
 	
@@ -173,7 +170,7 @@ public class Board implements BoardDictionarySupportInterface, BoardDrawingInter
 	
 	@Override
 	public int getTotalWordCount() {
-		return this.wordCount;
+		return this.wordsInBoard.size();
 	}
 	
 	@Override
