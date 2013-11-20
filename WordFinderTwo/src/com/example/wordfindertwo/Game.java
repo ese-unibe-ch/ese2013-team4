@@ -111,7 +111,7 @@ public class Game extends Activity {
 				timer.cancel();
 				timerView.setText("PAUSED");
 				Intent intent = new Intent(gameActivity, Pause.class);
-				startActivity(intent);
+				startActivityForResult(new Intent(Game.this, Pause.class), 0);
 			}
 		});
 		bPause.setClickable(false);
@@ -224,8 +224,17 @@ public class Game extends Activity {
 	Log.i("Game", "fill buttons");
 	for (int i = 0; i < 36; i++) {
 		CustomButton btn = ButtonListProvider.getInstance().getButtonAtIndex(i);
-		btn.setText("" + board.getCharAt(i % 6, i / 6));
+		btn.setTextSize(12f);
+		btn.setText("" + board.getCharAt(i % 6, i / 6) + " " + board.getValueAt(i % 6, i / 6));
+		Log.i("fillBoard", "" + (i % 6) + "|" + (i / 6) + ": " + btn.getText());
 	}
 	Log.i("Game", "setup timer");
+	}
+	
+	@Override
+	protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+		if (resultCode == 1) {
+	        finish();
+	    }
 	}
 }

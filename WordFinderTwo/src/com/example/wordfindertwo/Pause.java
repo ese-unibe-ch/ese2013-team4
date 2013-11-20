@@ -21,6 +21,12 @@ public class Pause extends Activity {
 	}
 	
 	public void backToGame(View view){
+		this.setResult(0);
+		finish();
+	}
+	
+	public void finishGame(View view){
+		this.setResult(1);
 		finish();
 	}
 }
