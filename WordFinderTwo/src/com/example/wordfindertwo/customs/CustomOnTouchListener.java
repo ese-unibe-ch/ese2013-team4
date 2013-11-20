@@ -40,6 +40,7 @@ public class CustomOnTouchListener implements OnTouchListener, Runnable {
 
 		for (CustomButton btn : ButtonListProvider.getInstance().getList()) {
 			btn.setBackgroundResource(android.R.drawable.btn_default);
+		
 		}
 		
 		if (event == MotionEvent.ACTION_DOWN
@@ -53,7 +54,7 @@ public class CustomOnTouchListener implements OnTouchListener, Runnable {
 							.equals(button.getPoint()))) {
 				buttonList.add(button);
 				// TODO: color new button
-				button.setBackgroundColor(Color.CYAN);
+				button.setBackgroundColor(Color.GRAY);
 				Log.d("CustomOnTouchListener", "moved to "
 						+ button.getPoint().toString() + " - List Size is now "
 						+ this.buttonList.size());
@@ -72,39 +73,7 @@ public class CustomOnTouchListener implements OnTouchListener, Runnable {
 
 			result = board.submit(pointList);
 
-			// EVALUATE RESULT
-//			switch (result) {
-//			case SelectionGood:
-//				// TODO: color green
-//				for (CustomButton btn : buttonList) {
-//					btn.setBackgroundResource(R.drawable.green_animation);
-//					AnimationDrawable buttonAnimation = (AnimationDrawable) btn.getBackground();
-//					buttonAnimation.start();
-//				}
-//				game.update();
-//				break;
-//
-//			case SelectionOld:
-//				// TODO: color yellow
-//				for (CustomButton btn : buttonList) {
-//					btn.setBackgroundResource(R.drawable.yellow_animation);
-//					AnimationDrawable buttonAnimation = (AnimationDrawable) btn.getBackground();
-//					buttonAnimation.start();
-//				}
-//				break;
-//
-//			case SelectionBad:
-//				// TODO: color red
-//				for (CustomButton btn : buttonList) {
-//					btn.setBackgroundResource(R.drawable.red_animation);
-//					AnimationDrawable buttonAnimation = (AnimationDrawable) btn.getBackground();
-//					buttonAnimation.start();
-//				}
-//				break;
-//				
-//			case SelectionInvalid:
-//				break;
-//			}
+			//EVALUATE RESULT
 			switch (result) {
 			case SelectionGood:
 				// TODO: color green
@@ -135,7 +104,7 @@ public class CustomOnTouchListener implements OnTouchListener, Runnable {
 
 			// PRINT SCORE
 			score = (TextView) game.findViewById(R.id.score);
-			score.setText("Score: " + board.getBoardScore());
+			score.setText("	" + board.getBoardScore());
 
 			//TODO: tell the UI Thread to Update
 			//>>

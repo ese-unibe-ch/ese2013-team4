@@ -212,7 +212,7 @@ containing a value of this type.
     }
     public static final class raw {
         public static final int english=0x7f040000;
-        public static final int english3=0x7f040001;
+        public static final int english_large=0x7f040001;
     }
     public static final class string {
         public static final int action_settings=0x7f060002;

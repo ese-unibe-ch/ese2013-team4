@@ -25,7 +25,9 @@ import java.util.*;
 public class Game extends Activity {
 	
 	// -------------timer Variables------------------
-	public long millisInFuture = 60000;
+	private static final long INITIAL_TIMER_VALUE = 60000;
+	//
+	public long millisInFuture = INITIAL_TIMER_VALUE;
 	private TextView timerView;
 	CountDownTimer timer;
 	private Activity gameActivity = this;
@@ -85,19 +87,17 @@ public class Game extends Activity {
 		bStart = (Button) findViewById(R.id.starttimer);
 		bPause = (Button) findViewById(R.id.pausetimer);
 		
-		// TODO board.getCharAt(x,y);
-		
 		//BUTTONS-----------------------------------------------------------------
 		// creating START Button
 		bStart.setOnClickListener(new View.OnClickListener() {
 			@Override
 			public void onClick(View v) {
-				if (bStart.getText().equals("QUIT")){
+				if (((String)(bStart.getText())).toUpperCase().equals("QUIT")){
 					Intent intent = new Intent(gameActivity, MainMenu.class);
 					game.startActivity(intent);
 					game.finish();
 				}
-				startTimer();
+				restartTimer();
 				bPause.setClickable(true);
 				setListener();
 				fillBoard();
@@ -119,7 +119,7 @@ public class Game extends Activity {
 		
 		layout = (LinearLayout) findViewById(R.id.gamespace);
 		TextView score = (TextView) game.findViewById(R.id.score);
-		score.setText("Score: " + board.getBoardScore());
+		score.setText("" + board.getBoardScore());
 	}
 	
 	public void setListener(){
@@ -152,6 +152,11 @@ public class Game extends Activity {
 		};
 
 		timer.start();
+	}
+	
+	public void restartTimer() {
+		this.millisInFuture = INITIAL_TIMER_VALUE;
+		this.startTimer();
 	}
 	
 	//adds char to arraylist "word" 
@@ -200,7 +205,8 @@ public class Game extends Activity {
 		// TODO Auto-generated method stub
 		super.onResume();
 		if (paused == true){
-			bStart.setText("");
+			bStart.setText("QUIT");
+			bStart.setClickable(true);
 			startTimer();
 //			afterTimer.start();
 		}

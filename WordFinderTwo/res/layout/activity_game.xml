@@ -12,7 +12,7 @@
     <LinearLayout
         android:id="@+id/startTimerPause"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="40dp"
         android:orientation="horizontal"
         android:weightSum="3" >
 
@@ -45,7 +45,6 @@
         android:layout_centerHorizontal="true"
         android:layout_centerVertical="true"
         android:layout_marginLeft="16dp"
-        android:layout_marginTop="16dp"
         android:orientation="vertical" >
 
         <LinearLayout
@@ -345,9 +344,10 @@
 
     <LinearLayout
         android:id="@+id/scorelayout"
+        android:baselineAligned="false"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="350dp"
+        android:layout_height="60dp"
+        android:layout_marginTop="320dp"
         android:orientation="horizontal"
         android:weightSum="2" >
 
@@ -356,20 +356,21 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
+            android:weightSum="2"
             android:orientation="vertical" >
 
             <TextView
                 android:id="@+id/scoredesctiption"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:layout_weight="40"
+                android:layout_weight="1"
                 android:text="Score: " />
 
             <TextView
                 android:id="@+id/score"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_weight="40"
+                android:layout_weight="1"
                 android:textSize="24dp" />
         </LinearLayout>
 
@@ -392,7 +393,7 @@
                 android:id="@+id/wordsInBoard"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                 android:textSize="24dp"
+                android:textSize="24sp"
                 android:layout_weight="1" />
         </LinearLayout>
     </LinearLayout>
