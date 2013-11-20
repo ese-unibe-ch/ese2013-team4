@@ -51,9 +51,11 @@ public class Game extends Activity {
 		setContentView(R.layout.activity_game);
 		game = this;
 	
+		/*
 		//setting # - words display
 		numberOfWordsOnBoard = (TextView) findViewById(R.id.wordsInBoard);
 		numberOfWordsOnBoard.setText(board.getWordsInBoard().size());
+		*/
 		
 		//setting timerView
 		timerView = (TextView) findViewById(R.id.timer);	
