@@ -5,14 +5,11 @@ import android.util.Log;
 import com.example.wordfindertwo.core.board.Board;
 import com.example.wordfindertwo.core.exceptions.BoardGenerationException;
 import com.example.wordfindertwo.core.exceptions.InvalidLetterException;
-import com.example.wordfindertwo.core.test.TestDictionary;
 
 public class BoardFactory {
-	
-	public static WordFinder wrdf = WordFinder.getInstance();
 
 	public static Board createRandomBoard (IDictionary primary, IDictionary secondary, int boardSize) throws BoardGenerationException {
-		String seed = SeedGenerator.getInstance().generateRandomSeed(primary, secondary, boardSize);
+		String seed = SeedGenerator.Instance.generateRandomSeed(primary, secondary, boardSize);
 		return createBoardFromSeed (primary, secondary, boardSize, seed);
 	}
 	
@@ -32,19 +29,6 @@ public class BoardFactory {
 			}
 			Log.d("BoardFactory.create", line);
 		}
-		Board brd = new Board(matrix, primary, secondary);
-		//brd.setWordsInBoard(wrdf.getWords(brd));
-		//brd.setWordCount(wrdf.getWordCount());
-		return brd;
-	}
-	
-	/**
-	 * Demo board 6x6
-	 */
-	public static Board createDemoBoard () throws BoardGenerationException {
-		
-		String seed = "OBNEPAXHOTWPPEROERTLCSLBEKTGSARAEPSC";
-		
-		return createBoardFromSeed (null, new TestDictionary(), 6, seed);
+		return new Board(matrix, primary, secondary);
 	}
 }

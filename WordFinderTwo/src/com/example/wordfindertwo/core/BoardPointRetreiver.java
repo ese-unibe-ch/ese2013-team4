@@ -4,24 +4,9 @@ import java.util.ArrayList;
 
 import com.example.wordfindertwo.core.board.Board;
 
-public final class BoardPointRetreiver {
+public enum BoardPointRetreiver {
 
-	// SINGLETON MANAGEMENT
-	
-	private static BoardPointRetreiver instance;
-	
-	public static BoardPointRetreiver getInstance() {
-		if (instance == null)
-			instance = new BoardPointRetreiver();
-		return instance;
-	}
-	
-	// CLASS CONTENT
-	
-	//empty private constructor - for singleton encapsulation
-	private BoardPointRetreiver() {
-	}
-	
+	Instance;
 	
 	public ArrayList<Point> getGoodPoints(char c, Board b, ArrayList<Point> oldPoints) {
 		return this.getGoodPoints(c, b.getCharMatrix(), oldPoints);

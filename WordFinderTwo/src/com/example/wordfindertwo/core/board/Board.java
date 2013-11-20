@@ -212,7 +212,7 @@ public class Board implements BoardDictionarySupportInterface, BoardDrawingInter
 	
 	@Override
 	public String getSeed() {
-		return SeedGenerator.getInstance().generateSeedFromBoard(this);
+		return SeedGenerator.Instance.generateSeedFromBoard(this);
 	}
 	
 	/* END OF INTERFACE IMPLEMENTATIONS */

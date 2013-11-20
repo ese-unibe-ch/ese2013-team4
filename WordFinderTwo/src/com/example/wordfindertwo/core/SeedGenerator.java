@@ -6,25 +6,13 @@ import java.util.Random;
 import com.example.wordfindertwo.core.board.Board;
 
 
-public class SeedGenerator {
-
-	// SINGLETON MANAGEMENT
+public enum SeedGenerator {
 	
-	private static SeedGenerator singleton;
-	
-	public final static SeedGenerator getInstance() {
-		if (singleton == null)
-			singleton = new SeedGenerator();
-		return singleton;
-	}
-	
-	// CLASS CONTENT
+	Instance;
 	
 	public final static int MAX_ATTEMPTS = 1000;
 	
 	private Random rand;
-	
-	private BoardPointRetreiver bpr = BoardPointRetreiver.getInstance();
 	
 	private SeedGenerator () {
 		this.rand = new Random();
@@ -86,7 +74,7 @@ public class SeedGenerator {
 		ArrayList<Point> usedPoints = new ArrayList<Point>();
 		for (int i = 0; i < word.length; i++) {
 			char letter = word[i];
-			ArrayList<Point> legals = bpr.getGoodPoints(letter, matrix, usedPoints);
+			ArrayList<Point> legals = BoardPointRetreiver.Instance.getGoodPoints(letter, matrix, usedPoints);
 			if (legals.isEmpty()) {
 				matrix = backup;
 				return false;
