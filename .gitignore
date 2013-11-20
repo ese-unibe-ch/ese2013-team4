@@ -1,14 +1,11 @@
 .DS_Store
 .metadata/
-WordFinderCore/bin/
-WordFinderCore/gen/
-WordFinderCore/doc/
 WordFinderTwo/bin/
 WordFinderTwo/gen/
 WordFinderTwo/local.properties
 WordFinderTestTest/local.properties
 WordFinderTestTest/junit-report.xml
-
+WordFinderTestTest/bin
 # OS specifc files
 Thumbs.db
 Desktrop.ini
