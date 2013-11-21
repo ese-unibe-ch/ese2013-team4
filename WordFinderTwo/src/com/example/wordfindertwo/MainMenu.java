@@ -46,4 +46,9 @@ public class MainMenu extends Activity {
 		startActivity(intent);	
 	}
 	
+	@Override
+	public void onBackPressed() {
+		//NO-OP
+	}
+	
 }

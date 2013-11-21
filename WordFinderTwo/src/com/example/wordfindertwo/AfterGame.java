@@ -37,5 +37,10 @@ public class AfterGame extends Activity {
 		startActivity(new Intent(this, MainMenu.class));
 		finish();
 	}
+	
+	@Override
+	public void onBackPressed() {
+		returnToMainMenu(null);
+	}
 
 }
