@@ -52,7 +52,15 @@ public enum Letter {
 			if (letter.getChar() == character)
 				return letter;
 		}
-		throw new InvalidLetterException();
+		throw new InvalidLetterException("Character " + character + " could not be parsed!");
+	}
+	
+	public static Letter[] getLetterSequence(String string) throws InvalidLetterException {
+		Letter[] sequence = new Letter[string.length()];
+		for (int index = 0; index < string.length(); index++) {
+			sequence[index] = getLetter(string.charAt(index));
+		}
+		return sequence;
 	}
 
 }

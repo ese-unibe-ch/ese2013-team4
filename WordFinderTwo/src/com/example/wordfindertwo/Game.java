@@ -33,6 +33,7 @@ public class Game extends Activity {
 	private Button bStart;
 	private Button bPause;
 	private Intent intent;
+	private boolean hasFinishedNaturally = false;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {

@@ -6,19 +6,19 @@ public final class GameResult {
 	private final static double WORD_SCORE_MULTIPLIER = 10;
 	private final static double TIME_SCORE_MULTIPLIER = 0.5;
 
-	private int boardID;
+	private long boardID;
 	private String boardSeed;
 	private int score;
 	private boolean isValid; // true only when board finished correctly
 
-	public GameResult(int boardID, String boardSeed) {
+	public GameResult(long boardID, String boardSeed) {
 		this.boardID = boardID;
 		this.boardSeed = boardSeed;
 		this.score = 0;
 		this.isValid = false;
 	}
 	
-	private GameResult(int boardID, String boardSeed, int score, boolean isValid) {
+	private GameResult(long boardID, String boardSeed, int score, boolean isValid) {
 		this(boardID, boardSeed);
 		this.score = score;
 		this.isValid = isValid;
@@ -33,7 +33,7 @@ public final class GameResult {
 		this.score += (int) timeLeft * TIME_SCORE_MULTIPLIER;
 	}
 
-	public int getBoardID() {
+	public long getBoardID() {
 		return this.boardID;
 	}
 
@@ -47,6 +47,17 @@ public final class GameResult {
 
 	public boolean isValid() {
 		return this.isValid;
+	}
+	
+	public void setBoardID(long boardID) {
+		this.boardID = boardID;
+	}
+	
+	/**
+	 * sets the result to be valid.
+	 */
+	public void setValid() {
+		this.isValid = true;
 	}
 	
 	/**
