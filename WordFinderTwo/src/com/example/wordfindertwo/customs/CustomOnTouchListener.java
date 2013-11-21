@@ -23,26 +23,25 @@ public class CustomOnTouchListener implements OnTouchListener {
 	private Game game;
 	private TextView score;
 
-	public CustomOnTouchListener(Board board, Game g) {
+	public CustomOnTouchListener(Board board, Game game) {
 		this.board = board;
-		game = g;
+		this.game = game;
 		this.buttonList = new ArrayList<CustomButton>();
 	}
 
 	@Override
 	public boolean onTouch(View view, MotionEvent me) {
 		int event = me.getAction();
-
+		//any button interaction is recorded
 		if (event == MotionEvent.ACTION_DOWN
 				|| event == MotionEvent.ACTION_MOVE
 				|| event == MotionEvent.ACTION_UP) {
-			CustomButton button = ButtonListProvider.getInstance()
-					.getButtonUnder(me.getRawX(), me.getRawY());
+			CustomButton button = ButtonListProvider.Instance.getButtonUnder(me.getRawX(), me.getRawY());
 			if (button != null
-					&& (buttonList.size() == 0 || !buttonList
-							.get(buttonList.size() - 1).getPoint()
+					&& (this.buttonList.size() == 0 || !this.buttonList
+							.get(this.buttonList.size() - 1).getPoint()
 							.equals(button.getPoint()))) {
-				buttonList.add(button);
+				this.buttonList.add(button);
 				// TODO: color new button
 				button.setBackgroundColor(Color.GRAY);
 				Log.d("CustomOnTouchListener", "moved to "
@@ -50,66 +49,62 @@ public class CustomOnTouchListener implements OnTouchListener {
 						+ this.buttonList.size());
 			}
 		}
-
+		//sequence is submitted when the screen is no longer touched
 		if (event == MotionEvent.ACTION_UP) {
 			Log.i("CustomOnTouchListener", "finishing sequence");
 			ArrayList<Point> pointList = new ArrayList<Point>();
-			for (CustomButton btn : buttonList) {
+			for (CustomButton btn : this.buttonList) {
 				pointList.add(btn.getPoint());
 			}
-
-			// TODO: add
-
-			SelectionStatus result = board.submit(pointList);
-
-			// EVALUATE RESULT
-			switch (result) {
-			case SelectionGood:
-				for (CustomButton btn : buttonList) {
-					btn.setBackgroundColor(Color.GREEN);
-				}
-				game.update();
-				break;
-
-			case SelectionOld:
-				for (CustomButton btn : buttonList) {
-					btn.setBackgroundColor(Color.YELLOW);
-				}
-				break;
-
-			case SelectionBad:
-				for (CustomButton btn : buttonList) {
-					btn.setBackgroundColor(Color.RED);
-				}
-				break;
-
-			case SelectionInvalid:
-				this.resetButtonColors();
-				break;
-			}
-
-			// PRINT SCORE
-			score = (TextView) game.findViewById(R.id.score);
-			score.setText("	" + board.getBoardScore());
-			// paint buttons neutral after 1 second delay
-			new DelayedOperation(1000) {
-
-				@Override
-				public void operation() {
-					resetButtonColors();
-				}
-			};
-
-			// cleanup
-			buttonList.clear();
+			this.paintResult(this.board.submit(pointList));
+			this.updateScore();
+			this.buttonList.clear();
 		}
-
-		// END
 		return true;
+	}
+	
+	private void paintResult(SelectionStatus result) {
+		switch (result) {
+		case SelectionGood:
+			for (CustomButton btn : this.buttonList) {
+				btn.setBackgroundColor(Color.GREEN);
+			}
+			//this.game.update();
+			break;
+
+		case SelectionOld:
+			for (CustomButton btn : this.buttonList) {
+				btn.setBackgroundColor(Color.YELLOW);
+			}
+			break;
+
+		case SelectionBad:
+			for (CustomButton btn : this.buttonList) {
+				btn.setBackgroundColor(Color.RED);
+			}
+			break;
+
+		case SelectionInvalid:
+			this.resetButtonColors();
+			break;
+		}
+		//trigger 1s delayed button reset
+		new DelayedOperation(1000) {
+
+			@Override
+			public void operation() {
+				resetButtonColors();
+			}
+		};
+	}
+
+	private void updateScore() {
+		this.score = (TextView) this.game.findViewById(R.id.score);
+		this.score.setText("	" + this.board.getBoardScore());
 	}
 
 	private void resetButtonColors() {
-		for (CustomButton btn : ButtonListProvider.getInstance().getList()) {
+		for (CustomButton btn : ButtonListProvider.Instance.getList()) {
 			btn.setBackgroundResource(android.R.drawable.btn_default);
 		}
 	}

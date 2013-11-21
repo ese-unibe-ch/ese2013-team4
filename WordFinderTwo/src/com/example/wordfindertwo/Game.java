@@ -46,8 +46,8 @@ public class Game extends Activity {
 		setContentView(R.layout.activity_game);
 		game = this;
 		timerView = (TextView) findViewById(R.id.timer);
-		ButtonListProvider blp = new ButtonListProvider(this);
-		for (CustomButton btn : blp.getList()) {
+		ButtonListProvider.Instance.setGame(game);
+		for (CustomButton btn : ButtonListProvider.Instance.getList()) {
 			btn.setBackgroundResource(android.R.drawable.btn_default);
 		}
 
@@ -183,7 +183,7 @@ public class Game extends Activity {
 		Log.i("Game", "fill buttons");
 		for (int i = 0; i < 36; i++) {
 			int x = i % 6, y = i / 6;
-			CustomButton btn = ButtonListProvider.getInstance().getButtonAtIndex(i);
+			CustomButton btn = ButtonListProvider.Instance.getButtonAtIndex(i);
 			btn.setTextSize(12f);
 			btn.setText("" + board.getCharAt(x, y) + " " + board.getValueAt(x, y));
 		}

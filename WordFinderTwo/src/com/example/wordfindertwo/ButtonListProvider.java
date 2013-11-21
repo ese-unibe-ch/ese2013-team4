@@ -6,18 +6,18 @@ import android.util.Log;
 
 import com.example.wordfindertwo.customs.CustomButton;
 
-public class ButtonListProvider {
+public enum ButtonListProvider {
 	
-	private static ButtonListProvider instance;
-	
-	public static ButtonListProvider getInstance() {
-		return instance;
-	}
+	Instance;
 	
 	// CLASS MANAGEMENT
 	ArrayList<CustomButton> buttonList;
 
-	public ButtonListProvider(Game game){
+	private ButtonListProvider() {
+		return;
+	}
+	
+	public void setGame(Game game) {
 		Log.i("ButtonListProvider", "building list");
 		buttonList = new ArrayList<CustomButton>();
 		buttonList.add((CustomButton)game.findViewById(R.id.button00));
@@ -56,10 +56,6 @@ public class ButtonListProvider {
 		buttonList.add((CustomButton)game.findViewById(R.id.button35));
 		buttonList.add((CustomButton)game.findViewById(R.id.button45));
 		buttonList.add((CustomButton)game.findViewById(R.id.button55));
-		
-		// END
-		Log.i("ButtonListProvider", "storing instance");
-		instance = this;
 	}
 	
 	public ArrayList<CustomButton> getList(){
