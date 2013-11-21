@@ -11,7 +11,6 @@ public enum SeedGenerator {
 	Instance;
 	
 	public final static int MAX_ATTEMPTS = 1000;
-	
 	public final static char SEED_SECTION_DELIMITER = '%';
 	
 	private Random rand;

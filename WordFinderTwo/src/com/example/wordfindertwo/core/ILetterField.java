@@ -11,7 +11,7 @@ public interface ILetterField {
 	public boolean isSelected();
 	
 	/**
-	 * @return true, if other one of the 8 adjacent Fields
+	 * @return true, if other one of the 8 adjacent Fields but not equal
 	 */
 	public boolean isAdjacent(ILetterField other);
 	

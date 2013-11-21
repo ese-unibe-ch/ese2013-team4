@@ -1,6 +1,5 @@
 package com.example.wordfindertwo;
 
-
 import android.os.Bundle;
 import android.app.Activity;
 import android.content.Context;
@@ -16,17 +15,16 @@ import android.widget.TableLayout;
 import android.widget.TableRow;
 import android.widget.TextView;
 
-
 public class FriendsTable extends Activity{
 
-	TextView friendsTable_TitleTextView;
-	RadioButton deleteOnRadioButton;
-	Button addFriendButton;
-	TableRow friendsTable_FirstTableRow;
-	TableRow friendsTabel_TableRow_holdsScrollViewAndTableRow;
-	TableRow addAndDeleteFriendTableRow;
-	ScrollView friendsTable_ScrollView_inTableRow;
-	TableLayout friendsTable_outerTableLayout;
+	private TextView friendsTable_TitleTextView;
+	private RadioButton deleteOnRadioButton;
+	private Button addFriendButton;
+	private TableRow friendsTable_FirstTableRow;
+	private TableRow friendsTabel_TableRow_holdsScrollViewAndTableRow;
+	private TableRow addAndDeleteFriendTableRow;
+	private ScrollView friendsTable_ScrollView_inTableRow;
+	private TableLayout friendsTable_outerTableLayout;
 	private TableLayout friendsTable_scrollView_TableLayout;
 	
 	@Override

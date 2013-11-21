@@ -9,31 +9,26 @@ import android.widget.TextView;
 
 public class AfterGame extends Activity {
 
-	String boardSeed;
-	int boardScore;
-	long timerValue;
-	int finalScore;
+	private final static double TIME_SCORING_FACTOR = 0.0001;
+	private final static double WORD_SCORING_FACTOR = 1;
 	
-	public final static double TIME_SCORING_FACTOR = 0.0001;
-	public final static double WORD_SCORING_FACTOR = 1;
+	private String boardSeed; //will be needed for board storage
+	private int boardScore;
+	private int finalScore;
+	private long timerValue;
 	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_after_game);
 		
-		Intent intent = this.getIntent();
-		
-		boardSeed = intent.getStringExtra("seed");
-		boardScore = intent.getIntExtra("score", 0);
-		timerValue = intent.getLongExtra("time", 0);
+		this.boardSeed = this.getIntent().getStringExtra("seed");
+		this.boardScore = this.getIntent().getIntExtra("score", 0);
+		this.timerValue = this.getIntent().getLongExtra("time", 0);
 		
 		this.calculateFinalScore();
 		
-		TextView scoreButton = (TextView) findViewById(R.id.scorecustomdisplay);
-		scoreButton.setText("" + finalScore);
-		
-		
+		((TextView) findViewById(R.id.scorecustomdisplay)).setText("" + finalScore);
 	}
 
 	@Override

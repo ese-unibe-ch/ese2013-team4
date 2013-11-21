@@ -18,25 +18,21 @@ import android.widget.Button;
 
 public class Game extends Activity {
 
-	// -------------button text contents-------------
-	private static final CharSequence QUIT_BUTTON_TEXT = "QUIT";
-	// -------------timer Variables------------------
-	private static final long INITIAL_TIMER_VALUE = 60000;
-	//
-	public long millisInFuture = INITIAL_TIMER_VALUE;
-	private TextView timerView;
-	CountDownTimer timer;
-	private Activity gameActivity = this;
-	// -----------------------------------------------
-
-	boolean paused = false;
-	private Board board;
-	LinearLayout layout;
-	Button bStart;
-	Button bPause;
-	private Intent intent;
-
 	public static Game game;
+	// CONSTANTS
+	private static final CharSequence QUIT_BUTTON_TEXT = "QUIT";
+	private static final long INITIAL_TIMER_VALUE = 60000;
+	
+	private long millisInFuture = INITIAL_TIMER_VALUE;
+	private TextView timerView;
+	private CountDownTimer timer;
+	private Activity gameActivity = this;
+	private boolean paused = false;
+	private Board board;
+	private LinearLayout layout;
+	private Button bStart;
+	private Button bPause;
+	private Intent intent;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {

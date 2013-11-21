@@ -24,7 +24,6 @@ public class Board implements BoardDictionarySupportInterface, BoardDrawingInter
 	private IDictionary secondary;
 	private ArrayList<String> wordsInBoard;
 	private ArrayList<ArrayList<Point>> foundWords;
-	
 	private long id;
 	
 	/**

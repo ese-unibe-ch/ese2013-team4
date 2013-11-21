@@ -1,6 +1,7 @@
 package com.example.wordfindertwo.core;
 
 public class Point {
+	
 	private int x;
 	private int y;
 	
@@ -42,7 +43,7 @@ public class Point {
 	
 	@Override
 	public int hashCode() {
-		return this.x + this.y;
+		return this.x + 10 * this.y;
 	}
 	
 	public boolean isAdjacent (Point other) {
