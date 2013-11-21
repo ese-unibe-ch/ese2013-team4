@@ -195,11 +195,6 @@ public class Board implements BoardDictionarySupportInterface,
 		return this.gameResult;
 	}
 
-	@Override
-	public void setGameValid() {
-		this.gameResult.setValid();
-	}
-
 	/* IMPLEMENTATION OF BoardDatabaseInterface */
 
 	@Override

@@ -4,24 +4,21 @@ public final class GameResult {
 
 	private final static double LETTER_SCORE_MULTIPLIER = 1;
 	private final static double WORD_SCORE_MULTIPLIER = 10;
-	private final static double TIME_SCORE_MULTIPLIER = 0.5;
+	private final static double TIME_SCORE_MULTIPLIER = 0.005; // half sec 1 pt
 
 	private long boardID;
 	private String boardSeed;
 	private int score;
-	private boolean isValid; // true only when board finished correctly
 
 	public GameResult(long boardID, String boardSeed) {
 		this.boardID = boardID;
 		this.boardSeed = boardSeed;
 		this.score = 0;
-		this.isValid = false;
 	}
-	
-	private GameResult(long boardID, String boardSeed, int score, boolean isValid) {
+
+	private GameResult(long boardID, String boardSeed, int score) {
 		this(boardID, boardSeed);
 		this.score = score;
-		this.isValid = isValid;
 	}
 
 	public void addWord(int value) {
@@ -45,33 +42,23 @@ public final class GameResult {
 		return this.score;
 	}
 
-	public boolean isValid() {
-		return this.isValid;
-	}
-	
 	public void setBoardID(long boardID) {
 		this.boardID = boardID;
 	}
-	
-	/**
-	 * sets the result to be valid.
-	 */
-	public void setValid() {
-		this.isValid = true;
-	}
-	
+
 	/**
 	 * generates a serial string containing all relevant instance data
 	 */
 	public String serialize() {
-		return "" + this.boardID + "@" + this.boardSeed + "@" + this.score + "@" + (this.isValid ? "true" : "false");
+		return "" + this.boardID + "@" + this.boardSeed + "@" + this.score;
 	}
-	
+
 	/**
 	 * Creates a new GameResult instance from the serial string
 	 */
 	public static GameResult unserialize(String serial) {
 		String[] fragments = serial.split("@");
-		return new GameResult(Integer.parseInt(fragments[0]), fragments[1], Integer.parseInt(fragments[2]), fragments[3].equals("true"));
+		return new GameResult(Integer.parseInt(fragments[0]), fragments[1],
+				Integer.parseInt(fragments[2]));
 	}
 }

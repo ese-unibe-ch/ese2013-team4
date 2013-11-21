@@ -21,11 +21,4 @@ public interface BoardScoreInterface {
 	public boolean isCompleted();
 
 	public GameResult getGameResult();
-
-	/**
-	 * defines the board's score to be valid. Only scores of boards that have
-	 * been completed or played until time ran out are considered valid and may
-	 * be stored in the database.
-	 */
-	public void setGameValid();
 }

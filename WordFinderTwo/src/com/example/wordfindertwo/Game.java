@@ -3,6 +3,7 @@ package com.example.wordfindertwo;
 import com.example.wordfindertwo.core.board.Board;
 import com.example.wordfindertwo.core.test.TestDictionary;
 import com.example.wordfindertwo.core.BoardFactory;
+import com.example.wordfindertwo.core.GameResult;
 import com.example.wordfindertwo.customs.*;
 
 import android.util.Log;
@@ -26,13 +27,11 @@ public class Game extends Activity {
 	private long millisInFuture = INITIAL_TIMER_VALUE;
 	private TextView timerView;
 	private CountDownTimer timer;
-	private Activity gameActivity = this;
 	private boolean paused = false;
 	private Board board;
 	private LinearLayout layout;
 	private Button bStart;
 	private Button bPause;
-	private Intent intent;
 	private boolean hasFinishedNaturally = false;
 
 	@Override
@@ -68,8 +67,6 @@ public class Game extends Activity {
 			@Override
 			public void onClick(View v) {
 				if (bStart.getText().equals(QUIT_BUTTON_TEXT)) {
-					Intent intent = new Intent(gameActivity, MainMenu.class);
-					game.startActivity(intent);
 					game.finish();
 				}
 				restartTimer();
@@ -105,10 +102,15 @@ public class Game extends Activity {
 
 	@Override
 	public void finish() {
-		this.intent = new Intent(this, AfterGame.class);
-		this.intent.putExtra("seed", board.getSeed());
-		this.intent.putExtra("score", board.getBoardScore());
-		this.intent.putExtra("time", this.millisInFuture);
+		Intent intent;
+		if (this.hasFinishedNaturally) {
+			intent = new Intent(this, AfterGame.class);
+			GameResult result = this.board.getGameResult();
+			result.addTimeBonus(this.millisInFuture);
+			intent.putExtra("GameResult", result.serialize());
+		} else {
+			intent = new Intent(this, MainMenu.class);
+		}
 		startActivity(intent);
 		super.finish();
 	}
@@ -143,6 +145,7 @@ public class Game extends Activity {
 	public void update() {
 		if (board.isCompleted()) {
 			Log.i("Game", "board completed");
+			this.hasFinishedNaturally = true;
 			this.finish();
 		}
 	}
@@ -174,6 +177,7 @@ public class Game extends Activity {
 			public void onFinish() {
 				TextView text = (TextView) findViewById(R.id.timer);
 				text.setText("Time's up!");
+				game.hasFinishedNaturally = true;
 				game.finish();
 			}
 		};
@@ -193,7 +197,7 @@ public class Game extends Activity {
 	private void setMillisInFuture(long value) {
 		this.millisInFuture = value;
 	}
-	
+
 	private void setListener() {
 		layout.setOnTouchListener(new CustomOnTouchListener(board, this));
 	}
