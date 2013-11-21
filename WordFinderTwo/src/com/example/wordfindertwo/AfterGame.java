@@ -38,6 +38,9 @@ public class AfterGame extends Activity {
 		return true;
 	}
 	
+	/**
+	 * switches back to the main menu
+	 */
 	public void returnToMainMenu(View view){
 		Intent intent = new Intent(this, MainMenu.class);
 		startActivity(intent);

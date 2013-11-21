@@ -20,11 +20,17 @@ public class Pause extends Activity {
 		return true;
 	}
 	
+	/**
+	 * switches back to the Game activity and signals it to continue the game
+	 */
 	public void backToGame(View view){
 		this.setResult(0);
 		finish();
 	}
-	
+
+	/**
+	 * switches back to the Game activity and signals it to finish the game
+	 */
 	public void finishGame(View view){
 		this.setResult(1);
 		finish();

@@ -22,7 +22,7 @@ public class Game extends Activity {
 	// CONSTANTS
 	private static final CharSequence QUIT_BUTTON_TEXT = "QUIT";
 	private static final long INITIAL_TIMER_VALUE = 60000;
-	
+
 	private long millisInFuture = INITIAL_TIMER_VALUE;
 	private TextView timerView;
 	private CountDownTimer timer;
@@ -36,13 +36,13 @@ public class Game extends Activity {
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
-		
+
 		super.onCreate(savedInstanceState);
 		Log.i("Game", "onCreate");
 		setContentView(R.layout.activity_game);
 		game = this;
 		timerView = (TextView) findViewById(R.id.timer);
-		ButtonListProvider.Instance.setGame(game);
+		ButtonListProvider.Instance.configureForGame(game);
 		for (CustomButton btn : ButtonListProvider.Instance.getList()) {
 			btn.setBackgroundResource(android.R.drawable.btn_default);
 		}
@@ -50,7 +50,8 @@ public class Game extends Activity {
 		// generate board
 		Log.i("Game", "generate Board");
 		try {
-			board = BoardFactory.Instance.createRandomBoard(null, new TestDictionary(), 6);
+			board = BoardFactory.Instance.createRandomBoard(null,
+					new TestDictionary(), 6);
 			Log.d("Game.Board", "Word count = " + board.getTotalWordCount());
 		} catch (Exception e) {
 			Log.e("Game", "Board Factory Crashed", e);
@@ -72,7 +73,7 @@ public class Game extends Activity {
 				}
 				restartTimer();
 				bPause.setClickable(true);
-				setListener();
+				game.setListener();
 				fillBoard();
 				bStart.setText(QUIT_BUTTON_TEXT);
 			}
@@ -87,15 +88,11 @@ public class Game extends Activity {
 			}
 		});
 		bPause.setClickable(false);
-		//--------------------------------------------------------------------------
+		// --------------------------------------------------------------------------
 
 		layout = (LinearLayout) findViewById(R.id.gamespace);
 		TextView score = (TextView) game.findViewById(R.id.score);
 		score.setText("" + board.getBoardScore());
-	}
-
-	public void setListener() {
-		layout.setOnTouchListener(new CustomOnTouchListener(board, this));
 	}
 
 	@Override
@@ -105,7 +102,63 @@ public class Game extends Activity {
 		return true;
 	}
 
-	public void startTimer() {
+	@Override
+	public void finish() {
+		this.intent = new Intent(this, AfterGame.class);
+		this.intent.putExtra("seed", board.getSeed());
+		this.intent.putExtra("score", board.getBoardScore());
+		this.intent.putExtra("time", this.millisInFuture);
+		startActivity(intent);
+		super.finish();
+	}
+
+	@Override
+	protected void onResume() {
+		super.onResume();
+		if (paused == true) {
+			bStart.setText(QUIT_BUTTON_TEXT);
+			bStart.setClickable(true);
+			startTimer();
+		}
+	}
+
+	@Override
+	protected void onPause() {
+		super.onPause();
+		paused = true;
+		bStart.setClickable(false);
+	}
+
+	/**
+	 * finish this activity when the pause return value is 1. ignore any other
+	 * input.
+	 */
+	@Override
+	protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+		if (resultCode == 1)
+			finish();
+	}
+
+	public void update() {
+		if (board.isCompleted()) {
+			Log.i("Game", "board completed");
+			this.finish();
+		}
+	}
+
+	private void fillBoard() {
+		Log.i("Game", "fill buttons");
+		for (int i = 0; i < 36; i++) {
+			int x = i % 6, y = i / 6;
+			CustomButton btn = ButtonListProvider.Instance.getButtonAtIndex(i);
+			btn.setTextSize(12f);
+			btn.setText("" + board.getCharAt(x, y) + " "
+					+ board.getValueAt(x, y));
+		}
+		Log.i("Game", "setup timer");
+	}
+
+	private void startTimer() {
 		// countdown atm 2min displayed in sec
 		timer = new CountDownTimer(getMillisInFuture(), 1000) {
 
@@ -127,72 +180,20 @@ public class Game extends Activity {
 		timer.start();
 	}
 
-	public void restartTimer() {
+	private void restartTimer() {
 		this.millisInFuture = INITIAL_TIMER_VALUE;
 		this.startTimer();
 	}
 
-	public long getMillisInFuture() {
+	private long getMillisInFuture() {
 		return millisInFuture;
 	}
 
-	public void setMillisInFuture(long value) {
+	private void setMillisInFuture(long value) {
 		this.millisInFuture = value;
 	}
-
-	@Override
-	public void finish() {
-		this.intent = new Intent(this, AfterGame.class);
-		this.intent.putExtra("seed", board.getSeed());
-		this.intent.putExtra("score", board.getBoardScore());
-		this.intent.putExtra("time", this.millisInFuture);
-		startActivity(intent);
-		super.finish();
-	}
-
-	public void update() {
-		if (board.isCompleted()) {
-			Log.i("Game", "board completed");
-			this.finish();
-		}
-	}
-
-	@Override
-	protected void onResume() {
-		super.onResume();
-		if (paused == true) {
-			bStart.setText(QUIT_BUTTON_TEXT);
-			bStart.setClickable(true);
-			startTimer();
-		}
-	}
-
-	@Override
-	protected void onPause() {
-		super.onPause();
-		paused = true;
-		bStart.setClickable(false);
-	}
-
 	
-	private void fillBoard() {
-		Log.i("Game", "fill buttons");
-		for (int i = 0; i < 36; i++) {
-			int x = i % 6, y = i / 6;
-			CustomButton btn = ButtonListProvider.Instance.getButtonAtIndex(i);
-			btn.setTextSize(12f);
-			btn.setText("" + board.getCharAt(x, y) + " " + board.getValueAt(x, y));
-		}
-		Log.i("Game", "setup timer");
-	}
-
-	/**
-	 * finish this activity when the pause return value is 1.
-	 * ignore any other input.
-	 */
-	@Override
-	protected void onActivityResult(int requestCode, int resultCode, Intent data) {
-		if (resultCode == 1)
-			finish();
+	private void setListener() {
+		layout.setOnTouchListener(new CustomOnTouchListener(board, this));
 	}
 }

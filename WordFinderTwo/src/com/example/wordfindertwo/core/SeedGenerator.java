@@ -5,39 +5,66 @@ import java.util.Random;
 
 import com.example.wordfindertwo.core.board.Board;
 
-
 public enum SeedGenerator {
-	
+
 	Instance;
-	
+
 	public final static int MAX_ATTEMPTS = 1000;
 	public final static char SEED_SECTION_DELIMITER = '%';
-	
+
 	private Random rand;
-	
-	private SeedGenerator () {
+
+	private SeedGenerator() {
 		this.rand = new Random();
 	}
-	
-	public String generateRandomSeed(IDictionary primary, IDictionary secondary, int boardSize) {
-		ArrayList<String> words = new ArrayList<String>(); //list with all words placed in the matrix
+
+	/**
+	 * creates a randomly generated seed from the two given dictionaries. Seed
+	 * generation from just one dictionary is possible. In that case the
+	 * dictionary should be given as the 'secondary' dictionary and the
+	 * 'primary' dictionary should hold a <tt>null</tt> value. Seed generation
+	 * from no dictionaries (both <tt>null</tt>) will lead to a completely
+	 * random letter positioning and to an unplayable board since there are no
+	 * words placed. The generated seed contains the board matrix configuration
+	 * and all the words that are known to be in the board. Note that these
+	 * words are just the ones that are actively placed during generation and
+	 * not randomly produced ones.
+	 * 
+	 * @param primary
+	 *            the primary dictionary for the seed generation. This
+	 *            dictionary is used first during seed generation. This can be
+	 *            <tt>null</tt> when a only the standard dictionary is used.
+	 * @param secondary
+	 *            the secondary dictionary for the board generation. This
+	 *            dictionary is used in the second iteration of seed generation.
+	 *            This should be the standard dictionary.
+	 * @param boardSize
+	 *            the size of the generated board. Should be 6.
+	 * @return the generated seed
+	 */
+	public String generateRandomSeed(IDictionary primary,
+			IDictionary secondary, int boardSize) {
+		// list with all words placed in the matrix
+		ArrayList<String> words = new ArrayList<String>();
 		char[][] matrix = new char[boardSize][boardSize];
-		
+
 		workThrough(primary, matrix, words);
 		workThrough(secondary, matrix, words);
-		//fill empty fields randomly
+		// fill empty fields randomly
 		for (int y = 0; y < boardSize; y++) {
 			for (int x = 0; x < boardSize; x++) {
 				if (matrix[x][y] == '\0') {
-					matrix[x][y] = (char) (65 + rand.nextInt(26)); //random letter between 'A' (65) and 'Z' (90)
+					// random letter between 'A' (65) and 'Z' (90)
+					matrix[x][y] = (char) (65 + rand.nextInt(26));
 				}
 			}
 		}
-		//parse seed
+		// parse seed
 		return this.parseIntoSeed(matrix, words);
 	}
-	
-	private void workThrough(IDictionary dictionary, char[][] matrix, ArrayList<String> words) {
+
+	private void workThrough(IDictionary dictionary, char[][] matrix,
+			ArrayList<String> words) {
 		if (dictionary == null)
 			return;
 		ArrayList<String> dic = dictionary.getWords();
@@ -49,12 +76,14 @@ public enum SeedGenerator {
 				words.add(word);
 		}
 	}
-	
+
 	/**
 	 * Tries to place a word on the matrix
 	 * 
-	 * @param matrix the matrix to modify with the word
-	 * @param word the word to be placed
+	 * @param matrix
+	 *            the matrix to modify with the word
+	 * @param word
+	 *            the word to be placed
 	 * @return true when word was placed, false otherwise
 	 */
 	private boolean placeWord(char[][] matrix, char[] word) {
@@ -62,7 +91,8 @@ public enum SeedGenerator {
 		ArrayList<Point> usedPoints = new ArrayList<Point>();
 		for (int i = 0; i < word.length; i++) {
 			char letter = word[i];
-			ArrayList<Point> legals = BoardPointRetreiver.Instance.getGoodPoints(letter, matrix, usedPoints);
+			ArrayList<Point> legals = BoardPointRetreiver.Instance
+					.getGoodPoints(letter, matrix, usedPoints);
 			if (legals.isEmpty()) {
 				matrix = backup;
 				return false;
@@ -71,17 +101,22 @@ public enum SeedGenerator {
 			usedPoints.add(position);
 			matrix[position.getX()][position.getY()] = letter;
 		}
-		//this point is only reached when word was completely placed
+		// this point is only reached when word was completely placed
 		return true;
 	}
 
+	/**
+	 * Generates a board seed from the given board. Using the generated seed to
+	 * create a new board using the BoardFactory generates an identical board.
+	 */
 	public String generateSeedFromBoard(Board board) {
 		assert board != null;
-		
-		return this.parseIntoSeed(board.getCharMatrix(), board.getWordsInBoard());
+
+		return this.parseIntoSeed(board.getCharMatrix(),
+				board.getWordsInBoard());
 	}
-	
-	private char[][] copyMatrix (char[][] matrix) {
+
+	private char[][] copyMatrix(char[][] matrix) {
 		char[][] copy = new char[matrix.length][matrix.length];
 		for (int y = 0; y < matrix.length; y++) {
 			for (int x = 0; x < matrix.length; x++) {
@@ -93,13 +128,13 @@ public enum SeedGenerator {
 
 	private String parseIntoSeed(char[][] matrix, ArrayList<String> words) {
 		String seed = "";
-		//convert 2D char matrix into string (row by row)
+		// convert 2D char matrix into string (row by row)
 		for (int y = 0; y < matrix.length; y++) {
 			for (int x = 0; x < matrix.length; x++) {
 				seed += matrix[x][y];
 			}
 		}
-		//add all words to the seed
+		// add all words to the seed
 		for (String word : words) {
 			seed += SEED_SECTION_DELIMITER + word;
 		}

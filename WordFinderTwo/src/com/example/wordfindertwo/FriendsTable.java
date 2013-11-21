@@ -27,61 +27,23 @@ public class FriendsTable extends Activity{
 	private TableLayout friendsTable_outerTableLayout;
 	private TableLayout friendsTable_scrollView_TableLayout;
 	
-	@Override
-	protected void onCreate(Bundle savedInstanceState) {
-		super.onCreate(savedInstanceState);
-		setContentView(R.layout.activity_friendtable);
-		
-		friendsTable_scrollView_TableLayout =(TableLayout) findViewById(R.id.friendsTable_scrollView_TableLayout);
-		
-		deleteOnRadioButton = (RadioButton) findViewById(R.id.deleteFriend);
-		deleteOnRadioButton.setOnClickListener(deleteOnRadioButtonListener);
-		
-		addFriendButton = (Button) findViewById(R.id.addFriendButton);
-		addFriendButton.setOnClickListener(addFriendButtonListener);
-
-	}
-	
-	
-	public OnClickListener deleteOnRadioButtonListener = new OnClickListener(){
+	private OnClickListener deleteOnRadioButtonListener = new OnClickListener(){
 		
 		public void onClick(View v) {
 			View button = findViewById(R.id.friends_tableRow_deleteButton);
 			button.setVisibility(View.VISIBLE);
-			
 		}
 	};
-
-	public OnClickListener addFriendButtonListener = new OnClickListener() {
+	private OnClickListener addFriendButtonListener = new OnClickListener() {
 		
 		@Override
 		public void onClick(View v) {
 			Intent i = new Intent(getApplicationContext(),AddFriend.class);
             startActivity(i);
-	
 		}
 	
 	};
-
-	private void insertFriendInScrollView(String friendNameMail, int Arrayindex){
-		
-		
-		LayoutInflater friendsInflater = (LayoutInflater) getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-		
-		View newFriendRow = friendsInflater.inflate(R.layout.activity_friend_tablerow, null);
-		
-		TextView friends_tablRow_TextsView = (TextView) newFriendRow.findViewById(R.id.friends_tablRow_TextsView);
-		friends_tablRow_TextsView.setText(friendNameMail);
-		
-		Button friends_tableRow_deleteButton = (Button) newFriendRow.findViewById(R.id.friends_tableRow_deleteButton);
-		friends_tableRow_deleteButton.setOnClickListener(friends_tableRow_deleteButtonListener);
-
-		friendsTable_scrollView_TableLayout.addView(friends_tablRow_TextsView, Arrayindex);
-	}
-	
-	
-	
-	public OnClickListener friends_tableRow_deleteButtonListener= new OnClickListener() {
+	private OnClickListener friends_tableRow_deleteButtonListener= new OnClickListener() {
 
 		@Override
 		public void onClick(View v) {
@@ -89,17 +51,37 @@ public class FriendsTable extends Activity{
 		}
 	};
 	
-	
+	@Override
+	protected void onCreate(Bundle savedInstanceState) {
+		super.onCreate(savedInstanceState);
+		setContentView(R.layout.activity_friendtable);
+		this.friendsTable_scrollView_TableLayout =(TableLayout) findViewById(R.id.friendsTable_scrollView_TableLayout);
+		this.deleteOnRadioButton = (RadioButton) findViewById(R.id.deleteFriend);
+		this.deleteOnRadioButton.setOnClickListener(deleteOnRadioButtonListener);
+		this.addFriendButton = (Button) findViewById(R.id.addFriendButton);
+		this.addFriendButton.setOnClickListener(addFriendButtonListener);
+	}
+
+	private void insertFriendInScrollView(String friendNameMail, int Arrayindex){
+		LayoutInflater friendsInflater = (LayoutInflater) getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+		View newFriendRow = friendsInflater.inflate(R.layout.activity_friend_tablerow, null);
+		TextView friends_tablRow_TextsView = (TextView) newFriendRow.findViewById(R.id.friends_tablRow_TextsView);
+		friends_tablRow_TextsView.setText(friendNameMail);
+		Button friends_tableRow_deleteButton = (Button) newFriendRow.findViewById(R.id.friends_tableRow_deleteButton);
+		friends_tableRow_deleteButton.setOnClickListener(this.friends_tableRow_deleteButtonListener);
+		this.friendsTable_scrollView_TableLayout.addView(friends_tablRow_TextsView, Arrayindex);
+	}
 	
 	@Override
 	public boolean onCreateOptionsMenu(Menu menu) {
 		// Inflate the menu; this adds items to the action bar if it is present.
 		getMenuInflater().inflate(R.menu.friendstable, menu);
 		return true;
-		
-		
 	}
-
+	
+	/**
+	 * switches to the AddFriend activity
+	 */
 	public void addFriend(View view){
 		Intent intent = new Intent(this, AddFriend.class);
 		startActivity(intent);

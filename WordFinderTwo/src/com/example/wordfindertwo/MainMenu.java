@@ -33,7 +33,7 @@ public class MainMenu extends Activity {
 	
 	public void openScores(View view){
 		Intent intent = new Intent(this, Score.class);
-		startActivity(intent);	
+		startActivity(intent);
 	}
 	
 	public void openFriend(View view){

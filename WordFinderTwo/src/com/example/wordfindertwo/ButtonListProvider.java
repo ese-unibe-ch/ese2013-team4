@@ -17,8 +17,12 @@ public enum ButtonListProvider {
 		return;
 	}
 	
-	public void setGame(Game game) {
-		Log.i("ButtonListProvider", "building list");
+	/**
+	 * Configures the ButtonListProvider for the given game instance.
+	 * @param game
+	 */
+	public void configureForGame(Game game) {
+		Log.i("ButtonListProvider", "building button list");
 		buttonList = new ArrayList<CustomButton>();
 		buttonList.add((CustomButton)game.findViewById(R.id.button00));
 		buttonList.add((CustomButton)game.findViewById(R.id.button10));
@@ -58,14 +62,25 @@ public enum ButtonListProvider {
 		buttonList.add((CustomButton)game.findViewById(R.id.button55));
 	}
 	
+	/**
+	 * @return a sorted list of all buttons. The Buttons are stored row by row, top down
+	 */
 	public ArrayList<CustomButton> getList(){
 		return buttonList;
 	}
 	
+	/**
+	 * Returns the button with a specific index.<br/>
+	 * The index for <tt>buttonxy</tt> is <tt>x + 6y</tt>
+	 */
 	public CustomButton getButtonAtIndex(int index) {
 		return this.buttonList.get(index);
 	}
 	
+	/**
+	 * Finds the button that is positioned under the given coordinates <tt>x</tt> and <tt>y</tt>.
+	 * @return the button at the given coordinates, or <tt>null</tt> when there's no button.
+	 */
 	public CustomButton getButtonUnder(float x, float y) {
 		for (CustomButton button : this.buttonList) {
 			if (button.isTouched(x, y))

@@ -58,6 +58,7 @@ public class CustomOnTouchListener implements OnTouchListener {
 			}
 			this.paintResult(this.board.submit(pointList));
 			this.updateScore();
+			this.game.update();
 			this.buttonList.clear();
 		}
 		return true;
