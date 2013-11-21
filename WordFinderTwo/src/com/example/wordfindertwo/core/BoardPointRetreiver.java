@@ -2,15 +2,9 @@ package com.example.wordfindertwo.core;
 
 import java.util.ArrayList;
 
-import com.example.wordfindertwo.core.board.Board;
-
 public enum BoardPointRetreiver {
 
 	Instance;
-	
-	public ArrayList<Point> getGoodPoints(char c, Board b, ArrayList<Point> oldPoints) {
-		return this.getGoodPoints(c, b.getCharMatrix(), oldPoints);
-	}
 	
 	public ArrayList<Point> getGoodPoints(char c, char[][] matrix, ArrayList<Point> oldPoints) {
 		ArrayList<Point> goodPoints = new ArrayList<Point>();

@@ -9,15 +9,11 @@ import com.example.wordfindertwo.core.Point;
 import com.example.wordfindertwo.core.SelectionStatus;
 import com.example.wordfindertwo.core.board.Board;
 
-import android.app.Activity;
 import android.graphics.Color;
-import android.graphics.drawable.AnimationDrawable;
-import android.os.CountDownTimer;
 import android.util.Log;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.View.OnTouchListener;
-import android.widget.ImageView;
 import android.widget.TextView;
 
 public class CustomOnTouchListener implements OnTouchListener {
