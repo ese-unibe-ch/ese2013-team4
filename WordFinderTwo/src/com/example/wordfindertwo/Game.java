@@ -1,7 +1,6 @@
 package com.example.wordfindertwo;
 
 import com.example.wordfindertwo.core.board.Board;
-import com.example.wordfindertwo.core.test.TestDictionary;
 import com.example.wordfindertwo.core.BoardFactory;
 import com.example.wordfindertwo.core.GameResult;
 import com.example.wordfindertwo.customs.*;
@@ -50,7 +49,7 @@ public class Game extends Activity {
 		Log.i("Game", "generate Board");
 		try {
 			board = BoardFactory.Instance.createRandomBoard(null,
-					new TestDictionary(), 6);
+					new StandardDictionary(), 6);
 			Log.d("Game.Board", "Word count = " + board.getTotalWordCount());
 		} catch (Exception e) {
 			Log.e("Game", "Board Factory Crashed", e);

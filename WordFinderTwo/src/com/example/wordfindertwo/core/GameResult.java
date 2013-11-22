@@ -9,15 +9,21 @@ public final class GameResult {
 	private long boardID;
 	private String boardSeed;
 	private int score;
+	private int primaryDictionaryID;
+	private int secondaryDictionaryID;
 
-	public GameResult(long boardID, String boardSeed) {
+	public GameResult(long boardID, String boardSeed, int primaryID,
+			int secondaryID) {
 		this.boardID = boardID;
 		this.boardSeed = boardSeed;
 		this.score = 0;
+		this.primaryDictionaryID = primaryID;
+		this.secondaryDictionaryID = secondaryID;
 	}
 
-	private GameResult(long boardID, String boardSeed, int score) {
-		this(boardID, boardSeed);
+	private GameResult(long boardID, String boardSeed, int score,
+			int primaryID, int secondaryID) {
+		this(boardID, boardSeed, primaryID, secondaryID);
 		this.score = score;
 	}
 
@@ -46,11 +52,21 @@ public final class GameResult {
 		this.boardID = boardID;
 	}
 
+	public int getPrimaryDictionaryID() {
+		return primaryDictionaryID;
+	}
+	
+	public int getSecondaryDictionaryID() {
+		return secondaryDictionaryID;
+	}
+
 	/**
 	 * generates a serial string containing all relevant instance data
 	 */
 	public String serialize() {
-		return "" + this.boardID + "@" + this.boardSeed + "@" + this.score;
+		return "" + this.boardID + "@" + this.boardSeed + "@" + this.score
+				+ "@" + this.primaryDictionaryID + "@"
+				+ this.secondaryDictionaryID;
 	}
 
 	/**
@@ -59,6 +75,7 @@ public final class GameResult {
 	public static GameResult unserialize(String serial) {
 		String[] fragments = serial.split("@");
 		return new GameResult(Integer.parseInt(fragments[0]), fragments[1],
-				Integer.parseInt(fragments[2]));
+				Integer.parseInt(fragments[2]), Integer.parseInt(fragments[3]),
+				Integer.parseInt(fragments[4]));
 	}
 }

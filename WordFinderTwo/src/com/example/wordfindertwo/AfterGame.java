@@ -5,6 +5,7 @@ import com.example.wordfindertwo.core.GameResult;
 import android.os.Bundle;
 import android.app.Activity;
 import android.content.Intent;
+import android.util.Log;
 import android.view.Menu;
 import android.view.View;
 import android.widget.TextView;
@@ -21,6 +22,12 @@ public class AfterGame extends Activity {
 				"GameResult"));
 
 		((TextView) findViewById(R.id.scorecustomdisplay)).setText("" + this.result.getScore());
+		Log.d("GameResult", "SERIAL:" + result.serialize());
+		Log.d("GameResult", "ID:    " + result.getBoardID());
+		Log.d("GameResult", "SEED:  " + result.getBoardSeed());
+		Log.d("GameResult", "SCORE: " + result.getScore());
+		Log.d("GameResult", "PRIID: " + result.getPrimaryDictionaryID());
+		Log.d("GameResult", "SECID: " + result.getSecondaryDictionaryID());
 	}
 
 	@Override

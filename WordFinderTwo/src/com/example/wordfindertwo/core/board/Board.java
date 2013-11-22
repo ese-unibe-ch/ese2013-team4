@@ -58,7 +58,9 @@ public class Board implements BoardDictionarySupportInterface,
 		this.foundWords = new ArrayList<ArrayList<Point>>();
 		this.wordsInBoard = wordsInBoard;
 		this.id = -1;
-		this.gameResult = new GameResult(this.id, this.getSeed());
+		this.gameResult = new GameResult(this.id, this.getSeed(),
+				(this.primary == null) ? -1 : this.primary.getID(),
+				this.secondary.getID());
 	}
 
 	public ILetterField[][] getMatrix() {
@@ -143,7 +145,8 @@ public class Board implements BoardDictionarySupportInterface,
 		}
 		// STEP 4: check string
 		// if (this.wordsInBoard.contains(word)) {
-		if (this.secondary.getWords().contains(word)
+		if (this.wordsInBoard.contains(word)
+				|| this.secondary.getWords().contains(word)
 				|| (this.primary != null && this.primary.getWords().contains(
 						word))) {
 			this.foundWords.add(new ArrayList<Point>(sequence));
@@ -175,6 +178,7 @@ public class Board implements BoardDictionarySupportInterface,
 	public int getBoardScore() {
 		return this.gameResult.getScore();
 	}
+
 	@Override
 	public int getFoundWordCount() {
 		return this.foundWords.size();
