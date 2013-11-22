@@ -2,6 +2,8 @@ package com.example.wordfindertwo.core;
 
 import java.util.ArrayList;
 
+import android.util.Log;
+
 import com.example.wordfindertwo.core.board.Board;
 import com.example.wordfindertwo.core.exceptions.BoardGenerationException;
 import com.example.wordfindertwo.core.exceptions.InvalidLetterException;
@@ -65,8 +67,9 @@ public enum BoardFactory {
 					"Invalid Char - unable to parse Board");
 		}
 		ArrayList<String> words = new ArrayList<String>();
-		for (int i = 0; i < fragments.length; i++) {
+		for (int i = 1; i < fragments.length; i++) {
 			words.add(fragments[i]);
+			Log.i("BoardFactory", fragments[i]);
 		}
 		return new Board(matrix, primary, secondary, words);
 	}

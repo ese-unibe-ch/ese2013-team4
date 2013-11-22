@@ -8,7 +8,6 @@ import com.example.wordfindertwo.customs.*;
 
 import android.util.Log;
 import android.os.Bundle;
-import android.os.CountDownTimer;
 import android.app.Activity;
 import android.content.Intent;
 import android.view.Menu;
@@ -22,7 +21,7 @@ public class Game extends Activity {
 	public static Game game;
 	// CONSTANTS
 	private static final CharSequence QUIT_BUTTON_TEXT = "QUIT";
-	private static final long INITIAL_TIMER_VALUE = 60000;
+	private static final long INITIAL_TIMER_VALUE = 120000;
 	// FIELDS
 	private TextView timerView;
 	private boolean paused = false;
