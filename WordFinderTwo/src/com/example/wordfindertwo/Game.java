@@ -23,10 +23,8 @@ public class Game extends Activity {
 	// CONSTANTS
 	private static final CharSequence QUIT_BUTTON_TEXT = "QUIT";
 	private static final long INITIAL_TIMER_VALUE = 60000;
-
-	private long millisInFuture = INITIAL_TIMER_VALUE;
+	// FIELDS
 	private TextView timerView;
-	private CountDownTimer timer;
 	private boolean paused = false;
 	private Board board;
 	private LinearLayout layout;
@@ -46,6 +44,8 @@ public class Game extends Activity {
 		for (CustomButton btn : ButtonListProvider.Instance.getList()) {
 			btn.setBackgroundResource(android.R.drawable.btn_default);
 		}
+
+		GameTimer.Instance.setup(INITIAL_TIMER_VALUE);
 
 		// generate board
 		Log.i("Game", "generate Board");
@@ -68,8 +68,9 @@ public class Game extends Activity {
 			public void onClick(View v) {
 				if (bStart.getText().equals(QUIT_BUTTON_TEXT)) {
 					game.finish();
+				} else {
+					GameTimer.Instance.start();
 				}
-				restartTimer();
 				bPause.setClickable(true);
 				game.setListener();
 				fillBoard();
@@ -80,7 +81,6 @@ public class Game extends Activity {
 		bPause.setOnClickListener(new View.OnClickListener() {
 			@Override
 			public void onClick(View v) {
-				timer.cancel();
 				timerView.setText("PAUSED");
 				startActivityForResult(new Intent(Game.this, Pause.class), 0);
 			}
@@ -102,11 +102,12 @@ public class Game extends Activity {
 
 	@Override
 	public void finish() {
+		GameTimer.Instance.stop();
 		Intent intent;
 		if (this.hasFinishedNaturally) {
 			intent = new Intent(this, AfterGame.class);
 			GameResult result = this.board.getGameResult();
-			result.addTimeBonus(this.millisInFuture);
+			result.addTimeBonus(GameTimer.Instance.getTimeRemaining());
 			intent.putExtra("GameResult", result.serialize());
 		} else {
 			intent = new Intent(this, MainMenu.class);
@@ -119,15 +120,16 @@ public class Game extends Activity {
 	protected void onResume() {
 		super.onResume();
 		if (paused == true) {
+			GameTimer.Instance.resume();
 			bStart.setText(QUIT_BUTTON_TEXT);
 			bStart.setClickable(true);
-			startTimer();
 		}
 	}
 
 	@Override
 	protected void onPause() {
 		super.onPause();
+		GameTimer.Instance.pause();
 		paused = true;
 		bStart.setClickable(false);
 	}
@@ -162,40 +164,14 @@ public class Game extends Activity {
 		Log.i("Game", "setup timer");
 	}
 
-	private void startTimer() {
-		// countdown atm 2min displayed in sec
-		timer = new CountDownTimer(getMillisInFuture(), 1000) {
-
-			// displays a new time every tick
-			public void onTick(long millisUntilFinished) {
-				TextView text = (TextView) findViewById(R.id.timer);
-				text.setText("You have " + (millisUntilFinished / 1000)
-						+ " sec remaining!");
-				game.setMillisInFuture(millisUntilFinished);
-			}
-
-			public void onFinish() {
-				TextView text = (TextView) findViewById(R.id.timer);
-				text.setText("Time's up!");
-				game.hasFinishedNaturally = true;
-				game.finish();
-			}
-		};
-
-		timer.start();
+	public void timerUpdated(long millisToGo) {
+		this.timerView.setText("" + (millisToGo / 1000));
 	}
 
-	private void restartTimer() {
-		this.millisInFuture = INITIAL_TIMER_VALUE;
-		this.startTimer();
-	}
-
-	private long getMillisInFuture() {
-		return millisInFuture;
-	}
-
-	private void setMillisInFuture(long value) {
-		this.millisInFuture = value;
+	public void timerFinished() {
+		this.timerView.setText("Time's up!");
+		this.hasFinishedNaturally = true;
+		this.finish();
 	}
 
 	private void setListener() {
