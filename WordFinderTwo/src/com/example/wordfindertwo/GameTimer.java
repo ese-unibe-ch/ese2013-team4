@@ -27,8 +27,8 @@ public enum GameTimer {
 
 			@Override
 			public void tick(long millisUntilFinished) {
-				Log.d("GameTimer",
-						"Timer value is   " + this.getMillisUntilFinished());
+				// Log.d("GameTimer", "Timer value is   " +
+				// this.getMillisUntilFinished());
 				Game.game.timerUpdated(millisUntilFinished);
 			}
 
