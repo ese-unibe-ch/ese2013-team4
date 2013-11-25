@@ -20,27 +20,11 @@ public enum BoardFactory {
 	 * from no dictionaries (both <tt>null</tt>) will lead to a completely
 	 * random letter positioning and to an unplayable board since there are no
 	 * words placed.
-	 * 
-	 * @param primary
-	 *            the primary dictionary for the board generation. This
-	 *            dictionary is used first during board generation. This can be
-	 *            <tt>null</tt> when a only the standard dictionary is used.
-	 * @param secondary
-	 *            the secondary dictionary for the board generation. This
-	 *            dictionary is used in the second iteration of board
-	 *            generation. This should be the standard dictionary.
-	 * @param boardSize
-	 *            the size of the generated board. Should be 6.
-	 * @return the generated Board
-	 * @throws BoardGenerationException
-	 *             in case of any exception during board generation. Such an
-	 *             exception signal an error in the core of the game.
 	 */
-	public Board createRandomBoard(IDictionary primary, IDictionary secondary,
-			int boardSize) throws BoardGenerationException {
-		String seed = SeedGenerator.Instance.generateRandomSeed(primary,
-				secondary, boardSize);
-		return this.createBoardFromSeed(primary, secondary, seed);
+	public Board createRandomBoard(IDictionary customDictionary,
+			int sytemDictionaryID) throws BoardGenerationException {
+		String seed = SeedGenerator.Instance.generateRandomSeed(customDictionary != null ? customDictionary.getWords() : new ArrayList<String>(), sytemDictionaryID, 6);
+		return this.createBoardFromSeed(-1, seed);
 	}
 
 	/**
@@ -49,8 +33,7 @@ public enum BoardFactory {
 	 * accept words that were placed during initial board generation and are
 	 * therefore contained in the seed string.
 	 */
-	public Board createBoardFromSeed(IDictionary primary,
-			IDictionary secondary, String seed) throws BoardGenerationException {
+	public Board createBoardFromSeed(long boardID, String seed) throws BoardGenerationException {
 		String[] fragments = seed.split(""
 				+ SeedGenerator.SEED_SECTION_DELIMITER);
 		String seedString = fragments[0];
@@ -66,11 +49,9 @@ public enum BoardFactory {
 			throw new BoardGenerationException(
 					"Invalid Char - unable to parse Board");
 		}
-		ArrayList<String> words = new ArrayList<String>();
-		for (int i = 1; i < fragments.length; i++) {
-			words.add(fragments[i]);
-			Log.i("BoardFactory", fragments[i]);
-		}
-		return new Board(matrix, primary, secondary, words);
+		ArrayList<String> wordsInBoard = DictionaryHelper.Instance.deserialize(fragments[1]);
+		ArrayList<String> customWords = DictionaryHelper.Instance.deserialize(fragments[2]);
+		int sytemDicID = Integer.parseInt(fragments[3]);
+		return new Board(matrix, customWords, sytemDicID, wordsInBoard);
 	}
 }

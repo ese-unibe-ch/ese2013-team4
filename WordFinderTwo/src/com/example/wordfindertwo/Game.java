@@ -49,7 +49,7 @@ public class Game extends Activity {
 		Log.i("Game", "generate Board");
 		try {
 			board = BoardFactory.Instance.createRandomBoard(null,
-					new StandardDictionary(), 6);
+					StandardDictionary.ENGLISH.id);
 			Log.d("Game.Board", "Word count = " + board.getTotalWordCount());
 		} catch (Exception e) {
 			Log.e("Game", "Board Factory Crashed", e);

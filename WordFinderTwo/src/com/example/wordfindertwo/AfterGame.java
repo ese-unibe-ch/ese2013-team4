@@ -24,10 +24,8 @@ public class AfterGame extends Activity {
 		((TextView) findViewById(R.id.scorecustomdisplay)).setText("" + this.result.getScore());
 		Log.d("GameResult", "SERIAL:" + result.serialize());
 		Log.d("GameResult", "ID:    " + result.getBoardID());
-		Log.d("GameResult", "SEED:  " + result.getBoardSeed());
 		Log.d("GameResult", "SCORE: " + result.getScore());
-		Log.d("GameResult", "PRIID: " + result.getPrimaryDictionaryID());
-		Log.d("GameResult", "SECID: " + result.getSecondaryDictionaryID());
+		Log.d("GameResult", "DATA:  " + result.getBoardData());
 	}
 
 	@Override

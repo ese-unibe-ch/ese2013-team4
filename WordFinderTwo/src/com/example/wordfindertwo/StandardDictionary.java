@@ -11,22 +11,31 @@ import com.example.wordfindertwo.core.IDictionary;
 
 import android.content.Context;
 
-public class StandardDictionary implements IDictionary {
+public enum StandardDictionary implements IDictionary {
 
-	int id;
+	ENGLISH("English", 0, R.raw.english);
+	
 	String name;
+	int id;
 	ArrayList<String> words;
 
-	public StandardDictionary() {
-		this.id = 0;
+	StandardDictionary(String name, int id, int ref) {
 		this.name = "Default Dictionary (English)";
-		this.words = this.generateWordList();
+		this.id = id;
+		this.words = this.generateWordList(ref);
 	}
-
-	private final ArrayList<String> generateWordList() {
+	
+	public static StandardDictionary getDictionary(int id) {
+		for (StandardDictionary dic : values()) {
+			if (dic.id == id)
+				return dic;
+		}
+		return ENGLISH;
+	}
+	
+	private final ArrayList<String> generateWordList(int ref) {
 		Context context = MyApp.getContext();
-		InputStream inputStream = context.getResources().openRawResource(
-				R.raw.english);
+		InputStream inputStream = context.getResources().openRawResource(ref);
 		InputStreamReader inputreader = new InputStreamReader(inputStream);
 		BufferedReader buffreader = new BufferedReader(inputreader);
 		String line;
@@ -56,11 +65,6 @@ public class StandardDictionary implements IDictionary {
 	}
 
 	@Override
-	public int getID() {
-		return this.id;
-	}
-
-	@Override
 	public void setName(String name) {
 		this.name = name;
 	}
@@ -73,6 +77,11 @@ public class StandardDictionary implements IDictionary {
 	@Override
 	public void setID(int id) {
 		this.id = id;
+	}
+
+	@Override
+	public int getID() {
+		return this.id;
 	}
 
 }

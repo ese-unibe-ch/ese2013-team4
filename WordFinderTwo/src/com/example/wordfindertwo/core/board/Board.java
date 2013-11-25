@@ -4,6 +4,7 @@ import java.util.ArrayList;
 
 import android.util.Log;
 
+import com.example.wordfindertwo.StandardDictionary;
 import com.example.wordfindertwo.core.*;
 import com.example.wordfindertwo.core.exceptions.*;
 
@@ -22,45 +23,34 @@ public class Board implements BoardDictionarySupportInterface,
 		BoardScoreInterface, BoardDatabaseInterface {
 
 	private ILetterField[][] matrix;
-	private IDictionary primary;
-	private IDictionary secondary;
+	private ArrayList<String> customWords;
+	private int systemDictionaryID;
 	private ArrayList<String> wordsInBoard;
 	private ArrayList<ArrayList<Point>> foundWords;
 	private long id;
 	private GameResult gameResult;
+	
+	private StandardDictionary systemDic;
 
 	/**
 	 * This constructor is meant for use by the BoardFactory, but can be used in
 	 * any circumstance
-	 * 
-	 * @param matrix
-	 *            the letter matrix for the board. This 2D array has to be
-	 *            exactly square, i.e.
-	 *            <tt>matrix.length == matrix[i].length, i=0..matrix.length-1</tt>
-	 * @param primary
-	 *            the primary dictionary of the board. this is the dictionary
-	 *            that is selected by the user to play with. When the default
-	 *            dictionary is used, this parameter should be <tt>null</tt>,
-	 *            although this property is not required for operation, and
-	 *            won't raise any exceptions if not respected.<br/>
-	 *            All words of this dictionary are considered as valid words.
-	 * @param secondary
-	 *            the secondary dictionary for the board. this is the default
-	 *            dictionary for the board (i.e. English system dictionary).<br/>
-	 *            All words of this dictionary are also considered as valid
-	 *            words.
 	 */
-	public Board(ILetterField[][] matrix, IDictionary primary,
-			IDictionary secondary, ArrayList<String> wordsInBoard) {
+	public Board(ILetterField[][] matrix, ArrayList<String> customWords,
+			int systemDictionaryID, ArrayList<String> wordsInBoard) {
+		this(-1, matrix, customWords, systemDictionaryID, wordsInBoard);
+	}
+	
+	public Board(long id, ILetterField[][] matrix, ArrayList<String> customWords,
+			int systemDictionaryID, ArrayList<String> wordsInBoard) {
 		this.matrix = matrix;
-		this.primary = primary;
-		this.secondary = secondary;
+		this.customWords = customWords;
+		this.systemDictionaryID = systemDictionaryID;
 		this.foundWords = new ArrayList<ArrayList<Point>>();
 		this.wordsInBoard = wordsInBoard;
-		this.id = -1;
-		this.gameResult = new GameResult(this.id, this.getSeed(),
-				(this.primary == null) ? -1 : this.primary.getID(),
-				this.secondary.getID());
+		this.id = id;
+		this.gameResult = new GameResult(this.id, this.getSeed());
+		this.systemDic = StandardDictionary.getDictionary(this.systemDictionaryID);
 	}
 
 	public ILetterField[][] getMatrix() {
@@ -69,21 +59,15 @@ public class Board implements BoardDictionarySupportInterface,
 
 	/* IMPLEMENTATION OF BoardDictionarySupportInterface */
 
+	public ArrayList<String> getCustomWords() {
+		return this.customWords;
+	};
+	
 	@Override
-	public IDictionary getPrimaryDictionary() {
-		return this.hasPrimaryDictionary() ? this.primary : this.secondary;
+	public int getSystemDictionaryID() {
+		return this.systemDictionaryID;
 	}
-
-	@Override
-	public IDictionary getSecondaryDictionary() {
-		return this.secondary;
-	}
-
-	@Override
-	public boolean hasPrimaryDictionary() {
-		return this.primary != null;
-	}
-
+	
 	@Override
 	public ArrayList<String> getWordsInBoard() {
 		return this.wordsInBoard;
@@ -146,9 +130,8 @@ public class Board implements BoardDictionarySupportInterface,
 		// STEP 4: check string
 		// if (this.wordsInBoard.contains(word)) {
 		if (this.wordsInBoard.contains(word)
-				|| this.secondary.getWords().contains(word)
-				|| (this.primary != null && this.primary.getWords().contains(
-						word))) {
+				|| this.customWords.contains(word)
+				|| this.systemDic.getWords().contains(word)) {
 			this.foundWords.add(new ArrayList<Point>(sequence));
 			this.updateScore(word);
 			Log.d("Board.submit", "Word " + word + " is valid");
@@ -228,13 +211,6 @@ public class Board implements BoardDictionarySupportInterface,
 	}
 
 	/* END OF INTERFACE IMPLEMENTATIONS */
-
-	/**
-	 * @deprecated
-	 */
-	public String getEndData() {
-		return this.getSeed() + "%" + this.getBoardScore();
-	}
 
 	private void updateScore(String string) {
 		try {

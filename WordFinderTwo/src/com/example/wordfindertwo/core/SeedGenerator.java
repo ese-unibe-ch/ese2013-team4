@@ -3,6 +3,9 @@ package com.example.wordfindertwo.core;
 import java.util.ArrayList;
 import java.util.Random;
 
+import android.util.Log;
+
+import com.example.wordfindertwo.StandardDictionary;
 import com.example.wordfindertwo.core.board.Board;
 
 public enum SeedGenerator {
@@ -42,14 +45,15 @@ public enum SeedGenerator {
 	 *            the size of the generated board. Should be 6.
 	 * @return the generated seed
 	 */
-	public String generateRandomSeed(IDictionary primary,
-			IDictionary secondary, int boardSize) {
+	public String generateRandomSeed(ArrayList<String> customs, int systemID,
+			int boardSize) {
 		// list with all words placed in the matrix
 		ArrayList<String> words = new ArrayList<String>();
 		char[][] matrix = new char[boardSize][boardSize];
 
-		workThrough(primary, matrix, words);
-		workThrough(secondary, matrix, words);
+		workThrough(customs, matrix, words);
+		workThrough(StandardDictionary.getDictionary(systemID).getWords(),
+				matrix, words);
 		// fill empty fields randomly
 		for (int y = 0; y < boardSize; y++) {
 			for (int x = 0; x < boardSize; x++) {
@@ -60,20 +64,23 @@ public enum SeedGenerator {
 			}
 		}
 		// parse seed
-		return this.parseIntoSeed(matrix, words);
+		return this.parseIntoSeed(matrix, words, systemID, customs);
 	}
 
-	private void workThrough(IDictionary dictionary, char[][] matrix,
+	private void workThrough(ArrayList<String> dic, char[][] matrix,
 			ArrayList<String> words) {
-		if (dictionary == null)
+		Log.i("SeedGen", "Dic Size: " + dic.size());
+		if (dic == null || dic.size() == 0) {
 			return;
-		ArrayList<String> dic = dictionary.getWords();
-		for (int attempts = 0; attempts < MAX_ATTEMPTS; attempts++) {
+		}
+		for (int attempts = 0; attempts < Math
+				.min(MAX_ATTEMPTS, dic.size() * 2); attempts++) {
 			String word = dic.get(this.rand.nextInt(dic.size()));
 			if (words.contains(word))
 				continue;
-			if (this.placeWord(matrix, word.toCharArray()))
+			if (this.placeWord(matrix, word.toCharArray())) {
 				words.add(word);
+			}
 		}
 	}
 
@@ -113,7 +120,8 @@ public enum SeedGenerator {
 		assert board != null;
 
 		return this.parseIntoSeed(board.getCharMatrix(),
-				board.getWordsInBoard());
+				board.getWordsInBoard(), board.getSystemDictionaryID(),
+				board.getCustomWords());
 	}
 
 	private char[][] copyMatrix(char[][] matrix) {
@@ -126,7 +134,8 @@ public enum SeedGenerator {
 		return copy;
 	}
 
-	private String parseIntoSeed(char[][] matrix, ArrayList<String> words) {
+	private String parseIntoSeed(char[][] matrix, ArrayList<String> words,
+			int systemDictionaryID, ArrayList<String> customWords) {
 		String seed = "";
 		// convert 2D char matrix into string (row by row)
 		for (int y = 0; y < matrix.length; y++) {
@@ -135,9 +144,14 @@ public enum SeedGenerator {
 			}
 		}
 		// add all words to the seed
-		for (String word : words) {
-			seed += SEED_SECTION_DELIMITER + word;
-		}
+		seed += SEED_SECTION_DELIMITER
+				+ DictionaryHelper.Instance.serialize(words);
+		// add custom word list to seed
+		seed += SEED_SECTION_DELIMITER
+				+ DictionaryHelper.Instance.serialize(customWords);
+		// add system dictionary id to seed
+		seed += SEED_SECTION_DELIMITER + "" + systemDictionaryID;
+		
 		return seed;
 	}
 }

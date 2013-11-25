@@ -44,9 +44,6 @@ public class CustomOnTouchListener implements OnTouchListener {
 				this.buttonList.add(button);
 				// TODO: color new button
 				button.setBackgroundColor(Color.GRAY);
-				Log.d("CustomOnTouchListener", "moved to "
-						+ button.getPoint().toString() + " - List Size is now "
-						+ this.buttonList.size());
 			}
 		}
 		//sequence is submitted when the screen is no longer touched
