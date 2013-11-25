@@ -1,22 +1,38 @@
 package com.example.wordfindertwo.test;
 
+import static org.mockito.Mockito.mock;
+import static org.mockito.Mockito.when;
+
 import java.util.ArrayList;
 import java.util.List;
 
 import android.test.AndroidTestCase;
 import android.test.RenamingDelegatingContext;
+import android.util.Log;
 
-import com.example.wordfindertwo.data.DatabaseHelper;
+import com.example.wordfindertwo.core.GameResult;
 import com.example.wordfindertwo.core.IDictionary;
+import com.example.wordfindertwo.data.DatabaseHelper;
 import com.example.wordfindertwo.data.WordGameDictionary;
 
 public class DatabaseHelperTest extends AndroidTestCase {
-	DatabaseHelper db;
+	private DatabaseHelper db;
+	private String boardSeed = "ABCDEFGHABCDEFGH";
+	private Integer primary_dictionaryID = 1;
+	private Integer secondary_dictionaryID = 2;
+	private Integer score = 150;
+	private GameResult game_result_mock;	
 	
 	public void setUp(){
         RenamingDelegatingContext context 
         = new RenamingDelegatingContext(getContext(), "test_");
         db = new DatabaseHelper(context);
+        
+        game_result_mock = mock(GameResult.class);
+        when(game_result_mock.getBoardSeed()).thenReturn(boardSeed);
+        when(game_result_mock.getPrimaryDictionaryID()).thenReturn(primary_dictionaryID);
+        when(game_result_mock.getSecondaryDictionaryID()).thenReturn(secondary_dictionaryID);
+        when(game_result_mock.getScore()).thenReturn(score);
         
         /*
          * CREATE DICTIONARY ENTRIES
@@ -28,7 +44,7 @@ public class DatabaseHelperTest extends AndroidTestCase {
 		german_words.add("krankenwagen");
 		german_words.add("naturwissenschaften");
 		
-		ArrayList<String> english_words = new ArrayList<String>();;
+		ArrayList<String> english_words = new ArrayList<String>();
 		english_words.add("Flower");
 		english_words.add("Trainstation");
 		english_words.add("Science");
@@ -45,28 +61,14 @@ public class DatabaseHelperTest extends AndroidTestCase {
 		long german_words_id = db.createDictionaryEntry(german);
 		long english_words_id = db.createDictionaryEntry(english);
 		
-		
     }
 	
-	public void testDeleteDictionaryEntry(){
-		
-				// Load the dictionaries from the database and assert if the number is right
-				List<IDictionary> dictionaries = db.getDitcionaryEntries();
-				assertSame("Wrong number of dictionary-entries in Database", 2, dictionaries.size());
-				
-				// Delete one of the dictionaries from the database.
-				db.deleteDictionaryEntry(dictionaries.get(0));
-				
-				// Load the dictionaries from the database and assert if the number is right
-				dictionaries = db.getDitcionaryEntries();
-				assertSame("Wrong number of dictionary-entries in Database", 1, dictionaries.size());
-				
-    }
-	
-	public void testUpdateDictionaryEntry(){
+	public void testLoadDictionaryEntry(){
 		
 		// Load the dictionaries from the database and assert if the number is right
 		List<IDictionary> dictionaries = db.getDitcionaryEntries();
+		assertEquals("Loaded Dictionary has Wrong ID", 1, dictionaries.get(0).getID());
+		assertEquals("Loaded Dictionary has Wrong ID", 2, dictionaries.get(1).getID());
 		assertSame("Wrong number of dictionary-entries in Database", 2, dictionaries.size());
 		
 		// Delete one of the dictionaries from the database.
@@ -75,8 +77,16 @@ public class DatabaseHelperTest extends AndroidTestCase {
 		// Load the dictionaries from the database and assert if the number is right
 		dictionaries = db.getDitcionaryEntries();
 		assertSame("Wrong number of dictionary-entries in Database", 1, dictionaries.size());
-		
-}
+    }
+	
+	public void testSaveGameResult() {
+		db.createGameResultEntry(game_result_mock);
+		GameResult loaded_game_result = db.getGameResultEntries().get(0);
+		assertEquals("Failed loading right GameResult Object from Database", game_result_mock.getBoardSeed(), loaded_game_result.getBoardSeed());
+		// assertEquals("Failed loading right GameResult Object from Database", game_result_mock.getScore(), loaded_game_result.getScore());
+		assertEquals("Failed loading right GameResult Object from Database", game_result_mock.getPrimaryDictionaryID(), loaded_game_result.getPrimaryDictionaryID());
+		assertEquals("Failed loading right GameResult Object from Database", game_result_mock.getSecondaryDictionaryID(), loaded_game_result.getSecondaryDictionaryID());
+	}
 
     public void tearDown() throws Exception{
         db.close();

@@ -1,6 +1,6 @@
 package com.example.wordfindertwo.core;
 
-public final class GameResult {
+public class GameResult {
 
 	private final static double LETTER_SCORE_MULTIPLIER = 1;
 	private final static double WORD_SCORE_MULTIPLIER = 10;
