@@ -21,7 +21,7 @@ public class GameResult {
 		this.secondaryDictionaryID = secondaryID;
 	}
 
-	private GameResult(long boardID, String boardSeed, int score,
+	public GameResult(long boardID, String boardSeed, int score,
 			int primaryID, int secondaryID) {
 		this(boardID, boardSeed, primaryID, secondaryID);
 		this.score = score;

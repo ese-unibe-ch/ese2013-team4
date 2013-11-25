@@ -330,6 +330,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 	        do {
 	            GameResult game_result = new GameResult(c.getInt((c.getColumnIndex(KEY_ID))),
 	            		(c.getString(c.getColumnIndex(KEY_GAME_RESULT_BOARD_SEED))),
+	            		(c.getInt(c.getColumnIndex(KEY_GAME_RESULT_SCORE))),
 	            		(c.getInt(c.getColumnIndex(KEY_GAME_RESULT_STANDART_DICTIONARY_ID))),
 	            		(c.getInt(c.getColumnIndex(KEY_GAME_RESULT_SECONDARY_DICTIONARY_ID))));
 	            // adding to list

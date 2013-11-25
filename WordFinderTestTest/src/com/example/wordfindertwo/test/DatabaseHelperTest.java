@@ -83,7 +83,7 @@ public class DatabaseHelperTest extends AndroidTestCase {
 		db.createGameResultEntry(game_result_mock);
 		GameResult loaded_game_result = db.getGameResultEntries().get(0);
 		assertEquals("Failed loading right GameResult Object from Database", game_result_mock.getBoardSeed(), loaded_game_result.getBoardSeed());
-		// assertEquals("Failed loading right GameResult Object from Database", game_result_mock.getScore(), loaded_game_result.getScore());
+		assertEquals("Failed loading right GameResult Object from Database", game_result_mock.getScore(), loaded_game_result.getScore());
 		assertEquals("Failed loading right GameResult Object from Database", game_result_mock.getPrimaryDictionaryID(), loaded_game_result.getPrimaryDictionaryID());
 		assertEquals("Failed loading right GameResult Object from Database", game_result_mock.getSecondaryDictionaryID(), loaded_game_result.getSecondaryDictionaryID());
 	}
