@@ -3,10 +3,19 @@
 WordFinderTwo/bin/
 WordFinderTwo/gen/
 WordFinderTwo/local.properties
+WordFinderTestTest/.classpath
 WordFinderTestTest/local.properties
 WordFinderTestTest/junit-report.xml
 WordFinderTestTest/bin
-# OS specifc files
+
+
+# OS specifc file
 Thumbs.db
 Desktrop.ini
 .DS_Store
+
+#personal stuff tim
+.settings
+!.classpath
+!.gitignore
+
