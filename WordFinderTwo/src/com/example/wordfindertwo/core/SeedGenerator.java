@@ -14,6 +14,7 @@ public enum SeedGenerator {
 
 	public final static int MAX_ATTEMPTS = 1000;
 	public final static char SEED_SECTION_DELIMITER = '%';
+	public final static int MINIMAL_WORD_COUNT = 8;
 
 	private Random rand;
 
@@ -48,12 +49,17 @@ public enum SeedGenerator {
 	public String generateRandomSeed(ArrayList<String> customs, int systemID,
 			int boardSize) {
 		// list with all words placed in the matrix
-		ArrayList<String> words = new ArrayList<String>();
-		char[][] matrix = new char[boardSize][boardSize];
+		ArrayList<String> words;
+		char[][] matrix;
+		do {
+			words = new ArrayList<String>();
+			matrix = new char[boardSize][boardSize];
 
-		workThrough(customs, matrix, words);
-		workThrough(StandardDictionary.getDictionary(systemID).getWords(),
-				matrix, words);
+			workThrough(customs, matrix, words);
+			workThrough(StandardDictionary.getDictionary(systemID).getWords(),
+					matrix, words);
+			Log.i("seed", "count: " + words.size());
+		} while (words.size() < MINIMAL_WORD_COUNT);
 		// fill empty fields randomly
 		for (int y = 0; y < boardSize; y++) {
 			for (int x = 0; x < boardSize; x++) {
@@ -151,7 +157,7 @@ public enum SeedGenerator {
 				+ DictionaryHelper.Instance.serialize(customWords);
 		// add system dictionary id to seed
 		seed += SEED_SECTION_DELIMITER + "" + systemDictionaryID;
-		
+
 		return seed;
 	}
 }
