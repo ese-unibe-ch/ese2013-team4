@@ -10,7 +10,7 @@
     <string name="title_activity_game">Game</string>
     <string name="title_activity_dictionary">Dictionary</string>
     <string name="title_activity_pause_screen">PauseScreen</string>
-    <string name="playGame_buttonText">Play Game</string>
+    <string name="playGame_buttonText">Generate Board</string>
     <string name="score_buttonText">Scores</string>
     <string name="friend_buttonText">Friends</string>
     <string name="add_friendButton">Add Friend</string>
