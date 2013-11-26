@@ -32,10 +32,10 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 	private static final String TABLE_SCORE = "scores";
 	private static final String TABLE_DICTIONARY = "dictionaries";
 	private static final String TABLE_DEDICATED_DICTIONARY = "dedct_dict";
-	private static final String TABLE_GAME_RESULT = "game_result";
+	public static final String TABLE_GAME_RESULT = "game_result";
 	
 	// Common column names
-	private static final String KEY_ID = "id";
+	public static final String KEY_ID = "id";
 	
 	// Boards Table - column names
 	private static final String KEY_LETTERS = "letters";
@@ -55,8 +55,8 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 	private static final String KEY_DEDICATED_WORDS = "words";
 	
 	// Game Results Table - column names
-	private static final String KEY_GAME_RESULT_BOARD_SEED = "seed";
-	private static final String KEY_GAME_RESULT_BOARD_SCORE = "score";
+	public static final String KEY_GAME_RESULT_BOARD_SEED = "seed";
+	public static final String KEY_GAME_RESULT_BOARD_SCORE = "score";
 	
 	// Table Create Statements
 	// Boards table create statement
