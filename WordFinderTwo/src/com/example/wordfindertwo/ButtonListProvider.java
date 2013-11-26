@@ -35,7 +35,6 @@ public enum ButtonListProvider {
 					game, BUTTON_ID_PREFIX + this.convertIndexToCoords(i));
 			btn.setCoords(i % 6, i / 6);
 			buttonList.add(btn);
-			Log.i("BLP", this.convertIndexToCoords(i));
 		}
 	}
 

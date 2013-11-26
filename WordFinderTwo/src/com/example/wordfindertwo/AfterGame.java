@@ -10,7 +10,6 @@ import android.widget.TextView;
 
 import com.example.wordfindertwo.core.GameResult;
 import com.example.wordfindertwo.data.DatabaseHelper;
-import com.example.wordfindertwo.data.ScoreDataSource;
 
 public class AfterGame extends Activity {
 	

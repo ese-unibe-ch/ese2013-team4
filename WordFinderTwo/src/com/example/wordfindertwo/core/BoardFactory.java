@@ -3,6 +3,7 @@ package com.example.wordfindertwo.core;
 import java.util.ArrayList;
 
 import android.content.Intent;
+import android.util.Log;
 
 import com.example.wordfindertwo.core.board.Board;
 import com.example.wordfindertwo.core.exceptions.BoardGenerationException;
@@ -37,39 +38,82 @@ public enum BoardFactory {
 	 */
 	private Board createBoardFromSeed(long boardID, String seed)
 			throws BoardGenerationException {
-		String[] fragments = seed.split(""
-				+ SeedGenerator.SEED_SECTION_DELIMITER);
-		String seedString = fragments[0];
-		int boardSize = (int) Math.sqrt(seedString.length());
-		ILetterField[][] matrix = new ILetterField[boardSize][boardSize];
 		try {
-			for (int i = 0; i < boardSize * boardSize; i++) {
-				matrix[i % boardSize][i / boardSize] = new LetterField(
-						Letter.getLetter(seedString.charAt(i)), i % boardSize,
-						i / boardSize);
+			String[] fragments = seed.split(""
+					+ SeedGenerator.SEED_SECTION_DELIMITER);
+			String seedString = fragments[0];
+			int boardSize = (int) Math.sqrt(seedString.length());
+			ILetterField[][] matrix = new ILetterField[boardSize][boardSize];
+			try {
+				for (int i = 0; i < boardSize * boardSize; i++) {
+					matrix[i % boardSize][i / boardSize] = new LetterField(
+							Letter.getLetter(seedString.charAt(i)), i
+									% boardSize, i / boardSize);
+				}
+			} catch (InvalidLetterException e) {
+				throw new BoardGenerationException(
+						"Invalid Char - unable to parse Board");
 			}
-		} catch (InvalidLetterException e) {
-			throw new BoardGenerationException(
-					"Invalid Char - unable to parse Board");
+			ArrayList<String> wordsInBoard = DictionaryHelper.Instance
+					.deserialize(fragments[1]);
+			ArrayList<String> customWords = DictionaryHelper.Instance
+					.deserialize(fragments[2]);
+			int sytemDicID = Integer.parseInt(fragments[3]);
+			return new Board(matrix, customWords, sytemDicID, wordsInBoard);
+		} catch (Exception e) {
+			// TODO: replace with more sensible error handling.
+			throw new BoardGenerationException();
 		}
-		ArrayList<String> wordsInBoard = DictionaryHelper.Instance
-				.deserialize(fragments[1]);
-		ArrayList<String> customWords = DictionaryHelper.Instance
-				.deserialize(fragments[2]);
-		int sytemDicID = Integer.parseInt(fragments[3]);
-		return new Board(matrix, customWords, sytemDicID, wordsInBoard);
 	}
 
+	/**
+	 * Generate a board from the Intent. Recreates a given board when the Intent
+	 * carries the extras "BoardID" (int) and "BoardData" (String). In case the
+	 * extras are not present, or are unable to be parsed, a random board will
+	 * be generated.
+	 * 
+	 * @param intent
+	 *            the Game Activity's Intent. Used to extract the Board
+	 *            Generation data.
+	 * @return the generated board, ready for game-play.
+	 * @throws BoardGenerationException
+	 *             in case of any errors during Board Generation. Should never
+	 *             be thrown.
+	 */
 	public Board createBoard(Intent intent) throws BoardGenerationException {
 		if (intent.hasExtra("BoardData") && intent.hasExtra("BoardID")) {
-			// recreate Board
-			return this.createBoardFromSeed(intent.getIntExtra("BoardID", -1),
-					intent.getStringExtra("BoardData"));
-		} else {
-			// create new Board
-			return this.createRandomBoard(null, 0); // TODO: implement custom
-													// dictionary retreival &
-													// system dictionary readout
+			/*
+			 * RECREATE OLD BOARD.
+			 * 
+			 * NOTE: To recreate an old board both, "BoardID" and "BoardData"
+			 * have to be filled. "BoardData" has to be filled with
+			 * SeedGenerator-compatible data. otherwise a random board will be
+			 * created
+			 */
+			try {
+				Log.i("BoardFactory", "recreating board " + intent.getIntExtra("BoardID", -1));
+				Log.i("BoardFactory", intent.getStringExtra("BoardData"));
+				Board brd = this.createBoardFromSeed(
+						intent.getIntExtra("BoardID", -1),
+						intent.getStringExtra("BoardData"));
+				Log.i("BoardFactory", "board recreation finished");
+				return brd;
+			} catch (BoardGenerationException e) {
+				Log.e("BoardFactory", "board recreation failed");
+				// TODO: implement more sensible error handling
+			}
 		}
+		Log.i("BoardFactory", "creating random board");
+		/*
+		 * CREATE NEW BOARD
+		 * 
+		 * NOTE: the current implementation simply generates generic ENGLISH
+		 * boards. has to be adapted to support other languages / custom word
+		 * lists
+		 */
+		Board brd = this.createRandomBoard(null, 0);
+		Log.i("BoardFactory", "board generation finished");
+		Log.i("BoardFactory", brd.getSeed());
+		return brd;
 	}
 }
