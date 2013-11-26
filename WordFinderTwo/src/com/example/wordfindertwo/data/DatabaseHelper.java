@@ -56,9 +56,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 	
 	// Game Results Table - column names
 	private static final String KEY_GAME_RESULT_BOARD_SEED = "seed";
-	private static final String KEY_GAME_RESULT_STANDART_DICTIONARY_ID = "standart_dict_id";
-	private static final String KEY_GAME_RESULT_SECONDARY_DICTIONARY_ID = "secondary_dictionary_words";
-	private static final String KEY_GAME_RESULT_SCORE = "score";
+	private static final String KEY_GAME_RESULT_BOARD_SCORE = "score";
 	
 	// Table Create Statements
 	// Boards table create statement
@@ -93,9 +91,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 		private static final String CREATE_TABLE_GAME_RESULT = "CREATE TABLE "
 				+ TABLE_GAME_RESULT + "(" + KEY_ID + " INTEGER PRIMARY KEY, "
 				+ KEY_GAME_RESULT_BOARD_SEED + " TEXT,"
-				+ KEY_GAME_RESULT_SCORE + " TEXT,"
-				+ KEY_GAME_RESULT_STANDART_DICTIONARY_ID + " INTEGER,"
-				+ KEY_GAME_RESULT_SECONDARY_DICTIONARY_ID + " TEXT"
+				+ KEY_GAME_RESULT_BOARD_SCORE + " INTEGER"
 				+ ")";
 	
 	public DatabaseHelper(Context context) {
@@ -291,29 +287,16 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 	}
 
 	public long createGameResultEntry(GameResult game_result) {
+		assert(game_result.getBoardID() == -1);
 		SQLiteDatabase db = this.getWritableDatabase();
-		 
+		
 	    ContentValues values = new ContentValues();
-	    values.put(KEY_GAME_RESULT_BOARD_SEED, game_result.getBoardSeed());
-	    values.put(KEY_GAME_RESULT_SCORE, game_result.getScore());
-	    values.put(KEY_GAME_RESULT_STANDART_DICTIONARY_ID, game_result.getPrimaryDictionaryID());
-	    values.put(KEY_GAME_RESULT_SECONDARY_DICTIONARY_ID, game_result.getSecondaryDictionaryID());
+	    values.put(KEY_GAME_RESULT_BOARD_SEED, game_result.getBoardData());
+	    values.put(KEY_GAME_RESULT_BOARD_SCORE, game_result.getScore());
 	    long game_resultID = db.insert(TABLE_GAME_RESULT, null, values);
 	    
 	    return game_resultID;
 		
-	}
-
-	public IDictionary getSecondaryDictionaryById(int dictionaryID) {
-		SQLiteDatabase db = this.getWritableDatabase();
-		String[] tables = {KEY_ID, KEY_DICTIONARY_NAME, KEY_DICTIONARY_WORDS };
-		String[] args = {KEY_ID, Integer.toString(dictionaryID)};
-		Cursor c = db.query(TABLE_DEDICATED_DICTIONARY, tables, "? = ?", args, null, null, null);
-		IDictionary dict = new WordGameDictionary();
-        dict.setID(c.getInt((c.getColumnIndex(KEY_ID))));
-        dict.setName((c.getString(c.getColumnIndex(KEY_DICTIONARY_NAME))));
-        dict.setWords(convertStringToArrayList(c.getString(c.getColumnIndex(KEY_DICTIONARY_WORDS))));
-		return dict;
 	}
 
 	public List<GameResult> getGameResultEntries() {
@@ -328,11 +311,9 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 	    // looping through all rows and adding to list
 	    if (c.moveToFirst()) {
 	        do {
-	            GameResult game_result = new GameResult(c.getInt((c.getColumnIndex(KEY_ID))),
+	            GameResult game_result = new GameResult(c.getLong((c.getColumnIndex(KEY_ID))),
 	            		(c.getString(c.getColumnIndex(KEY_GAME_RESULT_BOARD_SEED))),
-	            		(c.getInt(c.getColumnIndex(KEY_GAME_RESULT_SCORE))),
-	            		(c.getInt(c.getColumnIndex(KEY_GAME_RESULT_STANDART_DICTIONARY_ID))),
-	            		(c.getInt(c.getColumnIndex(KEY_GAME_RESULT_SECONDARY_DICTIONARY_ID))));
+	            		(c.getInt(c.getColumnIndex(KEY_GAME_RESULT_BOARD_SCORE))));
 	            // adding to list
 	            game_results.add(game_result);
 	        } while (c.moveToNext());

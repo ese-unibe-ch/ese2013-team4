@@ -28,23 +28,6 @@ public class GameResult {
 		return this.boardData;
 	}
 
-	/** @deprecated use new GameResult(long, String) instead. */
-	public GameResult(long boardID, String boardSeed, int primaryID,
-			int secondaryID) {
-		this.boardID = boardID;
-		this.boardSeed = boardSeed;
-		this.score = 0;
-		this.primaryDictionaryID = primaryID;
-		this.secondaryDictionaryID = secondaryID;
-	}
-
-	/** @deprecated use new GameResult(long, String, int) instead. */
-	public GameResult(long boardID, String boardSeed, int score, int primaryID,
-			int secondaryID) {
-		this(boardID, boardSeed, primaryID, secondaryID);
-		this.score = score;
-	}
-
 	public void addWord(int value) {
 		this.score += (int) (WORD_SCORE_MULTIPLIER + value
 				* LETTER_SCORE_MULTIPLIER);
@@ -58,27 +41,12 @@ public class GameResult {
 		return this.boardID;
 	}
 
-	/** @deprecated content obsolete with new boardData structure */
-	public String getBoardSeed() {
-		return this.boardSeed;
-	}
-
 	public int getScore() {
 		return this.score;
 	}
 
 	public void setBoardID(long boardID) {
 		this.boardID = boardID;
-	}
-
-	/** @deprecated content obsolete with new boardData structure */
-	public int getPrimaryDictionaryID() {
-		return primaryDictionaryID;
-	}
-
-	/** @deprecated content obsolete with new boardData structure */
-	public int getSecondaryDictionaryID() {
-		return secondaryDictionaryID;
 	}
 
 	/**
