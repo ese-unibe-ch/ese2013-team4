@@ -20,12 +20,8 @@ public enum BoardFactory {
 	 * from no dictionaries (both <tt>null</tt>) will lead to a completely
 	 * random letter positioning and to an unplayable board since there are no
 	 * words placed.
-	 * 
-	 * @deprecated use Intent based createBoard(Intent) instead. Note: even
-	 *             though marked as deprecated this method should not be
-	 *             deleted. It will be changed to private later.
 	 */
-	public Board createRandomBoard(IDictionary customDictionary,
+	private Board createRandomBoard(IDictionary customDictionary,
 			int sytemDictionaryID) throws BoardGenerationException {
 		String seed = SeedGenerator.Instance.generateRandomSeed(
 				customDictionary != null ? customDictionary.getWords()
@@ -38,12 +34,8 @@ public enum BoardFactory {
 	 * no dictionaries are given, the board is still playable, but does only
 	 * accept words that were placed during initial board generation and are
 	 * therefore contained in the seed string.
-	 * 
-	 * @deprecated use Intent based createBoard(Intent) instead. Note: even
-	 *             though marked as deprecated this method should not be
-	 *             deleted. It will be changed to private later.
 	 */
-	public Board createBoardFromSeed(long boardID, String seed)
+	private Board createBoardFromSeed(long boardID, String seed)
 			throws BoardGenerationException {
 		String[] fragments = seed.split(""
 				+ SeedGenerator.SEED_SECTION_DELIMITER);
