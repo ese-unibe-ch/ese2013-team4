@@ -52,20 +52,36 @@
             android:layout_width="300dp"
             android:layout_height="wrap_content"
             android:orientation="horizontal" >
-
-            <com.example.wordfindertwo.customs.CustomButton
-                android:id="@+id/button00"
-                android:layout_width="45dp"
-                android:layout_height="45dp"
-                custom:xCoord="0"
-                custom:yCoord="0" />
-
+            
+            <RelativeLayout
+                android:id="@+id/l00"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content">
+                <com.example.wordfindertwo.customs.CustomButton
+                    android:id="@+id/button00"
+                    android:layout_width="45dp"
+                    android:layout_height="45dp"
+                    custom:xCoord="0"
+                    custom:yCoord="0" />
+                <TextView
+                    android:id="@+id/letter00"
+                    android:layout_width="wrap_content"
+            		android:layout_height="wrap_content" 
+            		android:textSize="11sp"
+            		android:textStyle="bold"
+					android:layout_alignEnd="@id/button00"
+					android:layout_marginRight="8dp"
+					android:layout_marginTop="25dp"
+            		android:text="1"/>
+       
+            </RelativeLayout>
             <com.example.wordfindertwo.customs.CustomButton
                 android:id="@+id/button10"
                 android:layout_width="45dp"
                 android:layout_height="45dp"
                 custom:xCoord="1"
                 custom:yCoord="0" />
+            
 
             <com.example.wordfindertwo.customs.CustomButton
                 android:id="@+id/button20"
