@@ -2,8 +2,6 @@ package com.example.wordfindertwo.core.board;
 
 import java.util.ArrayList;
 
-import com.example.wordfindertwo.core.IDictionary;
-
 /**
  * Interface for all Dictionary based interactions of the board
  */
