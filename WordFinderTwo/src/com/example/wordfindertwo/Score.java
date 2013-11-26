@@ -1,49 +1,71 @@
 package com.example.wordfindertwo;
 
 import java.util.List;
-import java.util.Random;
 
-import org.w3c.dom.Comment;
-
-import android.app.ListActivity;
+import android.app.Activity;
+import android.app.AlertDialog;
+import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
+import android.widget.AdapterView;
+import android.widget.AdapterView.OnItemClickListener;
 import android.widget.ArrayAdapter;
+import android.widget.ListView;
 
 import com.example.wordfindertwo.core.GameResult;
 import com.example.wordfindertwo.data.ScoreDataSource;
 
-public class Score extends ListActivity {
-  private ScoreDataSource datasource;
+public class Score extends Activity {
+	private ScoreDataSource datasource;
+	private ListView lv;
+	List<GameResult> values;
 
-  @Override
-  public void onCreate(Bundle savedInstanceState) {
-    super.onCreate(savedInstanceState);
-    setContentView(R.layout.activity_score);
+	public void onCreate(Bundle icicle)
 
-    datasource = new ScoreDataSource(this);
-    datasource.open();
+	{
+		super.onCreate(icicle);
+		setContentView(R.layout.activity_score);
+		lv = (ListView) findViewById(R.id.score_list);
 
-    List<GameResult> values = datasource.getAllScores();
+		datasource = new ScoreDataSource(this);
+		datasource.open();
 
-    // use the SimpleCursorAdapter to show the
-    // elements in a ListView
-    ArrayAdapter<GameResult> adapter = new ArrayAdapter<GameResult>(this,
-        android.R.layout.simple_list_item_1, values);
-    setListAdapter(adapter);
-  }
+		values = datasource.getAllScores();
 
-  @Override
-  protected void onResume() {
-    datasource.open();
-    super.onResume();
-  }
+		lv.setAdapter(new ArrayAdapter<GameResult>(this,
+				android.R.layout.simple_list_item_1, values));
+		lv.setTextFilterEnabled(true);
+		lv.setOnItemClickListener(new OnItemClickListener() {
+			public void onItemClick(AdapterView<?> arg0, View v, int position,
+					long id) {
+				AlertDialog.Builder adb = new AlertDialog.Builder(Score.this);
+				adb.setTitle("Starting Game");
+				adb.setMessage( values.get(position).toString() );
+				adb.show();
+				startIntent(values.get(position));
+				
+				
+			}
 
-  @Override
-  protected void onPause() {
-    datasource.close();
-    super.onPause();
-  }
+			private void startIntent(GameResult result) {
+				Intent i = new Intent(getApplicationContext(), Game.class);
+				i.putExtra("BoardData", result.getBoardData());
+				i.putExtra("BoardID",result.getBoardID());
+				startActivity(i);
+				
+			}
+		});
+	}
 
-} 
+	@Override
+	protected void onResume() {
+		datasource.open();
+		super.onResume();
+	}
+
+	@Override
+	protected void onPause() {
+		datasource.close();
+		super.onPause();
+	}
+}
