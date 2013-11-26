@@ -39,7 +39,7 @@ public class Score extends Activity {
 			public void onItemClick(AdapterView<?> arg0, View v, int position,
 					long id) {
 				AlertDialog.Builder adb = new AlertDialog.Builder(Score.this);
-				adb.setTitle("Starting Game");
+				adb.setTitle("Loading Board");
 				adb.setMessage( values.get(position).toString() );
 				adb.show();
 				startIntent(values.get(position));
