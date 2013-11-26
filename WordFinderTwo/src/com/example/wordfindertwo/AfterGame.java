@@ -1,14 +1,16 @@
 package com.example.wordfindertwo;
 
-import com.example.wordfindertwo.core.GameResult;
-
-import android.os.Bundle;
 import android.app.Activity;
 import android.content.Intent;
+import android.os.Bundle;
 import android.util.Log;
 import android.view.Menu;
 import android.view.View;
 import android.widget.TextView;
+
+import com.example.wordfindertwo.core.GameResult;
+import com.example.wordfindertwo.data.DatabaseHelper;
+import com.example.wordfindertwo.data.ScoreDataSource;
 
 public class AfterGame extends Activity {
 	
@@ -26,6 +28,15 @@ public class AfterGame extends Activity {
 		Log.d("GameResult", "ID:    " + result.getBoardID());
 		Log.d("GameResult", "SCORE: " + result.getScore());
 		Log.d("GameResult", "DATA:  " + result.getBoardData());
+		
+		this.saveGameResult();
+		
+	}
+
+	private void saveGameResult() {
+		DatabaseHelper db = new DatabaseHelper(this);
+		db.createGameResultEntry(result);
+		db.close();
 	}
 
 	@Override

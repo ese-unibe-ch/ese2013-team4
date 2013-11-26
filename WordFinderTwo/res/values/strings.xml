@@ -50,6 +50,6 @@
 	<string name="scoresView_LastTwenty_Frenids_TextView">Last Twenty friends Scores</string> 		 		
 	<string name="scoresView_Delete_Score_Button">Delete Score</string>
 	<string name="title_activity_pause">Pause</string>	
-    <string name="hello_world">Hello world!</string>
+    <string name="hello">Hello world!</string>
 
 </resources>
