@@ -72,8 +72,7 @@
                     android:layout_alignEnd="@id/button00"
                     android:layout_marginRight="8dp"
                     android:layout_marginTop="25dp"
-                     
-                    android:textSize="11sp"
+                    android:textSize="12sp"
                     android:textStyle="bold" />
             </RelativeLayout>
 
@@ -96,8 +95,7 @@
                     android:layout_alignEnd="@id/button10"
                     android:layout_marginRight="8dp"
                     android:layout_marginTop="25dp"
-                     
-                    android:textSize="11sp"
+                    android:textSize="12sp"
                     android:textStyle="bold" />
             </RelativeLayout>
 
@@ -120,8 +118,7 @@
                     android:layout_alignEnd="@id/button20"
                     android:layout_marginRight="8dp"
                     android:layout_marginTop="25dp"
-                     
-                    android:textSize="11sp"
+                    android:textSize="12sp"
                     android:textStyle="bold" />
             </RelativeLayout>
 
@@ -144,8 +141,7 @@
                     android:layout_alignEnd="@id/button30"
                     android:layout_marginRight="8dp"
                     android:layout_marginTop="25dp"
-                     
-                    android:textSize="11sp"
+                    android:textSize="12sp"
                     android:textStyle="bold" />
             </RelativeLayout>
 
@@ -168,8 +164,7 @@
                     android:layout_alignEnd="@id/button40"
                     android:layout_marginRight="8dp"
                     android:layout_marginTop="25dp"
-                     
-                    android:textSize="11sp"
+                    android:textSize="12sp"
                     android:textStyle="bold" />
             </RelativeLayout>
 
@@ -192,8 +187,7 @@
                     android:layout_alignEnd="@id/button50"
                     android:layout_marginRight="8dp"
                     android:layout_marginTop="25dp"
-                     
-                    android:textSize="11sp"
+                    android:textSize="12sp"
                     android:textStyle="bold" />
             </RelativeLayout>
         </LinearLayout>
@@ -223,8 +217,7 @@
                     android:layout_alignEnd="@id/button01"
                     android:layout_marginRight="8dp"
                     android:layout_marginTop="25dp"
-                     
-                    android:textSize="11sp"
+                    android:textSize="12sp"
                     android:textStyle="bold" />
             </RelativeLayout>
 
@@ -247,8 +240,7 @@
                     android:layout_alignEnd="@id/button11"
                     android:layout_marginRight="8dp"
                     android:layout_marginTop="25dp"
-                     
-                    android:textSize="11sp"
+                    android:textSize="12sp"
                     android:textStyle="bold" />
             </RelativeLayout>
 
@@ -271,8 +263,7 @@
                     android:layout_alignEnd="@id/button21"
                     android:layout_marginRight="8dp"
                     android:layout_marginTop="25dp"
-                     
-                    android:textSize="11sp"
+                    android:textSize="12sp"
                     android:textStyle="bold" />
             </RelativeLayout>
 
@@ -295,8 +286,7 @@
                     android:layout_alignEnd="@id/button31"
                     android:layout_marginRight="8dp"
                     android:layout_marginTop="25dp"
-                     
-                    android:textSize="11sp"
+                    android:textSize="12sp"
                     android:textStyle="bold" />
             </RelativeLayout>
 
@@ -319,8 +309,7 @@
                     android:layout_alignEnd="@id/button41"
                     android:layout_marginRight="8dp"
                     android:layout_marginTop="25dp"
-                     
-                    android:textSize="11sp"
+                    android:textSize="12sp"
                     android:textStyle="bold" />
             </RelativeLayout>
 
@@ -343,8 +332,7 @@
                     android:layout_alignEnd="@id/button51"
                     android:layout_marginRight="8dp"
                     android:layout_marginTop="25dp"
-                     
-                    android:textSize="11sp"
+                    android:textSize="12sp"
                     android:textStyle="bold" />
             </RelativeLayout>
         </LinearLayout>
@@ -374,8 +362,7 @@
                     android:layout_alignEnd="@id/button02"
                     android:layout_marginRight="8dp"
                     android:layout_marginTop="25dp"
-                     
-                    android:textSize="11sp"
+                    android:textSize="12sp"
                     android:textStyle="bold" />
             </RelativeLayout>
 
@@ -398,8 +385,7 @@
                     android:layout_alignEnd="@id/button12"
                     android:layout_marginRight="8dp"
                     android:layout_marginTop="25dp"
-                     
-                    android:textSize="11sp"
+                    android:textSize="12sp"
                     android:textStyle="bold" />
             </RelativeLayout>
 
@@ -422,8 +408,7 @@
                     android:layout_alignEnd="@id/button22"
                     android:layout_marginRight="8dp"
                     android:layout_marginTop="25dp"
-                     
-                    android:textSize="11sp"
+                    android:textSize="12sp"
                     android:textStyle="bold" />
             </RelativeLayout>
 
@@ -446,8 +431,7 @@
                     android:layout_alignEnd="@id/button32"
                     android:layout_marginRight="8dp"
                     android:layout_marginTop="25dp"
-                     
-                    android:textSize="11sp"
+                    android:textSize="12sp"
                     android:textStyle="bold" />
             </RelativeLayout>
 
@@ -470,8 +454,7 @@
                     android:layout_alignEnd="@id/button42"
                     android:layout_marginRight="8dp"
                     android:layout_marginTop="25dp"
-                     
-                    android:textSize="11sp"
+                    android:textSize="12sp"
                     android:textStyle="bold" />
             </RelativeLayout>
 
@@ -494,8 +477,7 @@
                     android:layout_alignEnd="@id/button52"
                     android:layout_marginRight="8dp"
                     android:layout_marginTop="25dp"
-                     
-                    android:textSize="11sp"
+                    android:textSize="12sp"
                     android:textStyle="bold" />
             </RelativeLayout>
         </LinearLayout>
@@ -525,8 +507,7 @@
                     android:layout_alignEnd="@id/button03"
                     android:layout_marginRight="8dp"
                     android:layout_marginTop="25dp"
-                     
-                    android:textSize="11sp"
+                    android:textSize="12sp"
                     android:textStyle="bold" />
             </RelativeLayout>
 
@@ -549,8 +530,7 @@
                     android:layout_alignEnd="@id/button13"
                     android:layout_marginRight="8dp"
                     android:layout_marginTop="25dp"
-                     
-                    android:textSize="11sp"
+                    android:textSize="12sp"
                     android:textStyle="bold" />
             </RelativeLayout>
 
@@ -573,8 +553,7 @@
                     android:layout_alignEnd="@id/button23"
                     android:layout_marginRight="8dp"
                     android:layout_marginTop="25dp"
-                     
-                    android:textSize="11sp"
+                    android:textSize="12sp"
                     android:textStyle="bold" />
             </RelativeLayout>
 
@@ -597,8 +576,7 @@
                     android:layout_alignEnd="@id/button33"
                     android:layout_marginRight="8dp"
                     android:layout_marginTop="25dp"
-                     
-                    android:textSize="11sp"
+                    android:textSize="12sp"
                     android:textStyle="bold" />
             </RelativeLayout>
 
@@ -621,8 +599,7 @@
                     android:layout_alignEnd="@id/button43"
                     android:layout_marginRight="8dp"
                     android:layout_marginTop="25dp"
-                     
-                    android:textSize="11sp"
+                    android:textSize="12sp"
                     android:textStyle="bold" />
             </RelativeLayout>
 
@@ -645,8 +622,7 @@
                     android:layout_alignEnd="@id/button53"
                     android:layout_marginRight="8dp"
                     android:layout_marginTop="25dp"
-                     
-                    android:textSize="11sp"
+                    android:textSize="12sp"
                     android:textStyle="bold" />
             </RelativeLayout>
         </LinearLayout>
@@ -676,8 +652,7 @@
                     android:layout_alignEnd="@id/button04"
                     android:layout_marginRight="8dp"
                     android:layout_marginTop="25dp"
-                     
-                    android:textSize="11sp"
+                    android:textSize="12sp"
                     android:textStyle="bold" />
             </RelativeLayout>
 
@@ -700,8 +675,7 @@
                     android:layout_alignEnd="@id/button14"
                     android:layout_marginRight="8dp"
                     android:layout_marginTop="25dp"
-                     
-                    android:textSize="11sp"
+                    android:textSize="12sp"
                     android:textStyle="bold" />
             </RelativeLayout>
 
@@ -724,8 +698,7 @@
                     android:layout_alignEnd="@id/button24"
                     android:layout_marginRight="8dp"
                     android:layout_marginTop="25dp"
-                     
-                    android:textSize="11sp"
+                    android:textSize="12sp"
                     android:textStyle="bold" />
             </RelativeLayout>
 
@@ -748,8 +721,7 @@
                     android:layout_alignEnd="@id/button34"
                     android:layout_marginRight="8dp"
                     android:layout_marginTop="25dp"
-                     
-                    android:textSize="11sp"
+                    android:textSize="12sp"
                     android:textStyle="bold" />
             </RelativeLayout>
 
@@ -772,8 +744,7 @@
                     android:layout_alignEnd="@id/button44"
                     android:layout_marginRight="8dp"
                     android:layout_marginTop="25dp"
-                     
-                    android:textSize="11sp"
+                    android:textSize="12sp"
                     android:textStyle="bold" />
             </RelativeLayout>
 
@@ -796,8 +767,7 @@
                     android:layout_alignEnd="@id/button54"
                     android:layout_marginRight="8dp"
                     android:layout_marginTop="25dp"
-                     
-                    android:textSize="11sp"
+                    android:textSize="12sp"
                     android:textStyle="bold" />
             </RelativeLayout>
         </LinearLayout>
@@ -827,8 +797,7 @@
                     android:layout_alignEnd="@id/button05"
                     android:layout_marginRight="8dp"
                     android:layout_marginTop="25dp"
-                     
-                    android:textSize="11sp"
+                    android:textSize="12sp"
                     android:textStyle="bold" />
             </RelativeLayout>
 
@@ -851,8 +820,7 @@
                     android:layout_alignEnd="@id/button15"
                     android:layout_marginRight="8dp"
                     android:layout_marginTop="25dp"
-                     
-                    android:textSize="11sp"
+                    android:textSize="12sp"
                     android:textStyle="bold" />
             </RelativeLayout>
 
@@ -875,8 +843,7 @@
                     android:layout_alignEnd="@id/button25"
                     android:layout_marginRight="8dp"
                     android:layout_marginTop="25dp"
-                     
-                    android:textSize="11sp"
+                    android:textSize="12sp"
                     android:textStyle="bold" />
             </RelativeLayout>
 
@@ -899,8 +866,7 @@
                     android:layout_alignEnd="@id/button35"
                     android:layout_marginRight="8dp"
                     android:layout_marginTop="25dp"
-                     
-                    android:textSize="11sp"
+                    android:textSize="12sp"
                     android:textStyle="bold" />
             </RelativeLayout>
 
@@ -923,8 +889,7 @@
                     android:layout_alignEnd="@id/button45"
                     android:layout_marginRight="8dp"
                     android:layout_marginTop="25dp"
-                     
-                    android:textSize="11sp"
+                    android:textSize="12sp"
                     android:textStyle="bold" />
             </RelativeLayout>
 
@@ -947,9 +912,8 @@
                     android:layout_alignEnd="@id/button55"
                     android:layout_marginRight="8dp"
                     android:layout_marginTop="25dp"
-                    android:textSize="11sp"
+                    android:textSize="12sp"
                     android:textStyle="bold" />
-
             </RelativeLayout>
         </LinearLayout>
     </LinearLayout>

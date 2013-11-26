@@ -31,12 +31,15 @@ public enum ButtonListProvider {
 		Log.i("ButtonListProvider", "building button list");
 		buttonList = new ArrayList<CustomButton>();
 		for (int i = 0; i < 36; i++) {
-			buttonList.add((CustomButton) findView(game.getBaseContext(), game,
-					BUTTON_ID_PREFIX + this.convertIndexToCoords(i)));
+			CustomButton btn = (CustomButton) findView(game.getBaseContext(),
+					game, BUTTON_ID_PREFIX + this.convertIndexToCoords(i));
+			btn.setCoords(i % 6, i / 6);
+			buttonList.add(btn);
+			Log.i("BLP", this.convertIndexToCoords(i));
 		}
 	}
-	
-	private String convertIndexToCoords (int i) {
+
+	private String convertIndexToCoords(int i) {
 		int x = i % 6;
 		int y = i / 6;
 		return x + "" + y;
@@ -72,7 +75,7 @@ public enum ButtonListProvider {
 		}
 		return null;
 	}
-	
+
 	private View findView(Context context, Game game, String res) {
 		int resID = context.getResources().getIdentifier(res, "id",
 				MAIN_PACKAGE_NAME);

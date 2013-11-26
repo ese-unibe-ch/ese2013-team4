@@ -154,7 +154,7 @@ public class Game extends Activity {
 		for (int i = 0; i < 36; i++) {
 			int x = i % 6, y = i / 6;
 			CustomButton btn = ButtonListProvider.Instance.getButtonAtIndex(i);
-			btn.setTextSize(12f);
+			btn.setTextSize(14f);
 			btn.setText("" + board.getCharAt(x, y));
 			btn.setValueText("" + board.getValueAt(x, y));
 		}

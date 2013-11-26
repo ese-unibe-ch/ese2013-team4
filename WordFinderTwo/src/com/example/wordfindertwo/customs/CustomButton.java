@@ -18,6 +18,8 @@ public class CustomButton extends Button {
 	int yCoord;
 	Point p;
 
+	int x, y;
+
 	public final static double BUTTON_PADDING_FACTOR = 0.2;
 
 	public CustomButton(Context context) {
@@ -56,7 +58,7 @@ public class CustomButton extends Button {
 	}
 
 	public Point getPoint() {
-		return p;
+		return new Point(x, y);
 	}
 
 	public boolean isTouched(float x, float y) {
@@ -74,7 +76,7 @@ public class CustomButton extends Button {
 
 	public void setValueText(String s) {
 		TextView letter = (TextView) findView(Game.game.getBaseContext(),
-				Game.game, "letter" + xCoord + "" + yCoord);
+				Game.game, "letter" + x + "" + y);
 		letter.setText(s);
 	}
 
@@ -82,5 +84,10 @@ public class CustomButton extends Button {
 		int resID = context.getResources().getIdentifier(res, "id",
 				ButtonListProvider.MAIN_PACKAGE_NAME);
 		return game.findViewById(resID);
+	}
+
+	public void setCoords(int x, int y) {
+		this.x = x;
+		this.y = y;
 	}
 }
