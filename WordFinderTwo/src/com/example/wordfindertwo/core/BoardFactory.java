@@ -56,8 +56,13 @@ public enum BoardFactory {
 			}
 			ArrayList<String> wordsInBoard = DictionaryHelper.Instance
 					.deserialize(fragments[1]);
+			for (String word : wordsInBoard)
+				Log.i("BoardFactory", "Word " + word + " added to board");
+			Log.i("BoardFactory", "----------------");
 			ArrayList<String> customWords = DictionaryHelper.Instance
 					.deserialize(fragments[2]);
+			for (String word : customWords)
+				Log.i("BoardFactory", "Word " + word + " added to custom words");
 			int sytemDicID = Integer.parseInt(fragments[3]);
 			return new Board(matrix, customWords, sytemDicID, wordsInBoard);
 		} catch (Exception e) {
@@ -91,7 +96,8 @@ public enum BoardFactory {
 			 * created
 			 */
 			try {
-				Log.i("BoardFactory", "recreating board " + intent.getIntExtra("BoardID", -1));
+				Log.i("BoardFactory",
+						"recreating board " + intent.getIntExtra("BoardID", -1));
 				Log.i("BoardFactory", intent.getStringExtra("BoardData"));
 				Board brd = this.createBoardFromSeed(
 						intent.getIntExtra("BoardID", -1),
