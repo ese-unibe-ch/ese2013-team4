@@ -923,7 +923,7 @@
         android:layout_width="match_parent"
         android:layout_height="60dp"
         android:layout_marginTop="320dp"
-        android:baselineAligned="false"
+        android:baselineAligned="true"
         android:orientation="horizontal"
         android:weightSum="2" >
 
@@ -947,7 +947,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:textSize="24dp" />
+                android:textSize="24sp" />
         </LinearLayout>
 
         <LinearLayout
@@ -963,6 +963,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
+                
                 android:text="Number of Words in the Board:" />
 
             <TextView
