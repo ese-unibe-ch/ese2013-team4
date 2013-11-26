@@ -8,11 +8,7 @@ public class GameResult {
 
 	private long boardID;
 	private String boardData;
-	// TODO: remove fields when removing deprecated stuff
-	private String boardSeed;
 	private int score;
-	private int primaryDictionaryID;
-	private int secondaryDictionaryID;
 
 	public GameResult(long boardID, String boardData) {
 		this(boardID, boardData, 0);

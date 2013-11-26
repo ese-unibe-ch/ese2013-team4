@@ -2,7 +2,7 @@ package com.example.wordfindertwo.core;
 
 import java.util.ArrayList;
 
-import android.util.Log;
+import android.content.Intent;
 
 import com.example.wordfindertwo.core.board.Board;
 import com.example.wordfindertwo.core.exceptions.BoardGenerationException;
@@ -20,10 +20,16 @@ public enum BoardFactory {
 	 * from no dictionaries (both <tt>null</tt>) will lead to a completely
 	 * random letter positioning and to an unplayable board since there are no
 	 * words placed.
+	 * 
+	 * @deprecated use Intent based createBoard(Intent) instead. Note: even
+	 *             though marked as deprecated this method should not be
+	 *             deleted. It will be changed to private later.
 	 */
 	public Board createRandomBoard(IDictionary customDictionary,
 			int sytemDictionaryID) throws BoardGenerationException {
-		String seed = SeedGenerator.Instance.generateRandomSeed(customDictionary != null ? customDictionary.getWords() : new ArrayList<String>(), sytemDictionaryID, 6);
+		String seed = SeedGenerator.Instance.generateRandomSeed(
+				customDictionary != null ? customDictionary.getWords()
+						: new ArrayList<String>(), sytemDictionaryID, 6);
 		return this.createBoardFromSeed(-1, seed);
 	}
 
@@ -32,8 +38,13 @@ public enum BoardFactory {
 	 * no dictionaries are given, the board is still playable, but does only
 	 * accept words that were placed during initial board generation and are
 	 * therefore contained in the seed string.
+	 * 
+	 * @deprecated use Intent based createBoard(Intent) instead. Note: even
+	 *             though marked as deprecated this method should not be
+	 *             deleted. It will be changed to private later.
 	 */
-	public Board createBoardFromSeed(long boardID, String seed) throws BoardGenerationException {
+	public Board createBoardFromSeed(long boardID, String seed)
+			throws BoardGenerationException {
 		String[] fragments = seed.split(""
 				+ SeedGenerator.SEED_SECTION_DELIMITER);
 		String seedString = fragments[0];
@@ -49,9 +60,24 @@ public enum BoardFactory {
 			throw new BoardGenerationException(
 					"Invalid Char - unable to parse Board");
 		}
-		ArrayList<String> wordsInBoard = DictionaryHelper.Instance.deserialize(fragments[1]);
-		ArrayList<String> customWords = DictionaryHelper.Instance.deserialize(fragments[2]);
+		ArrayList<String> wordsInBoard = DictionaryHelper.Instance
+				.deserialize(fragments[1]);
+		ArrayList<String> customWords = DictionaryHelper.Instance
+				.deserialize(fragments[2]);
 		int sytemDicID = Integer.parseInt(fragments[3]);
 		return new Board(matrix, customWords, sytemDicID, wordsInBoard);
+	}
+
+	public Board createBoard(Intent intent) throws BoardGenerationException {
+		if (intent.hasExtra("BoardData") && intent.hasExtra("BoardID")) {
+			// recreate Board
+			return this.createBoardFromSeed(intent.getIntExtra("BoardID", -1),
+					intent.getStringExtra("BoardData"));
+		} else {
+			// create new Board
+			return this.createRandomBoard(null, 0); // TODO: implement custom
+													// dictionary retreival &
+													// system dictionary readout
+		}
 	}
 }
