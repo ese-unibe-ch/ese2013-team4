@@ -155,8 +155,8 @@ public class Game extends Activity {
 			int x = i % 6, y = i / 6;
 			CustomButton btn = ButtonListProvider.Instance.getButtonAtIndex(i);
 			btn.setTextSize(12f);
-			btn.setText("" + board.getCharAt(x, y) + " "
-					+ board.getValueAt(x, y));
+			btn.setText("" + board.getCharAt(x, y));
+			btn.setValueText("" + board.getValueAt(x, y));
 		}
 		Log.i("Game", "setup timer");
 	}
