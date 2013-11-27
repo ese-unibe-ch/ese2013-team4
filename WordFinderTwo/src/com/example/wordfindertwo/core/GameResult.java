@@ -2,9 +2,9 @@ package com.example.wordfindertwo.core;
 
 public class GameResult {
 
-	private final static double LETTER_SCORE_MULTIPLIER = 1;
-	private final static double WORD_SCORE_MULTIPLIER = 10;
-	private final static double TIME_SCORE_MULTIPLIER = 0.005; // half sec 1 pt
+	public final static double LETTER_SCORE_MULTIPLIER = 1;
+	public final static double WORD_SCORE_MULTIPLIER = 10;
+	public final static double TIME_SCORE_MULTIPLIER = 0.005; // half sec 1 pt
 
 	private long boardID;
 	private String boardData;
