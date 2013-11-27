@@ -31,15 +31,6 @@ public class Board implements BoardDictionarySupportInterface,
 	private GameResult gameResult;
 	
 	private StandardDictionary systemDic;
-
-	/**
-	 * This constructor is meant for use by the BoardFactory, but can be used in
-	 * any circumstance
-	 */
-	public Board(ILetterField[][] matrix, ArrayList<String> customWords,
-			int systemDictionaryID, ArrayList<String> wordsInBoard) {
-		this(-1, matrix, customWords, systemDictionaryID, wordsInBoard);
-	}
 	
 	public Board(long id, ILetterField[][] matrix, ArrayList<String> customWords,
 			int systemDictionaryID, ArrayList<String> wordsInBoard) {

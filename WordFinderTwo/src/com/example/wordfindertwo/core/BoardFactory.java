@@ -64,7 +64,7 @@ public enum BoardFactory {
 			for (String word : customWords)
 				Log.i("BoardFactory", "Word " + word + " added to custom words");
 			int sytemDicID = Integer.parseInt(fragments[3]);
-			return new Board(matrix, customWords, sytemDicID, wordsInBoard);
+			return new Board(boardID, matrix, customWords, sytemDicID, wordsInBoard);
 		} catch (Exception e) {
 			// TODO: replace with more sensible error handling.
 			throw new BoardGenerationException();
