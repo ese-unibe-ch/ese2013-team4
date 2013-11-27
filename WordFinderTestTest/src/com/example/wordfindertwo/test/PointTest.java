@@ -48,9 +48,11 @@ public class PointTest extends AndroidTestCase {
 	
 	public void testHash() {
 		Point p = new Point (1, 2);
-		assertEquals(3, p.hashCode());
+		assertEquals(12, p.hashCode());
 		p = new Point(100, 23);
-		assertEquals(123, p.hashCode());
+		assertEquals(1023, p.hashCode());
+		p = new Point(12, 34);
+		assertEquals(154, p.hashCode());
 	}
 	
 }

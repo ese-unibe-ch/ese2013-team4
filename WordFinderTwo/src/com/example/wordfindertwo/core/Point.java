@@ -43,7 +43,7 @@ public class Point {
 	
 	@Override
 	public int hashCode() {
-		return this.x + 10 * this.y;
+		return 10 * this.x + this.y;
 	}
 	
 	public boolean isAdjacent (Point other) {
