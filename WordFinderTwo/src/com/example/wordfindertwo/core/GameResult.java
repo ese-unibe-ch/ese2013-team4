@@ -60,9 +60,8 @@ public class GameResult {
 		return new GameResult(Long.parseLong(fragments[0]), fragments[1],
 				Integer.parseInt(fragments[2]));
 	}
-	
+
 	public String toString() {
-		return "Board #" + this.boardID + " \n"
-				+ "Score: " + this.score;
+		return "Board #" + this.boardID + " \n" + "Score: " + this.score;
 	}
 }
