@@ -17,7 +17,7 @@ public class ScoreDataSource {
   private SQLiteDatabase database;
   private DatabaseHelper dbHelper;
   private String[] allColumns = { DatabaseHelper.KEY_ID,
-      DatabaseHelper.KEY_GAME_RESULT_BOARD_SEED, DatabaseHelper.KEY_GAME_RESULT_BOARD_SCORE };
+      DatabaseHelper.KEY_GAME_RESULT_BOARD_SEED, DatabaseHelper.KEY_GAME_RESULT_BOARD_SCORE, DatabaseHelper.KEY_GAME_RESULT_BOARD_NAME };
 
   public ScoreDataSource(Context context) {
     dbHelper = new DatabaseHelper(context);
