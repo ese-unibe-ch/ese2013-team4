@@ -9,15 +9,26 @@ public class GameResult {
 	private long boardID;
 	private String boardData;
 	private int score;
+	private String boardName;
 
 	public GameResult(long boardID, String boardData) {
-		this(boardID, boardData, 0);
+		this(boardID, boardData, 0, "");
+	}
+
+	public GameResult(long boardID, String boardData, String boardName) {
+		this(boardID, boardData, 0, boardName);
 	}
 
 	public GameResult(long boardID, String boardData, int score) {
+		this(boardID, boardData, score, "");
+	}
+
+	public GameResult(long boardID, String boardData, int score,
+			String boardName) {
 		this.boardID = boardID;
 		this.boardData = boardData;
 		this.score = score;
+		this.boardName = boardName;
 	}
 
 	public String getBoardData() {
@@ -49,7 +60,8 @@ public class GameResult {
 	 * generates a serial string containing all relevant instance data
 	 */
 	public String serialize() {
-		return "" + this.boardID + "@" + this.boardData + "@" + this.score;
+		return "" + this.boardID + "@" + this.boardData + "@" + this.score
+				+ "@" + this.boardName;
 	}
 
 	/**
@@ -58,10 +70,18 @@ public class GameResult {
 	public static GameResult unserialize(String serial) {
 		String[] fragments = serial.split("@");
 		return new GameResult(Long.parseLong(fragments[0]), fragments[1],
-				Integer.parseInt(fragments[2]));
+				Integer.parseInt(fragments[2]), fragments[3]);
 	}
 
 	public String toString() {
 		return "Board #" + this.boardID + " \n" + "Score: " + this.score;
+	}
+
+	public String getName() {
+		return this.boardName;
+	}
+
+	public void setName(String name) {
+		this.boardName = name;
 	}
 }
