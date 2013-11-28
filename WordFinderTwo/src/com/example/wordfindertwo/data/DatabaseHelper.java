@@ -197,6 +197,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 	    ContentValues values = new ContentValues();
 	    values.put(KEY_GAME_RESULT_BOARD_SEED, game_result.getBoardData());
 	    values.put(KEY_GAME_RESULT_BOARD_SCORE, game_result.getScore());
+	    values.put(KEY_GAME_RESULT_BOARD_NAME, game_result.getName());
 	    long game_resultID = db.insert(TABLE_GAME_RESULT, null, values);
 	    
 	    return game_resultID;
@@ -217,7 +218,8 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 	        do {
 	            GameResult game_result = new GameResult(c.getLong((c.getColumnIndex(KEY_ID))),
 	            		(c.getString(c.getColumnIndex(KEY_GAME_RESULT_BOARD_SEED))),
-	            		(c.getInt(c.getColumnIndex(KEY_GAME_RESULT_BOARD_SCORE))));
+	            		(c.getInt(c.getColumnIndex(KEY_GAME_RESULT_BOARD_SCORE))),
+	            		(c.getString(c.getColumnIndex(KEY_GAME_RESULT_BOARD_NAME))));
 	            // adding to list
 	            game_results.add(game_result);
 	        } while (c.moveToNext());
