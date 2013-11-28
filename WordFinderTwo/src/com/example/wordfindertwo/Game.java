@@ -1,5 +1,7 @@
 package com.example.wordfindertwo;
 
+import java.util.ArrayList;
+
 import com.example.wordfindertwo.core.board.Board;
 import com.example.wordfindertwo.core.BoardFactory;
 import com.example.wordfindertwo.core.GameResult;
@@ -7,6 +9,7 @@ import com.example.wordfindertwo.customs.*;
 
 import android.util.Log;
 import android.os.Bundle;
+import android.provider.UserDictionary.Words;
 import android.app.Activity;
 import android.content.Intent;
 import android.view.Menu;
@@ -23,6 +26,7 @@ public class Game extends Activity {
 	private static final long INITIAL_TIMER_VALUE = 120000;
 	// FIELDS
 	private TextView timerView;
+	private TextView foundWords;
 	private boolean paused = false;
 	private Board board;
 	private LinearLayout layout;
@@ -40,6 +44,7 @@ public class Game extends Activity {
 		game = this;
 		timerView = (TextView) findViewById(R.id.timer);
 		score = (TextView) findViewById(R.id.score);
+		foundWords = (TextView) findViewById(R.id.stringWordsFound);
 		ButtonListProvider.Instance.configureForGame(game);
 		for (CustomButton btn : ButtonListProvider.Instance.getList()) {
 			btn.setBackgroundResource(android.R.drawable.btn_default);
@@ -89,7 +94,6 @@ public class Game extends Activity {
 		// --------------------------------------------------------------------------
 
 		layout = (LinearLayout) findViewById(R.id.gamespace);
-		TextView score = (TextView) game.findViewById(R.id.score);
 		score.setText("" + board.getBoardScore());
 	}
 
@@ -145,7 +149,17 @@ public class Game extends Activity {
 	}
 
 	public void update() {
-		this.score.setText(this.board.getBoardScore() + "\n" + this.board.getFoundWordCount() + " / " + this.board.getTotalWordCount());
+		this.score.setText(this.board.getBoardScore() + "\n"
+				+ this.board.getFoundWordCount() + " / "
+				+ this.board.getTotalWordCount());
+		ArrayList<String> wordsFound = this.board.getFoundWords();
+		if (wordsFound.size() > 0) {
+			String foundWordsContent = wordsFound.get(wordsFound.size() - 1);
+			for (int i = wordsFound.size() - 2; i >= 0; i--) {
+				foundWordsContent += "\n" + wordsFound.get(i);
+			}
+			this.foundWords.setText(foundWordsContent);
+		}
 		if (board.isCompleted()) {
 			Log.i("Game", "board completed");
 			this.hasFinishedNaturally = true;

@@ -1,5 +1,7 @@
 package com.example.wordfindertwo.core.board;
 
+import java.util.ArrayList;
+
 import com.example.wordfindertwo.core.GameResult;
 
 public interface BoardScoreInterface {
@@ -21,4 +23,6 @@ public interface BoardScoreInterface {
 	public boolean isCompleted();
 
 	public GameResult getGameResult();
+	
+	public ArrayList<String> getFoundWords();
 }

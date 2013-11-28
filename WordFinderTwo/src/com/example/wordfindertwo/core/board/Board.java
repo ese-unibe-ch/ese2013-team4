@@ -172,6 +172,11 @@ public class Board implements BoardDictionarySupportInterface,
 	public GameResult getGameResult() {
 		return this.gameResult;
 	}
+	
+	@Override
+	public ArrayList<String> getFoundWords() {
+		return this.foundWords;
+	}
 
 	/* IMPLEMENTATION OF BoardDatabaseInterface */
 
