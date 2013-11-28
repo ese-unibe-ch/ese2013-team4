@@ -23,7 +23,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 	private static final String LOG = "DatabaseHelper";
 
 	// Database Version ( Increased when we rewrite the Database structure in an upcoming version of the game )
-	private static final int DATABASE_VERSION = 1;
+	private static final int DATABASE_VERSION = 2;
 	
 	private static final String DATABASE_NAME = "savingManager";
 	
@@ -57,6 +57,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 	// Game Results Table - column names
 	public static final String KEY_GAME_RESULT_BOARD_SEED = "seed";
 	public static final String KEY_GAME_RESULT_BOARD_SCORE = "score";
+	public static final String KEY_GAME_RESULT_BOARD_NAME = "name";
 	
 	// Table Create Statements
 	// Boards table create statement
@@ -91,7 +92,8 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 		private static final String CREATE_TABLE_GAME_RESULT = "CREATE TABLE "
 				+ TABLE_GAME_RESULT + "(" + KEY_ID + " INTEGER PRIMARY KEY, "
 				+ KEY_GAME_RESULT_BOARD_SEED + " TEXT,"
-				+ KEY_GAME_RESULT_BOARD_SCORE + " INTEGER"
+				+ KEY_GAME_RESULT_BOARD_SCORE + " INTEGER,"
+				+ KEY_GAME_RESULT_BOARD_NAME + " INTEGER"
 				+ ")";
 	
 	public DatabaseHelper(Context context) {
@@ -175,104 +177,6 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 	    db.delete(TABLE_DICTIONARY, KEY_ID + " = ?",
 	            new String[] { String.valueOf(dictionary.getID()) });
 	}
-	
-	public long createBoardEntry(IBoard board) {
-		SQLiteDatabase db = this.getWritableDatabase();
-		 
-	    ContentValues values = new ContentValues();
-	    
-	    values.put(KEY_LETTERS, board.getLetters());
-	    
-	    long boardId = db.insert(TABLE_DICTIONARY, null, values);
-	    
-	    return boardId;
-	}
-
-	/*public List<IBoard> getBoardEntries() {
-		List<IBoard> boards = new ArrayList<IBoard>();
-		String selectQuery = "SELECT * FROM " + TABLE_BOARD;
-		
-		Log.e(LOG, selectQuery);
-		
-		SQLiteDatabase db = this.getReadableDatabase();
-	    Cursor c = db.rawQuery(selectQuery, null);
-		
-	    // looping through all rows and adding to list
-	    if (c.moveToFirst()) {
-	        do {
-	            IBoard board = new Board();
-	            board.setId(c.getInt((c.getColumnIndex(KEY_ID))));
-	            board.setName((c.getString(c.getColumnIndex(KEY_LETTERS))));
-	            // adding to list
-	            boards.add(board);
-	        } while (c.moveToNext());
-	    }
-	 
-	    return boards;
-	}*/
-	
-	//shouldn't that be a board rather than a dictionary??? - andreas
-	public long updateBoardEntry(IDictionary board) {
-		SQLiteDatabase db = this.getWritableDatabase();
-		
-	  	ContentValues values = new ContentValues();
-	    values.put(KEY_LETTERS, board.getName());
-	 
-	    // updating row
-	    return db.update(TABLE_BOARD, values, KEY_ID + " = ?",
-	            new String[] { String.valueOf(board.getID()) });
-	}
-
-	public void deleteBoardEntry(IBoard board) {
-	    SQLiteDatabase db = this.getWritableDatabase();
-	    db.delete(TABLE_BOARD, KEY_ID + " = ?",
-	            new String[] { String.valueOf(board.getId()) });
-	    this.deleteScoreEntriesByBoard(board);
-	}
-	
-	public long createScoreEntry(IBoard board, int value) {
-		SQLiteDatabase db = this.getWritableDatabase();
-		 
-	    ContentValues values = new ContentValues();
-	    values.put(KEY_SCORE_BOARD_ID, board.getId());
-	    values.put(KEY_SCORE_VALUE, value);
-	    
-	    long scoreId = db.insert(TABLE_SCORE, null, values);
-	    
-	    return scoreId;
-	}
-	
-	// Todo: schauen wie Score ausgegeben werden soll hier ein Beispiel
-	
-	public List<Integer> getScoreEntriesByBoardId(int id) {
-		List<Integer> scores = new ArrayList<Integer>();
-		String selectQuery = "SELECT * FROM " + TABLE_SCORE + " WHERE";
-		
-		Log.e(LOG, selectQuery);
-		
-		SQLiteDatabase db = this.getReadableDatabase();
-	    Cursor c = db.rawQuery(selectQuery, null);
-		
-	    // looping through all rows and adding to list
-	    if (c.moveToFirst()) {
-	        do {
-	            Integer score = new Integer(c.getInt((c.getColumnIndex(KEY_ID))));
-	            // adding to list
-	            scores.add(score);
-	        } while (c.moveToNext());
-	    }
-	 
-	    return scores;
-	}
-
-
-	public void deleteScoreEntriesByBoard(IBoard board) {
-	    SQLiteDatabase db = this.getWritableDatabase();
-	    db.delete(TABLE_SCORE, KEY_SCORE_BOARD_ID + " = ?",
-	            new String[] { String.valueOf(board.getId()) });
-	}
-	
-	
 	
 	public static String convertArrayListToString(ArrayList<String> array_list){
 		String str = array_list.toString(); 
