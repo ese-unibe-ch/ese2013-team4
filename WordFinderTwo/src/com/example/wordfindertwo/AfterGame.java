@@ -14,6 +14,7 @@ import com.example.wordfindertwo.data.DatabaseHelper;
 public class AfterGame extends Activity {
 
 	private GameResult result;
+	
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -28,15 +29,30 @@ public class AfterGame extends Activity {
 		Log.d("GameResult", "ID:    " + result.getBoardID());
 		Log.d("GameResult", "SCORE: " + result.getScore());
 		Log.d("GameResult", "DATA:  " + result.getBoardData());
-		Log.d("GameResult", "NAME:  " + result.getName());
-		this.saveGameResult();
+		Log.d("GameResult", "NAME:  " + result.getName()); 
+		
+		DatabaseHelper db = new DatabaseHelper(this);
+		this.saveGameResult(db);
+		db.close();
 
 	}
 
-	private void saveGameResult() {
-		DatabaseHelper db = new DatabaseHelper(this);
-		db.createGameResultEntry(result);
-		db.close();
+	private void saveGameResult(DatabaseHelper db) {
+		if (this.result.getBoardID() == -1) {
+			db.createGameResultEntry(result);
+		}
+		else if (isNewHighScore(db)){
+			Log.d("AfterGame", "New HighScore!!!!");
+		}
+	}
+	
+	private boolean isNewHighScore(DatabaseHelper db) {
+		GameResult existing_game_result = db.getGameResultById(this.result.getBoardID(), this.result);
+		if (this.result.compareTo(existing_game_result) > 0) {
+			db.updateGameResult(this.result);
+			return true;
+		}
+		return false;
 	}
 
 	@Override
