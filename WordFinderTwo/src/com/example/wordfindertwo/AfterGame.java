@@ -29,7 +29,6 @@ public class AfterGame extends Activity {
 		Log.d("GameResult", "SCORE: " + result.getScore());
 		Log.d("GameResult", "DATA:  " + result.getBoardData());
 		Log.d("GameResult", "NAME:  " + result.getName());
-
 		this.saveGameResult();
 
 	}

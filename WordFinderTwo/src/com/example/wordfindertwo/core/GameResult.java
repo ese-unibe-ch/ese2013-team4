@@ -74,7 +74,7 @@ public class GameResult {
 	}
 
 	public String toString() {
-		return "Board #" + this.boardID + " \n" + "Score: " + this.score;
+		return "Board #" + this.boardName + " \n" + "Score: " + this.score;
 	}
 
 	public String getName() {
