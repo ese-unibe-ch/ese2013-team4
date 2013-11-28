@@ -41,7 +41,7 @@ public class ScoreDataSource {
 	        allColumns, DatabaseHelper.KEY_ID + " = " + insertId, null,
 	        null, null, null);
 	    cursor.moveToFirst();
-	    GameResult newGameResult = cursorToComment(cursor);
+	    GameResult newGameResult = cursorToGameResult(cursor);
 	    cursor.close();
 	    return newGameResult;
 	  }
@@ -61,7 +61,7 @@ public class ScoreDataSource {
 
     cursor.moveToFirst();
     while (!cursor.isAfterLast()) {
-      GameResult game_result = cursorToComment(cursor);
+      GameResult game_result = cursorToGameResult(cursor);
       game_results.add(game_result);
       cursor.moveToNext();
     }
@@ -70,10 +70,11 @@ public class ScoreDataSource {
     return game_results;
   }
 
-  private GameResult cursorToComment(Cursor c) {
+  private GameResult cursorToGameResult(Cursor c) {
     GameResult game_result = new GameResult(c.getLong((c.getColumnIndex(DatabaseHelper.KEY_ID))),
     		(c.getString(c.getColumnIndex(DatabaseHelper.KEY_GAME_RESULT_BOARD_SEED))),
-    		(c.getInt(c.getColumnIndex(DatabaseHelper.KEY_GAME_RESULT_BOARD_SCORE))));
+    		(c.getInt(c.getColumnIndex(DatabaseHelper.KEY_GAME_RESULT_BOARD_SCORE))),
+    		(c.getString(c.getColumnIndex(DatabaseHelper.KEY_GAME_RESULT_BOARD_NAME))));
     return game_result;
   }
 } 
