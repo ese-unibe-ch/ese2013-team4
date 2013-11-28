@@ -87,7 +87,7 @@ public enum BoardFactory {
 	 *             be thrown.
 	 */
 	public Board createBoard(Intent intent) throws BoardGenerationException {
-		if (intent.hasExtra("BoardData") && intent.hasExtra("BoardID")) {
+		if (intent.hasExtra("BoardData") && intent.hasExtra("BoardID") && intent.hasExtra("BoardName")) {
 			/*
 			 * RECREATE OLD BOARD.
 			 * 
@@ -104,6 +104,7 @@ public enum BoardFactory {
 				Board brd = this.createBoardFromSeed(
 						intent.getLongExtra("BoardID", -1),
 						intent.getStringExtra("BoardData"));
+				brd.setName(intent.getStringExtra("BoardName"));
 				Log.i("BoardFactory", "board recreation finished");
 				return brd;
 			} catch (BoardGenerationException e) {

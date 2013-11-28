@@ -29,11 +29,12 @@ public class Board implements BoardDictionarySupportInterface,
 	private ArrayList<String> foundWords;
 	private long id;
 	private GameResult gameResult;
-	
+
 	private StandardDictionary systemDic;
-	
-	public Board(long id, ILetterField[][] matrix, ArrayList<String> customWords,
-			int systemDictionaryID, ArrayList<String> wordsInBoard) {
+
+	public Board(long id, ILetterField[][] matrix,
+			ArrayList<String> customWords, int systemDictionaryID,
+			ArrayList<String> wordsInBoard) {
 		this.matrix = matrix;
 		this.customWords = customWords;
 		this.systemDictionaryID = systemDictionaryID;
@@ -41,7 +42,8 @@ public class Board implements BoardDictionarySupportInterface,
 		this.wordsInBoard = wordsInBoard;
 		this.id = id;
 		this.gameResult = new GameResult(this.id, this.getSeed());
-		this.systemDic = StandardDictionary.getDictionary(this.systemDictionaryID);
+		this.systemDic = StandardDictionary
+				.getDictionary(this.systemDictionaryID);
 	}
 
 	public ILetterField[][] getMatrix() {
@@ -53,12 +55,12 @@ public class Board implements BoardDictionarySupportInterface,
 	public ArrayList<String> getCustomWords() {
 		return this.customWords;
 	};
-	
+
 	@Override
 	public int getSystemDictionaryID() {
 		return this.systemDictionaryID;
 	}
-	
+
 	@Override
 	public ArrayList<String> getWordsInBoard() {
 		return this.wordsInBoard;
@@ -120,8 +122,7 @@ public class Board implements BoardDictionarySupportInterface,
 		}
 		// STEP 4: check string
 		// if (this.wordsInBoard.contains(word)) {
-		if (this.wordsInBoard.contains(word)
-				|| this.customWords.contains(word)
+		if (this.wordsInBoard.contains(word) || this.customWords.contains(word)
 				|| this.systemDic.getWords().contains(word)) {
 			this.foundWords.add(word);
 			this.updateScore(word);
@@ -172,7 +173,7 @@ public class Board implements BoardDictionarySupportInterface,
 	public GameResult getGameResult() {
 		return this.gameResult;
 	}
-	
+
 	@Override
 	public ArrayList<String> getFoundWords() {
 		return this.foundWords;
@@ -219,6 +220,10 @@ public class Board implements BoardDictionarySupportInterface,
 		} catch (InvalidLetterException ex) {
 			Log.e("Board", ex.getMessage());
 		}
+	}
+
+	public void setName(String name) {
+		this.gameResult.setName(name);
 	}
 
 }
