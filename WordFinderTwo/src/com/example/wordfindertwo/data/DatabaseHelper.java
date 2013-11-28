@@ -220,6 +220,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 	            		(c.getString(c.getColumnIndex(KEY_GAME_RESULT_BOARD_SEED))),
 	            		(c.getInt(c.getColumnIndex(KEY_GAME_RESULT_BOARD_SCORE))),
 	            		(c.getString(c.getColumnIndex(KEY_GAME_RESULT_BOARD_NAME))));
+	            Log.i("DB", "Name: " + game_result.getName());
 	            // adding to list
 	            game_results.add(game_result);
 	        } while (c.moveToNext());

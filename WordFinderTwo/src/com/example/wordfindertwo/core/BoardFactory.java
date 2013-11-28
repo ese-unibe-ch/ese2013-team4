@@ -121,6 +121,7 @@ public enum BoardFactory {
 		 * lists
 		 */
 		Board brd = this.createRandomBoard(null, 0);
+		brd.setName("TEST");
 		Log.i("BoardFactory", "board generation finished");
 		Log.i("BoardFactory", brd.getSeed());
 		return brd;
