@@ -23,9 +23,9 @@ public class GameResultTest extends AndroidTestCase {
 		assertEquals((int) (GameResult.WORD_SCORE_MULTIPLIER), gr.getScore());
 		// add word with value 1
 		int score = gr.getScore();
-		gr.addWord(0);
+		gr.addWord(1);
 		score += GameResult.WORD_SCORE_MULTIPLIER
-				+ (int) (GameResult.LETTER_SCORE_MULTIPLIER * score);
+				+ (int) (GameResult.LETTER_SCORE_MULTIPLIER * 1);
 		assertEquals(score, gr.getScore());
 		// add time bonus
 		gr.addTimeBonus(10000);
