@@ -23,7 +23,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 	private static final String LOG = "DatabaseHelper";
 
 	// Database Version ( Increased when we rewrite the Database structure in an upcoming version of the game )
-	private static final int DATABASE_VERSION = 2;
+	private static final int DATABASE_VERSION = 3;
 	
 	private static final String DATABASE_NAME = "savingManager";
 	
@@ -93,7 +93,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 				+ TABLE_GAME_RESULT + "(" + KEY_ID + " INTEGER PRIMARY KEY, "
 				+ KEY_GAME_RESULT_BOARD_SEED + " TEXT,"
 				+ KEY_GAME_RESULT_BOARD_SCORE + " INTEGER,"
-				+ KEY_GAME_RESULT_BOARD_NAME + " INTEGER"
+				+ KEY_GAME_RESULT_BOARD_NAME + " TEXT"
 				+ ")";
 	
 	public DatabaseHelper(Context context) {
