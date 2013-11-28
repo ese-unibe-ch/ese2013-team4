@@ -927,52 +927,23 @@
         android:orientation="horizontal"
         android:weightSum="2" >
 
-        <LinearLayout
-            android:id="@+id/scrollViewLayout"
+        <TextView
+            android:id="@+id/score"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:orientation="vertical"
-            android:weightSum="2" >
+            android:textSize="24sp" />
 
-            <TextView
-                android:id="@+id/scoredesctiption"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_weight="1"
-                android:text="Score: " />
-
-            <TextView
-                android:id="@+id/score"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:textSize="24sp" />
-        </LinearLayout>
-
-        <LinearLayout
-            android:id="@+id/numberOfWordsLayout"
+        <ScrollView
+            android:id="@+id/listWordsFound"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:orientation="vertical"
-            android:weightSum="2" >
+            android:layout_weight="1" >
 
             <TextView
-                android:id="@+id/scrollViewTitle"
+                android:id="@+id/stringWordsFound"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                
-                android:text="Number of Words in the Board:" />
-
-            <TextView
-                android:id="@+id/wordsInBoard"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:textSize="24sp" />
-        </LinearLayout>
+                android:layout_height="wrap_content" />
+        </ScrollView>
     </LinearLayout>
-
 </RelativeLayout>
