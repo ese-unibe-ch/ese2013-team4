@@ -61,7 +61,7 @@ public class GameResult {
 	 */
 	public String serialize() {
 		return "" + this.boardID + "@" + this.boardData + "@" + this.score
-				+ "@" + this.boardName;
+				+ "@" + this.boardName + "@a";
 	}
 
 	/**

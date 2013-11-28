@@ -12,7 +12,7 @@ import com.example.wordfindertwo.core.GameResult;
 import com.example.wordfindertwo.data.DatabaseHelper;
 
 public class AfterGame extends Activity {
-	
+
 	private GameResult result;
 
 	@Override
@@ -22,15 +22,16 @@ public class AfterGame extends Activity {
 		this.result = GameResult.unserialize(this.getIntent().getStringExtra(
 				"GameResult"));
 
-		((TextView) findViewById(R.id.scorecustomdisplay)).setText("" + this.result.getScore());
+		((TextView) findViewById(R.id.scorecustomdisplay)).setText(""
+				+ this.result.getScore());
 		Log.d("GameResult", "SERIAL:" + result.serialize());
 		Log.d("GameResult", "ID:    " + result.getBoardID());
 		Log.d("GameResult", "SCORE: " + result.getScore());
 		Log.d("GameResult", "DATA:  " + result.getBoardData());
 		Log.d("GameResult", "NAME:  " + result.getName());
-		
+
 		this.saveGameResult();
-		
+
 	}
 
 	private void saveGameResult() {
@@ -53,7 +54,7 @@ public class AfterGame extends Activity {
 		startActivity(new Intent(this, MainMenu.class));
 		finish();
 	}
-	
+
 	@Override
 	public void onBackPressed() {
 		returnToMainMenu(null);
