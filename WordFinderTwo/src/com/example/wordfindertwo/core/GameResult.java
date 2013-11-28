@@ -1,6 +1,6 @@
 package com.example.wordfindertwo.core;
 
-public class GameResult {
+public class GameResult implements Comparable<GameResult> {
 
 	public final static double LETTER_SCORE_MULTIPLIER = 1;
 	public final static double WORD_SCORE_MULTIPLIER = 10;
@@ -83,5 +83,10 @@ public class GameResult {
 
 	public void setName(String name) {
 		this.boardName = name;
+	}
+	
+	@Override
+	public int compareTo(GameResult other) {
+		return this.score - other.score;
 	}
 }
