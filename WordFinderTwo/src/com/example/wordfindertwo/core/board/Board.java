@@ -26,7 +26,7 @@ public class Board implements BoardDictionarySupportInterface,
 	private ArrayList<String> customWords;
 	private int systemDictionaryID;
 	private ArrayList<String> wordsInBoard;
-	private ArrayList<ArrayList<Point>> foundWords;
+	private ArrayList<String> foundWords;
 	private long id;
 	private GameResult gameResult;
 	
@@ -37,7 +37,7 @@ public class Board implements BoardDictionarySupportInterface,
 		this.matrix = matrix;
 		this.customWords = customWords;
 		this.systemDictionaryID = systemDictionaryID;
-		this.foundWords = new ArrayList<ArrayList<Point>>();
+		this.foundWords = new ArrayList<String>();
 		this.wordsInBoard = wordsInBoard;
 		this.id = id;
 		this.gameResult = new GameResult(this.id, this.getSeed());
@@ -114,7 +114,7 @@ public class Board implements BoardDictionarySupportInterface,
 
 		// STEP 3: check if sequence is in Found list.
 		// if it is in list, it is an old word.
-		if (!this.foundWords.isEmpty() && this.foundWords.contains(sequence)) {
+		if (!this.foundWords.isEmpty() && this.foundWords.contains(word)) {
 			Log.d("Board.submit", "Word " + word + " is already found");
 			return SelectionStatus.SelectionOld;
 		}
@@ -123,7 +123,7 @@ public class Board implements BoardDictionarySupportInterface,
 		if (this.wordsInBoard.contains(word)
 				|| this.customWords.contains(word)
 				|| this.systemDic.getWords().contains(word)) {
-			this.foundWords.add(new ArrayList<Point>(sequence));
+			this.foundWords.add(word);
 			this.updateScore(word);
 			Log.d("Board.submit", "Word " + word + " is valid");
 			return SelectionStatus.SelectionGood;
