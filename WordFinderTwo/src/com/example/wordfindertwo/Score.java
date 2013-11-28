@@ -51,6 +51,7 @@ public class Score extends Activity {
 				Intent i = new Intent(getApplicationContext(), Game.class);
 				i.putExtra("BoardData", result.getBoardData());
 				i.putExtra("BoardID",result.getBoardID());
+				i.putExtra("BoardName",result.getName());
 				startActivity(i);
 				
 			}
