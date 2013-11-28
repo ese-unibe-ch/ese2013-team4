@@ -4,7 +4,6 @@ import java.util.ArrayList;
 
 import com.example.wordfindertwo.ButtonListProvider;
 import com.example.wordfindertwo.Game;
-import com.example.wordfindertwo.R;
 import com.example.wordfindertwo.core.Point;
 import com.example.wordfindertwo.core.SelectionStatus;
 import com.example.wordfindertwo.core.board.Board;
@@ -14,15 +13,12 @@ import android.util.Log;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.View.OnTouchListener;
-import android.widget.TextView;
 
 public class CustomOnTouchListener implements OnTouchListener {
 
 	private ArrayList<CustomButton> buttonList;
 	private Board board;
 	private Game game;
-	private TextView score;
-
 	public CustomOnTouchListener(Board board, Game game) {
 		this.board = board;
 		this.game = game;
@@ -54,7 +50,6 @@ public class CustomOnTouchListener implements OnTouchListener {
 				pointList.add(btn.getPoint());
 			}
 			this.paintResult(this.board.submit(pointList));
-			this.updateScore();
 			this.game.update();
 			this.buttonList.clear();
 		}
@@ -94,11 +89,6 @@ public class CustomOnTouchListener implements OnTouchListener {
 				resetButtonColors();
 			}
 		};
-	}
-
-	private void updateScore() {
-		this.score = (TextView) this.game.findViewById(R.id.score);
-		this.score.setText("	" + this.board.getBoardScore());
 	}
 
 	private void resetButtonColors() {

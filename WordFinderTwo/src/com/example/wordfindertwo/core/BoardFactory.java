@@ -64,7 +64,8 @@ public enum BoardFactory {
 			for (String word : customWords)
 				Log.i("BoardFactory", "Word " + word + " added to custom words");
 			int sytemDicID = Integer.parseInt(fragments[3]);
-			return new Board(boardID, matrix, customWords, sytemDicID, wordsInBoard);
+			return new Board(boardID, matrix, customWords, sytemDicID,
+					wordsInBoard);
 		} catch (Exception e) {
 			// TODO: replace with more sensible error handling.
 			throw new BoardGenerationException();
@@ -97,10 +98,11 @@ public enum BoardFactory {
 			 */
 			try {
 				Log.i("BoardFactory",
-						"recreating board " + intent.getIntExtra("BoardID", -1));
+						"recreating board "
+								+ intent.getLongExtra("BoardID", -1));
 				Log.i("BoardFactory", intent.getStringExtra("BoardData"));
 				Board brd = this.createBoardFromSeed(
-						intent.getIntExtra("BoardID", -1),
+						intent.getLongExtra("BoardID", -1),
 						intent.getStringExtra("BoardData"));
 				Log.i("BoardFactory", "board recreation finished");
 				return brd;

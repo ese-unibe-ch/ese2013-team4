@@ -28,7 +28,7 @@ public class Game extends Activity {
 	private LinearLayout layout;
 	private Button bStart;
 	private Button bPause;
-	private TextView wordsField;
+	private TextView score;
 	private boolean hasFinishedNaturally = false;
 
 	@Override
@@ -39,7 +39,7 @@ public class Game extends Activity {
 		setContentView(R.layout.activity_game);
 		game = this;
 		timerView = (TextView) findViewById(R.id.timer);
-		wordsField = (TextView) findViewById(R.id.wordsInBoard);
+		score = (TextView) findViewById(R.id.score);
 		ButtonListProvider.Instance.configureForGame(game);
 		for (CustomButton btn : ButtonListProvider.Instance.getList()) {
 			btn.setBackgroundResource(android.R.drawable.btn_default);
@@ -145,7 +145,7 @@ public class Game extends Activity {
 	}
 
 	public void update() {
-		wordsField.setText(this.board.getFoundWordCount() + " / " + this.board.getTotalWordCount());
+		this.score.setText(this.board.getBoardScore() + "\n" + this.board.getFoundWordCount() + " / " + this.board.getTotalWordCount());
 		if (board.isCompleted()) {
 			Log.i("Game", "board completed");
 			this.hasFinishedNaturally = true;
