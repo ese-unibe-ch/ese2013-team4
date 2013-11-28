@@ -20,7 +20,7 @@ public class GameResultTest extends AndroidTestCase {
 		assertEquals(0, gr.getScore());
 		// add word with value 0
 		gr.addWord(0);
-		assertEquals(GameResult.WORD_SCORE_MULTIPLIER, gr.getScore());
+		assertEquals((int) (GameResult.WORD_SCORE_MULTIPLIER), gr.getScore());
 		// add word with value 1
 		int score = gr.getScore();
 		gr.addWord(0);
