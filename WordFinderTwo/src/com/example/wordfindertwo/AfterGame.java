@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.Menu;
 import android.view.View;
+import android.widget.EditText;
 import android.widget.TextView;
 
 import com.example.wordfindertwo.core.GameResult;
@@ -31,19 +32,22 @@ public class AfterGame extends Activity {
 		Log.d("GameResult", "DATA:  " + result.getBoardData());
 		Log.d("GameResult", "NAME:  " + result.getName()); 
 		
-		DatabaseHelper db = new DatabaseHelper(this);
-		this.saveGameResult(db);
-		db.close();
+		if (result.getBoardID() != -1) {
+			this.hideBoardNaming();
+			this.saveGameResult();
+		}
 
 	}
 
-	private void saveGameResult(DatabaseHelper db) {
+	private void saveGameResult() {
+		DatabaseHelper db = new DatabaseHelper(this);
 		if (this.result.getBoardID() == -1) {
 			db.createGameResultEntry(result);
 		}
 		else if (isNewHighScore(db)){
 			Log.d("AfterGame", "New HighScore!!!!");
 		}
+		db.close();
 	}
 	
 	private boolean isNewHighScore(DatabaseHelper db) {
@@ -73,6 +77,30 @@ public class AfterGame extends Activity {
 	@Override
 	public void onBackPressed() {
 		returnToMainMenu(null);
+	}
+	
+	/**
+	 * in case the user played an existing board
+	 */
+	private void hideBoardNaming() {
+		findViewById(R.id.board_name_textfield).setVisibility(View.GONE);
+		findViewById(R.id.boardname_submit).setVisibility(View.GONE);
+		findViewById(R.id.enter_board_name).setVisibility(View.GONE);
+		findViewById(R.id.return_withou_saving_hint).setVisibility(View.GONE);
+
+	}
+	
+	public void submitName(View view) {
+		String board_name = ((EditText)findViewById(R.id.board_name_textfield)).getText().toString();
+		if (board_name .length() == 0) {
+			findViewById(R.id.error_board_name).setVisibility(View.VISIBLE);
+		}
+		else {
+			result.setName(board_name);
+			saveGameResult();
+			startActivity(new Intent(this, MainMenu.class));
+			finish();
+		}
 	}
 
 }
