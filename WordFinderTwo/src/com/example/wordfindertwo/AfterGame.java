@@ -41,22 +41,8 @@ public class AfterGame extends Activity {
 
 	private void saveGameResult() {
 		DatabaseHelper db = new DatabaseHelper(this);
-		if (this.result.getBoardID() == -1) {
-			db.createGameResultEntry(result);
-		}
-		else if (isNewHighScore(db)){
-			Log.d("AfterGame", "New HighScore!!!!");
-		}
+		db.createGameResultEntry(result);
 		db.close();
-	}
-	
-	private boolean isNewHighScore(DatabaseHelper db) {
-		GameResult existing_game_result = db.getGameResultById(this.result.getBoardID(), this.result);
-		if (this.result.compareTo(existing_game_result) > 0) {
-			db.updateGameResult(this.result);
-			return true;
-		}
-		return false;
 	}
 
 	@Override

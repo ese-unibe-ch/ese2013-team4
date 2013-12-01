@@ -2,10 +2,12 @@ package com.example.wordfindertwo;
 
 import android.app.Activity;
 import android.content.Intent;
+import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.View;
 
+import com.example.wordfindertwo.data.DatabaseHelper;
 import com.parse.Parse;
 import com.parse.ParseAnalytics;
 import com.parse.ParseObject;
@@ -44,6 +46,10 @@ public class MainMenu extends Activity {
 	}
 	
 	public void openFriend(View view){
+		DatabaseHelper db = new DatabaseHelper(this);
+		if (db.getPrimaryUserName() == null) {
+			Intent intent = new Intent(this, LoginActivity.class);
+		}
 		Intent intent = new Intent(this, FriendsTable.class);
 		startActivity(intent);	
 	}

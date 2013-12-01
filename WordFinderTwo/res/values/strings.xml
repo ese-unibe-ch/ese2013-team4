@@ -55,6 +55,8 @@
     <string name="enter_name">Enter a Name for this Board</string>	
     <string name="error_enter_board_name">Please enter a name for your board!</string>	
     <string name="close_without_saving">If you don\'t want to save your board, you can return to the main menu without saving</string>	
-    <string name="error_no_name_entered">You haven\'t entered a name yet!</string>
+    <string name="error_no_name_entered">You haven\'t entered a name yet!</string>	
+    <string name="create_user">Create User</string>	
+    <string name="error_enter_user_name">Please specify a user name</string>
 
 </resources>

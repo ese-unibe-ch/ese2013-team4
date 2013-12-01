@@ -24,7 +24,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 
 	// Database Version ( Increased when we rewrite the Database structure in an
 	// upcoming version of the game )
-	private static final int DATABASE_VERSION = 3;
+	private static final int DATABASE_VERSION = 5;
 
 	private static final String DATABASE_NAME = "savingManager";
 
@@ -34,12 +34,15 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 	private static final String TABLE_DICTIONARY = "dictionaries";
 	private static final String TABLE_DEDICATED_DICTIONARY = "dedct_dict";
 	public static final String TABLE_GAME_RESULT = "game_result";
+	public static final String TABLE_USER = "user";
 
 	// Common column names
 	public static final String KEY_ID = "id";
 
 	// Boards Table - column names
-	private static final String KEY_LETTERS = "letters";
+	static final String KEY_BOARD_SEED = "seed";
+	private static final String KEY_BOARD_NAME = "name";
+
 	// Custom Dictionary muss noch besprochen werden
 	// private static final String KEY_CUSTOM_WORDS = "words";
 
@@ -56,15 +59,26 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 	private static final String KEY_DEDICATED_WORDS = "words";
 
 	// Game Results Table - column names
-	public static final String KEY_GAME_RESULT_BOARD_SEED = "seed";
+	public static final String KEY_GAME_RESULT_BOARD_ID = "board_id";
 	public static final String KEY_GAME_RESULT_BOARD_SCORE = "score";
-	public static final String KEY_GAME_RESULT_BOARD_NAME = "name";
+	
+	// Game Results Table - column names
+	public static final String KEY_USER_ONLINE_ID = "online_id";
+	public static final String KEY_USER_NAME = "name";
 
 	// Table Create Statements
 	// Boards table create statement
 	private static final String CREATE_TABLE_BOARD = "CREATE TABLE "
 			+ TABLE_BOARD + "(" + KEY_ID + " INTEGER PRIMARY KEY, "
-			+ KEY_LETTERS + " TEXT" + ")";
+			+ KEY_BOARD_NAME + " TEXT,"
+			+ KEY_BOARD_SEED + " TEXT"
+			+ ")";
+	
+	private static final String CREATE_TABLE_USER = "CREATE TABLE "
+			+ TABLE_USER + "(" + KEY_ID + " INTEGER PRIMARY KEY, "
+			+ KEY_USER_NAME + " TEXT,"
+			+ KEY_USER_ONLINE_ID + " TEXT"
+			+ ")";
 
 	// Score table create statement
 	private static final String CREATE_TABLE_SCORE = "CREATE TABLE "
@@ -91,9 +105,9 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 	// Dedicated Boards table create statement
 	private static final String CREATE_TABLE_GAME_RESULT = "CREATE TABLE "
 			+ TABLE_GAME_RESULT + "(" + KEY_ID + " INTEGER PRIMARY KEY, "
-			+ KEY_GAME_RESULT_BOARD_SEED + " TEXT,"
-			+ KEY_GAME_RESULT_BOARD_SCORE + " INTEGER,"
-			+ KEY_GAME_RESULT_BOARD_NAME + " TEXT" + ")";
+			+ KEY_GAME_RESULT_BOARD_ID + " TEXT,"
+			+ KEY_GAME_RESULT_BOARD_SCORE + " INTEGER"
+			+ ")";
 
 	public DatabaseHelper(Context context) {
 		super(context, DATABASE_NAME, null, DATABASE_VERSION);
@@ -191,74 +205,63 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 		String[] arr = str.split(",");
 		return new ArrayList<String>(Arrays.asList(arr));
 	}
-
+	
 	public long createGameResultEntry(GameResult game_result) {
-		assert (game_result.getBoardID() == -1);
 		SQLiteDatabase db = this.getWritableDatabase();
-
+		String board_id;
+		if (game_result.getBoardID() == -1)
+			board_id = createBoardEntry(game_result.getBoardData(), game_result.getName(), db);
+		else
+			board_id = Long.toString(game_result.getBoardID());
+		
 		ContentValues values = new ContentValues();
-		values.put(KEY_GAME_RESULT_BOARD_SEED, game_result.getBoardData());
+		values.put(KEY_GAME_RESULT_BOARD_ID, board_id);
 		values.put(KEY_GAME_RESULT_BOARD_SCORE, game_result.getScore());
-		values.put(KEY_GAME_RESULT_BOARD_NAME, game_result.getName());
 		long game_resultID = db.insert(TABLE_GAME_RESULT, null, values);
-
+		db.close();
 		return game_resultID;
 
 	}
 
-	public List<GameResult> getGameResultEntries() {
-		List<GameResult> game_results = new ArrayList<GameResult>();
-		String selectQuery = "SELECT * FROM " + TABLE_GAME_RESULT;
-
-		Log.e(LOG, selectQuery);
-
-		SQLiteDatabase db = this.getReadableDatabase();
-		Cursor c = db.rawQuery(selectQuery, null);
-
-		// looping through all rows and adding to list
-		if (c.moveToFirst()) {
-			do {
-				GameResult game_result = new GameResult(
-						c.getLong((c.getColumnIndex(KEY_ID))),
-						(c.getString(c
-								.getColumnIndex(KEY_GAME_RESULT_BOARD_SEED))),
-						(c.getInt(c.getColumnIndex(KEY_GAME_RESULT_BOARD_SCORE))),
-						(c.getString(c
-								.getColumnIndex(KEY_GAME_RESULT_BOARD_NAME))));
-				Log.i("DB", "Name: " + game_result.getName());
-				// adding to list
-				game_results.add(game_result);
-			} while (c.moveToNext());
-		}
-
-		return game_results;
+	private String createBoardEntry(String board_data, String board_name, SQLiteDatabase db) {
+		ContentValues values = new ContentValues();
+		values.put(KEY_BOARD_SEED, board_data);
+		values.put(KEY_BOARD_NAME, board_name);
+		long game_resultID = db.insert(TABLE_BOARD, null, values);
+		return Long.toString(game_resultID);
 	}
 
-	public GameResult getGameResultById(long id,
-			GameResult game_result_to_be_safed) {
+	public GameResult getGameResultById(long game_result_id) {
 		SQLiteDatabase db = this.getReadableDatabase();
-		String[] args = { Long.toString(id) };
-		Cursor c = db.query(TABLE_GAME_RESULT, null, "id = " + id, null, null,
+		Cursor c = db.query(TABLE_GAME_RESULT, null, "id = " + game_result_id, null, null,
 				null, null, null);
 		if (c.moveToFirst()) {
-			GameResult game_result = new GameResult(c.getLong((c
-					.getColumnIndex(KEY_ID))), (c.getString(c
-					.getColumnIndex(KEY_GAME_RESULT_BOARD_SEED))), (c.getInt(c
+			long board_id = c.getLong(c.getColumnIndex(KEY_GAME_RESULT_BOARD_ID));
+			GameResult game_result = new GameResult(game_result_id, getBoardInfoById(KEY_BOARD_SEED, board_id, db) , (c.getInt(c
 					.getColumnIndex(KEY_GAME_RESULT_BOARD_SCORE))),
-					(c.getString(c.getColumnIndex(KEY_GAME_RESULT_BOARD_NAME))));
+					getBoardInfoById(KEY_BOARD_NAME, board_id, db));
 			return game_result;
 		}
 		return null;
 	}
 
-	public void updateGameResult(GameResult game_result) {
-		assert (game_result.getBoardID() != -1);
-		SQLiteDatabase db = this.getWritableDatabase();
-		ContentValues values = new ContentValues();
-		values.put(KEY_GAME_RESULT_BOARD_SEED, game_result.getBoardData());
-		values.put(KEY_GAME_RESULT_BOARD_SCORE, game_result.getScore());
-		values.put(KEY_GAME_RESULT_BOARD_NAME, game_result.getName());
-		long game_resultID = db.update(TABLE_GAME_RESULT, values, "id = ?", new String[]{Long.toString(game_result.getBoardID())});
+	private String getBoardInfoById(String key, long board_id, SQLiteDatabase db) {
+		Cursor c = db.query(TABLE_BOARD, null, "id = " + board_id, null, null,
+				null, null, null);
+		if (c.moveToFirst()) {
+			return c.getString(c.getColumnIndex(key));
+		}
+		return null;
+	}
+	
+	public String getPrimaryUserName() {
+		SQLiteDatabase db = this.getReadableDatabase();
+		Cursor c = db.query(TABLE_USER, null, "id = 1", null, null,
+				null, null, null);
+		if (c.moveToFirst()) {
+			return c.getString(c.getColumnIndex(KEY_USER_NAME));
+		}
+		return null;
 	}
 
 }
