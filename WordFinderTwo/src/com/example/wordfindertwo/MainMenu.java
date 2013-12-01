@@ -1,20 +1,25 @@
 package com.example.wordfindertwo;
 
-import com.example.wordfindertwo.Dictionary;
-import com.example.wordfindertwo.FriendsTable;
-import com.example.wordfindertwo.Game;
-import com.example.wordfindertwo.R;
-import com.example.wordfindertwo.Score;
-
-import android.os.Bundle;
 import android.app.Activity;
 import android.content.Intent;
+import android.os.Bundle;
 import android.view.Menu;
 import android.view.View;
+
+import com.parse.Parse;
+import com.parse.ParseAnalytics;
+import com.parse.ParseObject;
 
 public class MainMenu extends Activity {
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
+		Parse.initialize(this, "8wi7OLHLbQl6Ul9GMKoKqGlA6g4QZXfT73houPAy", "gWIgOBfcjpiJqrDSBfedseD63VQmSETrQVj6nu4v"); 
+		ParseAnalytics.trackAppOpened(getIntent());
+		
+		ParseObject testObject = new ParseObject("TestObject");
+		testObject.put("foo", "bar");
+		testObject.saveInBackground();
+		
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_main_menu);
 		//preload system dictionaries
