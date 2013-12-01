@@ -24,7 +24,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 
 	// Database Version ( Increased when we rewrite the Database structure in an
 	// upcoming version of the game )
-	private static final int DATABASE_VERSION = 5;
+	private static final int DATABASE_VERSION = 7;
 
 	private static final String DATABASE_NAME = "savingManager";
 
@@ -121,6 +121,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 		db.execSQL(CREATE_TABLE_DICTIONARY);
 		db.execSQL(CREATE_TABLE_DEDICATED_DICTIONARY);
 		db.execSQL(CREATE_TABLE_GAME_RESULT);
+		db.execSQL(CREATE_TABLE_USER);
 	}
 
 	@Override
@@ -131,6 +132,8 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 		db.execSQL("DROP TABLE IF EXISTS " + TABLE_DICTIONARY);
 		db.execSQL("DROP TABLE IF EXISTS " + TABLE_DEDICATED_DICTIONARY);
 		db.execSQL("DROP TABLE IF EXISTS " + TABLE_GAME_RESULT);
+		db.execSQL("DROP TABLE IF EXISTS " + TABLE_USER);
+
 
 		// create new tables
 		onCreate(db);

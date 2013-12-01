@@ -18,10 +18,6 @@ public class MainMenu extends Activity {
 		Parse.initialize(this, "8wi7OLHLbQl6Ul9GMKoKqGlA6g4QZXfT73houPAy", "gWIgOBfcjpiJqrDSBfedseD63VQmSETrQVj6nu4v"); 
 		ParseAnalytics.trackAppOpened(getIntent());
 		
-		ParseObject testObject = new ParseObject("TestObject");
-		testObject.put("foo", "bar");
-		testObject.saveInBackground();
-		
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_main_menu);
 		//preload system dictionaries
@@ -47,11 +43,14 @@ public class MainMenu extends Activity {
 	
 	public void openFriend(View view){
 		DatabaseHelper db = new DatabaseHelper(this);
-		if (db.getPrimaryUserName() == null) {
-			Intent intent = new Intent(this, LoginActivity.class);
-		}
-		Intent intent = new Intent(this, FriendsTable.class);
-		startActivity(intent);	
+		Intent intent;
+		if (db.getPrimaryUserName() == null)
+			intent = new Intent(this, LoginActivity.class);
+		else
+			intent = new Intent(this, FriendsTable.class);
+		db.close();
+		startActivity(intent);
+
 	}
 	
 	public void openDictionary(View view){

@@ -8,12 +8,16 @@ import android.os.AsyncTask;
 import android.os.Build;
 import android.os.Bundle;
 import android.text.TextUtils;
+import android.util.Log;
 import android.view.KeyEvent;
 import android.view.Menu;
 import android.view.View;
 import android.view.inputmethod.EditorInfo;
 import android.widget.EditText;
 import android.widget.TextView;
+
+import com.parse.ParseException;
+import com.parse.ParseObject;
 
 /**
  * Activity which displays a login screen to the user, offering registration as
@@ -211,12 +215,27 @@ public class LoginActivity extends Activity {
 				String[] pieces = credential.split(":");
 				if (pieces[0].equals(mEmail)) {
 					// Account exists, return true if the password matches.
+					Log.d("LoginActivity", "user exists");
 					return pieces[1].equals(mPassword);
 				}
 			}
 
-			// TODO: register the new account here.
+			createUser(mEmail, mPassword);
 			return true;
+		}
+
+		private void createUser(String mEmail, String mPassword) {
+			ParseObject gameScore = new ParseObject("GameUser");
+			gameScore.put("email", mEmail);
+			gameScore.put("password", mPassword);
+			gameScore.saveInBackground();
+			try {
+				gameScore.fetch();
+			} catch (ParseException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+			Log.d("LoginActivity", "User with id " + gameScore.getObjectId() + " created");
 		}
 
 		@Override
