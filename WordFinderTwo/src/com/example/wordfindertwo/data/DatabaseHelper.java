@@ -240,7 +240,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 				null, null, null);
 		if (c.moveToFirst()) {
 			long board_id = c.getLong(c.getColumnIndex(KEY_GAME_RESULT_BOARD_ID));
-			GameResult game_result = new GameResult(game_result_id, getBoardInfoById(KEY_BOARD_SEED, board_id, db) , (c.getInt(c
+			GameResult game_result = new GameResult(board_id, getBoardInfoById(KEY_BOARD_SEED, board_id, db) , (c.getInt(c
 					.getColumnIndex(KEY_GAME_RESULT_BOARD_SCORE))),
 					getBoardInfoById(KEY_BOARD_NAME, board_id, db));
 			return game_result;

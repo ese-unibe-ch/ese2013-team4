@@ -30,7 +30,7 @@ public class Score extends Activity {
 		datasource = new ScoreDataSource(this);
 		datasource.open();
 
-		values = datasource.getAllScores();
+		values = datasource.getAllHighScores();
 
 		lv.setAdapter(new ArrayAdapter<GameResult>(this,
 				android.R.layout.simple_list_item_1, values));
