@@ -17,22 +17,19 @@ import com.example.wordfindertwo.core.IDictionary;
 // Tip: use com.example.wordfindertwo.core.board.BoardDatabaseInterface for ID / Name / Seed operations. - andreas
 
 public class DatabaseHelper extends SQLiteOpenHelper {
-	// Fixed Board Size
-	private static final int BOARD_SIZE = 6;
+	
 	// Database tag
 	private static final String LOG = "DatabaseHelper";
 
 	// Database Version ( Increased when we rewrite the Database structure in an
 	// upcoming version of the game )
-	private static final int DATABASE_VERSION = 7;
+	private static final int DATABASE_VERSION = 8;
 
 	private static final String DATABASE_NAME = "savingManager";
 
 	// Table Names
 	private static final String TABLE_BOARD = "boards";
-	private static final String TABLE_SCORE = "scores";
 	private static final String TABLE_DICTIONARY = "dictionaries";
-	private static final String TABLE_DEDICATED_DICTIONARY = "dedct_dict";
 	public static final String TABLE_GAME_RESULT = "game_result";
 	public static final String TABLE_USER = "user";
 
@@ -46,23 +43,17 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 	// Custom Dictionary muss noch besprochen werden
 	// private static final String KEY_CUSTOM_WORDS = "words";
 
-	// Score Table - column names
-	private static final String KEY_SCORE_BOARD_ID = "board_id";
-	private static final String KEY_SCORE_VALUE = "score_value";
-
 	// Dictionary Table - column names
 	private static final String KEY_DICTIONARY_NAME = "name";
 	private static final String KEY_DICTIONARY_WORDS = "words";
 
-	// Dedicated Dictionary Table - column names
-	private static final String KEY_DEDICATED_BOARD_ID = "board_id";
-	private static final String KEY_DEDICATED_WORDS = "words";
-
 	// Game Results Table - column names
 	public static final String KEY_GAME_RESULT_BOARD_ID = "board_id";
 	public static final String KEY_GAME_RESULT_BOARD_SCORE = "score";
+	public static final String KEY_GAME_RESULT_BOARD_USER = "user";
+
 	
-	// Game Results Table - column names
+	// Ulser Table - column names
 	public static final String KEY_USER_ONLINE_ID = "online_id";
 	public static final String KEY_USER_NAME = "name";
 
@@ -80,27 +71,11 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 			+ KEY_USER_ONLINE_ID + " TEXT"
 			+ ")";
 
-	// Score table create statement
-	private static final String CREATE_TABLE_SCORE = "CREATE TABLE "
-			+ TABLE_SCORE + "(" + KEY_ID + " INTEGER PRIMARY KEY, "
-			+ KEY_SCORE_BOARD_ID + " INTEGER," + KEY_SCORE_VALUE + " INTEGER"
-			+ ")";
-
 	// Dictionary table create statement
 	private static final String CREATE_TABLE_DICTIONARY = "CREATE TABLE "
 			+ TABLE_DICTIONARY + "(" + KEY_ID + " INTEGER PRIMARY KEY, "
 			+ KEY_DICTIONARY_NAME + " TEXT, " + KEY_DICTIONARY_WORDS + " TEXT"
 			+ ")";
-
-	// Dedicated Boards table create statement
-	private static final String CREATE_TABLE_DEDICATED_DICTIONARY = "CREATE TABLE "
-			+ TABLE_DEDICATED_DICTIONARY
-			+ "("
-			+ KEY_ID
-			+ " INTEGER PRIMARY KEY, "
-			+ KEY_DEDICATED_BOARD_ID
-			+ " INTEGER,"
-			+ KEY_DEDICATED_WORDS + " TEXT" + ")";
 
 	// Dedicated Boards table create statement
 	private static final String CREATE_TABLE_GAME_RESULT = "CREATE TABLE "
@@ -117,9 +92,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 	public void onCreate(SQLiteDatabase db) {
 		// creating required tables
 		db.execSQL(CREATE_TABLE_BOARD);
-		db.execSQL(CREATE_TABLE_SCORE);
 		db.execSQL(CREATE_TABLE_DICTIONARY);
-		db.execSQL(CREATE_TABLE_DEDICATED_DICTIONARY);
 		db.execSQL(CREATE_TABLE_GAME_RESULT);
 		db.execSQL(CREATE_TABLE_USER);
 	}
@@ -128,9 +101,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 	public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
 		// on upgrade drop older tables
 		db.execSQL("DROP TABLE IF EXISTS " + TABLE_BOARD);
-		db.execSQL("DROP TABLE IF EXISTS " + TABLE_SCORE);
 		db.execSQL("DROP TABLE IF EXISTS " + TABLE_DICTIONARY);
-		db.execSQL("DROP TABLE IF EXISTS " + TABLE_DEDICATED_DICTIONARY);
 		db.execSQL("DROP TABLE IF EXISTS " + TABLE_GAME_RESULT);
 		db.execSQL("DROP TABLE IF EXISTS " + TABLE_USER);
 
