@@ -40,20 +40,18 @@ public class Score extends Activity {
 					long id) {
 				AlertDialog.Builder adb = new AlertDialog.Builder(Score.this);
 				adb.setTitle("Loading Board");
-				adb.setMessage( values.get(position).toString() );
+				adb.setMessage(values.get(position).toString());
 				adb.show();
 				startIntent(values.get(position));
-				
-				
 			}
 
 			private void startIntent(GameResult result) {
 				Intent i = new Intent(getApplicationContext(), Game.class);
 				i.putExtra("BoardData", result.getBoardData());
-				i.putExtra("BoardID",result.getBoardID());
-				i.putExtra("BoardName",result.getName());
+				i.putExtra("BoardID", result.getBoardID());
+				i.putExtra("BoardName", result.getName());
 				startActivity(i);
-				
+
 			}
 		});
 	}
