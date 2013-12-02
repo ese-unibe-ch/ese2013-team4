@@ -74,7 +74,7 @@ public class GameResult implements Comparable<GameResult> {
 	}
 
 	public String toString() {
-		return "Board #" + this.boardName + " \n" + "Score: " + this.score;
+		return this.boardName + " \n" + this.score;
 	}
 
 	public String getName() {
@@ -84,7 +84,7 @@ public class GameResult implements Comparable<GameResult> {
 	public void setName(String name) {
 		this.boardName = name;
 	}
-	
+
 	@Override
 	public int compareTo(GameResult other) {
 		return this.score - other.score;
