@@ -78,8 +78,8 @@ public class ScoreDataSource {
 
 	private boolean containsGameresultOfThisBoard(long id, List<GameResult> high_scores) {
 		for (GameResult result : high_scores) {
-			if (result.getBoardID() == id);
-			return true;
+			if (result.getBoardID() == id)
+				return true;
 		}
 		return false;
 	}
