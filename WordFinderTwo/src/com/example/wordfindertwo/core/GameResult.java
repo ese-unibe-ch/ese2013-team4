@@ -6,6 +6,8 @@ public class GameResult implements Comparable<GameResult> {
 	public final static double WORD_SCORE_MULTIPLIER = 10;
 	public final static double TIME_SCORE_MULTIPLIER = 0.005; // half sec 1 pt
 
+	public final static int MAX_NAME_LETTER_COUNT = 26;
+
 	private long boardID;
 	private String boardData;
 	private int score;
@@ -74,7 +76,7 @@ public class GameResult implements Comparable<GameResult> {
 	}
 
 	public String toString() {
-		return this.boardName + " \n" + this.score;
+		return this.getShortenedName() + " \n" + this.score;
 	}
 
 	public String getName() {
@@ -88,5 +90,12 @@ public class GameResult implements Comparable<GameResult> {
 	@Override
 	public int compareTo(GameResult other) {
 		return this.score - other.score;
+	}
+
+	private String getShortenedName() {
+		if (this.boardName.length() <= MAX_NAME_LETTER_COUNT + 2)
+			return this.boardName;
+		else
+			return this.boardName.substring(0, MAX_NAME_LETTER_COUNT) + "...";
 	}
 }
