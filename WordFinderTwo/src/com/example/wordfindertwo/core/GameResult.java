@@ -5,7 +5,6 @@ public class GameResult implements Comparable<GameResult> {
 	public final static double LETTER_SCORE_MULTIPLIER = 1;
 	public final static double WORD_SCORE_MULTIPLIER = 10;
 	public final static double TIME_SCORE_MULTIPLIER = 0.005; // half sec 1 pt
-
 	public final static int MAX_NAME_LETTER_COUNT = 26;
 
 	private long boardID;
@@ -54,8 +53,32 @@ public class GameResult implements Comparable<GameResult> {
 		return this.score;
 	}
 
+	public String toString() {
+		return this.getShortenedName() + " \n" + this.score;
+	}
+
+	public String getName() {
+		return this.boardName;
+	}
+
+	public void setName(String name) {
+		this.boardName = name;
+	}
+
 	public void setBoardID(long boardID) {
 		this.boardID = boardID;
+	}
+
+	@Override
+	public int compareTo(GameResult other) {
+		return this.score - other.score;
+	}
+
+	private String getShortenedName() {
+		if (this.boardName.length() <= MAX_NAME_LETTER_COUNT + 2)
+			return this.boardName;
+		else
+			return this.boardName.substring(0, MAX_NAME_LETTER_COUNT) + "...";
 	}
 
 	/**
@@ -75,27 +98,4 @@ public class GameResult implements Comparable<GameResult> {
 				Integer.parseInt(fragments[2]), fragments[3]);
 	}
 
-	public String toString() {
-		return this.getShortenedName() + " \n" + this.score;
-	}
-
-	public String getName() {
-		return this.boardName;
-	}
-
-	public void setName(String name) {
-		this.boardName = name;
-	}
-
-	@Override
-	public int compareTo(GameResult other) {
-		return this.score - other.score;
-	}
-
-	private String getShortenedName() {
-		if (this.boardName.length() <= MAX_NAME_LETTER_COUNT + 2)
-			return this.boardName;
-		else
-			return this.boardName.substring(0, MAX_NAME_LETTER_COUNT) + "...";
-	}
 }
