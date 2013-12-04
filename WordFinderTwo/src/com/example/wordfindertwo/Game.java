@@ -23,7 +23,7 @@ public class Game extends Activity {
 	public static Game game;
 	// CONSTANTS
 	private static final CharSequence QUIT_BUTTON_TEXT = "QUIT";
-	private static final long INITIAL_TIMER_VALUE = 120000;
+	private static final long INITIAL_TIMER_VALUE = 1200;
 	// FIELDS
 	private TextView timerView;
 	private TextView foundWords;

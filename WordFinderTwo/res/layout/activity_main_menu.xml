@@ -46,7 +46,8 @@
         android:layout_below="@+id/Score"
         android:layout_marginTop="17dp"
         android:text="@string/friend_buttonText"
-        android:onClick="openFriend" />
+        android:onClick="openFriend"
+        android:visibility="invisible" />
     
     <Button 
         android:id="@+id/Dictionary"
