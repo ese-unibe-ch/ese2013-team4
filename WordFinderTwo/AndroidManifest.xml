@@ -63,6 +63,10 @@
             android:label="@string/title_activity_login"
             android:windowSoftInputMode="adjustResize|stateVisible" >
         </activity>
+        <activity
+            android:name="com.example.wordfindertwo.DictionariesOverview"
+            android:label="@string/title_activity_dictionaries_overview" >
+        </activity>
     </application>
 
 </manifest>
