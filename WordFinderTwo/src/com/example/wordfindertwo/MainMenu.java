@@ -6,7 +6,6 @@ import android.os.Bundle;
 import android.view.Menu;
 import android.view.View;
 
-import com.example.wordfindertwo.data.DatabaseHelper;
 import com.parse.Parse;
 import com.parse.ParseAnalytics;
 
@@ -37,23 +36,6 @@ public class MainMenu extends Activity {
 	public void openScores(View view){
 		Intent intent = new Intent(this, Score.class);
 		startActivity(intent);
-	}
-	
-	public void openFriend(View view){
-		DatabaseHelper db = new DatabaseHelper(this);
-		Intent intent;
-		if (db.getPrimaryUserName() == null)
-			intent = new Intent(this, LoginActivity.class);
-		else
-			intent = new Intent(this, FriendsTable.class);
-		db.close();
-		startActivity(intent);
-
-	}
-	
-	public void openDictionary(View view){
-		Intent intent = new Intent(this, Dictionary.class);
-		startActivity(intent);	
 	}
 	
 	@Override

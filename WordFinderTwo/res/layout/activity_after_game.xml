@@ -1,88 +1,84 @@
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/aftergamelayout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:orientation="vertical"
     android:paddingBottom="@dimen/activity_vertical_margin"
     android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
     tools:context=".AfterGame" >
-<LinearLayout 
-    android:id="@+id/aftergamelayout" 
-    android:orientation="vertical"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent">
-       <TextView
+
+    <TextView
         android:id="@+id/scoredisplay"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:text="Score:"/>
+        android:text="@string/score_after_game" />
 
-	<TextView 
-	    android:id="@+id/scorecustomdisplay"
-	    android:layout_width="fill_parent"
-	    android:layout_height="wrap_content"/>
+    <TextView
+        android:id="@+id/scorecustomdisplay"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content" />
 
-	<TextView
-	    android:id="@+id/enter_board_name"
-	    android:layout_width="wrap_content"
-	    android:layout_height="wrap_content"
-	    android:text="@string/enter_name"
-	    android:textAppearance="?android:attr/textAppearanceMedium" />
+    <TextView
+        android:id="@+id/enter_board_name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/enter_name"
+        android:textAppearance="?android:attr/textAppearanceMedium" />
 
-	<LinearLayout
-	    android:layout_width="match_parent"
-	    android:layout_height="wrap_content" >
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" >
 
-		<EditText
-		    android:id="@+id/board_name_textfield"
-		    android:layout_width="wrap_content"
-		    android:layout_height="wrap_content"
-		  	android:singleLine="true"
-	    	android:maxLength="20"
-		    android:layout_weight="1"
-		    android:ems="10" >
+        <EditText
+            android:id="@+id/board_name_textfield"
+            android:layout_width="0dip"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:ems="10"
+            android:hint="@string/name_your_board_hint"
+            android:maxLength="20"
+            android:singleLine="true" >
 
-		    <requestFocus />
-		</EditText>
+            <requestFocus />
+        </EditText>
 
-		<Button
-		    android:id="@+id/boardname_submit"
-		    android:layout_width="98dp"
-		    android:layout_height="wrap_content"
-		    android:text="@string/save"
-		    android:onClick="submitName" />
+        <Button
+            android:id="@+id/boardname_submit"
+            android:layout_width="98dp"
+            android:layout_height="wrap_content"
+            android:onClick="submitName"
+            android:text="@string/save" />
+    </LinearLayout>
 
-	</LinearLayout>
+    <TextView
+        android:id="@+id/error_board_name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/error_enter_board_name"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:textColor="#dd4444"
+        android:visibility="gone" />
 
-	<TextView
-	    android:id="@+id/error_board_name"
-	    android:layout_width="wrap_content"
-	    android:layout_height="wrap_content"
-	    android:text="@string/error_enter_board_name"
-	    android:textColor="#dd4444"
-	    android:textAppearance="?android:attr/textAppearanceMedium"
-	    android:visibility="gone" />
+    <TextView
+        android:id="@+id/scorecustomdisplay2"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content" />
 
-	<TextView
-	    android:id="@+id/scorecustomdisplay2"
-	    android:layout_width="fill_parent"
-	    android:layout_height="wrap_content" />
+    <TextView
+        android:id="@+id/return_withou_saving_hint"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/close_without_saving"
+        android:textAppearance="?android:attr/textAppearanceMedium" />
 
-	<TextView
-	    android:id="@+id/return_withou_saving_hint"
-	    android:layout_width="wrap_content"
-	    android:layout_height="wrap_content"
-	    android:text="@string/close_without_saving"
-	    android:textAppearance="?android:attr/textAppearanceMedium" />
-	
-	<Button
-	    android:id="@+id/returntomainmenu"
-	    android:layout_width="match_parent"
-	    android:layout_height="wrap_content"
-	    android:onClick="returnToMainMenu"
-	    android:text="Return to MAIN MENU" />
+    <Button
+        android:id="@+id/returntomainmenu"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:onClick="returnToMainMenu"
+        android:text="@string/return_main" />
 
-	</LinearLayout>
-	
-</RelativeLayout>
+</LinearLayout>
