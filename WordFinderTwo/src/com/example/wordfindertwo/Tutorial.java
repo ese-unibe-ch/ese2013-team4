@@ -3,7 +3,6 @@ package com.example.wordfindertwo;
 import android.os.Bundle;
 import android.app.Activity;
 import android.view.Menu;
-import android.view.View;
 import android.widget.TextView;
 
 public class Tutorial extends Activity {
@@ -22,11 +21,13 @@ public class Tutorial extends Activity {
 				+ "\n"
 				+ "\n"
 				+ "1.How to generate and play a board\n"
+				+ "\n"
 				+ "First, go back to the screen with buttons: \"generate board\", \"score\" and \"tutorial\"."
 				+ " After that, press the \"generate board\" - button. At the time the board is generated,"
 				+ " you may now press the \"Start\" - button to start the game. You have now a time limit of two minutes."
 				+ " After the time run out, or finding all the words in the board the game will automatically finish."
 				+ " While playing you may also press the \"Pause\" - button to pause the game.\n"
+				+ "\n"
 				+ "Rules:\n"
 				+ "You can find words by touching the letter, the word begins with and then just hovering over the letters you"
 				+ " want to connect with the first one. As soon you lift up your finger from the screen, the board will stop to"
@@ -38,6 +39,7 @@ public class Tutorial extends Activity {
 				+ " of words found be displayed in the bottom left corner right below the displayed current score.\n"
 				+ "\n"
 				+ "2.How to retry a board and improve your score\n"
+				+ "\n"
 				+ "In this application you have the possibility to retry an already played board. First step, go again to the main menu. Then"
 				+ " you press the \"Score\" - button. After that you may select any board you want to retry. Just click on the board you want"
 				+ " to retry. If you improve your score on the retried board, the score will automatically be updated for you.";
