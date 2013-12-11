@@ -21,7 +21,7 @@
     <string name="foundReasultText">Friend found in Database</string>
     <string name="noneEmailFoundText">No matching Email/Friend Found</string>
     <string name="notJetSearchedForFriendText">Not jet searched</string>
-    <string name="title_activity_after_game">AfterGame</string>
+    <string name="title_activity_after_game">Game Finished</string>
     <string name="friendField_tableRowTextView"></string>
     <string name="friends_tableRow_deleteButton">Delete</string>
     <string name="dictionaries_Activity_Title">Dictionaries</string>
