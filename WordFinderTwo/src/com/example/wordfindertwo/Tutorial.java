@@ -3,7 +3,6 @@ package com.example.wordfindertwo;
 import android.os.Bundle;
 import android.app.Activity;
 import android.view.Menu;
-import android.view.View;
 import android.widget.TextView;
 
 public class Tutorial extends Activity {
