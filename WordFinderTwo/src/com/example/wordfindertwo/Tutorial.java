@@ -38,6 +38,7 @@ public class Tutorial extends Activity {
 				+ " the three last words found and the other word you will see if you scroll down in that small section. Also will the number"
 				+ " of words found be displayed in the bottom left corner right below the displayed current score.\n"
 				+ "\n"
+				+ "\n"
 				+ "2.How to retry a board and improve your score\n"
 				+ "\n"
 				+ "In this application you have the possibility to retry an already played board. First step, go again to the main menu. Then"
