@@ -38,6 +38,11 @@ public class MainMenu extends Activity {
 		startActivity(intent);
 	}
 	
+	public void openTutorial(View view){
+		Intent intent = new Intent(this, Tutorial.class);
+		startActivity(intent);
+	}
+	
 	@Override
 	public void onBackPressed() {
 		//NO-OP

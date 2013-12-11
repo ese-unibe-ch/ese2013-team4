@@ -67,6 +67,10 @@
             android:name="com.example.wordfindertwo.DictionariesOverview"
             android:label="@string/title_activity_dictionaries_overview" >
         </activity>
+        <activity
+            android:name="com.example.wordfindertwo.Tutorial"
+            android:label="@string/title_activity_tutorial" >
+        </activity>
     </application>
 
 </manifest>

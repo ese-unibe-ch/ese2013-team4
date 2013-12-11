@@ -12,7 +12,6 @@
     <string name="title_activity_pause_screen">PauseScreen</string>
     <string name="playGame_buttonText">Generate Board</string>
     <string name="score_buttonText">Scores</string>
-    <string name="friend_buttonText">Friends</string>
     <string name="add_friendButton">Add Friend</string>
     <string name="delete_frinedRadioButton">Delete On</string>
     <string name="dictionary_buttonText">Dictionaries</string>
@@ -68,5 +67,9 @@
     <string name="score_after_game">Score:</string>
     <string name="return_main">Return to MAIN MENU</string>
     <string name="name_your_board_hint">Boardname</string>
+    <string name="tutorial_buttonText">Tutorial</string>
+    <string name="title_activity_tutorial">Tutorial</string>
+    <string name="tutorial_title">Tutorial</string>
+    <string name="score_title">Score</string>
 
 </resources>

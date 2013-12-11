@@ -41,22 +41,21 @@
         android:onClick="openScores"/>
     
     <Button 
-        android:id="@+id/Friend"
+        android:id="@+id/Tutorial"
         android:layout_width="150dp"
         android:layout_height="wrap_content"
         android:layout_centerHorizontal="true"
         android:layout_below="@+id/Score"
         android:layout_marginTop="17dp"
-        android:text="@string/friend_buttonText"
-        android:onClick="openFriend"
-        android:visibility="invisible" />
+        android:text="@string/tutorial_buttonText"
+        android:onClick="openTutorial"/>
     
     <Button 
         android:id="@+id/Dictionary"
         android:layout_width="150dp"
         android:layout_height="wrap_content"
         android:layout_centerHorizontal="true"
-        android:layout_below="@+id/Friend"
+        android:layout_below="@+id/Tutorial"
         android:layout_marginTop="17dp"
         android:text="@string/dictionary_buttonText"
         android:onClick="openDictionary"
